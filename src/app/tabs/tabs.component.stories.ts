@@ -1,7 +1,8 @@
-import { MatIconModule } from '@angular/material/icon';
-import { MatTabsModule } from '@angular/material/tabs';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Story, Meta, moduleMetadata } from '@storybook/angular';
+import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { IconModule } from '../icon.module';
+import { DemoMaterialModule } from '../material.module';
 import { TabsComponent } from './tabs.component';
 
 export default {
@@ -10,7 +11,12 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [TabsComponent],
-      imports: [MatTabsModule, BrowserAnimationsModule, MatIconModule],
+      imports: [
+        BrowserAnimationsModule,
+        DemoMaterialModule,
+        HttpClientModule,
+        IconModule,
+      ],
     }),
   ],
 } as Meta;

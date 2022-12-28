@@ -7,23 +7,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatButtonModule } from '@angular/material/button';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './button/button.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { DemoMaterialModule } from './material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { IconModule } from './icon.module';
 
 @NgModule({
   declarations: [AppComponent, ButtonComponent, TabsComponent],
   imports: [
+    IconModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule,
     BrowserAnimationsModule,
     DragDropModule,
-    MatTabsModule,
-    MatIconModule,
+    DemoMaterialModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

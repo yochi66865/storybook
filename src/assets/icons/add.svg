@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" id="path_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#path_1" />
+    </clipPath>
+  </defs>
+  <g id="Group-2">
+    <g id="Group">
+      <g id="Oval">
+        <use stroke="none" xlink:href="#path_1" fill-rule="evenodd" />
+        <g clip-path="url(#clip_1)">
+          <use xlink:href="#path_1" fill="none" stroke="#DAE1E8" stroke-width="2" />
+        </g>
+      </g>
+      <g id="SystemOperationClose" transform="matrix(0.70710677 0.70710677 -0.70710677 0.70710677 11.857864 4.7867966)">
+        <g id="SystemOperationClose">
+          <path d="M0 0L10 0L10 10L0 10L0 0Z" id="BG" fill="none" fill-rule="evenodd" stroke="none" />
+          <path d="M8.24091 1.75909C8.40362 1.92181 8.40362 2.18563 8.24091 2.34835L5.58914 4.99997L8.24091 7.65165C8.40362 7.81437 8.40362 8.07819 8.24091 8.24091C8.07819 8.40362 7.81437 8.40362 7.65165 8.24091L4.99997 5.58914L2.34835 8.24091C2.18563 8.40362 1.92181 8.40362 1.75909 8.24091C1.59638 8.07819 1.59638 7.81437 1.75909 7.65165L4.4107 4.99997L1.75909 2.34835C1.59638 2.18563 1.59638 1.92181 1.75909 1.75909C1.92181 1.59638 2.18563 1.59638 2.34835 1.75909L4.99997 4.4107L7.65165 1.75909C7.81437 1.59638 8.07819 1.59638 8.24091 1.75909Z" id="Path" fill-rule="evenodd" stroke="none" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

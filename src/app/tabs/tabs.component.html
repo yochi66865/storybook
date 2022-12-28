@@ -1,26 +1,59 @@
-<mat-tab-group>
+<mat-tab-group disableRipple="true" [disablePagination]="true" animationDuration="'0'"> >
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-      First
+      <mat-icon class="label-icon" svgIcon="sdk_assignment"></mat-icon>
+      <label class="label">הקצאות סד"כ</label>
     </ng-template>
     Content 1
   </mat-tab>
 
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-      Second
+      <mat-icon class="label-icon"  svgIcon="reserve"></mat-icon>      
+      <label class="label">שריונים</label>
     </ng-template>
     Content 2
   </mat-tab>
 
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
-      Third
+      <mat-icon class="label-icon"  svgIcon="areas"></mat-icon>
+      <label class="label">אזורים ומבנים</label>
     </ng-template>
-
     Content 3
   </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="label-icon"  svgIcon="assignments"></mat-icon>
+      <label class="label">הקצאות</label>
+    </ng-template>
+    Content 4
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="label-icon"  svgIcon="remarks"></mat-icon>
+      <label class="label">הערות</label>
+    </ng-template>
+    Content 5
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="label-icon"  svgIcon="advanced_instructions"></mat-icon>
+      <label class="label">הנחיות מתקדמות</label>
+    </ng-template>
+    Content 6
+  </mat-tab>
 </mat-tab-group>
+
+
+<!-- `add`,
+`advanced_instructions`,
+`areas`,
+`assignments`,
+`close`,
+`remarks`,
+`reserve`,
+`sdk_assignment` -->

@@ -179,9 +179,11 @@
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-6bfc39711eb92b631a1dd9ec2758a4e841340e87fe18bcc835e1537c58dd6df0aa33699b94df8424bc41765a011d6691b13a4406d3fcff06ac7443228e7a7a86",
+            "id": "component-TabsComponent-2e18594df363494da796bdc0d04a9bf100b4a532842aeacc77b38e6900eff13af90f25a9de43ade23516af320e4052bde04e698193fb781645774d7bb90ee01d",
             "file": "src/app/tabs/tabs.component.ts",
-            "encapsulation": [],
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
@@ -217,11 +219,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-tabs',\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.less']\n})\nexport class TabsComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component, OnInit, ViewEncapsulation } from '@angular/core';\n\n@Component({\n  selector: 'app-tabs',\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.less'],\n  encapsulation: ViewEncapsulation.None,\n})\nexport class TabsComponent implements OnInit {\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "// .mat-tab-group {\r\n//     margin-bottom: 48px;\r\n//   }",
+                    "data": ".example-tab-icon {\r\n    margin-right: 8px;\r\n  }\r\n\r\n  .mat-tab-group {\r\n    flex-direction: row-reverse !important;\r\n  }\r\n\r\n  .mat-tab-labels {\r\n    flex-direction: column;\r\n  }\r\n\r\n  .mat-tab-body-wrapper {\r\n    flex: 1;\r\n  }",
                     "styleUrl": "./tabs.component.less"
                 }
             ],
@@ -232,24 +234,24 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 9
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<h3>No animation</h3>\n\n<mat-tab-group animationDuration=\"0ms\">\n  <mat-tab label=\"First\" mat-stretch-tabs=\"false\" disableRipple=\"true\" mat-align-tabs=\"start\">Content 1</mat-tab>\n  <mat-tab label=\"Second\" mat-stretch-tabs=\"false\" mat-align-tabs=\"center\">Content 2</mat-tab>\n  <mat-tab label=\"Third\" mat-stretch-tabs=\"false\" mat-align-tabs=\"end\">Content 3</mat-tab>\n</mat-tab-group>\n\n"
+            "templateData": "<mat-tab-group disableRipple=\"true\" animationDuration=\"'0'\">\n  <mat-tab>\n    <ng-template mat-tab-label>\n      <mat-icon class=\"example-tab-icon\">thumb_up</mat-icon>\n      First\n    </ng-template>\n    Content 1\n  </mat-tab>\n\n  <mat-tab>\n    <ng-template mat-tab-label>\n      <mat-icon class=\"example-tab-icon\">thumb_up</mat-icon>\n      Second\n    </ng-template>\n    Content 2\n  </mat-tab>\n\n  <mat-tab>\n    <ng-template mat-tab-label>\n      <mat-icon class=\"example-tab-icon\">thumb_up</mat-icon>\n      Third\n    </ng-template>\n\n    Content 3\n  </mat-tab>\n</mat-tab-group>"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-50d1558b130b36e3f04527d92a583c996a23e8821ad9ae17a578cfa4106f6dbcb96222f52b2f917982f15e6d13739179c71b56f86663fd096d9354ba414fa133",
+            "id": "module-AppModule-02220e1bd53e8b8afd4d3f6616d3229b0ac888dbb306cd42ba56839597a8a9d3006b94ddc84272f3671f24fc801d105ae2b783b9246107984157c4c9d63e4aae",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { MatTabsModule } from '@angular/material/tabs';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\nimport { TabsComponent } from './tabs/tabs.component';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent, ButtonComponent, TabsComponent],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    MatFormFieldModule,\r\n    MatInputModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    MatTabsModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { MatTabsModule } from '@angular/material/tabs';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent, ButtonComponent, TabsComponent],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    MatFormFieldModule,\r\n    MatInputModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    MatTabsModule,\r\n    MatIconModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -427,21 +429,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/button/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<TabsComponent>",
                 "defaultValue": "(args: TabsComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
             }
         ],
         "functions": [],
