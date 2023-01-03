@@ -1,73 +1,63 @@
-:root {    
-    --praimery: #3B9AFA;
-    --dark-praimery: #40a0ff;
-    --white: #ffffff;
-    --gray: #F9F9FA; 
-    --dark-gray: #e7eaef; 
-    --black: #5d6371; 
+:root {
+  --praimery: #3b9afa;
+  --dark-praimery: #40a0ff;
+  --white: #ffffff;
+  --gray: #f9f9fa;
+  --dark-gray: #e7eaef;
+  --black: #5d6371;
 }
 
-  .example-tab-icon {
-    margin-right: 8px;
-  }
+.mat-sidenav-container {
+  direction: rtl;
 
-  .mat-tab-group {
-    flex-direction: row-reverse !important;
-    flex: 1;
-  }
-
-  .mat-tab-list{
+  .mat-sidenav .mat-drawer-inner-container {
     display: flex;
-  }
-
-  .mat-tab-labels {
-    flex: 1;
     flex-direction: column;
-    justify-content: space-evenly;
 
-    .mat-tab-label{
+    .menu-item {
       min-width: 74px;
       padding: 0px !important;
       background-color: var(--gray);
+      border: none;
       min-height: 68px;
       opacity: 1;
-      
-      .mat-tab-label-content {
-            flex-direction: column;
-      } 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-      .label {
-          font-family: Arial, Helvetica, sans-serif;
-          font-size: 9px;
-          font-weight: 700;
+      .menu-content {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 9px;
+        font-weight: 700;
       }
 
-      .label-icon {
+      .menu-icon {
         border-radius: 4px;
-        background: #40a0ff;
         width: 21px;
         height: 21px;
         padding: 3.5px;
-    
       }
+    }
 
-      &.mat-tab-label-active {
-         color: var(--praimery);
-        .label-icon {
-          background-color: var(--dark-praimery);         
-          color: var(--white);
-        }
+    &.active {
+      color: var(--praimery);
+      .menu-icon {
+        background-color: var(--dark-praimery);
+        color: var(--white);
       }
+    }
 
-      &:not(.mat-tab-label-active) {
-        color: var(--black);
-        .label-icon {
-          background-color: var(--dark-gray);
-        }
+    &:not(active) {
+      color: var(--black);
+      .menu-icon {
+        background-color: var(--dark-gray);
       }
     }
   }
 
-  .mat-tab-body-wrapper {
-    flex: 1;
+  .mat-sidenav-content {
+    margin-left: 0px !important;
+    margin-right: 93px !important;
   }
+}

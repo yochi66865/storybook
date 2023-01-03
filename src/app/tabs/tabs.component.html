@@ -1,53 +1,48 @@
-<mat-tab-group disableRipple="true" [disablePagination]="true" animationDuration="'0'"> >
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="label-icon" svgIcon="sdk_assignment"></mat-icon>
-      <label class="label">הקצאות סד"כ</label>
-    </ng-template>
-    Content 1
-  </mat-tab>
+<!-- <mat-toolbar class="example-header">Header</mat-toolbar> -->
 
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="label-icon"  svgIcon="reserve"></mat-icon>      
-      <label class="label">שריונים</label>
-    </ng-template>
-    Content 2
-  </mat-tab>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    opened
+    class="example-sidenav"
+    [fixedInViewport]="false"
+    [fixedTopGap]="0"
+    [fixedBottomGap]="0"
+  >
+    <button mat-button class="menu-item">
+      <mat-icon class="menu-icon" svgIcon="sdk_assignment"></mat-icon>
+      <label class="menu-content">הקצאות סד"כ</label>
+    </button>
+    <button mat-button class="menu-item">
+      <mat-icon class="menu-icon" svgIcon="reserve"></mat-icon>
+      <label class="menu-content">שריונים</label>
+    </button>
+    <button mat-button class="menu-item">
+      <mat-icon class="menu-icon" svgIcon="areas"></mat-icon>
+      <label class="menu-content">אזורים ומבנים</label>
+    </button>
+    <button mat-button class="menu-item">
+      <mat-icon class="menu-icon" svgIcon="assignments"></mat-icon>
+      <label class="menu-content">הקצאות</label>
+    </button>
+    <button mat-button class="menu-item">
+      <mat-icon class="menu-icon" svgIcon="remarks"></mat-icon>
+      <label class="menu-content">הערות</label>
+    </button>
+    <button mat-button class="menu-item">
+      <mat-icon class="menu-icon" svgIcon="advanced_instructions"></mat-icon>
+      <label class="menu-content">הנחיות מתקדמות</label>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-container
+      *ngTemplateOutlet="content; context: { index_tab: 1 }"
+    ></ng-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="label-icon"  svgIcon="areas"></mat-icon>
-      <label class="label">אזורים ומבנים</label>
-    </ng-template>
-    Content 3
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="label-icon"  svgIcon="assignments"></mat-icon>
-      <label class="label">הקצאות</label>
-    </ng-template>
-    Content 4
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="label-icon"  svgIcon="remarks"></mat-icon>
-      <label class="label">הערות</label>
-    </ng-template>
-    Content 5
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="label-icon"  svgIcon="advanced_instructions"></mat-icon>
-      <label class="label">הנחיות מתקדמות</label>
-    </ng-template>
-    Content 6
-  </mat-tab>
-</mat-tab-group>
-
+<!-- <mat-toolbar class="example-footer">Footer</mat-toolbar> -->
 
 <!-- `add`,
 `advanced_instructions`,
@@ -57,3 +52,190 @@
 `remarks`,
 `reserve`,
 `sdk_assignment` -->
+
+<ng-template #content let-index_tab="index_tab">
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
+    index_tab
+  }}
+  content{{ index_tab }} content{{ index_tab }}
+</ng-template>

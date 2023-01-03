@@ -1,8 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { IconModule } from '../icon.module';
-import { DemoMaterialModule } from '../material.module';
+import { IconModule } from '../shared/icon.module';
+import { DemoMaterialModule } from '../shared/material.module';
 import { TabsComponent } from './tabs.component';
 
 export default {
