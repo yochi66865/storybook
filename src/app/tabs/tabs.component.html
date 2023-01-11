@@ -10,232 +10,309 @@
     [fixedTopGap]="0"
     [fixedBottomGap]="0"
   >
-    <button mat-button class="menu-item">
+    <button
+      mat-button
+      class="menu-item"
+      [class.active]="getSectionElements[0]?.nativeElement?.tabIndex === 0"
+    >
       <mat-icon class="menu-icon" svgIcon="sdk_assignment"></mat-icon>
       <label class="menu-content">הקצאות סד"כ</label>
     </button>
-    <button mat-button class="menu-item">
+    <button
+      mat-button
+      class="menu-item"
+      [class.active]="getSectionElements[1]?.nativeElement?.tabIndex === 0"
+    >
       <mat-icon class="menu-icon" svgIcon="reserve"></mat-icon>
       <label class="menu-content">שריונים</label>
     </button>
-    <button mat-button class="menu-item">
+    <button
+      mat-button
+      class="menu-item"
+      [class.active]="getSectionElements[2]?.nativeElement?.tabIndex === 0"
+    >
       <mat-icon class="menu-icon" svgIcon="areas"></mat-icon>
       <label class="menu-content">אזורים ומבנים</label>
     </button>
-    <button mat-button class="menu-item">
+    <button
+      mat-button
+      class="menu-item"
+      [class.active]="getSectionElements[3]?.nativeElement?.tabIndex === 0"
+    >
       <mat-icon class="menu-icon" svgIcon="assignments"></mat-icon>
       <label class="menu-content">הקצאות</label>
     </button>
-    <button mat-button class="menu-item">
+    <button
+      mat-button
+      class="menu-item"
+      [class.active]="getSectionElements[4]?.nativeElement?.tabIndex === 0"
+    >
       <mat-icon class="menu-icon" svgIcon="remarks"></mat-icon>
       <label class="menu-content">הערות</label>
     </button>
-    <button mat-button class="menu-item">
+    <button
+      mat-button
+      class="menu-item"
+      [class.active]="getSectionElements[5]?.nativeElement?.tabIndex === 0"
+    >
       <mat-icon class="menu-icon" svgIcon="advanced_instructions"></mat-icon>
       <label class="menu-content">הנחיות מתקדמות</label>
     </button>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <ng-container
-      *ngTemplateOutlet="content; context: { index_tab: 1 }"
+  <mat-sidenav-content appScrollEvent [sectionElements]="getSectionElements">
+    <ng-container *ngFor="let index_tab of array">
+      <ng-container
+        *ngTemplateOutlet="content; context: { index_tab }"
+      ></ng-container
     ></ng-container>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<!-- <mat-toolbar class="example-footer">Footer</mat-toolbar> -->
-
-<!-- `add`,
-`advanced_instructions`,
-`areas`,
-`assignments`,
-`close`,
-`remarks`,
-`reserve`,
-`sdk_assignment` -->
-
 <ng-template #content let-index_tab="index_tab">
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }} content{{ index_tab }} content{{
-    index_tab
-  }}
-  content{{ index_tab }} content{{ index_tab }}
+  <section #section [id]="index_tab">
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{
+      index_tab
+    }}
+    content{{ index_tab }} content{{ index_tab }} content{{ index_tab }}
+  </section>
 </ng-template>

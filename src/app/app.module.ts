@@ -11,9 +11,15 @@ import { ButtonComponent } from './button/button.component';
 import { IconModule } from './shared/icon.module';
 import { DemoMaterialModule } from './shared/material.module';
 import { TabsComponent } from './tabs/tabs.component';
+import { ScrollEventDirective } from './directives/scroll-event.directive';
 
 @NgModule({
-  declarations: [AppComponent, ButtonComponent, TabsComponent],
+  declarations: [
+    AppComponent,
+    ButtonComponent,
+    TabsComponent,
+    ScrollEventDirective,
+  ],
   imports: [
     IconModule,
     BrowserModule,
