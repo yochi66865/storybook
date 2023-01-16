@@ -59,7 +59,7 @@
       <label class="menu-content">הנחיות מתקדמות</label>
     </button>
   </mat-sidenav>
-  <mat-sidenav-content appScrollEvent [sectionElements]="getSelectionElements">
+  <mat-sidenav-content appScrollEvent [sectionQueryList]="sectionElements">
     <ng-container *ngFor="let index_tab of array">
       <ng-container
         *ngTemplateOutlet="content; context: { index_tab }"

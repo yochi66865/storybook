@@ -4,28 +4,40 @@ import {
   HostListener,
   Input,
   OnChanges,
-  OnInit,
+  QueryList,
   SimpleChanges,
+  AfterViewInit,
 } from '@angular/core';
 
 @Directive({
   selector: '[appScrollEvent]',
 })
-export class ScrollEventDirective implements OnChanges {
-  @Input() sectionElements: ElementRef[] = [];
-  initialVariables: boolean = false;
+export class ScrollEventDirective implements OnChanges, AfterViewInit {
+  @Input() sectionQueryList!: QueryList<ElementRef<any>>;
   selectedIndex: number = 0;
   currentOffsetTop!: number;
   nextOffsetTop!: number;
-  constructor() {}
+
+  constructor(private el: ElementRef) {}
+  ngAfterViewInit(): void {
+    console.log(
+      'el',
+      (this.el.nativeElement as HTMLElement).querySelectorAll('section')
+    );
+  }
+
+  get sectionElements() {
+    return this.sectionQueryList?.toArray() ?? [];
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.sectionElements.length && !this.initialVariables) {
+    if (this.sectionElements.length) {
+      (this.sectionElements[0].nativeElement as HTMLElement).tabIndex = 0;
+
       this.calculateOffsetTop();
-      this.initialVariables;
     }
 
-    // console.log('changes');
+    console.log('changes');
   }
 
   @HostListener('scroll', ['$event'])
