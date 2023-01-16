@@ -20,13 +20,20 @@ export class TabsComponent implements AfterViewInit {
   constructor() {}
 
   ngAfterViewInit(): void {
-    (this.getSectionElements[0].nativeElement as HTMLElement).tabIndex = 0;
+    (this.getSelectionElements[0].nativeElement as HTMLElement).tabIndex = 0;
   }
 
   array = [1, 2, 3, 4, 5, 6];
 
-  get getSectionElements(): ElementRef<any>[] {
+  get getSelectionElements(): ElementRef<any>[] {
     return this.sectionElements?.toArray() ?? [];
+  }
+
+  getOffsetElements(): number[] {
+    return this.getSelectionElements.map(
+      (selectionElements) =>
+        (selectionElements.nativeElement as HTMLElement).offsetTop
+    );
   }
 
   onScroll(event: any) {
