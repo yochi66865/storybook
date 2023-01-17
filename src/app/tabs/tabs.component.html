@@ -13,7 +13,7 @@
     <button
       mat-button
       class="menu-item"
-      [class.active]="getSelectionElements[0]?.nativeElement?.tabIndex === 0"
+      [class.active]="sidenavContent?.nativeElement?.tabIndex === 0"
     >
       <mat-icon class="menu-icon" svgIcon="sdk_assignment"></mat-icon>
       <label class="menu-content">הקצאות סד"כ</label>
@@ -21,7 +21,7 @@
     <button
       mat-button
       class="menu-item"
-      [class.active]="getSelectionElements[1]?.nativeElement?.tabIndex === 0"
+      [class.active]="sidenavContent?.nativeElement?.tabIndex === 1"
     >
       <mat-icon class="menu-icon" svgIcon="reserve"></mat-icon>
       <label class="menu-content">שריונים</label>
@@ -29,7 +29,7 @@
     <button
       mat-button
       class="menu-item"
-      [class.active]="getSelectionElements[2]?.nativeElement?.tabIndex === 0"
+      [class.active]="sidenavContent?.nativeElement?.tabIndex === 2"
     >
       <mat-icon class="menu-icon" svgIcon="areas"></mat-icon>
       <label class="menu-content">אזורים ומבנים</label>
@@ -37,7 +37,7 @@
     <button
       mat-button
       class="menu-item"
-      [class.active]="getSelectionElements[3]?.nativeElement?.tabIndex === 0"
+      [class.active]="sidenavContent?.nativeElement?.tabIndex === 3"
     >
       <mat-icon class="menu-icon" svgIcon="assignments"></mat-icon>
       <label class="menu-content">הקצאות</label>
@@ -45,7 +45,7 @@
     <button
       mat-button
       class="menu-item"
-      [class.active]="getSelectionElements[4]?.nativeElement?.tabIndex === 0"
+      [class.active]="sidenavContent?.nativeElement?.tabIndex === 4"
     >
       <mat-icon class="menu-icon" svgIcon="remarks"></mat-icon>
       <label class="menu-content">הערות</label>
@@ -53,13 +53,13 @@
     <button
       mat-button
       class="menu-item"
-      [class.active]="getSelectionElements[5]?.nativeElement?.tabIndex === 0"
+      [class.active]="sidenavContent?.nativeElement?.tabIndex === 5"
     >
       <mat-icon class="menu-icon" svgIcon="advanced_instructions"></mat-icon>
       <label class="menu-content">הנחיות מתקדמות</label>
     </button>
   </mat-sidenav>
-  <mat-sidenav-content appScrollEvent [sectionQueryList]="sectionElements">
+  <mat-sidenav-content #appScrollEvent appScrollEvent>
     <ng-container *ngFor="let index_tab of array">
       <ng-container
         *ngTemplateOutlet="content; context: { index_tab }"

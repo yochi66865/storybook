@@ -1,81 +1,49 @@
 import {
+  AfterViewInit,
   Directive,
   ElementRef,
   HostListener,
-  Input,
-  OnChanges,
-  QueryList,
-  SimpleChanges,
-  AfterViewInit,
 } from '@angular/core';
 
 @Directive({
   selector: '[appScrollEvent]',
 })
-export class ScrollEventDirective implements OnChanges, AfterViewInit {
-  @Input() sectionQueryList!: QueryList<ElementRef<any>>;
+export class ScrollEventDirective implements AfterViewInit {
+  sectionElements: HTMLElement[] = [];
   selectedIndex: number = 0;
   currentOffsetTop!: number;
   nextOffsetTop!: number;
 
-  constructor(private el: ElementRef) {}
+  constructor(private containerElement: ElementRef) {}
+
   ngAfterViewInit(): void {
-    console.log(
-      'el',
-      (this.el.nativeElement as HTMLElement).querySelectorAll('section')
-    );
-  }
-
-  get sectionElements() {
-    return this.sectionQueryList?.toArray() ?? [];
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.sectionElements.length) {
-      (this.sectionElements[0].nativeElement as HTMLElement).tabIndex = 0;
-
-      this.calculateOffsetTop();
-    }
-
-    console.log('changes');
+    (this.containerElement.nativeElement as HTMLElement)
+      .querySelectorAll('section')
+      .forEach((sectionElement) => this.sectionElements.push(sectionElement));
+    this.addTabIndex(0);
   }
 
   @HostListener('scroll', ['$event'])
   private onScroll($event: any): void {
-    if (
-      this.nextOffsetTop &&
-      $event.srcElement.scrollTop > this.nextOffsetTop
-    ) {
+    const scrollTop = $event.srcElement.scrollTop + 100;
+    if (this.nextOffsetTop && scrollTop > this.nextOffsetTop) {
       this.addTabIndex(this.selectedIndex + 1);
     }
 
-    if ($event.srcElement.scrollTop < this.currentOffsetTop) {
+    if (scrollTop < this.currentOffsetTop) {
       this.addTabIndex(this.selectedIndex - 1);
     }
   }
 
-  getOffsetTop(): number[] {
-    return this.sectionElements?.map(
-      (sectionElement) =>
-        (sectionElement.nativeElement as HTMLElement).offsetTop ?? 0
-    );
-  }
-
-  addTabIndex(index: number) {
-    (
-      this.sectionElements?.[this.selectedIndex]?.nativeElement as HTMLElement
-    ).tabIndex = -1;
-    (this.sectionElements[index].nativeElement as HTMLElement).tabIndex = 0;
+  private addTabIndex(index: number) {
     this.selectedIndex = index;
+    (this.containerElement.nativeElement as HTMLElement).tabIndex = index;
     this.calculateOffsetTop();
   }
 
-  calculateOffsetTop() {
-    this.nextOffsetTop = (
-      this.sectionElements[this.selectedIndex + 1]?.nativeElement as HTMLElement
-    )?.offsetTop;
-    this.currentOffsetTop = (
-      this.sectionElements[this.selectedIndex].nativeElement as HTMLElement
-    ).offsetTop;
+  private calculateOffsetTop() {
+    this.nextOffsetTop =
+      this.sectionElements[this.selectedIndex + 1]?.offsetTop;
+    this.currentOffsetTop = this.sectionElements[this.selectedIndex]?.offsetTop;
   }
 }

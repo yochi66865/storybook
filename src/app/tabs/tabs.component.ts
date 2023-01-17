@@ -1,11 +1,10 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  QueryList,
-  ViewChildren,
+  ViewChild,
   ViewEncapsulation,
-  AfterViewInit,
 } from '@angular/core';
 
 @Component({
@@ -15,13 +14,13 @@ import {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabsComponent {
-  @ViewChildren('section') sectionElements!: QueryList<ElementRef>;
+export class TabsComponent implements AfterViewInit {
+  @ViewChild('appScrollEvent', { read: ElementRef })
+  sidenavContent!: ElementRef;
+
   constructor() {}
 
-  array = [1, 2, 3, 4, 5, 6];
+  ngAfterViewInit(): void {}
 
-  get getSelectionElements(): ElementRef<any>[] {
-    return this.sectionElements?.toArray() ?? [];
-  }
+  array = [1, 2, 3, 4, 5, 6];
 }
