@@ -40,7 +40,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\r\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\";\r\n    font-size: 14px;\r\n    color: #333;\r\n    box-sizing: border-box;\r\n    -webkit-font-smoothing: antialiased;\r\n    -moz-osx-font-smoothing: grayscale;\r\n  }\r\n\r\n  h1,\r\n  h2,\r\n  h3,\r\n  h4,\r\n  h5,\r\n  h6 {\r\n    margin: 8px 0;\r\n  }\r\n\r\n  p {\r\n    margin: 0;\r\n  }\r\n\r\n  .spacer {\r\n    flex: 1;\r\n  }\r\n\r\n  .toolbar {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    height: 60px;\r\n    display: flex;\r\n    align-items: center;\r\n    background-color: #1976d2;\r\n    color: white;\r\n    font-weight: 600;\r\n  }\r\n\r\n  .toolbar img {\r\n    margin: 0 16px;\r\n  }\r\n\r\n  .toolbar #twitter-logo {\r\n    height: 40px;\r\n    margin: 0 8px;\r\n  }\r\n\r\n  .toolbar #youtube-logo {\r\n    height: 40px;\r\n    margin: 0 16px;\r\n  }\r\n\r\n  .toolbar #twitter-logo:hover,\r\n  .toolbar #youtube-logo:hover {\r\n    opacity: 0.8;\r\n  }\r\n\r\n  .content {\r\n    display: flex;\r\n    margin: 82px auto 32px;\r\n    padding: 0 16px;\r\n    max-width: 960px;\r\n    flex-direction: column;\r\n    align-items: center;\r\n  }\r\n\r\n  svg.material-icons {\r\n    height: 24px;\r\n    width: auto;\r\n  }\r\n\r\n  svg.material-icons:not(:last-child) {\r\n    margin-right: 8px;\r\n  }\r\n\r\n  .card svg.material-icons path {\r\n    fill: #888;\r\n  }\r\n\r\n\r\n\r\n  .card-container {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    justify-content: center;\r\n    margin-top: 16px;\r\n  }\r\n\r\n  .card {\r\n    all: unset;\r\n    border-radius: 4px;\r\n    border: 1px solid #eee;\r\n    background-color: #fafafa;\r\n    height: 40px;\r\n    width: 200px;\r\n    margin: 0 8px 16px;\r\n    padding: 16px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: center;\r\n    align-items: center;\r\n    transition: all 0.2s ease-in-out;\r\n    line-height: 24px;\r\n  }\r\n\r\n  .card-container .card:not(:last-child) {\r\n    margin-right: 0;\r\n  }\r\n\r\n  .card.card-small {\r\n    height: 16px;\r\n    width: 168px;\r\n  }\r\n\r\n  .card-container .card:not(.highlight-card) {\r\n    cursor: pointer;\r\n  }\r\n\r\n  .card-container .card:not(.highlight-card):hover {\r\n    transform: translateY(-3px);\r\n    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);\r\n  }\r\n\r\n  .card-container .card:not(.highlight-card):hover .material-icons path {\r\n    fill: rgb(105, 103, 103);\r\n  }\r\n\r\n  .card.highlight-card {\r\n    background-color: #1976d2;\r\n    color: white;\r\n    font-weight: 600;\r\n    border: none;\r\n    width: auto;\r\n    min-width: 30%;\r\n    position: relative;\r\n  }\r\n\r\n  .card.card.highlight-card span {\r\n    margin-left: 60px;\r\n  }\r\n\r\n  svg#rocket {\r\n    width: 80px;\r\n    position: absolute;\r\n    left: -10px;\r\n    top: -24px;\r\n  }\r\n\r\n  svg#rocket-smoke {\r\n    height: calc(100vh - 95px);\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 180px;\r\n    z-index: -10;\r\n  }\r\n\r\n  a,\r\n  a:visited,\r\n  a:hover {\r\n    color: #1976d2;\r\n    text-decoration: none;\r\n  }\r\n\r\n  a:hover {\r\n    color: #125699;\r\n  }\r\n\r\n  .terminal {\r\n    position: relative;\r\n    width: 80%;\r\n    max-width: 600px;\r\n    border-radius: 6px;\r\n    padding-top: 45px;\r\n    margin-top: 8px;\r\n    overflow: hidden;\r\n    background-color: rgb(15, 15, 16);\r\n  }\r\n\r\n  .terminal::before {\r\n    content: \"\\2022 \\2022 \\2022\";\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    height: 4px;\r\n    background: rgb(58, 58, 58);\r\n    color: #c2c3c4;\r\n    width: 100%;\r\n    font-size: 2rem;\r\n    line-height: 0;\r\n    padding: 14px 0;\r\n    text-indent: 4px;\r\n  }\r\n\r\n  .terminal pre {\r\n    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;\r\n    color: white;\r\n    padding: 0 1rem 1rem;\r\n    margin: 0;\r\n  }\r\n\r\n  .circle-link {\r\n    height: 40px;\r\n    width: 40px;\r\n    border-radius: 40px;\r\n    margin: 8px;\r\n    background-color: white;\r\n    border: 1px solid #eeeeee;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    cursor: pointer;\r\n    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\r\n    transition: 1s ease-out;\r\n  }\r\n\r\n  .circle-link:hover {\r\n    transform: translateY(-0.25rem);\r\n    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);\r\n  }\r\n\r\n  footer {\r\n    margin-top: 8px;\r\n    display: flex;\r\n    align-items: center;\r\n    line-height: 20px;\r\n  }\r\n\r\n  footer a {\r\n    display: flex;\r\n    align-items: center;\r\n  }\r\n\r\n  .github-star-badge {\r\n    color: #24292e;\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: 12px;\r\n    padding: 3px 10px;\r\n    border: 1px solid rgba(27,31,35,.2);\r\n    border-radius: 3px;\r\n    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);\r\n    margin-left: 4px;\r\n    font-weight: 600;\r\n  }\r\n\r\n  .github-star-badge:hover {\r\n    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);\r\n    border-color: rgba(27,31,35,.35);\r\n    background-position: -.5em;\r\n  }\r\n\r\n  .github-star-badge .material-icons {\r\n    height: 16px;\r\n    width: 16px;\r\n    margin-right: 4px;\r\n  }\r\n\r\n  svg#clouds {\r\n    position: fixed;\r\n    bottom: -160px;\r\n    left: -230px;\r\n    z-index: -10;\r\n    width: 1920px;\r\n  }\r\n\r\n  /* Responsive Styles */\r\n  @media screen and (max-width: 767px) {\r\n    .card-container > *:not(.circle-link) ,\r\n    .terminal {\r\n      width: 100%;\r\n    }\r\n\r\n    .card:not(.highlight-card) {\r\n      height: 16px;\r\n      margin: 8px 0;\r\n    }\r\n\r\n    .card.highlight-card span {\r\n      margin-left: 72px;\r\n    }\r\n\r\n    svg#rocket-smoke {\r\n      right: 120px;\r\n      transform: rotate(-5deg);\r\n    }\r\n  }\r\n\r\n  @media screen and (max-width: 575px) {\r\n    svg#rocket-smoke {\r\n      display: none;\r\n      visibility: hidden;\r\n    }\r\n  }\r\n  .card .span{\r\n    font-family: 'Oxygen', Arial, Helvetica, sans-serif;\r\n   // font-family: Arial;\r\n   //  background-color: #1976d2;\r\n  //    'Oxygen';\r\n  //font-weight: 700;\r\n}\r\n  @font-face {\r\n    font-family: 'Oxygen';\r\n    font-weight: 700;\r\n    src: local('Oxygen'), local('Oxygen-Regular');\r\n    //unicode-range: U+30-39;\r\n  }",
+                    "data": ".middle {\r\n  height: 100vh;\r\n  padding-top: 50px;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n",
                     "styleUrl": "./app.component.less"
                 }
             ],
@@ -53,7 +53,7 @@
                 "args": [],
                 "line": 8
             },
-            "templateData": "<app-tabs></app-tabs>"
+            "templateData": "<div class=\"middle\"><app-tabs></app-tabs></div>\r\n"
         },
         {
             "name": "ButtonComponent",
@@ -178,8 +178,117 @@
             "templateData": "<button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>"
         },
         {
+            "name": "TabComponent",
+            "id": "component-TabComponent-ffb290bdf13d00101387a2d66b8a0f889d36de25e9535abb1891c6ed462993e32f630ff23bef855f128878002a4552482f2d945fde660ec94917bcd61440bbab",
+            "file": "src/app/tab-component/tab.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "tab",
+            "styleUrls": [
+                "./tab.component.less"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tab.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "isActive",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "svgIconName",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "click",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "EventEmitter<void>"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'tab',\r\n  templateUrl: './tab.component.html',\r\n  styleUrls: ['./tab.component.less'],\r\n})\r\nexport class TabComponent implements OnInit {\r\n  @Input() svgIconName: string = '';\r\n  @Input() label: string = '';\r\n  @Input() isActive: boolean = false;\r\n  @Output() click: EventEmitter<void> = new EventEmitter();\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {}\r\n\r\n  onClick() {\r\n    this.click.emit();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".menu-item {\r\n    min-width: 74px;\r\n    padding: 0px !important;\r\n    background-color: var(--gray);\r\n    border: none;\r\n    min-height: 68.64px;\r\n    opacity: 1;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n\r\n    .menu-content {\r\n      font-family: Arial, Helvetica, sans-serif;\r\n      font-size: 9px;\r\n      font-weight: 700;\r\n    }\r\n\r\n    .menu-icon {\r\n      border-radius: 4px;\r\n      width: 21px;\r\n      height: 21px;\r\n      padding: 3.5px;\r\n    }\r\n\r\n    &.active {\r\n      color: var(--praimery);\r\n      .menu-icon {\r\n        background-color: var(--dark-praimery);\r\n        color: var(--white);\r\n      }\r\n    }\r\n\r\n    &:not(active) {\r\n      color: var(--black);\r\n      .menu-icon {\r\n        background-color: var(--dark-gray);\r\n      }\r\n    }\r\n  } .menu-item {\r\n      min-width: 74px;\r\n      padding: 0px !important;\r\n      background-color: var(--gray);\r\n      border: none;\r\n      min-height: 68.64px;\r\n      opacity: 1;\r\n      display: flex;\r\n      flex-direction: column;\r\n      justify-content: center;\r\n      align-items: center;\r\n\r\n      .menu-content {\r\n        font-family: Arial, Helvetica, sans-serif;\r\n        font-size: 9px;\r\n        font-weight: 700;\r\n      }\r\n\r\n      .menu-icon {\r\n        border-radius: 4px;\r\n        width: 21px;\r\n        height: 21px;\r\n        padding: 3.5px;\r\n      }\r\n\r\n      &.active {\r\n        color: var(--praimery);\r\n        .menu-icon {\r\n          background-color: var(--dark-praimery);\r\n          color: var(--white);\r\n        }\r\n      }\r\n\r\n      &:not(active) {\r\n        color: var(--black);\r\n        .menu-icon {\r\n          background-color: var(--dark-gray);\r\n        }\r\n      }\r\n    }",
+                    "styleUrl": "./tab.component.less"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 12
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<button\r\n  mat-button\r\n  class=\"menu-item\"\r\n  [class.active]=\"isActive\"\r\n  (click)=\"onClick()\"\r\n>\r\n  <mat-icon class=\"menu-icon\" [svgIcon]=\"svgIconName\"></mat-icon>\r\n  <label class=\"menu-content\">{{ label }}</label>\r\n</button>\r\n"
+        },
+        {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-2e18594df363494da796bdc0d04a9bf100b4a532842aeacc77b38e6900eff13af90f25a9de43ade23516af320e4052bde04e698193fb781645774d7bb90ee01d",
+            "id": "component-TabsComponent-6c43facd2c01bdf901b752b41762924c90552d1963f41391f50f3493770ae8f7e502fbaffdba7847aa7442281b0c020c8139f2a37d5db4dc442a8bc50497b572",
             "file": "src/app/tabs/tabs.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -199,15 +308,189 @@
             "viewProviders": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "array",
+                    "defaultValue": "[0, 1, 2, 3, 4, 5]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 75
+                },
+                {
+                    "name": "itemsOnScreen",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Record<string | IntersectionObserverEntry>",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "itemsOnScreen2",
+                    "defaultValue": "new Set()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Set<IntersectionObserverEntry>",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "observer",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IntersectionObserver",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "sectionElements",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<ElementRef>",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "decorators": [
+                        {
+                            "name": "ViewChildren",
+                            "stringifiedArguments": "'section'"
+                        }
+                    ]
+                },
+                {
+                    "name": "selectedSectionId",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "sidenavContent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'appScrollEvent', {read: ElementRef}"
+                        }
+                    ]
+                }
+            ],
             "methodsClass": [
                 {
-                    "name": "ngOnInit",
+                    "name": "mapSectionsOnScreen",
+                    "args": [
+                        {
+                            "name": "sections",
+                            "type": "IntersectionObserverEntry[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "sections",
+                            "type": "IntersectionObserverEntry[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "scrollTo",
+                    "args": [
+                        {
+                            "name": "sectionIndex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 67,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "sectionIndex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "selectedSectionIdByMaxIntersectionRatio",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -219,11 +502,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ViewEncapsulation } from '@angular/core';\n\n@Component({\n  selector: 'app-tabs',\n  templateUrl: './tabs.component.html',\n  styleUrls: ['./tabs.component.less'],\n  encapsulation: ViewEncapsulation.None,\n})\nexport class TabsComponent implements OnInit {\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  ElementRef,\r\n  OnChanges,\r\n  QueryList,\r\n  SimpleChanges,\r\n  ViewChild,\r\n  ViewChildren,\r\n  ViewEncapsulation,\r\n} from '@angular/core';\r\nimport { maxBy } from 'lodash';\r\n\r\n@Component({\r\n  selector: 'app-tabs',\r\n  templateUrl: './tabs.component.html',\r\n  styleUrls: ['./tabs.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n})\r\nexport class TabsComponent implements AfterViewInit, OnChanges {\r\n  @ViewChild('appScrollEvent', { read: ElementRef })\r\n  sidenavContent!: ElementRef;\r\n  @ViewChildren('section')\r\n  sectionElements!: QueryList<ElementRef>;\r\n  selectedSectionId: number = 0;\r\n  observer!: IntersectionObserver;\r\n  itemsOnScreen2: Set<IntersectionObserverEntry> = new Set();\r\n  itemsOnScreen: Record<string, IntersectionObserverEntry> = {};\r\n\r\n  constructor() {}\r\n  ngOnChanges(changes: SimpleChanges): void {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.observer = new IntersectionObserver(\r\n      (entries) => {\r\n        this.mapSectionsOnScreen(entries);\r\n        this.selectedSectionIdByMaxIntersectionRatio();\r\n      },\r\n      {\r\n        threshold: [0, 0.25, 0.75, 1],\r\n        root: this.sidenavContent.nativeElement,\r\n      }\r\n    );\r\n    console.log('sectionElements', this.sectionElements);\r\n    this.sectionElements.forEach((section) =>\r\n      this.observer.observe(section.nativeElement)\r\n    );\r\n  }\r\n\r\n  mapSectionsOnScreen(sections: IntersectionObserverEntry[]) {\r\n    sections.forEach((section) => {\r\n      if (section.isIntersecting) {\r\n        this.itemsOnScreen[section.target.id] = section;\r\n      } else {\r\n        delete this.itemsOnScreen[section.target.id];\r\n      }\r\n    });\r\n  }\r\n\r\n  selectedSectionIdByMaxIntersectionRatio() {\r\n    this.selectedSectionId = +(\r\n      maxBy(Object.values(this.itemsOnScreen), 'intersectionRatio')?.target\r\n        ?.id ?? 0\r\n    );\r\n  }\r\n\r\n  scrollTo(sectionIndex: number) {\r\n    let sectionOffsetTop =\r\n      this.sectionElements.get(sectionIndex)?.nativeElement?.offsetTop ?? 0;\r\n    (this.sidenavContent.nativeElement as HTMLElement).scrollTo({\r\n      top: sectionOffsetTop + 1,\r\n    });\r\n  }\r\n\r\n  array = [0, 1, 2, 3, 4, 5];\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".example-tab-icon {\r\n    margin-right: 8px;\r\n  }\r\n\r\n  .mat-tab-group {\r\n    flex-direction: row-reverse !important;\r\n  }\r\n\r\n  .mat-tab-labels {\r\n    flex-direction: column;\r\n  }\r\n\r\n  .mat-tab-body-wrapper {\r\n    flex: 1;\r\n  }",
+                    "data": "app-tabs {\r\n  height: 422px;\r\n  width: 475px;\r\n  border: 0.5px solid rosybrown;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.mat-sidenav-container {\r\n  direction: rtl;\r\n\r\n  .mat-sidenav .mat-drawer-inner-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n\r\n    .menu-item:not(:last-child) {\r\n      margin-bottom: 2px;\r\n    }\r\n\r\n    .menu-item {\r\n      min-width: 74px;\r\n      padding: 0px !important;\r\n      background-color: var(--gray);\r\n      border: none;\r\n      min-height: 68.64px;\r\n      opacity: 1;\r\n      display: flex;\r\n      flex-direction: column;\r\n      justify-content: center;\r\n      align-items: center;\r\n\r\n      .menu-content {\r\n        font-family: Arial, Helvetica, sans-serif;\r\n        font-size: 9px;\r\n        font-weight: 700;\r\n      }\r\n\r\n      .menu-icon {\r\n        border-radius: 4px;\r\n        width: 21px;\r\n        height: 21px;\r\n        padding: 3.5px;\r\n      }\r\n\r\n      &.active {\r\n        color: var(--praimery);\r\n        .menu-icon {\r\n          background-color: var(--dark-praimery);\r\n          color: var(--white);\r\n        }\r\n      }\r\n\r\n      &:not(active) {\r\n        color: var(--black);\r\n        .menu-icon {\r\n          background-color: var(--dark-gray);\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  .mat-sidenav-content {\r\n    margin-left: 0px !important;\r\n    margin-right: 93px !important;\r\n\r\n    section:not(:last-child) {\r\n      padding-bottom: 50px;\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./tabs.component.less"
                 }
             ],
@@ -234,24 +517,25 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 9
+                "line": 28
             },
             "implements": [
-                "OnInit"
+                "AfterViewInit",
+                "OnChanges"
             ],
-            "templateData": "<mat-tab-group disableRipple=\"true\" animationDuration=\"'0'\">\n  <mat-tab>\n    <ng-template mat-tab-label>\n      <mat-icon class=\"example-tab-icon\">thumb_up</mat-icon>\n      First\n    </ng-template>\n    Content 1\n  </mat-tab>\n\n  <mat-tab>\n    <ng-template mat-tab-label>\n      <mat-icon class=\"example-tab-icon\">thumb_up</mat-icon>\n      Second\n    </ng-template>\n    Content 2\n  </mat-tab>\n\n  <mat-tab>\n    <ng-template mat-tab-label>\n      <mat-icon class=\"example-tab-icon\">thumb_up</mat-icon>\n      Third\n    </ng-template>\n\n    Content 3\n  </mat-tab>\n</mat-tab-group>"
+            "templateData": "<!-- <mat-toolbar class=\"example-header\">Header</mat-toolbar> -->\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav\r\n    #sidenav\r\n    mode=\"side\"\r\n    opened\r\n    class=\"example-sidenav\"\r\n    [fixedInViewport]=\"false\"\r\n    [fixedTopGap]=\"0\"\r\n    [fixedBottomGap]=\"0\"\r\n  >\r\n    <tab\r\n      svgIconName=\"sdk_assignment\"\r\n      label=\"הקצאות סדכ\"\r\n      [isActive]=\"selectedSectionId === 0\"\r\n      (click)=\"scrollTo(0)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"reserve\"\r\n      label=\"שריונים\"\r\n      [isActive]=\"selectedSectionId === 1\"\r\n      (click)=\"scrollTo(1)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"areas\"\r\n      label=\"אזורים ומבנים\"\r\n      [isActive]=\"selectedSectionId === 2\"\r\n      (click)=\"scrollTo(2)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"assignments\"\r\n      label=\"הקצאות\"\r\n      [isActive]=\"selectedSectionId === 3\"\r\n      (click)=\"scrollTo(3)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"remarks\"\r\n      label=\"הערות\"\r\n      [isActive]=\"selectedSectionId === 4\"\r\n      (click)=\"scrollTo(4)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"advanced_instructions\"\r\n      label=\"הנחיות מתקדמות\"\r\n      [isActive]=\"selectedSectionId === 5\"\r\n      (click)=\"scrollTo(5)\"\r\n    ></tab>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content #appScrollEvent>\r\n    <ng-container *ngFor=\"let index_tab of array\">\r\n      <ng-container\r\n        *ngTemplateOutlet=\"content; context: { index_tab }\"\r\n      ></ng-container\r\n    ></ng-container>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n\r\n<ng-template #content let-index_tab=\"index_tab\">\r\n  <section #section [id]=\"index_tab\">\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{ index_tab }}\r\n  </section>\r\n</ng-template>\r\n"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-02220e1bd53e8b8afd4d3f6616d3229b0ac888dbb306cd42ba56839597a8a9d3006b94ddc84272f3671f24fc801d105ae2b783b9246107984157c4c9d63e4aae",
+            "id": "module-AppModule-2e8e86fcf0aa82ae22685fd3d0aa732ae833b86d27c1bd60dc0d20a482c5fd291e37d489ae3c18ebd9b080fe2f8a19fd2b49cc23d2a2efd3c65031b8b187a4fe",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { MatTabsModule } from '@angular/material/tabs';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent, ButtonComponent, TabsComponent],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    MatFormFieldModule,\r\n    MatInputModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    MatTabsModule,\r\n    MatIconModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
+            "sourceCode": "import { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\r\nimport { IconModule } from './shared/icon.module';\r\nimport { DemoMaterialModule } from './shared/material.module';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\nimport { TabComponent } from './tab-component/tab.component';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent, ButtonComponent, TabsComponent, TabComponent],\r\n  imports: [\r\n    IconModule,\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    DemoMaterialModule,\r\n    HttpClientModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -267,6 +551,9 @@
                             "name": "ButtonComponent"
                         },
                         {
+                            "name": "TabComponent"
+                        },
+                        {
                             "name": "TabsComponent"
                         }
                     ]
@@ -276,6 +563,12 @@
                     "elements": [
                         {
                             "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "DemoMaterialModule"
+                        },
+                        {
+                            "name": "IconModule"
                         }
                     ]
                 },
@@ -332,10 +625,96 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "DemoMaterialModule",
+            "id": "module-DemoMaterialModule-a1f70c7f088058694ee33b00ee40fb33d740fe687c2b458c463cb35be867cca2230527ed2c33335d17ebecba084641224f000d92e0d640080427d34eedd315f0",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/shared/material.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { A11yModule } from '@angular/cdk/a11y';\r\nimport { ClipboardModule } from '@angular/cdk/clipboard';\r\nimport { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { PortalModule } from '@angular/cdk/portal';\r\nimport { ScrollingModule } from '@angular/cdk/scrolling';\r\nimport { CdkStepperModule } from '@angular/cdk/stepper';\r\nimport { CdkTableModule } from '@angular/cdk/table';\r\nimport { CdkTreeModule } from '@angular/cdk/tree';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { MatBadgeModule } from '@angular/material/badge';\r\nimport { MatButtonToggleModule } from '@angular/material/button-toggle';\r\nimport { MatCardModule } from '@angular/material/card';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { MatChipsModule } from '@angular/material/chips';\r\nimport { MatStepperModule } from '@angular/material/stepper';\r\nimport { MatDatepickerModule } from '@angular/material/datepicker';\r\nimport { MatDialogModule } from '@angular/material/dialog';\r\nimport { MatDividerModule } from '@angular/material/divider';\r\nimport { MatExpansionModule } from '@angular/material/expansion';\r\nimport { MatGridListModule } from '@angular/material/grid-list';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { MatListModule } from '@angular/material/list';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { MatNativeDateModule, MatRippleModule } from '@angular/material/core';\r\nimport { MatPaginatorModule } from '@angular/material/paginator';\r\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\r\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';\r\nimport { MatRadioModule } from '@angular/material/radio';\r\nimport { MatSelectModule } from '@angular/material/select';\r\nimport { MatSidenavModule } from '@angular/material/sidenav';\r\nimport { MatSliderModule } from '@angular/material/slider';\r\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\r\nimport { MatSnackBarModule } from '@angular/material/snack-bar';\r\nimport { MatSortModule } from '@angular/material/sort';\r\nimport { MatTableModule } from '@angular/material/table';\r\nimport { MatTabsModule } from '@angular/material/tabs';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatTooltipModule } from '@angular/material/tooltip';\r\nimport { MatTreeModule } from '@angular/material/tree';\r\n\r\n@NgModule({\r\n  exports: [\r\n    A11yModule,\r\n    ClipboardModule,\r\n    CdkStepperModule,\r\n    CdkTableModule,\r\n    CdkTreeModule,\r\n    DragDropModule,\r\n    MatAutocompleteModule,\r\n    MatBadgeModule,\r\n    MatButtonToggleModule,\r\n    MatCardModule,\r\n    MatCheckboxModule,\r\n    MatChipsModule,\r\n    MatStepperModule,\r\n    MatDatepickerModule,\r\n    MatDialogModule,\r\n    MatDividerModule,\r\n    MatExpansionModule,\r\n    MatGridListModule,\r\n    MatIconModule,\r\n    MatInputModule,\r\n    MatListModule,\r\n    MatMenuModule,\r\n    MatNativeDateModule,\r\n    MatPaginatorModule,\r\n    MatProgressBarModule,\r\n    MatProgressSpinnerModule,\r\n    MatRadioModule,\r\n    MatRippleModule,\r\n    MatSelectModule,\r\n    MatSidenavModule,\r\n    MatSliderModule,\r\n    MatSlideToggleModule,\r\n    MatSnackBarModule,\r\n    MatSortModule,\r\n    MatTableModule,\r\n    MatTabsModule,\r\n    MatToolbarModule,\r\n    MatTooltipModule,\r\n    MatTreeModule,\r\n    PortalModule,\r\n    ScrollingModule,\r\n  ],\r\n})\r\nexport class DemoMaterialModule {}\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "IconModule",
+            "id": "module-IconModule-a1d4362d279c0d3ca9f337a46eb4bb28c57eb9439c688bd5405f74d9c942ce2fcd995abafa26746ffd246f0a1e390e270a4f0f6fa560d1d0e7a88b86aa0d6bd9",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/shared/icon.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DemoMaterialModule } from './material.module';\nimport { HttpClientModule } from '@angular/common/http';\nimport { MatIconRegistry } from '@angular/material/icon';\nimport { DomSanitizer } from '@angular/platform-browser';\n\n@NgModule({\n  imports: [CommonModule, DemoMaterialModule, HttpClientModule],\n})\nexport class IconModule {\n  constructor(\n    private matIconRegistry: MatIconRegistry,\n    private domSanitizer: DomSanitizer\n  ) {\n    this.matIconRegistry.addSvgIcon(\n      `add`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/add.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `advanced_instructions`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/advanced-instructions.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `areas`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/areas.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `assignments`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/assignments.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `close`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/close.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `remarks`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/remarks.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `reserve`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/reserve.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `sdk_assignment`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/sdk-assignment.svg'\n      )\n    );\n  }\n}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "DemoMaterialModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
         "variables": [
+            {
+                "name": "ActiveTag",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab-component/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
             {
                 "name": "context",
                 "ctype": "miscellaneous",
@@ -357,14 +736,14 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "environment",
+                "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
+                "file": "src/app/tab-component/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\r\n  production: true\r\n}"
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "environment",
@@ -375,6 +754,16 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\r\n  production: false\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  production: true\r\n}"
             },
             {
                 "name": "Large",
@@ -433,7 +822,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<TabsComponent>",
-                "defaultValue": "(args: TabsComponent) => ({\r\n  props: args,\r\n})"
+                "defaultValue": "(args: TabsComponent) => ({\r\n  // props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab-component/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TabComponent>",
+                "defaultValue": "(args: TabComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -450,6 +849,38 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "src/app/tab-component/tab.component.stories.ts": [
+                {
+                    "name": "ActiveTag",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab-component/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab-component/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab-component/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TabComponent>",
+                    "defaultValue": "(args: TabComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
             "src/test.ts": [
                 {
                     "name": "context",
@@ -490,19 +921,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<TabsComponent>",
-                    "defaultValue": "(args: TabsComponent) => ({\r\n  props: args,\r\n})"
-                }
-            ],
-            "src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\r\n  production: true\r\n}"
+                    "defaultValue": "(args: TabsComponent) => ({\r\n  // props: args,\r\n})"
                 }
             ],
             "src/environments/environment.ts": [
@@ -515,6 +934,18 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\r\n  production: false\r\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: true\r\n}"
                 }
             ],
             "src/app/button/button.component.stories.ts": [
@@ -661,6 +1092,45 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/tab-component/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ActiveTag",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tab-component/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tab-component/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tab-component/tab.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/tabs/tabs.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -686,7 +1156,7 @@
                 "linktype": "component",
                 "name": "TabsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/14",
                 "status": "low"
             },
             {

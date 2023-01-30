@@ -3,15 +3,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { IconModule } from '../shared/icon.module';
 import { DemoMaterialModule } from '../shared/material.module';
-import { TabComponent } from '../tab-component/tab.component';
-import { TabsComponent } from './tabs.component';
+import { TabComponent } from './tab.component';
 
 export default {
-  title: 'Example/Tabs',
-  component: TabsComponent,
+  title: 'Example/Tab',
+  component: TabComponent,
   decorators: [
     moduleMetadata({
-      declarations: [TabsComponent, TabComponent],
+      declarations: [TabComponent],
       imports: [
         BrowserAnimationsModule,
         DemoMaterialModule,
@@ -22,8 +21,20 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<TabsComponent> = (args: TabsComponent) => ({
-  // props: args,
+const Template: Story<TabComponent> = (args: TabComponent) => ({
+  props: args,
 });
 
 export const Default = Template.bind({});
+Default.args = {
+  svgIconName: 'reserve',
+  label: 'שריונים',
+  isActive: false,
+};
+
+export const ActiveTag = Template.bind({});
+ActiveTag.args = {
+  svgIconName: 'reserve',
+  label: 'שריונים',
+  isActive: true,
+};

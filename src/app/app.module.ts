@@ -11,9 +11,10 @@ import { ButtonComponent } from './button/button.component';
 import { IconModule } from './shared/icon.module';
 import { DemoMaterialModule } from './shared/material.module';
 import { TabsComponent } from './tabs/tabs.component';
+import { TabComponent } from './tab-component/tab.component';
 
 @NgModule({
-  declarations: [AppComponent, ButtonComponent, TabsComponent],
+  declarations: [AppComponent, ButtonComponent, TabsComponent, TabComponent],
   imports: [
     IconModule,
     BrowserModule,
