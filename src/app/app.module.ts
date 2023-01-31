@@ -12,9 +12,10 @@ import { IconModule } from './shared/icon.module';
 import { DemoMaterialModule } from './shared/material.module';
 import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tab-component/tab.component';
+import { TabsMockComponent } from './tabs/tabs-mock.component';
 
 @NgModule({
-  declarations: [AppComponent, ButtonComponent, TabsComponent, TabComponent],
+  declarations: [AppComponent, ButtonComponent, TabsComponent, TabComponent, TabsMockComponent],
   imports: [
     IconModule,
     BrowserModule,

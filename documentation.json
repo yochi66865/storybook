@@ -1,6 +1,48 @@
 {
     "pipes": [],
-    "interfaces": [],
+    "interfaces": [
+        {
+            "name": "Tab",
+            "id": "interface-Tab-d8dbdbaa1ad5bfcc228b81517748e3ee343afcb49357fa05c94589eb39d40aee8b88cb7cdd30325c0707cf5e779a1160548ac55a63e0a8d613a02448b559fbc5",
+            "file": "src/app/models/tab.interface.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { TemplateRef } from '@angular/core';\r\n\r\nexport interface Tab {\r\n  svgIconName: string;\r\n  label: string;\r\n  template?: TemplateRef<HTMLElement>;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "svgIconName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "template",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<HTMLElement>",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        }
+    ],
     "injectables": [],
     "guards": [],
     "interceptors": [],
@@ -53,7 +95,7 @@
                 "args": [],
                 "line": 8
             },
-            "templateData": "<div class=\"middle\"><app-tabs></app-tabs></div>\r\n"
+            "templateData": "<div class=\"middle\"><app-tabs></app-tabs></div>\r\n<app-tabs-mock></app-tabs-mock>\r\n"
         },
         {
             "name": "ButtonComponent",
@@ -288,7 +330,7 @@
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-6c43facd2c01bdf901b752b41762924c90552d1963f41391f50f3493770ae8f7e502fbaffdba7847aa7442281b0c020c8139f2a37d5db4dc442a8bc50497b572",
+            "id": "component-TabsComponent-ad265db438f28ec677456046ca4ebfca2e977ee35cb342527c61b1d54f86362c99b4bf17272899b725a62a26269f281db3e59d58e69a5b283e3570c2b8693b1d",
             "file": "src/app/tabs/tabs.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -306,7 +348,17 @@
                 "./tabs.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "tabs",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "Tab[]",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [
                 {
@@ -317,7 +369,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 75
+                    "line": 83
                 },
                 {
                     "name": "itemsOnScreen",
@@ -327,7 +379,7 @@
                     "type": "Record<string | IntersectionObserverEntry>",
                     "optional": false,
                     "description": "",
-                    "line": 28
+                    "line": 34
                 },
                 {
                     "name": "itemsOnScreen2",
@@ -337,7 +389,22 @@
                     "type": "Set<IntersectionObserverEntry>",
                     "optional": false,
                     "description": "",
-                    "line": 27
+                    "line": 33
+                },
+                {
+                    "name": "mytemplate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content5'"
+                        }
+                    ]
                 },
                 {
                     "name": "observer",
@@ -346,7 +413,7 @@
                     "type": "IntersectionObserver",
                     "optional": false,
                     "description": "",
-                    "line": 26
+                    "line": 32
                 },
                 {
                     "name": "sectionElements",
@@ -355,7 +422,7 @@
                     "type": "QueryList<ElementRef>",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 30,
                     "decorators": [
                         {
                             "name": "ViewChildren",
@@ -371,7 +438,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 31
                 },
                 {
                     "name": "sidenavContent",
@@ -380,13 +447,23 @@
                     "type": "ElementRef",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 28,
                     "decorators": [
                         {
                             "name": "ViewChild",
                             "stringifiedArguments": "'appScrollEvent', {read: ElementRef}"
                         }
                     ]
+                },
+                {
+                    "name": "templateBinding",
+                    "defaultValue": "templateBinding",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
                 }
             ],
             "methodsClass": [
@@ -403,7 +480,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 58,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -424,7 +501,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 41,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -441,7 +518,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 31,
+                    "line": 37,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -469,7 +546,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 75,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -490,7 +567,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 68,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -502,7 +579,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  ElementRef,\r\n  OnChanges,\r\n  QueryList,\r\n  SimpleChanges,\r\n  ViewChild,\r\n  ViewChildren,\r\n  ViewEncapsulation,\r\n} from '@angular/core';\r\nimport { maxBy } from 'lodash';\r\n\r\n@Component({\r\n  selector: 'app-tabs',\r\n  templateUrl: './tabs.component.html',\r\n  styleUrls: ['./tabs.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n})\r\nexport class TabsComponent implements AfterViewInit, OnChanges {\r\n  @ViewChild('appScrollEvent', { read: ElementRef })\r\n  sidenavContent!: ElementRef;\r\n  @ViewChildren('section')\r\n  sectionElements!: QueryList<ElementRef>;\r\n  selectedSectionId: number = 0;\r\n  observer!: IntersectionObserver;\r\n  itemsOnScreen2: Set<IntersectionObserverEntry> = new Set();\r\n  itemsOnScreen: Record<string, IntersectionObserverEntry> = {};\r\n\r\n  constructor() {}\r\n  ngOnChanges(changes: SimpleChanges): void {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.observer = new IntersectionObserver(\r\n      (entries) => {\r\n        this.mapSectionsOnScreen(entries);\r\n        this.selectedSectionIdByMaxIntersectionRatio();\r\n      },\r\n      {\r\n        threshold: [0, 0.25, 0.75, 1],\r\n        root: this.sidenavContent.nativeElement,\r\n      }\r\n    );\r\n    console.log('sectionElements', this.sectionElements);\r\n    this.sectionElements.forEach((section) =>\r\n      this.observer.observe(section.nativeElement)\r\n    );\r\n  }\r\n\r\n  mapSectionsOnScreen(sections: IntersectionObserverEntry[]) {\r\n    sections.forEach((section) => {\r\n      if (section.isIntersecting) {\r\n        this.itemsOnScreen[section.target.id] = section;\r\n      } else {\r\n        delete this.itemsOnScreen[section.target.id];\r\n      }\r\n    });\r\n  }\r\n\r\n  selectedSectionIdByMaxIntersectionRatio() {\r\n    this.selectedSectionId = +(\r\n      maxBy(Object.values(this.itemsOnScreen), 'intersectionRatio')?.target\r\n        ?.id ?? 0\r\n    );\r\n  }\r\n\r\n  scrollTo(sectionIndex: number) {\r\n    let sectionOffsetTop =\r\n      this.sectionElements.get(sectionIndex)?.nativeElement?.offsetTop ?? 0;\r\n    (this.sidenavContent.nativeElement as HTMLElement).scrollTo({\r\n      top: sectionOffsetTop + 1,\r\n    });\r\n  }\r\n\r\n  array = [0, 1, 2, 3, 4, 5];\r\n}\r\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  ElementRef,\r\n  Input,\r\n  OnChanges,\r\n  QueryList,\r\n  SimpleChanges,\r\n  TemplateRef,\r\n  ViewChild,\r\n  ViewChildren,\r\n  ViewEncapsulation,\r\n} from '@angular/core';\r\nimport { maxBy } from 'lodash';\r\nimport { Tab } from '../models/tab.interface';\r\nimport { templateBinding } from './template-binding';\r\n\r\n@Component({\r\n  selector: 'app-tabs',\r\n  templateUrl: './tabs.component.html',\r\n  styleUrls: ['./tabs.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n})\r\nexport class TabsComponent implements AfterViewInit, OnChanges {\r\n  @ViewChild('content5') mytemplate!: TemplateRef<any>;\r\n  @Input() tabs: Tab[] = [];\r\n  @ViewChild('appScrollEvent', { read: ElementRef })\r\n  sidenavContent!: ElementRef;\r\n  @ViewChildren('section')\r\n  sectionElements!: QueryList<ElementRef>;\r\n  selectedSectionId: number = 0;\r\n  observer!: IntersectionObserver;\r\n  itemsOnScreen2: Set<IntersectionObserverEntry> = new Set();\r\n  itemsOnScreen: Record<string, IntersectionObserverEntry> = {};\r\n  templateBinding = templateBinding;\r\n  constructor() {}\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    console.log('changes', changes);\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.observer = new IntersectionObserver(\r\n      (entries) => {\r\n        this.mapSectionsOnScreen(entries);\r\n        this.selectedSectionIdByMaxIntersectionRatio();\r\n      },\r\n      {\r\n        threshold: [0, 0.25, 0.75, 1],\r\n        root: this.sidenavContent.nativeElement,\r\n      }\r\n    );\r\n    console.log('sectionElements', this.sectionElements);\r\n    this.sectionElements.forEach((section) =>\r\n      this.observer.observe(section.nativeElement)\r\n    );\r\n  }\r\n\r\n  mapSectionsOnScreen(sections: IntersectionObserverEntry[]) {\r\n    sections.forEach((section) => {\r\n      if (section.isIntersecting) {\r\n        this.itemsOnScreen[section.target.id] = section;\r\n      } else {\r\n        delete this.itemsOnScreen[section.target.id];\r\n      }\r\n    });\r\n  }\r\n\r\n  selectedSectionIdByMaxIntersectionRatio() {\r\n    this.selectedSectionId = +(\r\n      maxBy(Object.values(this.itemsOnScreen), 'intersectionRatio')?.target\r\n        ?.id ?? 0\r\n    );\r\n  }\r\n\r\n  scrollTo(sectionIndex: number) {\r\n    let sectionOffsetTop =\r\n      this.sectionElements.get(sectionIndex)?.nativeElement?.offsetTop ?? 0;\r\n    (this.sidenavContent.nativeElement as HTMLElement).scrollTo({\r\n      top: sectionOffsetTop + 1,\r\n    });\r\n  }\r\n\r\n  array = [0, 1, 2, 3, 4, 5];\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -517,25 +594,215 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 28
+                "line": 35
             },
             "implements": [
                 "AfterViewInit",
                 "OnChanges"
             ],
-            "templateData": "<!-- <mat-toolbar class=\"example-header\">Header</mat-toolbar> -->\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav\r\n    #sidenav\r\n    mode=\"side\"\r\n    opened\r\n    class=\"example-sidenav\"\r\n    [fixedInViewport]=\"false\"\r\n    [fixedTopGap]=\"0\"\r\n    [fixedBottomGap]=\"0\"\r\n  >\r\n    <tab\r\n      svgIconName=\"sdk_assignment\"\r\n      label=\"הקצאות סדכ\"\r\n      [isActive]=\"selectedSectionId === 0\"\r\n      (click)=\"scrollTo(0)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"reserve\"\r\n      label=\"שריונים\"\r\n      [isActive]=\"selectedSectionId === 1\"\r\n      (click)=\"scrollTo(1)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"areas\"\r\n      label=\"אזורים ומבנים\"\r\n      [isActive]=\"selectedSectionId === 2\"\r\n      (click)=\"scrollTo(2)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"assignments\"\r\n      label=\"הקצאות\"\r\n      [isActive]=\"selectedSectionId === 3\"\r\n      (click)=\"scrollTo(3)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"remarks\"\r\n      label=\"הערות\"\r\n      [isActive]=\"selectedSectionId === 4\"\r\n      (click)=\"scrollTo(4)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"advanced_instructions\"\r\n      label=\"הנחיות מתקדמות\"\r\n      [isActive]=\"selectedSectionId === 5\"\r\n      (click)=\"scrollTo(5)\"\r\n    ></tab>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content #appScrollEvent>\r\n    <ng-container *ngFor=\"let index_tab of array\">\r\n      <ng-container\r\n        *ngTemplateOutlet=\"content; context: { index_tab }\"\r\n      ></ng-container\r\n    ></ng-container>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n\r\n<ng-template #content let-index_tab=\"index_tab\">\r\n  <section #section [id]=\"index_tab\">\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{ index_tab }}\r\n  </section>\r\n</ng-template>\r\n"
+            "templateData": "<!-- <mat-toolbar class=\"example-header\">Header</mat-toolbar> -->\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav\r\n    #sidenav\r\n    mode=\"side\"\r\n    opened\r\n    class=\"example-sidenav\"\r\n    [fixedInViewport]=\"false\"\r\n    [fixedTopGap]=\"0\"\r\n    [fixedBottomGap]=\"0\"\r\n  >\r\n    <tab\r\n      svgIconName=\"sdk_assignment\"\r\n      label=\"הקצאות סדכ\"\r\n      [isActive]=\"selectedSectionId === 0\"\r\n      (click)=\"scrollTo(0)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"reserve\"\r\n      label=\"שריונים\"\r\n      [isActive]=\"selectedSectionId === 1\"\r\n      (click)=\"scrollTo(1)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"areas\"\r\n      label=\"אזורים ומבנים\"\r\n      [isActive]=\"selectedSectionId === 2\"\r\n      (click)=\"scrollTo(2)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"assignments\"\r\n      label=\"הקצאות\"\r\n      [isActive]=\"selectedSectionId === 3\"\r\n      (click)=\"scrollTo(3)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"remarks\"\r\n      label=\"הערות\"\r\n      [isActive]=\"selectedSectionId === 4\"\r\n      (click)=\"scrollTo(4)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"advanced_instructions\"\r\n      label=\"הנחיות מתקדמות\"\r\n      [isActive]=\"selectedSectionId === 5\"\r\n      (click)=\"scrollTo(5)\"\r\n    ></tab>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content #appScrollEvent>\r\n    <ng-container *ngFor=\"let index_tab of [0, 1, 2, 3, 4, 5]\">\r\n      <ng-container\r\n        *ngTemplateOutlet=\"content; context: { index_tab }\"\r\n      ></ng-container\r\n    ></ng-container>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n\r\n<ng-template #content let-index_tab=\"index_tab\">\r\n  <section #section [id]=\"index_tab\">\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{ index_tab }}\r\n  </section>\r\n</ng-template>\r\nhh{{ tabs[0] }}\r\n<ng-container\r\n  *ngIf=\"tabs[0] && tabs[0].template\"\r\n  [ngTemplateOutlet]=\"tabs[0].template\"\r\n></ng-container>\r\n<!--<ng-template #content5>{{ templateBinding(2) }}</ng-template> -->\r\n"
+        },
+        {
+            "name": "TabsMockComponent",
+            "id": "component-TabsMockComponent-bf39d403083905c27a464a32e718f4e7fd065bb7e8669be5eb37740cfdd266ee7f9aa3350e3cde98159fcd03472c62bf91e70fabbb92abbf0eb3f5fa434250d0",
+            "file": "src/app/tabs/tabs-mock.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-tabs-mock",
+            "styleUrls": [],
+            "styles": [
+                ""
+            ],
+            "template": "<app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\n   <ng-template #content0>{{ templateBinding(0) }}</ng-template>\n   <ng-template #content1>{{ templateBinding(1) }}</ng-template>\n   <ng-template #content2>{{ templateBinding(2) }}</ng-template>\n   <ng-template #content3>{{ templateBinding(3) }}</ng-template>\n   <ng-template #content4>{{ templateBinding(4) }}</ng-template>\n   <ng-template #content5>{{ templateBinding(5) }}</ng-template>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "content0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content0'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content1'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content2'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content3",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content3'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content4",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content4'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content5",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content5'"
+                        }
+                    ]
+                },
+                {
+                    "name": "initialTabs",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "tabs",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Tab[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "templateBinding",
+                    "defaultValue": "templateBinding",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  ChangeDetectionStrategy,\r\n  ChangeDetectorRef,\r\n  Component,\r\n  TemplateRef,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { Tab } from '../models/tab.interface';\r\nimport { templateBinding } from './template-binding';\r\n\r\n@Component({\r\n  selector: 'app-tabs-mock',\r\n  template: ` <app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\r\n\r\n    <ng-template #content0>{{ templateBinding(0) }}</ng-template>\r\n    <ng-template #content1>{{ templateBinding(1) }}</ng-template>\r\n    <ng-template #content2>{{ templateBinding(2) }}</ng-template>\r\n    <ng-template #content3>{{ templateBinding(3) }}</ng-template>\r\n    <ng-template #content4>{{ templateBinding(4) }}</ng-template>\r\n    <ng-template #content5>{{ templateBinding(5) }}</ng-template>`,\r\n  styles: [``],\r\n})\r\nexport class TabsMockComponent {\r\n  initialTabs: boolean = false;\r\n  templateBinding = templateBinding;\r\n  @ViewChild('content0') content0!: TemplateRef<any>;\r\n  @ViewChild('content1') content1!: TemplateRef<any>;\r\n  @ViewChild('content2') content2!: TemplateRef<any>;\r\n  @ViewChild('content3') content3!: TemplateRef<any>;\r\n  @ViewChild('content4') content4!: TemplateRef<any>;\r\n  @ViewChild('content5') content5!: TemplateRef<any>;\r\n  tabs!: Tab[];\r\n  ngAfterViewInit(): void {\r\n    this.tabs = [\r\n      {\r\n        svgIconName: 'sdk_assignment',\r\n        label: 'הקצאות סדכ',\r\n        template: this.content0,\r\n      },\r\n      { svgIconName: 'reserve', label: 'שריונים', template: this.content1 },\r\n      { svgIconName: 'areas', label: 'אזורים ומבנים', template: this.content2 },\r\n      { svgIconName: 'assignments', label: 'הקצאות', template: this.content3 },\r\n      { svgIconName: 'remarks', label: 'הערות', template: this.content4 },\r\n      {\r\n        svgIconName: 'advanced_instructions',\r\n        label: 'הנחיות מתקדמות',\r\n        template: this.content5,\r\n      },\r\n    ];\r\n    this.initialTabs = true;\r\n    this.changeDetectorRef.detectChanges();\r\n  }\r\n\r\n  constructor(private changeDetectorRef: ChangeDetectorRef) {}\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 53,
+                "jsdoctags": [
+                    {
+                        "name": "changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-2e8e86fcf0aa82ae22685fd3d0aa732ae833b86d27c1bd60dc0d20a482c5fd291e37d489ae3c18ebd9b080fe2f8a19fd2b49cc23d2a2efd3c65031b8b187a4fe",
+            "id": "module-AppModule-16df472e9e993d46e4d4a327df97aa47556f8c3396778f589cf33b4b3ad99b480500107c5e8c387c95c04a81d9a3a7235d5f3e3b82004f25f3ffa7ead6fe474a",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\r\nimport { IconModule } from './shared/icon.module';\r\nimport { DemoMaterialModule } from './shared/material.module';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\nimport { TabComponent } from './tab-component/tab.component';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent, ButtonComponent, TabsComponent, TabComponent],\r\n  imports: [\r\n    IconModule,\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    DemoMaterialModule,\r\n    HttpClientModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
+            "sourceCode": "import { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\r\nimport { IconModule } from './shared/icon.module';\r\nimport { DemoMaterialModule } from './shared/material.module';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\nimport { TabComponent } from './tab-component/tab.component';\r\nimport { TabsMockComponent } from './tabs/tabs-mock.component';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent, ButtonComponent, TabsComponent, TabComponent, TabsMockComponent],\r\n  imports: [\r\n    IconModule,\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    DemoMaterialModule,\r\n    HttpClientModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -555,6 +822,9 @@
                         },
                         {
                             "name": "TabsComponent"
+                        },
+                        {
+                            "name": "TabsMockComponent"
                         }
                     ]
                 },
@@ -729,7 +999,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tabs/tabs.component.stories.ts",
+                "file": "src/app/tab-component/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -739,21 +1009,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tab-component/tab.component.stories.ts",
+                "file": "src/app/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/environments/environment.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\r\n  production: false\r\n}"
             },
             {
                 "name": "environment",
@@ -764,6 +1024,16 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\r\n  production: true\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  production: false\r\n}"
             },
             {
                 "name": "Large",
@@ -818,11 +1088,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tabs/tabs.component.stories.ts",
+                "file": "src/app/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<TabsComponent>",
-                "defaultValue": "(args: TabsComponent) => ({\r\n  // props: args,\r\n})"
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -838,11 +1108,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/button/button.component.stories.ts",
+                "file": "src/app/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
+                "type": "Story<TabsComponent>",
+                "defaultValue": "(args: TabsComponent) => ({\r\n  template: `\r\n  <app-tabs-mock></app-tabs-mock>\r\n`,\r\n})"
+            },
+            {
+                "name": "templateBinding",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tabs/template-binding.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(index_tab: number) => `\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content${index_tab}\r\n`"
             }
         ],
         "functions": [],
@@ -921,19 +1201,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<TabsComponent>",
-                    "defaultValue": "(args: TabsComponent) => ({\r\n  // props: args,\r\n})"
-                }
-            ],
-            "src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\r\n  production: false\r\n}"
+                    "defaultValue": "(args: TabsComponent) => ({\r\n  template: `\r\n  <app-tabs-mock></app-tabs-mock>\r\n`,\r\n})"
                 }
             ],
             "src/environments/environment.prod.ts": [
@@ -946,6 +1214,18 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\r\n  production: true\r\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: false\r\n}"
                 }
             ],
             "src/app/button/button.component.stories.ts": [
@@ -998,6 +1278,18 @@
                     "deprecationMessage": "",
                     "type": "Story<ButtonComponent>",
                     "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/tabs/template-binding.ts": [
+                {
+                    "name": "templateBinding",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tabs/template-binding.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(index_tab: number) => `\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content${index_tab}\r\n`"
                 }
             ]
         },
@@ -1092,6 +1384,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/models/tab.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Tab",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/tab-component/tab.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -1131,6 +1432,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/tabs/tabs-mock.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabsMockComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/tabs/tabs.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -1156,7 +1466,17 @@
                 "linktype": "component",
                 "name": "TabsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/14",
+                "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tabs/template-binding.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "templateBinding",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
