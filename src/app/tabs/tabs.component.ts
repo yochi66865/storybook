@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import { maxBy } from 'lodash';
 import { Tab } from '../models/tab.interface';
-import { templateBinding } from './template-binding';
 
 @Component({
   selector: 'app-tabs',
@@ -21,8 +20,7 @@ import { templateBinding } from './template-binding';
   styleUrls: ['./tabs.component.less'],
   encapsulation: ViewEncapsulation.None,
 })
-export class TabsComponent implements AfterViewInit, OnChanges {
-  @ViewChild('content5') mytemplate!: TemplateRef<any>;
+export class TabsComponent implements AfterViewInit {
   @Input() tabs: Tab[] = [];
   @ViewChild('appScrollEvent', { read: ElementRef })
   sidenavContent!: ElementRef;
@@ -30,13 +28,9 @@ export class TabsComponent implements AfterViewInit, OnChanges {
   sectionElements!: QueryList<ElementRef>;
   selectedSectionId: number = 0;
   observer!: IntersectionObserver;
-  itemsOnScreen2: Set<IntersectionObserverEntry> = new Set();
   itemsOnScreen: Record<string, IntersectionObserverEntry> = {};
-  templateBinding = templateBinding;
+
   constructor() {}
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes', changes);
-  }
 
   ngAfterViewInit(): void {
     this.observer = new IntersectionObserver(
