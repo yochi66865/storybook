@@ -19,10 +19,7 @@
   <mat-sidenav-content #appScrollEvent>
     <ng-container *ngFor="let tab of tabs; let index = index">
       <section #section [id]="index">
-        <ng-container
-          *ngIf="tab.template"
-          [ngTemplateOutlet]="tab.template"
-        ></ng-container>
+        <ng-container [ngTemplateOutlet]="tab.template"></ng-container>
       </section>
     </ng-container>
   </mat-sidenav-content>

@@ -43,7 +43,6 @@ export class TabsComponent implements AfterViewInit {
         root: this.sidenavContent.nativeElement,
       }
     );
-    console.log('sectionElements', this.sectionElements);
     this.sectionElements.forEach((section) =>
       this.observer.observe(section.nativeElement)
     );
@@ -73,6 +72,4 @@ export class TabsComponent implements AfterViewInit {
       top: sectionOffsetTop + 1,
     });
   }
-
-  array = [0, 1, 2, 3, 4, 5];
 }
