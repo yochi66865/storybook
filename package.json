@@ -25,6 +25,7 @@
     "@angular/router": "~13.3.12",
     "lodash": "^4.17.21",
     "node": "^16.18.1",
+    "ngx-drag-scroll": "^13.0.2",
     "rxjs": "~6.6.0",
     "zone.js": "~0.11.4"
   },
