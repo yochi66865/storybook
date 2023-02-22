@@ -14,10 +14,15 @@ import { DemoMaterialModule } from './shared/material.module';
 import { TabComponent } from './tab-component/tab.component';
 import { TabsMockComponent } from './tabs/tabs-mock.component';
 import { TabsComponent } from './tabs/tabs.component';
-import { DragScrollComponent } from './drag-scroll/drag-scroll.component';
 
 @NgModule({
-  declarations: [AppComponent, ButtonComponent, TabsComponent, TabComponent, TabsMockComponent, DragScrollComponent],
+  declarations: [
+    AppComponent,
+    ButtonComponent,
+    TabsComponent,
+    TabComponent,
+    TabsMockComponent,
+  ],
   imports: [
     IconModule,
     BrowserModule,
@@ -27,9 +32,9 @@ import { DragScrollComponent } from './drag-scroll/drag-scroll.component';
     DragDropModule,
     DemoMaterialModule,
     HttpClientModule,
-    DragScrollModule
+    DragScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
