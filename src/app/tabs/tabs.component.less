@@ -61,13 +61,25 @@ app-tabs {
   }
 
   .mat-sidenav-content {
+    background-color: var(--white);
     margin-left: 0px !important;
-    margin-right: 93px !important;
+    margin-right: 74px !important;
     padding: 30px 20px;
     height: 85%;
 
     section:not(:last-child) {
       padding-bottom: 50px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 16px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border: 7px solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+      border-radius: 9999px;
+      background-color: #979797;
     }
   }
 }

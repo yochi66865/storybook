@@ -69,7 +69,7 @@ export class TabsComponent implements AfterViewInit {
     let sectionOffsetTop =
       this.sectionElements.get(sectionIndex)?.nativeElement?.offsetTop ?? 0;
     (this.sidenavContent.nativeElement as HTMLElement).scrollTo({
-      top: sectionOffsetTop + 1,
+      top: sectionOffsetTop - 20,
       behavior: 'smooth',
     });
   }
