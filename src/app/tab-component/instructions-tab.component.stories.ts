@@ -3,14 +3,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { IconModule } from '../shared/icon.module';
 import { DemoMaterialModule } from '../shared/material.module';
-import { TabComponent } from './tab.component';
+import { InstructionsTabComponent } from './instructions-tab.component';
 
 export default {
-  title: 'Example/Tab',
-  component: TabComponent,
+  title: 'Example/InstructionsTabComponent',
+  component: InstructionsTabComponent,
   decorators: [
     moduleMetadata({
-      declarations: [TabComponent],
+      declarations: [InstructionsTabComponent],
       imports: [
         BrowserAnimationsModule,
         DemoMaterialModule,
@@ -21,7 +21,9 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<TabComponent> = (args: TabComponent) => ({
+const Template: Story<InstructionsTabComponent> = (
+  args: InstructionsTabComponent
+) => ({
   props: args,
 });
 
