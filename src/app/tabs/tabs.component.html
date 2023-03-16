@@ -8,14 +8,14 @@
     [fixedTopGap]="0"
     [fixedBottomGap]="0"
   >
-    <tab
-    class="tab"
+    <instructions-tab
+      class="tab"
       *ngFor="let tab of tabs; let index = index"
       [svgIconName]="tab.svgIconName"
       [label]="tab.label"
       [isActive]="selectedSectionId === index"
       (click)="scrollTo(index)"
-    ></tab>
+    ></instructions-tab>
   </mat-sidenav>
   <mat-sidenav-content #appScrollEvent>
     <ng-container *ngFor="let tab of tabs; let index = index">

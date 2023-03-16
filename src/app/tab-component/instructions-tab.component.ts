@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'tab',
-  templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.less'],
+  selector: 'instructions-tab',
+  templateUrl: './instructions-tab.component.html',
+  styleUrls: ['./instructions-tab.component.less'],
 })
-export class TabComponent implements OnInit {
+export class InstructionsTabComponent implements OnInit {
   @Input() svgIconName: string = '';
   @Input() label: string = '';
   @Input() isActive: boolean = false;
