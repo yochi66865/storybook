@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "Tab",
-            "id": "interface-Tab-d8dbdbaa1ad5bfcc228b81517748e3ee343afcb49357fa05c94589eb39d40aee8b88cb7cdd30325c0707cf5e779a1160548ac55a63e0a8d613a02448b559fbc5",
+            "id": "interface-Tab-182e350441e6be872927b67658ca758335d2b2e16367685a88bfc19e990d17f8cc4057d6770fb160025a2b80b1c75935949f732b929381054b6251ffb6406cdb",
             "file": "src/app/models/tab.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { TemplateRef } from '@angular/core';\r\n\r\nexport interface Tab {\r\n  svgIconName: string;\r\n  label: string;\r\n  template?: TemplateRef<HTMLElement>;\r\n}\r\n",
+            "sourceCode": "import { TemplateRef } from '@angular/core';\r\n\r\nexport interface Tab {\r\n  svgIconName: string;\r\n  label: string;\r\n  template: TemplateRef<HTMLElement>;\r\n}\r\n",
             "properties": [
                 {
                     "name": "label",
@@ -33,7 +33,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "TemplateRef<HTMLElement>",
-                    "optional": true,
+                    "optional": false,
                     "description": "",
                     "line": 6
                 }
@@ -95,7 +95,7 @@
                 "args": [],
                 "line": 8
             },
-            "templateData": "<div class=\"middle\"><app-tabs></app-tabs></div>\r\n<app-tabs-mock></app-tabs-mock>\r\n"
+            "templateData": "<div class=\"middle\">\r\n  <app-tabs-mock></app-tabs-mock>\r\n</div>\r\n"
         },
         {
             "name": "ButtonComponent",
@@ -310,7 +310,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".menu-item {\r\n    min-width: 74px;\r\n    padding: 0px !important;\r\n    background-color: var(--gray);\r\n    border: none;\r\n    min-height: 68.64px;\r\n    opacity: 1;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n\r\n    .menu-content {\r\n      font-family: Arial, Helvetica, sans-serif;\r\n      font-size: 9px;\r\n      font-weight: 700;\r\n    }\r\n\r\n    .menu-icon {\r\n      border-radius: 4px;\r\n      width: 21px;\r\n      height: 21px;\r\n      padding: 3.5px;\r\n    }\r\n\r\n    &.active {\r\n      color: var(--praimery);\r\n      .menu-icon {\r\n        background-color: var(--dark-praimery);\r\n        color: var(--white);\r\n      }\r\n    }\r\n\r\n    &:not(active) {\r\n      color: var(--black);\r\n      .menu-icon {\r\n        background-color: var(--dark-gray);\r\n      }\r\n    }\r\n  } .menu-item {\r\n      min-width: 74px;\r\n      padding: 0px !important;\r\n      background-color: var(--gray);\r\n      border: none;\r\n      min-height: 68.64px;\r\n      opacity: 1;\r\n      display: flex;\r\n      flex-direction: column;\r\n      justify-content: center;\r\n      align-items: center;\r\n\r\n      .menu-content {\r\n        font-family: Arial, Helvetica, sans-serif;\r\n        font-size: 9px;\r\n        font-weight: 700;\r\n      }\r\n\r\n      .menu-icon {\r\n        border-radius: 4px;\r\n        width: 21px;\r\n        height: 21px;\r\n        padding: 3.5px;\r\n      }\r\n\r\n      &.active {\r\n        color: var(--praimery);\r\n        .menu-icon {\r\n          background-color: var(--dark-praimery);\r\n          color: var(--white);\r\n        }\r\n      }\r\n\r\n      &:not(active) {\r\n        color: var(--black);\r\n        .menu-icon {\r\n          background-color: var(--dark-gray);\r\n        }\r\n      }\r\n    }",
+                    "data": ".menu-item {\r\n  min-width: 74px;\r\n  padding: 0px !important;\r\n  background-color: var(--gray);\r\n  border: none;\r\n  min-height: 68.64px;\r\n  opacity: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .menu-content {\r\n    font-family: Arial, Helvetica, sans-serif;\r\n    font-size: 9px;\r\n    font-weight: 700;\r\n  }\r\n\r\n  .menu-icon {\r\n    border-radius: 4px;\r\n    width: 21px;\r\n    height: 21px;\r\n    padding: 3.5px;\r\n  }\r\n\r\n  &.active {\r\n    color: var(--praimery);\r\n    .menu-icon {\r\n      background-color: var(--dark-praimery);\r\n      color: var(--white);\r\n    }\r\n\r\n    &::after {\r\n      content: \"\";\r\n      position: absolute;\r\n      left: 0;\r\n      border-left: 7px solid black;\r\n      border-left-color: var(--white);\r\n      border-top: 9px solid transparent;\r\n      border-bottom: 9px solid transparent;\r\n    }\r\n  }\r\n\r\n  &:not(active) {\r\n    color: var(--black);\r\n    .menu-icon {\r\n      background-color: var(--dark-gray);\r\n    }\r\n  }\r\n}\r\n.menu-item {\r\n  min-width: 74px;\r\n  padding: 0px !important;\r\n  background-color: var(--gray);\r\n  border: none;\r\n  min-height: 68.64px;\r\n  opacity: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .menu-content {\r\n    font-family: Arial, Helvetica, sans-serif;\r\n    font-size: 9px;\r\n    font-weight: 700;\r\n  }\r\n\r\n  .menu-icon {\r\n    border-radius: 4px;\r\n    width: 21px;\r\n    height: 21px;\r\n    padding: 3.5px;\r\n  }\r\n\r\n  &.active {\r\n    color: var(--praimery);\r\n    .menu-icon {\r\n      background-color: var(--dark-praimery);\r\n      color: var(--white);\r\n    }\r\n  }\r\n\r\n  &:not(active) {\r\n    color: var(--black);\r\n    .menu-icon {\r\n      background-color: var(--dark-gray);\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./tab.component.less"
                 }
             ],
@@ -330,7 +330,7 @@
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-ad265db438f28ec677456046ca4ebfca2e977ee35cb342527c61b1d54f86362c99b4bf17272899b725a62a26269f281db3e59d58e69a5b283e3570c2b8693b1d",
+            "id": "component-TabsComponent-317563e799922913284912f78800ee332fc2918bbfaf1bce0cb1624f1a1a26abe97e08c6537d79f2c774b4effcd77052ed478b24a920380ce1d40f2362b387bb",
             "file": "src/app/tabs/tabs.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -354,23 +354,13 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 24,
                     "type": "Tab[]",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
             "propertiesClass": [
-                {
-                    "name": "array",
-                    "defaultValue": "[0, 1, 2, 3, 4, 5]",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[]",
-                    "optional": false,
-                    "description": "",
-                    "line": 83
-                },
                 {
                     "name": "itemsOnScreen",
                     "defaultValue": "{}",
@@ -379,32 +369,7 @@
                     "type": "Record<string | IntersectionObserverEntry>",
                     "optional": false,
                     "description": "",
-                    "line": 34
-                },
-                {
-                    "name": "itemsOnScreen2",
-                    "defaultValue": "new Set()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Set<IntersectionObserverEntry>",
-                    "optional": false,
-                    "description": "",
-                    "line": 33
-                },
-                {
-                    "name": "mytemplate",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "TemplateRef<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 25,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'content5'"
-                        }
-                    ]
+                    "line": 31
                 },
                 {
                     "name": "observer",
@@ -413,7 +378,7 @@
                     "type": "IntersectionObserver",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 30
                 },
                 {
                     "name": "sectionElements",
@@ -422,7 +387,7 @@
                     "type": "QueryList<ElementRef>",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 28,
                     "decorators": [
                         {
                             "name": "ViewChildren",
@@ -438,7 +403,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 29
                 },
                 {
                     "name": "sidenavContent",
@@ -447,23 +412,13 @@
                     "type": "ElementRef",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 26,
                     "decorators": [
                         {
                             "name": "ViewChild",
                             "stringifiedArguments": "'appScrollEvent', {read: ElementRef}"
                         }
                     ]
-                },
-                {
-                    "name": "templateBinding",
-                    "defaultValue": "templateBinding",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 35
                 }
             ],
             "methodsClass": [
@@ -480,7 +435,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -501,37 +456,9 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": ""
-                },
-                {
-                    "name": "ngOnChanges",
-                    "args": [
-                        {
-                            "name": "changes",
-                            "type": "SimpleChanges",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 37,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "changes",
-                            "type": "SimpleChanges",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
                 },
                 {
                     "name": "scrollTo",
@@ -546,7 +473,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 68,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -567,7 +494,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 68,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -579,11 +506,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  ElementRef,\r\n  Input,\r\n  OnChanges,\r\n  QueryList,\r\n  SimpleChanges,\r\n  TemplateRef,\r\n  ViewChild,\r\n  ViewChildren,\r\n  ViewEncapsulation,\r\n} from '@angular/core';\r\nimport { maxBy } from 'lodash';\r\nimport { Tab } from '../models/tab.interface';\r\nimport { templateBinding } from './template-binding';\r\n\r\n@Component({\r\n  selector: 'app-tabs',\r\n  templateUrl: './tabs.component.html',\r\n  styleUrls: ['./tabs.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n})\r\nexport class TabsComponent implements AfterViewInit, OnChanges {\r\n  @ViewChild('content5') mytemplate!: TemplateRef<any>;\r\n  @Input() tabs: Tab[] = [];\r\n  @ViewChild('appScrollEvent', { read: ElementRef })\r\n  sidenavContent!: ElementRef;\r\n  @ViewChildren('section')\r\n  sectionElements!: QueryList<ElementRef>;\r\n  selectedSectionId: number = 0;\r\n  observer!: IntersectionObserver;\r\n  itemsOnScreen2: Set<IntersectionObserverEntry> = new Set();\r\n  itemsOnScreen: Record<string, IntersectionObserverEntry> = {};\r\n  templateBinding = templateBinding;\r\n  constructor() {}\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    console.log('changes', changes);\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.observer = new IntersectionObserver(\r\n      (entries) => {\r\n        this.mapSectionsOnScreen(entries);\r\n        this.selectedSectionIdByMaxIntersectionRatio();\r\n      },\r\n      {\r\n        threshold: [0, 0.25, 0.75, 1],\r\n        root: this.sidenavContent.nativeElement,\r\n      }\r\n    );\r\n    console.log('sectionElements', this.sectionElements);\r\n    this.sectionElements.forEach((section) =>\r\n      this.observer.observe(section.nativeElement)\r\n    );\r\n  }\r\n\r\n  mapSectionsOnScreen(sections: IntersectionObserverEntry[]) {\r\n    sections.forEach((section) => {\r\n      if (section.isIntersecting) {\r\n        this.itemsOnScreen[section.target.id] = section;\r\n      } else {\r\n        delete this.itemsOnScreen[section.target.id];\r\n      }\r\n    });\r\n  }\r\n\r\n  selectedSectionIdByMaxIntersectionRatio() {\r\n    this.selectedSectionId = +(\r\n      maxBy(Object.values(this.itemsOnScreen), 'intersectionRatio')?.target\r\n        ?.id ?? 0\r\n    );\r\n  }\r\n\r\n  scrollTo(sectionIndex: number) {\r\n    let sectionOffsetTop =\r\n      this.sectionElements.get(sectionIndex)?.nativeElement?.offsetTop ?? 0;\r\n    (this.sidenavContent.nativeElement as HTMLElement).scrollTo({\r\n      top: sectionOffsetTop + 1,\r\n    });\r\n  }\r\n\r\n  array = [0, 1, 2, 3, 4, 5];\r\n}\r\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  ElementRef,\r\n  Input,\r\n  OnChanges,\r\n  QueryList,\r\n  SimpleChanges,\r\n  TemplateRef,\r\n  ViewChild,\r\n  ViewChildren,\r\n  ViewEncapsulation,\r\n} from '@angular/core';\r\nimport { maxBy } from 'lodash';\r\nimport { Tab } from '../models/tab.interface';\r\n\r\n@Component({\r\n  selector: 'app-tabs',\r\n  templateUrl: './tabs.component.html',\r\n  styleUrls: ['./tabs.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n})\r\nexport class TabsComponent implements AfterViewInit {\r\n  @Input() tabs: Tab[] = [];\r\n  @ViewChild('appScrollEvent', { read: ElementRef })\r\n  sidenavContent!: ElementRef;\r\n  @ViewChildren('section')\r\n  sectionElements!: QueryList<ElementRef>;\r\n  selectedSectionId: number = 0;\r\n  observer!: IntersectionObserver;\r\n  itemsOnScreen: Record<string, IntersectionObserverEntry> = {};\r\n\r\n  constructor() {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.observer = new IntersectionObserver(\r\n      (entries) => {\r\n        this.mapSectionsOnScreen(entries);\r\n        this.selectedSectionIdByMaxIntersectionRatio();\r\n      },\r\n      {\r\n        threshold: [0, 0.25, 0.75, 1],\r\n        root: this.sidenavContent.nativeElement,\r\n      }\r\n    );\r\n    this.sectionElements.forEach((section) =>\r\n      this.observer.observe(section.nativeElement)\r\n    );\r\n  }\r\n\r\n  mapSectionsOnScreen(sections: IntersectionObserverEntry[]) {\r\n    sections.forEach((section) => {\r\n      if (section.isIntersecting) {\r\n        this.itemsOnScreen[section.target.id] = section;\r\n      } else {\r\n        delete this.itemsOnScreen[section.target.id];\r\n      }\r\n    });\r\n  }\r\n\r\n  selectedSectionIdByMaxIntersectionRatio() {\r\n    this.selectedSectionId = +(\r\n      maxBy(Object.values(this.itemsOnScreen), 'intersectionRatio')?.target\r\n        ?.id ?? 0\r\n    );\r\n  }\r\n\r\n  scrollTo(sectionIndex: number) {\r\n    let sectionOffsetTop =\r\n      this.sectionElements.get(sectionIndex)?.nativeElement?.offsetTop ?? 0;\r\n    (this.sidenavContent.nativeElement as HTMLElement).scrollTo({\r\n      top: sectionOffsetTop - 20,\r\n      behavior: 'smooth',\r\n    });\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "app-tabs {\r\n  height: 422px;\r\n  width: 475px;\r\n  border: 0.5px solid rosybrown;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.mat-sidenav-container {\r\n  direction: rtl;\r\n\r\n  .mat-sidenav .mat-drawer-inner-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n\r\n    .menu-item:not(:last-child) {\r\n      margin-bottom: 2px;\r\n    }\r\n\r\n    .menu-item {\r\n      min-width: 74px;\r\n      padding: 0px !important;\r\n      background-color: var(--gray);\r\n      border: none;\r\n      min-height: 68.64px;\r\n      opacity: 1;\r\n      display: flex;\r\n      flex-direction: column;\r\n      justify-content: center;\r\n      align-items: center;\r\n\r\n      .menu-content {\r\n        font-family: Arial, Helvetica, sans-serif;\r\n        font-size: 9px;\r\n        font-weight: 700;\r\n      }\r\n\r\n      .menu-icon {\r\n        border-radius: 4px;\r\n        width: 21px;\r\n        height: 21px;\r\n        padding: 3.5px;\r\n      }\r\n\r\n      &.active {\r\n        color: var(--praimery);\r\n        .menu-icon {\r\n          background-color: var(--dark-praimery);\r\n          color: var(--white);\r\n        }\r\n      }\r\n\r\n      &:not(active) {\r\n        color: var(--black);\r\n        .menu-icon {\r\n          background-color: var(--dark-gray);\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n  .mat-sidenav-content {\r\n    margin-left: 0px !important;\r\n    margin-right: 93px !important;\r\n\r\n    section:not(:last-child) {\r\n      padding-bottom: 50px;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": "@default-afui-tabs-height: 422px;\r\n@default-afui-tabs-width: 475px;\r\n@default-afui-tabs-border: 0.5px solid rosybrown;\r\n\r\n@default-afui-tabs-container-flex-direction: row;\r\n\r\n@default-afui-tabs-tabs-flex-direction: column;\r\n@default-afui-tabs-tabs-justify-content: space-between;\r\n@default-afui-tabs-tab-margin: 0 0 2px 0;\r\n\r\n@default-afui-tabs-content-background-color: var(--white);\r\n@default-afui-tabs-content-margin: 0 74px 0 0;\r\n@default-afui-tabs-content-padding: 30px 20px;\r\n@default-afui-tabs-content-height: 85%;\r\n@default-afui-tabs-content-overflow: auto;\r\n\r\n@default-afui-tabs-content-scrollbar-background-width: 16px;\r\n@default-afui-tabs-content-scrollbar-thumb-background-clip: padding-box;\r\n@default-afui-tabs-content-scrollbar-thumb-background-color: #dae1e8;\r\n@default-afui-tabs-content-scrollbar-thumb-border: 7px solid rgba(0, 0, 0, 0);\r\n@default-afui-tabs-content-scrollbar-thumb-border-radius: 10px;\r\n\r\n@default-afui-tabs-padding-between-contents: 50px;\r\n\r\napp-tabs {\r\n  height: var(--afui-tabs-height, @default-afui-tabs-height);\r\n  width: var(--afui-tabs-width, @default-afui-tabs-width);\r\n  border: var(--afui-tabs-border, @default-afui-tabs-border);\r\n  display: flex;\r\n\r\n  .mat-sidenav-container {\r\n    display: flex;\r\n    flex-direction: var(\r\n      --afui-tabs-container-flex-direction,\r\n      @default-afui-tabs-container-flex-direction\r\n    );\r\n    direction: rtl;\r\n\r\n    .mat-sidenav .mat-drawer-inner-container {\r\n      display: flex;\r\n      flex-direction: var(\r\n        --afui-tabs-tabs-flex-direction,\r\n        @default-afui-tabs-tabs-flex-direction\r\n      );\r\n      justify-content: var(\r\n        --afui-tabs-tabs-justify-content,\r\n        @default-afui-tabs-tabs-justify-content\r\n      );\r\n\r\n      .tab:not(:last-child) {\r\n        margin: var(--afui-tabs-tab-margin, @default-afui-tabs-tab-margin);\r\n      }\r\n    }\r\n\r\n    .mat-sidenav-content {\r\n      background-color: var(\r\n        --afui-tabs-content-background-color,\r\n        @default-afui-tabs-content-background-color\r\n      );\r\n      margin: var(\r\n        --afui-tabs-content-margin,\r\n        @default-afui-tabs-content-margin\r\n      ) !important;\r\n      padding: var(\r\n        --afui-tabs-content-padding,\r\n        @default-afui-tabs-content-padding\r\n      );\r\n      height: var(\r\n        --afui-tabs-content-height,\r\n        @default-afui-tabs-content-height\r\n      );\r\n      overflow: var(\r\n        --afui-tabs-content-overflow,\r\n        @default-afui-tabs-content-overflow\r\n      );\r\n\r\n      section:not(:last-child) {\r\n        padding-bottom: var(\r\n          --afui-tabs-padding-between-contents,\r\n          @default-afui-tabs-padding-between-contents\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar {\r\n        width: var(\r\n          --afui-tabs-content-scrollbar-background-width,\r\n          @default-afui-tabs-content-scrollbar-background-width\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar-thumb {\r\n        border: var(\r\n          --afui-tabs-content-scrollbar-thumb-border,\r\n          @default-afui-tabs-content-scrollbar-thumb-border\r\n        );\r\n        background-clip: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-clip,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-clip\r\n        );\r\n        border-radius: var(\r\n          --afui-tabs-content-scrollbar-thumb-border-radius,\r\n          @default-afui-tabs-content-scrollbar-thumb-border-radius\r\n        );\r\n        background-color: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-color,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-color\r\n        );\r\n      }\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./tabs.component.less"
                 }
             ],
@@ -594,17 +521,16 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 35
+                "line": 31
             },
             "implements": [
-                "AfterViewInit",
-                "OnChanges"
+                "AfterViewInit"
             ],
-            "templateData": "<!-- <mat-toolbar class=\"example-header\">Header</mat-toolbar> -->\r\n\r\n<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav\r\n    #sidenav\r\n    mode=\"side\"\r\n    opened\r\n    class=\"example-sidenav\"\r\n    [fixedInViewport]=\"false\"\r\n    [fixedTopGap]=\"0\"\r\n    [fixedBottomGap]=\"0\"\r\n  >\r\n    <tab\r\n      svgIconName=\"sdk_assignment\"\r\n      label=\"הקצאות סדכ\"\r\n      [isActive]=\"selectedSectionId === 0\"\r\n      (click)=\"scrollTo(0)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"reserve\"\r\n      label=\"שריונים\"\r\n      [isActive]=\"selectedSectionId === 1\"\r\n      (click)=\"scrollTo(1)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"areas\"\r\n      label=\"אזורים ומבנים\"\r\n      [isActive]=\"selectedSectionId === 2\"\r\n      (click)=\"scrollTo(2)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"assignments\"\r\n      label=\"הקצאות\"\r\n      [isActive]=\"selectedSectionId === 3\"\r\n      (click)=\"scrollTo(3)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"remarks\"\r\n      label=\"הערות\"\r\n      [isActive]=\"selectedSectionId === 4\"\r\n      (click)=\"scrollTo(4)\"\r\n    ></tab>\r\n    <tab\r\n      svgIconName=\"advanced_instructions\"\r\n      label=\"הנחיות מתקדמות\"\r\n      [isActive]=\"selectedSectionId === 5\"\r\n      (click)=\"scrollTo(5)\"\r\n    ></tab>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content #appScrollEvent>\r\n    <ng-container *ngFor=\"let index_tab of [0, 1, 2, 3, 4, 5]\">\r\n      <ng-container\r\n        *ngTemplateOutlet=\"content; context: { index_tab }\"\r\n      ></ng-container\r\n    ></ng-container>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n\r\n<ng-template #content let-index_tab=\"index_tab\">\r\n  <section #section [id]=\"index_tab\">\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{\r\n      index_tab\r\n    }}\r\n    content{{ index_tab }} content{{ index_tab }} content{{ index_tab }}\r\n  </section>\r\n</ng-template>\r\nhh{{ tabs[0] }}\r\n<ng-container\r\n  *ngIf=\"tabs[0] && tabs[0].template\"\r\n  [ngTemplateOutlet]=\"tabs[0].template\"\r\n></ng-container>\r\n<!--<ng-template #content5>{{ templateBinding(2) }}</ng-template> -->\r\n"
+            "templateData": "<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav\r\n    #sidenav\r\n    mode=\"side\"\r\n    opened\r\n    class=\"example-sidenav\"\r\n    [fixedInViewport]=\"false\"\r\n    [fixedTopGap]=\"0\"\r\n    [fixedBottomGap]=\"0\"\r\n  >\r\n    <tab\r\n    class=\"tab\"\r\n      *ngFor=\"let tab of tabs; let index = index\"\r\n      [svgIconName]=\"tab.svgIconName\"\r\n      [label]=\"tab.label\"\r\n      [isActive]=\"selectedSectionId === index\"\r\n      (click)=\"scrollTo(index)\"\r\n    ></tab>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content #appScrollEvent>\r\n    <ng-container *ngFor=\"let tab of tabs; let index = index\">\r\n      <section #section [id]=\"index\">\r\n        <ng-container [ngTemplateOutlet]=\"tab.template\"></ng-container>\r\n      </section>\r\n    </ng-container>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n"
         },
         {
             "name": "TabsMockComponent",
-            "id": "component-TabsMockComponent-bf39d403083905c27a464a32e718f4e7fd065bb7e8669be5eb37740cfdd266ee7f9aa3350e3cde98159fcd03472c62bf91e70fabbb92abbf0eb3f5fa434250d0",
+            "id": "component-TabsMockComponent-fe1b996d781aa768058dd06e66ed1133f439fee3b4a53593e4c419b7a8724cfa1b2e95dab3b917d966bfb8ecdc4046e7dc1587909e3616cd93439ea2afec57c4",
             "file": "src/app/tabs/tabs-mock.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -613,9 +539,7 @@
             "providers": [],
             "selector": "app-tabs-mock",
             "styleUrls": [],
-            "styles": [
-                ""
-            ],
+            "styles": [],
             "template": "<app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\n   <ng-template #content0>{{ templateBinding(0) }}</ng-template>\n   <ng-template #content1>{{ templateBinding(1) }}</ng-template>\n   <ng-template #content2>{{ templateBinding(2) }}</ng-template>\n   <ng-template #content3>{{ templateBinding(3) }}</ng-template>\n   <ng-template #content4>{{ templateBinding(4) }}</ng-template>\n   <ng-template #content5>{{ templateBinding(5) }}</ng-template>",
             "templateUrl": [],
             "viewProviders": [],
@@ -629,7 +553,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 26,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -644,7 +568,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 27,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -659,7 +583,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 28,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -674,7 +598,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 29,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -689,7 +613,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 30,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -704,7 +628,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 32,
+                    "line": 31,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -720,7 +644,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 24
                 },
                 {
                     "name": "tabs",
@@ -729,7 +653,7 @@
                     "type": "Tab[]",
                     "optional": false,
                     "description": "",
-                    "line": 33
+                    "line": 32
                 },
                 {
                     "name": "templateBinding",
@@ -739,7 +663,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 26
+                    "line": 25
                 }
             ],
             "methodsClass": [
@@ -749,7 +673,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 34,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -761,10 +685,10 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  ChangeDetectionStrategy,\r\n  ChangeDetectorRef,\r\n  Component,\r\n  TemplateRef,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { Tab } from '../models/tab.interface';\r\nimport { templateBinding } from './template-binding';\r\n\r\n@Component({\r\n  selector: 'app-tabs-mock',\r\n  template: ` <app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\r\n\r\n    <ng-template #content0>{{ templateBinding(0) }}</ng-template>\r\n    <ng-template #content1>{{ templateBinding(1) }}</ng-template>\r\n    <ng-template #content2>{{ templateBinding(2) }}</ng-template>\r\n    <ng-template #content3>{{ templateBinding(3) }}</ng-template>\r\n    <ng-template #content4>{{ templateBinding(4) }}</ng-template>\r\n    <ng-template #content5>{{ templateBinding(5) }}</ng-template>`,\r\n  styles: [``],\r\n})\r\nexport class TabsMockComponent {\r\n  initialTabs: boolean = false;\r\n  templateBinding = templateBinding;\r\n  @ViewChild('content0') content0!: TemplateRef<any>;\r\n  @ViewChild('content1') content1!: TemplateRef<any>;\r\n  @ViewChild('content2') content2!: TemplateRef<any>;\r\n  @ViewChild('content3') content3!: TemplateRef<any>;\r\n  @ViewChild('content4') content4!: TemplateRef<any>;\r\n  @ViewChild('content5') content5!: TemplateRef<any>;\r\n  tabs!: Tab[];\r\n  ngAfterViewInit(): void {\r\n    this.tabs = [\r\n      {\r\n        svgIconName: 'sdk_assignment',\r\n        label: 'הקצאות סדכ',\r\n        template: this.content0,\r\n      },\r\n      { svgIconName: 'reserve', label: 'שריונים', template: this.content1 },\r\n      { svgIconName: 'areas', label: 'אזורים ומבנים', template: this.content2 },\r\n      { svgIconName: 'assignments', label: 'הקצאות', template: this.content3 },\r\n      { svgIconName: 'remarks', label: 'הערות', template: this.content4 },\r\n      {\r\n        svgIconName: 'advanced_instructions',\r\n        label: 'הנחיות מתקדמות',\r\n        template: this.content5,\r\n      },\r\n    ];\r\n    this.initialTabs = true;\r\n    this.changeDetectorRef.detectChanges();\r\n  }\r\n\r\n  constructor(private changeDetectorRef: ChangeDetectorRef) {}\r\n}\r\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  ChangeDetectionStrategy,\r\n  ChangeDetectorRef,\r\n  Component,\r\n  TemplateRef,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { Tab } from '../models/tab.interface';\r\nimport { templateBinding } from './template-binding';\r\n\r\n@Component({\r\n  selector: 'app-tabs-mock',\r\n  template: ` <app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\r\n\r\n    <ng-template #content0>{{ templateBinding(0) }}</ng-template>\r\n    <ng-template #content1>{{ templateBinding(1) }}</ng-template>\r\n    <ng-template #content2>{{ templateBinding(2) }}</ng-template>\r\n    <ng-template #content3>{{ templateBinding(3) }}</ng-template>\r\n    <ng-template #content4>{{ templateBinding(4) }}</ng-template>\r\n    <ng-template #content5>{{ templateBinding(5) }}</ng-template>`,\r\n})\r\nexport class TabsMockComponent {\r\n  initialTabs: boolean = false;\r\n  templateBinding = templateBinding;\r\n  @ViewChild('content0') content0!: TemplateRef<any>;\r\n  @ViewChild('content1') content1!: TemplateRef<any>;\r\n  @ViewChild('content2') content2!: TemplateRef<any>;\r\n  @ViewChild('content3') content3!: TemplateRef<any>;\r\n  @ViewChild('content4') content4!: TemplateRef<any>;\r\n  @ViewChild('content5') content5!: TemplateRef<any>;\r\n  tabs!: Tab[];\r\n  ngAfterViewInit(): void {\r\n    this.tabs = [\r\n      {\r\n        svgIconName: 'sdk_assignment',\r\n        label: 'הקצאות סדכ',\r\n        template: this.content0,\r\n      },\r\n      { svgIconName: 'reserve', label: 'שריונים', template: this.content1 },\r\n      { svgIconName: 'areas', label: 'אזורים ומבנים', template: this.content2 },\r\n      { svgIconName: 'assignments', label: 'הקצאות', template: this.content3 },\r\n      { svgIconName: 'remarks', label: 'הערות', template: this.content4 },\r\n      {\r\n        svgIconName: 'advanced_instructions',\r\n        label: 'הנחיות מתקדמות',\r\n        template: this.content5,\r\n      },\r\n    ];\r\n    this.initialTabs = true;\r\n    this.changeDetectorRef.detectChanges();\r\n  }\r\n\r\n  constructor(private changeDetectorRef: ChangeDetectorRef) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n",
+            "stylesData": "",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -778,7 +702,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 53,
+                "line": 52,
                 "jsdoctags": [
                     {
                         "name": "changeDetectorRef",
@@ -796,13 +720,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-16df472e9e993d46e4d4a327df97aa47556f8c3396778f589cf33b4b3ad99b480500107c5e8c387c95c04a81d9a3a7235d5f3e3b82004f25f3ffa7ead6fe474a",
+            "id": "module-AppModule-474e3c3a26e3bbb6a82a5d1d6510935764454ee3dcd626318f616b33c021483890d71487b6fd67ed6fc8b5625324db2257d2b876562f8ac0be435d61b034a137",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\r\nimport { IconModule } from './shared/icon.module';\r\nimport { DemoMaterialModule } from './shared/material.module';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\nimport { TabComponent } from './tab-component/tab.component';\r\nimport { TabsMockComponent } from './tabs/tabs-mock.component';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent, ButtonComponent, TabsComponent, TabComponent, TabsMockComponent],\r\n  imports: [\r\n    IconModule,\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    DemoMaterialModule,\r\n    HttpClientModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
+            "sourceCode": "import { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { DragScrollModule } from 'ngx-drag-scroll';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\r\nimport { IconModule } from './shared/icon.module';\r\nimport { DemoMaterialModule } from './shared/material.module';\r\nimport { TabComponent } from './tab-component/tab.component';\r\nimport { TabsMockComponent } from './tabs/tabs-mock.component';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    ButtonComponent,\r\n    TabsComponent,\r\n    TabComponent,\r\n    TabsMockComponent,\r\n  ],\r\n  imports: [\r\n    IconModule,\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    DemoMaterialModule,\r\n    HttpClientModule,\r\n    DragScrollModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -999,7 +923,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tab-component/tab.component.stories.ts",
+                "file": "src/app/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1009,7 +933,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tabs/tabs.component.stories.ts",
+                "file": "src/app/tab-component/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1098,21 +1022,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tab-component/tab.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<TabComponent>",
-                "defaultValue": "(args: TabComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<TabsComponent>",
                 "defaultValue": "(args: TabsComponent) => ({\r\n  template: `\r\n  <app-tabs-mock></app-tabs-mock>\r\n`,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab-component/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TabComponent>",
+                "defaultValue": "(args: TabComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "templateBinding",
@@ -1122,7 +1046,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "(index_tab: number) => `\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content${index_tab}\r\n`"
+                "defaultValue": "(index_tab: number) => `\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n`"
             }
         ],
         "functions": [],
@@ -1289,7 +1213,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "(index_tab: number) => `\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content{{\r\n    index_tab\r\n  }}\r\n  content${index_tab} content${index_tab} content${index_tab}\r\n`"
+                    "defaultValue": "(index_tab: number) => `\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n`"
                 }
             ]
         },
@@ -1466,7 +1390,7 @@
                 "linktype": "component",
                 "name": "TabsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/17",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
