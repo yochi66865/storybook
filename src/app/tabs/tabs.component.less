@@ -47,6 +47,10 @@ app-tabs {
       tab:not(:last-child) {
         margin: var(--afui-tabs-tab-margin, @default-afui-tabs-tab-margin);
       }
+
+      & > *{
+        flex: 1;
+      }
     }
 
     .content-container {
