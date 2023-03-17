@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './button/button.component';
 import { IconModule } from './shared/icon.module';
 import { DemoMaterialModule } from './shared/material.module';
-import { TabComponent } from './tab-component/tab.component';
+import { TabComponent } from './tab/tab.component';
 import { TabsMockComponent } from './tabs/tabs-mock.component';
 import { TabsComponent } from './tabs/tabs.component';
 

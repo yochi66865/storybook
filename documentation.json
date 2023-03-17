@@ -222,7 +222,7 @@
         {
             "name": "TabComponent",
             "id": "component-TabComponent-ffb290bdf13d00101387a2d66b8a0f889d36de25e9535abb1891c6ed462993e32f630ff23bef855f128878002a4552482f2d945fde660ec94917bcd61440bbab",
-            "file": "src/app/tab-component/tab.component.ts",
+            "file": "src/app/tab/tab.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -310,7 +310,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".menu-item {\r\n  min-width: 74px;\r\n  padding: 0px !important;\r\n  background-color: var(--gray);\r\n  border: none;\r\n  min-height: 68.64px;\r\n  opacity: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .menu-content {\r\n    font-family: Arial, Helvetica, sans-serif;\r\n    font-size: 9px;\r\n    font-weight: 700;\r\n  }\r\n\r\n  .menu-icon {\r\n    border-radius: 4px;\r\n    width: 21px;\r\n    height: 21px;\r\n    padding: 3.5px;\r\n  }\r\n\r\n  &.active {\r\n    color: var(--praimery);\r\n    .menu-icon {\r\n      background-color: var(--dark-praimery);\r\n      color: var(--white);\r\n    }\r\n\r\n    &::after {\r\n      content: \"\";\r\n      position: absolute;\r\n      left: 0;\r\n      border-left: 7px solid black;\r\n      border-left-color: var(--white);\r\n      border-top: 9px solid transparent;\r\n      border-bottom: 9px solid transparent;\r\n    }\r\n  }\r\n\r\n  &:not(active) {\r\n    color: var(--black);\r\n    .menu-icon {\r\n      background-color: var(--dark-gray);\r\n    }\r\n  }\r\n}\r\n.menu-item {\r\n  min-width: 74px;\r\n  padding: 0px !important;\r\n  background-color: var(--gray);\r\n  border: none;\r\n  min-height: 68.64px;\r\n  opacity: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n\r\n  .menu-content {\r\n    font-family: Arial, Helvetica, sans-serif;\r\n    font-size: 9px;\r\n    font-weight: 700;\r\n  }\r\n\r\n  .menu-icon {\r\n    border-radius: 4px;\r\n    width: 21px;\r\n    height: 21px;\r\n    padding: 3.5px;\r\n  }\r\n\r\n  &.active {\r\n    color: var(--praimery);\r\n    .menu-icon {\r\n      background-color: var(--dark-praimery);\r\n      color: var(--white);\r\n    }\r\n  }\r\n\r\n  &:not(active) {\r\n    color: var(--black);\r\n    .menu-icon {\r\n      background-color: var(--dark-gray);\r\n    }\r\n  }\r\n}\r\n",
+                    "data": ".tab {\r\n  min-width: 74px;\r\n  padding: 0px !important;\r\n  border: none;\r\n  min-height: 68.64px;\r\n  opacity: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: relative;\r\n\r\n  .tab-content {\r\n    font-family: Arial, Helvetica, sans-serif;\r\n    font-size: 9px;\r\n    font-weight: 700;\r\n  }\r\n\r\n  .tab-icon {\r\n    border-radius: 4px;\r\n    width: 21px;\r\n    height: 21px;\r\n    padding: 3.5px;\r\n  }\r\n\r\n  &.active {\r\n    color: var(--praimery);\r\n    .menu-icon {\r\n      background-color: var(--dark-praimery);\r\n      color: var(--white);\r\n    }\r\n\r\n    &::after {\r\n      content: \"\";\r\n      position: absolute;\r\n      left: 0;\r\n      border-left: 7px solid black;\r\n      border-left-color: var(--white);\r\n      border-top: 9px solid transparent;\r\n      border-bottom: 9px solid transparent;\r\n    }\r\n  }\r\n\r\n  &:not(active) {\r\n    color: var(--black);\r\n    .tab-icon {\r\n      background-color: var(--dark-gray);\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./tab.component.less"
                 }
             ],
@@ -326,7 +326,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<button\r\n  mat-button\r\n  class=\"menu-item\"\r\n  [class.active]=\"isActive\"\r\n  (click)=\"onClick()\"\r\n>\r\n  <mat-icon class=\"menu-icon\" [svgIcon]=\"svgIconName\"></mat-icon>\r\n  <label class=\"menu-content\">{{ label }}</label>\r\n</button>\r\n"
+            "templateData": "<button\r\n  mat-button\r\n  class=\"tab\"\r\n  [class.active]=\"isActive\"\r\n  (click)=\"onClick()\"\r\n>\r\n  <mat-icon class=\"tab-icon\" [svgIcon]=\"svgIconName\"></mat-icon>\r\n  <label class=\"tab-content\">{{ label }}</label>\r\n</button>\r\n"
         },
         {
             "name": "TabsComponent",
@@ -510,7 +510,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@default-afui-tabs-height: 422px;\r\n@default-afui-tabs-width: 475px;\r\n@default-afui-tabs-border: 0.5px solid rosybrown;\r\n\r\n@default-afui-tabs-container-flex-direction: row;\r\n\r\n@default-afui-tabs-tabs-flex-direction: column;\r\n@default-afui-tabs-tabs-justify-content: space-between;\r\n@default-afui-tabs-tab-margin: 0 0 2px 0;\r\n\r\n@default-afui-tabs-content-background-color: var(--white);\r\n@default-afui-tabs-content-margin: 0 74px 0 0;\r\n@default-afui-tabs-content-padding: 30px 20px;\r\n@default-afui-tabs-content-height: 85%;\r\n@default-afui-tabs-content-overflow: auto;\r\n\r\n@default-afui-tabs-content-scrollbar-background-width: 16px;\r\n@default-afui-tabs-content-scrollbar-thumb-background-clip: padding-box;\r\n@default-afui-tabs-content-scrollbar-thumb-background-color: #dae1e8;\r\n@default-afui-tabs-content-scrollbar-thumb-border: 7px solid rgba(0, 0, 0, 0);\r\n@default-afui-tabs-content-scrollbar-thumb-border-radius: 10px;\r\n\r\n@default-afui-tabs-padding-between-contents: 50px;\r\n\r\napp-tabs {\r\n  height: var(--afui-tabs-height, @default-afui-tabs-height);\r\n  width: var(--afui-tabs-width, @default-afui-tabs-width);\r\n  border: var(--afui-tabs-border, @default-afui-tabs-border);\r\n  display: flex;\r\n\r\n  .mat-sidenav-container {\r\n    display: flex;\r\n    flex-direction: var(\r\n      --afui-tabs-container-flex-direction,\r\n      @default-afui-tabs-container-flex-direction\r\n    );\r\n    direction: rtl;\r\n\r\n    .mat-sidenav .mat-drawer-inner-container {\r\n      display: flex;\r\n      flex-direction: var(\r\n        --afui-tabs-tabs-flex-direction,\r\n        @default-afui-tabs-tabs-flex-direction\r\n      );\r\n      justify-content: var(\r\n        --afui-tabs-tabs-justify-content,\r\n        @default-afui-tabs-tabs-justify-content\r\n      );\r\n\r\n      .tab:not(:last-child) {\r\n        margin: var(--afui-tabs-tab-margin, @default-afui-tabs-tab-margin);\r\n      }\r\n    }\r\n\r\n    .mat-sidenav-content {\r\n      background-color: var(\r\n        --afui-tabs-content-background-color,\r\n        @default-afui-tabs-content-background-color\r\n      );\r\n      margin: var(\r\n        --afui-tabs-content-margin,\r\n        @default-afui-tabs-content-margin\r\n      ) !important;\r\n      padding: var(\r\n        --afui-tabs-content-padding,\r\n        @default-afui-tabs-content-padding\r\n      );\r\n      height: var(\r\n        --afui-tabs-content-height,\r\n        @default-afui-tabs-content-height\r\n      );\r\n      overflow: var(\r\n        --afui-tabs-content-overflow,\r\n        @default-afui-tabs-content-overflow\r\n      );\r\n\r\n      section:not(:last-child) {\r\n        padding-bottom: var(\r\n          --afui-tabs-padding-between-contents,\r\n          @default-afui-tabs-padding-between-contents\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar {\r\n        width: var(\r\n          --afui-tabs-content-scrollbar-background-width,\r\n          @default-afui-tabs-content-scrollbar-background-width\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar-thumb {\r\n        border: var(\r\n          --afui-tabs-content-scrollbar-thumb-border,\r\n          @default-afui-tabs-content-scrollbar-thumb-border\r\n        );\r\n        background-clip: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-clip,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-clip\r\n        );\r\n        border-radius: var(\r\n          --afui-tabs-content-scrollbar-thumb-border-radius,\r\n          @default-afui-tabs-content-scrollbar-thumb-border-radius\r\n        );\r\n        background-color: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-color,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-color\r\n        );\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+                    "data": "@default-afui-tabs-height: 422px;\r\n@default-afui-tabs-width: 475px;\r\n@default-afui-tabs-border: 0.5px solid rosybrown;\r\n\r\n@default-afui-tabs-container-flex-direction: row;\r\n\r\n@default-afui-tabs-tabs-flex-direction: column;\r\n@default-afui-tabs-tabs-justify-content: space-between;\r\n@default-afui-tabs-tab-margin: 0 0 2px 0;\r\n\r\n@default-afui-tabs-content-background-color: var(--white);\r\n@default-afui-tabs-content-padding: 20px 30px 20px 15px;\r\n@default-afui-tabs-content-overflow: auto;\r\n\r\n@default-afui-tabs-content-scrollbar-background-width: 16px;\r\n@default-afui-tabs-content-scrollbar-thumb-background-clip: padding-box;\r\n@default-afui-tabs-content-scrollbar-thumb-background-color: #dae1e8;\r\n@default-afui-tabs-content-scrollbar-thumb-border: 7px solid rgba(0, 0, 0, 0);\r\n@default-afui-tabs-content-scrollbar-thumb-border-radius: 10px;\r\n\r\n@default-afui-tabs-padding-between-contents: 50px;\r\n\r\napp-tabs {\r\n  height: var(--afui-tabs-height, @default-afui-tabs-height);\r\n  width: var(--afui-tabs-width, @default-afui-tabs-width);\r\n  border: var(--afui-tabs-border, @default-afui-tabs-border);\r\n  display: flex;\r\n\r\n  .example-container {\r\n    display: flex;\r\n    flex-direction: var(\r\n      --afui-tabs-container-flex-direction,\r\n      @default-afui-tabs-container-flex-direction\r\n    );\r\n    direction: rtl;\r\n\r\n    .tabs-container {\r\n      display: flex;\r\n      flex-direction: var(\r\n        --afui-tabs-tabs-flex-direction,\r\n        @default-afui-tabs-tabs-flex-direction\r\n      );\r\n      justify-content: var(\r\n        --afui-tabs-tabs-justify-content,\r\n        @default-afui-tabs-tabs-justify-content\r\n      );\r\n\r\n      tab:not(:last-child) {\r\n        margin: var(--afui-tabs-tab-margin, @default-afui-tabs-tab-margin);\r\n      }\r\n    }\r\n\r\n    .content-container {\r\n      background-color: var(\r\n        --afui-tabs-content-background-color,\r\n        @default-afui-tabs-content-background-color\r\n      );\r\n      padding: var(\r\n        --afui-tabs-content-padding,\r\n        @default-afui-tabs-content-padding\r\n      );\r\n      overflow: var(\r\n        --afui-tabs-content-overflow,\r\n        @default-afui-tabs-content-overflow\r\n      );\r\n\r\n      section:not(:last-child) {\r\n        padding-bottom: var(\r\n          --afui-tabs-padding-between-contents,\r\n          @default-afui-tabs-padding-between-contents\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar {\r\n        width: var(\r\n          --afui-tabs-content-scrollbar-background-width,\r\n          @default-afui-tabs-content-scrollbar-background-width\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar-thumb {\r\n        border: var(\r\n          --afui-tabs-content-scrollbar-thumb-border,\r\n          @default-afui-tabs-content-scrollbar-thumb-border\r\n        );\r\n        background-clip: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-clip,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-clip\r\n        );\r\n        border-radius: var(\r\n          --afui-tabs-content-scrollbar-thumb-border-radius,\r\n          @default-afui-tabs-content-scrollbar-thumb-border-radius\r\n        );\r\n        background-color: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-color,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-color\r\n        );\r\n      }\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./tabs.component.less"
                 }
             ],
@@ -526,7 +526,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mat-sidenav-container class=\"example-container\">\r\n  <mat-sidenav\r\n    #sidenav\r\n    mode=\"side\"\r\n    opened\r\n    class=\"example-sidenav\"\r\n    [fixedInViewport]=\"false\"\r\n    [fixedTopGap]=\"0\"\r\n    [fixedBottomGap]=\"0\"\r\n  >\r\n    <tab\r\n    class=\"tab\"\r\n      *ngFor=\"let tab of tabs; let index = index\"\r\n      [svgIconName]=\"tab.svgIconName\"\r\n      [label]=\"tab.label\"\r\n      [isActive]=\"selectedSectionId === index\"\r\n      (click)=\"scrollTo(index)\"\r\n    ></tab>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content #appScrollEvent>\r\n    <ng-container *ngFor=\"let tab of tabs; let index = index\">\r\n      <section #section [id]=\"index\">\r\n        <ng-container [ngTemplateOutlet]=\"tab.template\"></ng-container>\r\n      </section>\r\n    </ng-container>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n"
+            "templateData": "<div class=\"example-container\">\r\n  <div class=\"tabs-container\">\r\n    <tab\r\n      *ngFor=\"let tab of tabs; let index = index\"\r\n      [svgIconName]=\"tab.svgIconName\"\r\n      [label]=\"tab.label\"\r\n      [isActive]=\"selectedSectionId === index\"\r\n      (click)=\"scrollTo(index)\"\r\n    ></tab>\r\n  </div>\r\n  <div class=\"content-container\" #appScrollEvent>\r\n    <ng-container *ngFor=\"let tab of tabs; let index = index\">\r\n      <section #section [id]=\"index\">\r\n        <ng-container [ngTemplateOutlet]=\"tab.template\"></ng-container>\r\n      </section>\r\n    </ng-container>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "TabsMockComponent",
@@ -720,13 +720,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-474e3c3a26e3bbb6a82a5d1d6510935764454ee3dcd626318f616b33c021483890d71487b6fd67ed6fc8b5625324db2257d2b876562f8ac0be435d61b034a137",
+            "id": "module-AppModule-10477030aa578b3e2db94a520e28f6d019ee84b623e8a6db4b080d34662d41c7aa8f9b0549efba0e43722eb84a71ba08fb5ce34c0f4ba2ce0343dcec5ea87e65",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { DragScrollModule } from 'ngx-drag-scroll';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\r\nimport { IconModule } from './shared/icon.module';\r\nimport { DemoMaterialModule } from './shared/material.module';\r\nimport { TabComponent } from './tab-component/tab.component';\r\nimport { TabsMockComponent } from './tabs/tabs-mock.component';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    ButtonComponent,\r\n    TabsComponent,\r\n    TabComponent,\r\n    TabsMockComponent,\r\n  ],\r\n  imports: [\r\n    IconModule,\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    DemoMaterialModule,\r\n    HttpClientModule,\r\n    DragScrollModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
+            "sourceCode": "import { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { DragScrollModule } from 'ngx-drag-scroll';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { ButtonComponent } from './button/button.component';\r\nimport { IconModule } from './shared/icon.module';\r\nimport { DemoMaterialModule } from './shared/material.module';\r\nimport { TabComponent } from './tab/tab.component';\r\nimport { TabsMockComponent } from './tabs/tabs-mock.component';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    ButtonComponent,\r\n    TabsComponent,\r\n    TabComponent,\r\n    TabsMockComponent,\r\n  ],\r\n  imports: [\r\n    IconModule,\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    DemoMaterialModule,\r\n    HttpClientModule,\r\n    DragScrollModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -903,7 +903,7 @@
                 "name": "ActiveTag",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tab-component/tab.component.stories.ts",
+                "file": "src/app/tab/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -923,7 +923,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tabs/tabs.component.stories.ts",
+                "file": "src/app/tab/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -933,7 +933,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tab-component/tab.component.stories.ts",
+                "file": "src/app/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1022,21 +1022,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tabs/tabs.component.stories.ts",
+                "file": "src/app/tab/tab.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<TabsComponent>",
-                "defaultValue": "(args: TabsComponent) => ({\r\n  template: `\r\n  <app-tabs-mock></app-tabs-mock>\r\n`,\r\n})"
+                "type": "Story<TabComponent>",
+                "defaultValue": "(args: TabComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tab-component/tab.component.stories.ts",
+                "file": "src/app/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<TabComponent>",
-                "defaultValue": "(args: TabComponent) => ({\r\n  props: args,\r\n})"
+                "type": "Story<TabsComponent>",
+                "defaultValue": "(args: TabsComponent) => ({\r\n  template: `\r\n  <app-tabs-mock></app-tabs-mock>\r\n`,\r\n})"
             },
             {
                 "name": "templateBinding",
@@ -1053,12 +1053,12 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "src/app/tab-component/tab.component.stories.ts": [
+            "src/app/tab/tab.component.stories.ts": [
                 {
                     "name": "ActiveTag",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/tab-component/tab.component.stories.ts",
+                    "file": "src/app/tab/tab.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1068,7 +1068,7 @@
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/tab-component/tab.component.stories.ts",
+                    "file": "src/app/tab/tab.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1078,7 +1078,7 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/tab-component/tab.component.stories.ts",
+                    "file": "src/app/tab/tab.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<TabComponent>",
@@ -1317,7 +1317,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/tab-component/tab.component.stories.ts",
+                "filePath": "src/app/tab/tab.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1327,7 +1327,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/tab-component/tab.component.stories.ts",
+                "filePath": "src/app/tab/tab.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1337,7 +1337,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/tab-component/tab.component.stories.ts",
+                "filePath": "src/app/tab/tab.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1347,7 +1347,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/tab-component/tab.component.ts",
+                "filePath": "src/app/tab/tab.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "TabComponent",

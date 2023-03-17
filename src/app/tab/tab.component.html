@@ -1,0 +1,9 @@
+<button
+  mat-button
+  class="tab"
+  [class.active]="isActive"
+  (click)="onClick()"
+>
+  <mat-icon class="tab-icon" [svgIcon]="svgIconName"></mat-icon>
+  <label class="tab-content">{{ label }}</label>
+</button>
