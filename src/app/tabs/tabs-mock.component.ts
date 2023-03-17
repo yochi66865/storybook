@@ -1,6 +1,4 @@
 import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   TemplateRef,
@@ -11,6 +9,14 @@ import { templateBinding } from './template-binding';
 
 @Component({
   selector: 'app-tabs-mock',
+  styles: [
+    `
+      app-tabs {
+        height: 422px;
+        width: 475px;
+      }
+    `,
+  ],
   template: ` <app-tabs *ngIf="initialTabs" [tabs]="tabs"></app-tabs>
 
     <ng-template #content0>{{ templateBinding(0) }}</ng-template>

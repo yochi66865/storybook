@@ -1,5 +1,3 @@
-@default-afui-tabs-height: 422px;
-@default-afui-tabs-width: 475px;
 @default-afui-tabs-border: 0.5px solid rosybrown;
 
 @default-afui-tabs-container-flex-direction: row;
@@ -21,8 +19,8 @@
 @default-afui-tabs-padding-between-contents: 50px;
 
 app-tabs {
-  height: var(--afui-tabs-height, @default-afui-tabs-height);
-  width: var(--afui-tabs-width, @default-afui-tabs-width);
+  height: 100%;
+  width: 100%;
   border: var(--afui-tabs-border, @default-afui-tabs-border);
   display: flex;
 
@@ -35,6 +33,7 @@ app-tabs {
     direction: rtl;
 
     .tabs-container {
+      flex: 1.25;
       display: flex;
       flex-direction: var(
         --afui-tabs-tabs-flex-direction,
@@ -51,6 +50,7 @@ app-tabs {
     }
 
     .content-container {
+      flex: 6;
       background-color: var(
         --afui-tabs-content-background-color,
         @default-afui-tabs-content-background-color
