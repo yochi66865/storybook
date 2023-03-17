@@ -61,5 +61,11 @@ export class IconModule {
         '../assets/icons/sdk-assignment.svg'
       )
     );
+    this.matIconRegistry.addSvgIcon(
+      `robot`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/icons/robot.svg'
+      )
+    );
   }
 }

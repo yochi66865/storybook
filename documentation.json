@@ -82,7 +82,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".middle {\r\n  height: 100vh;\r\n  padding-top: 50px;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n",
+                    "data": ".middle {\r\n  padding: 15ch 50ch;\r\n  display: flex;\r\n  justify-content: center;\r\n  height: 422px;\r\n  width: 475px;\r\n}\r\n",
                     "styleUrl": "./app.component.less"
                 }
             ],
@@ -220,15 +220,212 @@
             "templateData": "<button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>"
         },
         {
+            "name": "RecommendationsMenuComponent",
+            "id": "component-RecommendationsMenuComponent-cabd6ea121208707c1aab246569d780f87ba7e860bfd528c60453420bfbc56bb93711419f6726896001e54565fc1885dbcb247d5ba09e744b48b1895da1050d4",
+            "file": "src/app/recommendations-menu/recommendations-menu.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "afui-recommendations-menu",
+            "styleUrls": [
+                "./recommendations-menu.component.less"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./recommendations-menu.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "content0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content0'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content1'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content2'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content3",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content3'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content4",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content4'"
+                        }
+                    ]
+                },
+                {
+                    "name": "content5",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'content5'"
+                        }
+                    ]
+                },
+                {
+                    "name": "initialTabs",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "tabs",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Tab[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "templateBinding",
+                    "defaultValue": "templateBinding",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\r\n  ChangeDetectorRef,\r\n  Component,\r\n  TemplateRef,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { Tab } from '../models/tab.interface';\r\nimport { templateBinding } from '../tabs/template-binding';\r\n\r\n@Component({\r\n  selector: 'afui-recommendations-menu',\r\n  templateUrl: './recommendations-menu.component.html',\r\n  styleUrls: ['./recommendations-menu.component.less'],\r\n})\r\nexport class RecommendationsMenuComponent {\r\n  initialTabs: boolean = false;\r\n  templateBinding = templateBinding;\r\n  @ViewChild('content0') content0!: TemplateRef<any>;\r\n  @ViewChild('content1') content1!: TemplateRef<any>;\r\n  @ViewChild('content2') content2!: TemplateRef<any>;\r\n  @ViewChild('content3') content3!: TemplateRef<any>;\r\n  @ViewChild('content4') content4!: TemplateRef<any>;\r\n  @ViewChild('content5') content5!: TemplateRef<any>;\r\n  tabs!: Tab[];\r\n  ngAfterViewInit(): void {\r\n    this.tabs = [\r\n      {\r\n        svgIconName: 'robot',\r\n        label: \"ח. זרועית א'\",\r\n        template: this.content0,\r\n      },\r\n      {\r\n        svgIconName: 'reserve',\r\n        label: \"ח. זרועית ב'\",\r\n        template: this.content1,\r\n      },\r\n      { svgIconName: 'areas', label: \"ח. זרועית ג'\", template: this.content2 },\r\n    ];\r\n    this.initialTabs = true;\r\n    this.changeDetectorRef.detectChanges();\r\n  }\r\n\r\n  constructor(private changeDetectorRef: ChangeDetectorRef) {}\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "app-tabs {\r\n    height: 422px;\r\n    width: 475px;\r\n  }",
+                    "styleUrl": "./recommendations-menu.component.less"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 41,
+                "jsdoctags": [
+                    {
+                        "name": "changeDetectorRef",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\r\n\r\n<ng-template #content0>{{ templateBinding(0) }}</ng-template>\r\n<ng-template #content1>{{ templateBinding(1) }}</ng-template>\r\n<ng-template #content2>{{ templateBinding(2) }}</ng-template>\r\n"
+        },
+        {
             "name": "TabComponent",
-            "id": "component-TabComponent-ffb290bdf13d00101387a2d66b8a0f889d36de25e9535abb1891c6ed462993e32f630ff23bef855f128878002a4552482f2d945fde660ec94917bcd61440bbab",
+            "id": "component-TabComponent-fc281182183102d9a629fe41d48372214e4a5cad827fc1ad69ab33b7f1d03bcdeb243a58bccb3cf5d2d6badc831ff0ced3181d53fd56e2a8e6093a4e3c2412d6",
             "file": "src/app/tab/tab.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "tab",
+            "selector": "afui-tab",
             "styleUrls": [
                 "./tab.component.less"
             ],
@@ -306,11 +503,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'tab',\r\n  templateUrl: './tab.component.html',\r\n  styleUrls: ['./tab.component.less'],\r\n})\r\nexport class TabComponent implements OnInit {\r\n  @Input() svgIconName: string = '';\r\n  @Input() label: string = '';\r\n  @Input() isActive: boolean = false;\r\n  @Output() click: EventEmitter<void> = new EventEmitter();\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {}\r\n\r\n  onClick() {\r\n    this.click.emit();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'afui-tab',\r\n  templateUrl: './tab.component.html',\r\n  styleUrls: ['./tab.component.less'],\r\n})\r\nexport class TabComponent implements OnInit {\r\n  @Input() svgIconName: string = '';\r\n  @Input() label: string = '';\r\n  @Input() isActive: boolean = false;\r\n  @Output() click: EventEmitter<void> = new EventEmitter();\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {}\r\n\r\n  onClick() {\r\n    this.click.emit();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".tab {\r\n  min-width: 74px;\r\n  padding: 0px !important;\r\n  border: none;\r\n  min-height: 68.64px;\r\n  opacity: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  position: relative;\r\n\r\n  .tab-content {\r\n    font-family: Arial, Helvetica, sans-serif;\r\n    font-size: 9px;\r\n    font-weight: 700;\r\n  }\r\n\r\n  .tab-icon {\r\n    border-radius: 4px;\r\n    width: 21px;\r\n    height: 21px;\r\n    padding: 3.5px;\r\n  }\r\n\r\n  &.active {\r\n    color: var(--praimery);\r\n    .menu-icon {\r\n      background-color: var(--dark-praimery);\r\n      color: var(--white);\r\n    }\r\n\r\n    &::after {\r\n      content: \"\";\r\n      position: absolute;\r\n      left: 0;\r\n      border-left: 7px solid black;\r\n      border-left-color: var(--white);\r\n      border-top: 9px solid transparent;\r\n      border-bottom: 9px solid transparent;\r\n    }\r\n  }\r\n\r\n  &:not(active) {\r\n    color: var(--black);\r\n    .tab-icon {\r\n      background-color: var(--dark-gray);\r\n    }\r\n  }\r\n}\r\n",
+                    "data": "@default-afui-tab-border: none;\r\n@default-afui-tab-background-color: var(--gray);\r\n@default-afui-tab-color: var(--black);\r\n@default-afui-tab-active-color: var(--praimery);\r\n@default-afui-tab-flex-direction: column;\r\n@default-afui-tab-justify-content: center;\r\n@default-afui-tab-align-items: center;\r\n\r\n@default-afui-tab-content-font-family: Arial, Helvetica, sans-serif;\r\n@default-afui-tab-content-font-size: 9px;\r\n@default-afui-tab-content-font-weight: 700;\r\n\r\n@default-afui-tab-icon-width: 21px;\r\n@default-afui-tab-icon-height: 21px;\r\n@default-afui-tab-icon-background-color: var(--dark-gray);\r\n@default-afui-tab-icon-active-background-color: var(--dark-praimery);\r\n@default-afui-tab-icon-active-color: var(--white);\r\n@default-afui-tab-icon-border-radius: 4px;\r\n@default-afui-tab-icon-padding: 3.5px;\r\n\r\n@default-afui-tab-rectangle-display: inline;\r\n@default-afui-tab-rectangle-border-left: 7.5px solid var(--white);\r\n@default-afui-tab-rectangle-border-top-width: 9px;\r\n@default-afui-tab-rectangle-border-bottom-width: 8px;\r\n@default-afui-tab-rectangle-floating-right: auto;\r\n@default-afui-tab-rectangle-floating-left: 0;\r\n\r\n.tab {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: relative;\r\n  border: var(--afui-tab-border, @default-afui-tab-border);\r\n  background-color: var(--afui-tab-background-color, @default-afui-tab-background-color);\r\n  color: var(--afui-tab-color, @default-afui-tab-color);\r\n  display: flex;\r\n  flex-direction: var(--afui-tab-flex-direction, @default-afui-tab-flex-direction);\r\n  justify-content: var(--afui-tab-justify-content, @default-afui-tab-justify-content);\r\n  align-items: var(--afui-tab-align-items, @default-afui-tab-align-items);\r\n\r\n  .tab-content {\r\n    font-family: var(--afui-tab-content-font-family, @default-afui-tab-content-font-family);\r\n    font-size: var(--afui-tab-content-font-size, @default-afui-tab-content-font-size);\r\n    font-weight: var(--afui-tab-content-font-weight, @default-afui-tab-content-font-weight);\r\n  }\r\n\r\n  .tab-icon {\r\n    width: var(afui-tab-icon-width, @default-afui-tab-icon-width);\r\n    height: var(afui-tab-icon-height, @default-afui-tab-icon-height);\r\n    border-radius: var(afui-tab-icon-border-radius, @default-afui-tab-icon-border-radius);\r\n    padding: var(afui-tab-icon-padding, @default-afui-tab-icon-padding);\r\n  }\r\n\r\n  &.active {\r\n    color: var(--afui-tab-active-color, @default-afui-tab-active-color);\r\n    .tab-icon {\r\n      background-color: var(--afui-tab-icon-active-background-color, @default-afui-tab-icon-active-background-color);\r\n      color: var(--afui-tab-icon-active-color, @default-afui-tab-icon-active-color);\r\n    }\r\n\r\n    &::after {\r\n      content: \"\";\r\n      display: var(--afui-tab-rectangle-display, @default-afui-tab-rectangle-display);\r\n      position: absolute;\r\n      right: var(--afui-tab-rectangle-floating-right, @default-afui-tab-rectangle-floating-right);\r\n      left: var(--afui-tab-rectangle-floating-left, @default-afui-tab-rectangle-floating-left);\r\n      border-left: var(--afui-tab-rectangle-border-left, @default-afui-tab-rectangle-border-left);\r\n      border-top: var(--afui-tab-rectangle-border-top-width, @default-afui-tab-rectangle-border-top-width)\r\n            solid transparent;\r\n      border-bottom: var(--afui-tab-rectangle-border-bottom-width, @default-afui-tab-rectangle-border-bottom-width) \r\n           solid transparent;\r\n    }\r\n  }\r\n  \r\n  &:not(active) {\r\n    .tab-icon {\r\n      background-color: var(--afui-tab-icon-background-color, @default-afui-tab-icon-background-color);\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./tab.component.less"
                 }
             ],
@@ -510,7 +707,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@default-afui-tabs-height: 422px;\r\n@default-afui-tabs-width: 475px;\r\n@default-afui-tabs-border: 0.5px solid rosybrown;\r\n\r\n@default-afui-tabs-container-flex-direction: row;\r\n\r\n@default-afui-tabs-tabs-flex-direction: column;\r\n@default-afui-tabs-tabs-justify-content: space-between;\r\n@default-afui-tabs-tab-margin: 0 0 2px 0;\r\n\r\n@default-afui-tabs-content-background-color: var(--white);\r\n@default-afui-tabs-content-padding: 20px 30px 20px 15px;\r\n@default-afui-tabs-content-overflow: auto;\r\n\r\n@default-afui-tabs-content-scrollbar-background-width: 16px;\r\n@default-afui-tabs-content-scrollbar-thumb-background-clip: padding-box;\r\n@default-afui-tabs-content-scrollbar-thumb-background-color: #dae1e8;\r\n@default-afui-tabs-content-scrollbar-thumb-border: 7px solid rgba(0, 0, 0, 0);\r\n@default-afui-tabs-content-scrollbar-thumb-border-radius: 10px;\r\n\r\n@default-afui-tabs-padding-between-contents: 50px;\r\n\r\napp-tabs {\r\n  height: var(--afui-tabs-height, @default-afui-tabs-height);\r\n  width: var(--afui-tabs-width, @default-afui-tabs-width);\r\n  border: var(--afui-tabs-border, @default-afui-tabs-border);\r\n  display: flex;\r\n\r\n  .example-container {\r\n    display: flex;\r\n    flex-direction: var(\r\n      --afui-tabs-container-flex-direction,\r\n      @default-afui-tabs-container-flex-direction\r\n    );\r\n    direction: rtl;\r\n\r\n    .tabs-container {\r\n      display: flex;\r\n      flex-direction: var(\r\n        --afui-tabs-tabs-flex-direction,\r\n        @default-afui-tabs-tabs-flex-direction\r\n      );\r\n      justify-content: var(\r\n        --afui-tabs-tabs-justify-content,\r\n        @default-afui-tabs-tabs-justify-content\r\n      );\r\n\r\n      tab:not(:last-child) {\r\n        margin: var(--afui-tabs-tab-margin, @default-afui-tabs-tab-margin);\r\n      }\r\n    }\r\n\r\n    .content-container {\r\n      background-color: var(\r\n        --afui-tabs-content-background-color,\r\n        @default-afui-tabs-content-background-color\r\n      );\r\n      padding: var(\r\n        --afui-tabs-content-padding,\r\n        @default-afui-tabs-content-padding\r\n      );\r\n      overflow: var(\r\n        --afui-tabs-content-overflow,\r\n        @default-afui-tabs-content-overflow\r\n      );\r\n\r\n      section:not(:last-child) {\r\n        padding-bottom: var(\r\n          --afui-tabs-padding-between-contents,\r\n          @default-afui-tabs-padding-between-contents\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar {\r\n        width: var(\r\n          --afui-tabs-content-scrollbar-background-width,\r\n          @default-afui-tabs-content-scrollbar-background-width\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar-thumb {\r\n        border: var(\r\n          --afui-tabs-content-scrollbar-thumb-border,\r\n          @default-afui-tabs-content-scrollbar-thumb-border\r\n        );\r\n        background-clip: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-clip,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-clip\r\n        );\r\n        border-radius: var(\r\n          --afui-tabs-content-scrollbar-thumb-border-radius,\r\n          @default-afui-tabs-content-scrollbar-thumb-border-radius\r\n        );\r\n        background-color: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-color,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-color\r\n        );\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+                    "data": "@default-afui-tabs-border: 0.5px solid rosybrown;\r\n\r\n@default-afui-tabs-container-flex-direction: row;\r\n\r\n@default-afui-tabs-tabs-flex-direction: column;\r\n@default-afui-tabs-tabs-justify-content: space-between;\r\n@default-afui-tabs-tab-margin: 0 0 2px 0;\r\n\r\n@default-afui-tabs-content-background-color: var(--white);\r\n@default-afui-tabs-content-padding: 20px 30px 20px 15px;\r\n@default-afui-tabs-content-overflow: auto;\r\n\r\n@default-afui-tabs-content-scrollbar-background-width: 16px;\r\n@default-afui-tabs-content-scrollbar-thumb-background-clip: padding-box;\r\n@default-afui-tabs-content-scrollbar-thumb-background-color: #dae1e8;\r\n@default-afui-tabs-content-scrollbar-thumb-border: 7px solid rgba(0, 0, 0, 0);\r\n@default-afui-tabs-content-scrollbar-thumb-border-radius: 10px;\r\n\r\n@default-afui-tabs-padding-between-contents: 50px;\r\n\r\napp-tabs {\r\n  height: 100%;\r\n  width: 100%;\r\n  border: var(--afui-tabs-border, @default-afui-tabs-border);\r\n  display: flex;\r\n\r\n  .example-container {\r\n    display: flex;\r\n    flex-direction: var(\r\n      --afui-tabs-container-flex-direction,\r\n      @default-afui-tabs-container-flex-direction\r\n    );\r\n    direction: rtl;\r\n\r\n    .tabs-container {\r\n      flex: 1.25;\r\n      display: flex;\r\n      gap: 2px;\r\n      flex-direction: var(\r\n        --afui-tabs-tabs-flex-direction,\r\n        @default-afui-tabs-tabs-flex-direction\r\n      );\r\n      justify-content: var(\r\n        --afui-tabs-tabs-justify-content,\r\n        @default-afui-tabs-tabs-justify-content\r\n      );\r\n\r\n      tab:not(:last-child) {\r\n        margin: var(--afui-tabs-tab-margin, @default-afui-tabs-tab-margin);\r\n      }\r\n\r\n      & > * {\r\n        height: 100%;\r\n      }\r\n    }\r\n\r\n    .content-container {\r\n      flex: 6;\r\n      background-color: var(\r\n        --afui-tabs-content-background-color,\r\n        @default-afui-tabs-content-background-color\r\n      );\r\n      padding: var(\r\n        --afui-tabs-content-padding,\r\n        @default-afui-tabs-content-padding\r\n      );\r\n      overflow: var(\r\n        --afui-tabs-content-overflow,\r\n        @default-afui-tabs-content-overflow\r\n      );\r\n\r\n      section:not(:last-child) {\r\n        padding-bottom: var(\r\n          --afui-tabs-padding-between-contents,\r\n          @default-afui-tabs-padding-between-contents\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar {\r\n        width: var(\r\n          --afui-tabs-content-scrollbar-background-width,\r\n          @default-afui-tabs-content-scrollbar-background-width\r\n        );\r\n      }\r\n\r\n      &::-webkit-scrollbar-thumb {\r\n        border: var(\r\n          --afui-tabs-content-scrollbar-thumb-border,\r\n          @default-afui-tabs-content-scrollbar-thumb-border\r\n        );\r\n        background-clip: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-clip,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-clip\r\n        );\r\n        border-radius: var(\r\n          --afui-tabs-content-scrollbar-thumb-border-radius,\r\n          @default-afui-tabs-content-scrollbar-thumb-border-radius\r\n        );\r\n        background-color: var(\r\n          --afui-tabs-content-scrollbar-thumb-background-color,\r\n          @default-afui-tabs-content-scrollbar-thumb-background-color\r\n        );\r\n      }\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./tabs.component.less"
                 }
             ],
@@ -526,11 +723,11 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<div class=\"example-container\">\r\n  <div class=\"tabs-container\">\r\n    <tab\r\n      *ngFor=\"let tab of tabs; let index = index\"\r\n      [svgIconName]=\"tab.svgIconName\"\r\n      [label]=\"tab.label\"\r\n      [isActive]=\"selectedSectionId === index\"\r\n      (click)=\"scrollTo(index)\"\r\n    ></tab>\r\n  </div>\r\n  <div class=\"content-container\" #appScrollEvent>\r\n    <ng-container *ngFor=\"let tab of tabs; let index = index\">\r\n      <section #section [id]=\"index\">\r\n        <ng-container [ngTemplateOutlet]=\"tab.template\"></ng-container>\r\n      </section>\r\n    </ng-container>\r\n  </div>\r\n</div>\r\n"
+            "templateData": "<div class=\"example-container\">\r\n  <div class=\"tabs-container\">\r\n    <afui-tab\r\n      *ngFor=\"let tab of tabs; let index = index\"\r\n      [svgIconName]=\"tab.svgIconName\"\r\n      [label]=\"tab.label\"\r\n      [isActive]=\"selectedSectionId === index\"\r\n      (click)=\"scrollTo(index)\"\r\n    ></afui-tab>\r\n  </div>\r\n  <div class=\"content-container\" #appScrollEvent>\r\n    <ng-container *ngFor=\"let tab of tabs; let index = index\">\r\n      <section #section [id]=\"index\">\r\n        <ng-container [ngTemplateOutlet]=\"tab.template\"></ng-container>\r\n      </section>\r\n    </ng-container>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "TabsMockComponent",
-            "id": "component-TabsMockComponent-fe1b996d781aa768058dd06e66ed1133f439fee3b4a53593e4c419b7a8724cfa1b2e95dab3b917d966bfb8ecdc4046e7dc1587909e3616cd93439ea2afec57c4",
+            "id": "component-TabsMockComponent-e5f9d425de0ef4ad83514f057183c8eb8b96935132670cb53e6888999796024421a15b032045cf52c2803007f6d41312d08b6ce76ad5e7761bda49cb7717859a",
             "file": "src/app/tabs/tabs-mock.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -539,7 +736,9 @@
             "providers": [],
             "selector": "app-tabs-mock",
             "styleUrls": [],
-            "styles": [],
+            "styles": [
+                "\n      app-tabs {\n        height: 422px;\n        width: 475px;\n      }\n    "
+            ],
             "template": "<app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\n   <ng-template #content0>{{ templateBinding(0) }}</ng-template>\n   <ng-template #content1>{{ templateBinding(1) }}</ng-template>\n   <ng-template #content2>{{ templateBinding(2) }}</ng-template>\n   <ng-template #content3>{{ templateBinding(3) }}</ng-template>\n   <ng-template #content4>{{ templateBinding(4) }}</ng-template>\n   <ng-template #content5>{{ templateBinding(5) }}</ng-template>",
             "templateUrl": [],
             "viewProviders": [],
@@ -553,7 +752,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -568,7 +767,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -583,7 +782,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 29,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -598,7 +797,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -613,7 +812,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -628,7 +827,7 @@
                     "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 32,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -644,7 +843,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 25
                 },
                 {
                     "name": "tabs",
@@ -653,7 +852,7 @@
                     "type": "Tab[]",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 33
                 },
                 {
                     "name": "templateBinding",
@@ -663,7 +862,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 26
                 }
             ],
             "methodsClass": [
@@ -673,7 +872,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -685,35 +884,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  ChangeDetectionStrategy,\r\n  ChangeDetectorRef,\r\n  Component,\r\n  TemplateRef,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { Tab } from '../models/tab.interface';\r\nimport { templateBinding } from './template-binding';\r\n\r\n@Component({\r\n  selector: 'app-tabs-mock',\r\n  template: ` <app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\r\n\r\n    <ng-template #content0>{{ templateBinding(0) }}</ng-template>\r\n    <ng-template #content1>{{ templateBinding(1) }}</ng-template>\r\n    <ng-template #content2>{{ templateBinding(2) }}</ng-template>\r\n    <ng-template #content3>{{ templateBinding(3) }}</ng-template>\r\n    <ng-template #content4>{{ templateBinding(4) }}</ng-template>\r\n    <ng-template #content5>{{ templateBinding(5) }}</ng-template>`,\r\n})\r\nexport class TabsMockComponent {\r\n  initialTabs: boolean = false;\r\n  templateBinding = templateBinding;\r\n  @ViewChild('content0') content0!: TemplateRef<any>;\r\n  @ViewChild('content1') content1!: TemplateRef<any>;\r\n  @ViewChild('content2') content2!: TemplateRef<any>;\r\n  @ViewChild('content3') content3!: TemplateRef<any>;\r\n  @ViewChild('content4') content4!: TemplateRef<any>;\r\n  @ViewChild('content5') content5!: TemplateRef<any>;\r\n  tabs!: Tab[];\r\n  ngAfterViewInit(): void {\r\n    this.tabs = [\r\n      {\r\n        svgIconName: 'sdk_assignment',\r\n        label: 'הקצאות סדכ',\r\n        template: this.content0,\r\n      },\r\n      { svgIconName: 'reserve', label: 'שריונים', template: this.content1 },\r\n      { svgIconName: 'areas', label: 'אזורים ומבנים', template: this.content2 },\r\n      { svgIconName: 'assignments', label: 'הקצאות', template: this.content3 },\r\n      { svgIconName: 'remarks', label: 'הערות', template: this.content4 },\r\n      {\r\n        svgIconName: 'advanced_instructions',\r\n        label: 'הנחיות מתקדמות',\r\n        template: this.content5,\r\n      },\r\n    ];\r\n    this.initialTabs = true;\r\n    this.changeDetectorRef.detectChanges();\r\n  }\r\n\r\n  constructor(private changeDetectorRef: ChangeDetectorRef) {}\r\n}\r\n",
+            "sourceCode": "import { Component, TemplateRef, ViewChild } from '@angular/core';\r\nimport { Tab } from '../models/tab.interface';\r\nimport { templateBinding } from './template-binding';\r\n\r\n@Component({\r\n  selector: 'app-tabs-mock',\r\n  styles: [\r\n    `\r\n      app-tabs {\r\n        height: 422px;\r\n        width: 475px;\r\n      }\r\n    `,\r\n  ],\r\n  template: ` <app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\r\n\r\n    <ng-template #content0>{{ templateBinding(0) }}</ng-template>\r\n    <ng-template #content1>{{ templateBinding(1) }}</ng-template>\r\n    <ng-template #content2>{{ templateBinding(2) }}</ng-template>\r\n    <ng-template #content3>{{ templateBinding(3) }}</ng-template>\r\n    <ng-template #content4>{{ templateBinding(4) }}</ng-template>\r\n    <ng-template #content5>{{ templateBinding(5) }}</ng-template>`,\r\n})\r\nexport class TabsMockComponent {\r\n  initialTabs: boolean = false;\r\n  templateBinding = templateBinding;\r\n  @ViewChild('content0') content0!: TemplateRef<any>;\r\n  @ViewChild('content1') content1!: TemplateRef<any>;\r\n  @ViewChild('content2') content2!: TemplateRef<any>;\r\n  @ViewChild('content3') content3!: TemplateRef<any>;\r\n  @ViewChild('content4') content4!: TemplateRef<any>;\r\n  @ViewChild('content5') content5!: TemplateRef<any>;\r\n  tabs!: Tab[];\r\n  ngAfterViewInit(): void {\r\n    this.tabs = [\r\n      {\r\n        svgIconName: 'sdk_assignment',\r\n        label: 'הקצאות סדכ',\r\n        template: this.content0,\r\n      },\r\n      { svgIconName: 'reserve', label: 'שריונים', template: this.content1 },\r\n      { svgIconName: 'areas', label: 'אזורים ומבנים', template: this.content2 },\r\n      { svgIconName: 'assignments', label: 'הקצאות', template: this.content3 },\r\n      { svgIconName: 'remarks', label: 'הערות', template: this.content4 },\r\n      {\r\n        svgIconName: 'advanced_instructions',\r\n        label: 'הנחיות מתקדמות',\r\n        template: this.content5,\r\n      },\r\n    ];\r\n    this.initialTabs = true;\r\n  }\r\n\r\n  constructor() {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "",
+            "stylesData": "\n      app-tabs {\n        height: 422px;\n        width: 475px;\n      }\n    \n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "changeDetectorRef",
-                        "type": "ChangeDetectorRef",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 52,
-                "jsdoctags": [
-                    {
-                        "name": "changeDetectorRef",
-                        "type": "ChangeDetectorRef",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
+                "args": [],
+                "line": 52
             }
         }
     ],
@@ -858,13 +1039,13 @@
         },
         {
             "name": "IconModule",
-            "id": "module-IconModule-a1d4362d279c0d3ca9f337a46eb4bb28c57eb9439c688bd5405f74d9c942ce2fcd995abafa26746ffd246f0a1e390e270a4f0f6fa560d1d0e7a88b86aa0d6bd9",
+            "id": "module-IconModule-67bb90a812f22bbc29088305ffdcc1c6eb60a06cc3dfaf00876790f439f7f1d23ef66b32893fb02bbd80e82a43de5493c0dc0cb12dd17d634b4557cf08464d52",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/shared/icon.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DemoMaterialModule } from './material.module';\nimport { HttpClientModule } from '@angular/common/http';\nimport { MatIconRegistry } from '@angular/material/icon';\nimport { DomSanitizer } from '@angular/platform-browser';\n\n@NgModule({\n  imports: [CommonModule, DemoMaterialModule, HttpClientModule],\n})\nexport class IconModule {\n  constructor(\n    private matIconRegistry: MatIconRegistry,\n    private domSanitizer: DomSanitizer\n  ) {\n    this.matIconRegistry.addSvgIcon(\n      `add`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/add.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `advanced_instructions`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/advanced-instructions.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `areas`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/areas.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `assignments`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/assignments.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `close`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/close.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `remarks`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/remarks.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `reserve`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/reserve.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `sdk_assignment`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/sdk-assignment.svg'\n      )\n    );\n  }\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DemoMaterialModule } from './material.module';\nimport { HttpClientModule } from '@angular/common/http';\nimport { MatIconRegistry } from '@angular/material/icon';\nimport { DomSanitizer } from '@angular/platform-browser';\n\n@NgModule({\n  imports: [CommonModule, DemoMaterialModule, HttpClientModule],\n})\nexport class IconModule {\n  constructor(\n    private matIconRegistry: MatIconRegistry,\n    private domSanitizer: DomSanitizer\n  ) {\n    this.matIconRegistry.addSvgIcon(\n      `add`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/add.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `advanced_instructions`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/advanced-instructions.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `areas`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/areas.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `assignments`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/assignments.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `close`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/close.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `remarks`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/remarks.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `reserve`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/reserve.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `sdk_assignment`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/sdk-assignment.svg'\n      )\n    );\n    this.matIconRegistry.addSvgIcon(\n      `robot`,\n      this.domSanitizer.bypassSecurityTrustResourceUrl(\n        '../assets/icons/robot.svg'\n      )\n    );\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -907,7 +1088,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "Template.bind({})"
+                "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: 'שריונים',\r\n    isActive: true,\r\n  },\r\n})"
             },
             {
                 "name": "context",
@@ -927,7 +1108,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "Template.bind({})"
+                "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: 'שריונים',\r\n    isActive: false,\r\n  },\r\n})"
             },
             {
                 "name": "Default",
@@ -938,6 +1119,26 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "defaultStyle",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[`afui-tab {  width: 70px; height:68px; display: flex } `]"
+            },
+            {
+                "name": "defaultTemplate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`<afui-tab [svgIconName]=\"svgIconName\" [label]=\"label\" \r\n  [isActive]=\"isActive\"></afui-tab>`"
             },
             {
                 "name": "environment",
@@ -974,6 +1175,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1022,11 +1233,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tab/tab.component.stories.ts",
+                "file": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<TabComponent>",
-                "defaultValue": "(args: TabComponent) => ({\r\n  props: args,\r\n})"
+                "type": "Story<RecommendationsMenuComponent>",
+                "defaultValue": "(\r\n  args: RecommendationsMenuComponent\r\n) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1047,6 +1258,26 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "(index_tab: number) => `\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n`"
+            },
+            {
+                "name": "useCssVaiables",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: true,\r\n  },\r\n})"
+            },
+            {
+                "name": "useCssVaiablesStyle",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  `afui-tab {  width: 111px; height:27px; display: flex } `,\r\n]"
             }
         ],
         "functions": [],
@@ -1062,7 +1293,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: 'שריונים',\r\n    isActive: true,\r\n  },\r\n})"
                 },
                 {
                     "name": "Default",
@@ -1072,17 +1303,47 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: 'שריונים',\r\n    isActive: false,\r\n  },\r\n})"
                 },
                 {
-                    "name": "Template",
+                    "name": "defaultStyle",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/tab/tab.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<TabComponent>",
-                    "defaultValue": "(args: TabComponent) => ({\r\n  props: args,\r\n})"
+                    "type": "[]",
+                    "defaultValue": "[`afui-tab {  width: 70px; height:68px; display: flex } `]"
+                },
+                {
+                    "name": "defaultTemplate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`<afui-tab [svgIconName]=\"svgIconName\" [label]=\"label\" \r\n  [isActive]=\"isActive\"></afui-tab>`"
+                },
+                {
+                    "name": "useCssVaiables",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: true,\r\n  },\r\n})"
+                },
+                {
+                    "name": "useCssVaiablesStyle",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  `afui-tab {  width: 111px; height:27px; display: flex } `,\r\n]"
                 }
             ],
             "src/test.ts": [
@@ -1204,6 +1465,28 @@
                     "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
+            "src/app/recommendations-menu/recommendations-menu.component.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<RecommendationsMenuComponent>",
+                    "defaultValue": "(\r\n  args: RecommendationsMenuComponent\r\n) => ({\r\n  props: args,\r\n})"
+                }
+            ],
             "src/app/tabs/template-binding.ts": [
                 {
                     "name": "templateBinding",
@@ -1236,7 +1519,7 @@
         ]
     },
     "coverage": {
-        "count": 1,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -1317,6 +1600,35 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/recommendations-menu/recommendations-menu.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RecommendationsMenuComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/tab/tab.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -1341,7 +1653,37 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Template",
+                "name": "defaultStyle",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tab/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "defaultTemplate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tab/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "useCssVaiables",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tab/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "useCssVaiablesStyle",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

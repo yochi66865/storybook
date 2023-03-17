@@ -35,6 +35,7 @@ app-tabs {
     .tabs-container {
       flex: 1.25;
       display: flex;
+      gap: 2px;
       flex-direction: var(
         --afui-tabs-tabs-flex-direction,
         @default-afui-tabs-tabs-flex-direction
@@ -48,8 +49,8 @@ app-tabs {
         margin: var(--afui-tabs-tab-margin, @default-afui-tabs-tab-margin);
       }
 
-      & > *{
-        flex: 1;
+      & > * {
+        height: 100%;
       }
     }
 

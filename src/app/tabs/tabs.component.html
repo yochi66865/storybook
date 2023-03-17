@@ -1,12 +1,12 @@
 <div class="example-container">
   <div class="tabs-container">
-    <tab
+    <afui-tab
       *ngFor="let tab of tabs; let index = index"
       [svgIconName]="tab.svgIconName"
       [label]="tab.label"
       [isActive]="selectedSectionId === index"
       (click)="scrollTo(index)"
-    ></tab>
+    ></afui-tab>
   </div>
   <div class="content-container" #appScrollEvent>
     <ng-container *ngFor="let tab of tabs; let index = index">

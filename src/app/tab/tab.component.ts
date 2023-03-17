@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'tab',
+  selector: 'afui-tab',
   templateUrl: './tab.component.html',
   styleUrls: ['./tab.component.less'],
 })

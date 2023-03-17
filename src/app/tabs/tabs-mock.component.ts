@@ -1,9 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Tab } from '../models/tab.interface';
 import { templateBinding } from './template-binding';
 
@@ -54,8 +49,7 @@ export class TabsMockComponent {
       },
     ];
     this.initialTabs = true;
-    this.changeDetectorRef.detectChanges();
   }
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor() {}
 }
