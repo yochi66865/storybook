@@ -9,9 +9,7 @@
 @default-afui-tabs-tab-margin: 0 0 2px 0;
 
 @default-afui-tabs-content-background-color: var(--white);
-@default-afui-tabs-content-margin: 0 74px 0 0;
-@default-afui-tabs-content-padding: 30px 20px;
-@default-afui-tabs-content-height: 85%;
+@default-afui-tabs-content-padding: 20px 30px 20px 15px;
 @default-afui-tabs-content-overflow: auto;
 
 @default-afui-tabs-content-scrollbar-background-width: 16px;
@@ -28,7 +26,7 @@ app-tabs {
   border: var(--afui-tabs-border, @default-afui-tabs-border);
   display: flex;
 
-  .mat-sidenav-container {
+  .example-container {
     display: flex;
     flex-direction: var(
       --afui-tabs-container-flex-direction,
@@ -36,7 +34,7 @@ app-tabs {
     );
     direction: rtl;
 
-    .mat-sidenav .mat-drawer-inner-container {
+    .tabs-container {
       display: flex;
       flex-direction: var(
         --afui-tabs-tabs-flex-direction,
@@ -47,27 +45,19 @@ app-tabs {
         @default-afui-tabs-tabs-justify-content
       );
 
-      .tab:not(:last-child) {
+      tab:not(:last-child) {
         margin: var(--afui-tabs-tab-margin, @default-afui-tabs-tab-margin);
       }
     }
 
-    .mat-sidenav-content {
+    .content-container {
       background-color: var(
         --afui-tabs-content-background-color,
         @default-afui-tabs-content-background-color
       );
-      margin: var(
-        --afui-tabs-content-margin,
-        @default-afui-tabs-content-margin
-      ) !important;
       padding: var(
         --afui-tabs-content-padding,
         @default-afui-tabs-content-padding
-      );
-      height: var(
-        --afui-tabs-content-height,
-        @default-afui-tabs-content-height
       );
       overflow: var(
         --afui-tabs-content-overflow,

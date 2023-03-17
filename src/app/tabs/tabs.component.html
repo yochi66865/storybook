@@ -1,27 +1,18 @@
-<mat-sidenav-container class="example-container">
-  <mat-sidenav
-    #sidenav
-    mode="side"
-    opened
-    class="example-sidenav"
-    [fixedInViewport]="false"
-    [fixedTopGap]="0"
-    [fixedBottomGap]="0"
-  >
+<div class="example-container">
+  <div class="tabs-container">
     <tab
-    class="tab"
       *ngFor="let tab of tabs; let index = index"
       [svgIconName]="tab.svgIconName"
       [label]="tab.label"
       [isActive]="selectedSectionId === index"
       (click)="scrollTo(index)"
     ></tab>
-  </mat-sidenav>
-  <mat-sidenav-content #appScrollEvent>
+  </div>
+  <div class="content-container" #appScrollEvent>
     <ng-container *ngFor="let tab of tabs; let index = index">
       <section #section [id]="index">
         <ng-container [ngTemplateOutlet]="tab.template"></ng-container>
       </section>
     </ng-container>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+</div>
