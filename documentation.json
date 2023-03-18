@@ -220,203 +220,6 @@
             "templateData": "<button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>"
         },
         {
-            "name": "RecommendationsMenuComponent",
-            "id": "component-RecommendationsMenuComponent-cabd6ea121208707c1aab246569d780f87ba7e860bfd528c60453420bfbc56bb93711419f6726896001e54565fc1885dbcb247d5ba09e744b48b1895da1050d4",
-            "file": "src/app/recommendations-menu/recommendations-menu.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "afui-recommendations-menu",
-            "styleUrls": [
-                "./recommendations-menu.component.less"
-            ],
-            "styles": [],
-            "templateUrl": [
-                "./recommendations-menu.component.html"
-            ],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "content0",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "TemplateRef<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 18,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'content0'"
-                        }
-                    ]
-                },
-                {
-                    "name": "content1",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "TemplateRef<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 19,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'content1'"
-                        }
-                    ]
-                },
-                {
-                    "name": "content2",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "TemplateRef<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 20,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'content2'"
-                        }
-                    ]
-                },
-                {
-                    "name": "content3",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "TemplateRef<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 21,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'content3'"
-                        }
-                    ]
-                },
-                {
-                    "name": "content4",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "TemplateRef<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 22,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'content4'"
-                        }
-                    ]
-                },
-                {
-                    "name": "content5",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "TemplateRef<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 23,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'content5'"
-                        }
-                    ]
-                },
-                {
-                    "name": "initialTabs",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
-                },
-                {
-                    "name": "tabs",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Tab[]",
-                    "optional": false,
-                    "description": "",
-                    "line": 24
-                },
-                {
-                    "name": "templateBinding",
-                    "defaultValue": "templateBinding",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "ngAfterViewInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 25,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import {\r\n  ChangeDetectorRef,\r\n  Component,\r\n  TemplateRef,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { Tab } from '../models/tab.interface';\r\nimport { templateBinding } from '../tabs/template-binding';\r\n\r\n@Component({\r\n  selector: 'afui-recommendations-menu',\r\n  templateUrl: './recommendations-menu.component.html',\r\n  styleUrls: ['./recommendations-menu.component.less'],\r\n})\r\nexport class RecommendationsMenuComponent {\r\n  initialTabs: boolean = false;\r\n  templateBinding = templateBinding;\r\n  @ViewChild('content0') content0!: TemplateRef<any>;\r\n  @ViewChild('content1') content1!: TemplateRef<any>;\r\n  @ViewChild('content2') content2!: TemplateRef<any>;\r\n  @ViewChild('content3') content3!: TemplateRef<any>;\r\n  @ViewChild('content4') content4!: TemplateRef<any>;\r\n  @ViewChild('content5') content5!: TemplateRef<any>;\r\n  tabs!: Tab[];\r\n  ngAfterViewInit(): void {\r\n    this.tabs = [\r\n      {\r\n        svgIconName: 'robot',\r\n        label: \"ח. זרועית א'\",\r\n        template: this.content0,\r\n      },\r\n      {\r\n        svgIconName: 'reserve',\r\n        label: \"ח. זרועית ב'\",\r\n        template: this.content1,\r\n      },\r\n      { svgIconName: 'areas', label: \"ח. זרועית ג'\", template: this.content2 },\r\n    ];\r\n    this.initialTabs = true;\r\n    this.changeDetectorRef.detectChanges();\r\n  }\r\n\r\n  constructor(private changeDetectorRef: ChangeDetectorRef) {}\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "app-tabs {\r\n    height: 422px;\r\n    width: 475px;\r\n  }",
-                    "styleUrl": "./recommendations-menu.component.less"
-                }
-            ],
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "changeDetectorRef",
-                        "type": "ChangeDetectorRef",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 41,
-                "jsdoctags": [
-                    {
-                        "name": "changeDetectorRef",
-                        "type": "ChangeDetectorRef",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
-            "templateData": "<app-tabs *ngIf=\"initialTabs\" [tabs]=\"tabs\"></app-tabs>\r\n\r\n<ng-template #content0>{{ templateBinding(0) }}</ng-template>\r\n<ng-template #content1>{{ templateBinding(1) }}</ng-template>\r\n<ng-template #content2>{{ templateBinding(2) }}</ng-template>\r\n"
-        },
-        {
             "name": "TabComponent",
             "id": "component-TabComponent-fc281182183102d9a629fe41d48372214e4a5cad827fc1ad69ab33b7f1d03bcdeb243a58bccb3cf5d2d6badc831ff0ced3181d53fd56e2a8e6093a4e3c2412d6",
             "file": "src/app/tab/tab.component.ts",
@@ -1111,16 +914,6 @@
                 "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: 'שריונים',\r\n    isActive: false,\r\n  },\r\n})"
             },
             {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/tabs/tabs.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
                 "name": "defaultStyle",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1139,6 +932,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "`<afui-tab [svgIconName]=\"svgIconName\" [label]=\"label\" \r\n  [isActive]=\"isActive\"></afui-tab>`"
+            },
+            {
+                "name": "defaultTemplate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tabs/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`<app-tabs-mock></app-tabs-mock>`"
             },
             {
                 "name": "environment",
@@ -1175,16 +978,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/button/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1233,21 +1026,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<RecommendationsMenuComponent>",
-                "defaultValue": "(\r\n  args: RecommendationsMenuComponent\r\n) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/tabs/tabs.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<TabsComponent>",
-                "defaultValue": "(args: TabsComponent) => ({\r\n  template: `\r\n  <app-tabs-mock></app-tabs-mock>\r\n`,\r\n})"
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: TabsComponent,\r\n  template: defaultTemplate,\r\n})"
             },
             {
                 "name": "templateBinding",
@@ -1267,7 +1050,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: true,\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: false,\r\n  },\r\n})"
             },
             {
                 "name": "useCssVaiablesStyle",
@@ -1333,7 +1116,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: true,\r\n  },\r\n})"
+                    "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: false,\r\n  },\r\n})"
                 },
                 {
                     "name": "useCssVaiablesStyle",
@@ -1369,14 +1152,14 @@
             ],
             "src/app/tabs/tabs.component.stories.ts": [
                 {
-                    "name": "Default",
+                    "name": "defaultTemplate",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/tabs/tabs.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "defaultValue": "`<app-tabs-mock></app-tabs-mock>`"
                 },
                 {
                     "name": "Template",
@@ -1385,8 +1168,8 @@
                     "file": "src/app/tabs/tabs.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<TabsComponent>",
-                    "defaultValue": "(args: TabsComponent) => ({\r\n  template: `\r\n  <app-tabs-mock></app-tabs-mock>\r\n`,\r\n})"
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: TabsComponent,\r\n  template: defaultTemplate,\r\n})"
                 }
             ],
             "src/environments/environment.prod.ts": [
@@ -1465,28 +1248,6 @@
                     "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
-            "src/app/recommendations-menu/recommendations-menu.component.stories.ts": [
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<RecommendationsMenuComponent>",
-                    "defaultValue": "(\r\n  args: RecommendationsMenuComponent\r\n) => ({\r\n  props: args,\r\n})"
-                }
-            ],
             "src/app/tabs/template-binding.ts": [
                 {
                     "name": "templateBinding",
@@ -1519,7 +1280,7 @@
         ]
     },
     "coverage": {
-        "count": 0,
+        "count": 1,
         "status": "low",
         "files": [
             {
@@ -1597,35 +1358,6 @@
                 "name": "Tab",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/recommendations-menu/recommendations-menu.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/recommendations-menu/recommendations-menu.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "RecommendationsMenuComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -1711,7 +1443,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Default",
+                "name": "defaultTemplate",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
