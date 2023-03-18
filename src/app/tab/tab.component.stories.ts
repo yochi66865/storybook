@@ -4,6 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { IconModule } from '../shared/icon.module';
 import { DemoMaterialModule } from '../shared/material.module';
+import { cssVariablesKnobs } from './css-variables-knob';
 import { TabComponent } from './tab.component';
 
 export default {
@@ -53,30 +54,36 @@ export const ActiveTag = () => ({
 const useCssVaiablesStyle = [
   `afui-tab {  width: 111px; height:27px; display: flex } `,
 ];
-export const useCssVaiables = () => ({
+
+export const alternative = () => ({
   component: TabComponent,
   template: defaultTemplate,
   styles: useCssVaiablesStyle,
   props: {
-    svgIconName: 'reserve',
+    label: "'ח. זרועית ב",
+    isActive: false,
+  },
+});
+
+alternative.story = {
+  parameters: {
+    cssVariablesKnobs: [...cssVariablesKnobs],
+  },
+};
+
+export const alternativeActive = () => ({
+  component: TabComponent,
+  template: defaultTemplate,
+  styles: useCssVaiablesStyle,
+  props: {
+    svgIconName: 'robot',
     label: "'ח. זרועית ב",
     isActive: true,
   },
 });
 
-useCssVaiables.story = {
+alternativeActive.story = {
   parameters: {
-    cssVariablesKnobs: [
-      {
-        variable: '--afui-tab-background-color',
-        type: 'color',
-        initialValue: 'red',
-      },
-      // {
-      //   variable: '--afui-form-field-font-size',
-      //   type: 'text',
-      //   initialValue: '1em',
-      // },
-    ],
+    cssVariablesKnobs: [...cssVariablesKnobs],
   },
 };
