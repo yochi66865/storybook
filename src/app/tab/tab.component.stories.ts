@@ -27,7 +27,7 @@ export default {
 const defaultStyle = [`afui-tab {  width: 70px; height:68px; display: flex } `];
 
 const defaultTemplate = `<afui-tab [svgIconName]="svgIconName" [label]="label" 
-  [isActive]="isActive"></afui-tab>`;
+[withCloseIcon]="withCloseIcon" [isActive]="isActive"></afui-tab>`;
 
 export const Default = () => ({
   component: TabComponent,
@@ -37,6 +37,7 @@ export const Default = () => ({
     svgIconName: 'reserve',
     label: 'שריונים',
     isActive: false,
+    withCloseIcon: false,
   },
 });
 
@@ -48,6 +49,7 @@ export const ActiveTag = () => ({
     svgIconName: 'reserve',
     label: 'שריונים',
     isActive: true,
+    withCloseIcon: false,
   },
 });
 
@@ -62,6 +64,7 @@ export const alternative = () => ({
   props: {
     label: "'ח. זרועית ב",
     isActive: false,
+    withCloseIcon: true,
   },
 });
 
@@ -79,6 +82,7 @@ export const alternativeActive = () => ({
     svgIconName: 'robot',
     label: "'ח. זרועית ב",
     isActive: true,
+    withCloseIcon: true,
   },
 });
 

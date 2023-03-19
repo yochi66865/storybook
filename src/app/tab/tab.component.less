@@ -7,10 +7,12 @@
 @default-afui-tab-flex-direction: column;
 @default-afui-tab-justify-content: center;
 @default-afui-tab-align-items: center;
+@default-afui-tab-gap-between-items: 0;
 
 @default-afui-tab-content-font-family: Arial, Helvetica, sans-serif;
 @default-afui-tab-content-font-size: 9px;
 @default-afui-tab-content-font-weight: 700;
+@default-afui-tab-content-active-font-weight: 700;
 
 @default-afui-tab-icon-width: 21px;
 @default-afui-tab-icon-height: 21px;
@@ -19,6 +21,9 @@
 @default-afui-tab-icon-active-color: var(--white);
 @default-afui-tab-icon-border-radius: 4px;
 @default-afui-tab-icon-padding: 3.5px;
+
+@default-afui-tab-close-icon-width: 10px;
+@default-afui-tab-close-icon-height: 10px;
 
 @default-afui-tab-rectangle-display: inline;
 @default-afui-tab-rectangle-border-left: 7.5px solid var(--white);
@@ -48,6 +53,7 @@
     @default-afui-tab-justify-content
   );
   align-items: var(--afui-tab-align-items, @default-afui-tab-align-items);
+  gap: var(--afui-tab-gap-between-items, @default-afui-tab-gap-between-items);
 
   .tab-content {
     font-family: var(
@@ -64,14 +70,26 @@
     );
   }
 
+  mat-icon {
+    display: flex !important;
+  }
+
   .tab-icon {
-    width: var(afui-tab-icon-width, @default-afui-tab-icon-width);
-    height: var(afui-tab-icon-height, @default-afui-tab-icon-height);
+    width: var(--afui-tab-icon-width, @default-afui-tab-icon-width);
+    height: var(--afui-tab-icon-height, @default-afui-tab-icon-height);
     border-radius: var(
-      afui-tab-icon-border-radius,
+      --afui-tab-icon-border-radius,
       @default-afui-tab-icon-border-radius
     );
-    padding: var(afui-tab-icon-padding, @default-afui-tab-icon-padding);
+    padding: var(--afui-tab-icon-padding, @default-afui-tab-icon-padding);
+  }
+
+  .close-icon {
+    width: var(--afui-tab-close-icon-width, @default-afui-tab-close-icon-width);
+    height: var(
+      --afui-tab-close-icon-height,
+      @default-afui-tab-close-icon-height
+    );
   }
 
   &.active {
@@ -80,6 +98,12 @@
       @default-afui-tab-active-background-color
     );
     color: var(--afui-tab-active-color, @default-afui-tab-active-color);
+    .tab-content {
+      font-weight: var(
+        --afui-tab-content-active-font-weight,
+        @default-afui-tab-content-active-font-weight
+      );
+    }
     .tab-icon {
       background-color: var(
         --afui-tab-icon-active-background-color,

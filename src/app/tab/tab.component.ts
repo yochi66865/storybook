@@ -9,6 +9,7 @@ export class TabComponent implements OnInit {
   @Input() svgIconName: string = '';
   @Input() label: string = '';
   @Input() isActive: boolean = false;
+  @Input() withCloseIcon: boolean = false;
   @Output() click: EventEmitter<void> = new EventEmitter();
 
   constructor() {}

@@ -1,4 +1,7 @@
-//4px dashed #21242b
+export const defaultStyle = [
+  `afui-tab {  width: 102px; height:27px; display: flex } `,
+];
+
 export const cssVariablesKnobs = [
   {
     variable: '--afui-tab-border',
@@ -34,9 +37,14 @@ export const cssVariablesKnobs = [
   {
     variable: '--afui-tab-justify-content',
     type: 'text',
-    initialValue: 'space-evenly',
+    initialValue: 'flex-end',
   },
   { variable: '--afui-tab-align-items', type: 'text', initialValue: 'center' },
+  {
+    variable: '--afui-tab-gap-between-items',
+    type: 'text',
+    initialValue: '7px',
+  },
 
   {
     variable: '--afui-tab-content-font-family',
@@ -53,7 +61,6 @@ export const cssVariablesKnobs = [
     type: 'text',
     initialValue: '400',
   },
-
   { variable: '--afui-tab-icon-width', type: 'text', initialValue: '9.75px' },
   { variable: '--afui-tab-icon-height', type: 'text', initialValue: '9.75px' },
   {
@@ -76,8 +83,17 @@ export const cssVariablesKnobs = [
     type: 'text',
     initialValue: '0',
   },
-  { variable: '--afui-tab-icon-padding', type: 'text', initialValue: '3.5px' },
-
+  { variable: '--afui-tab-icon-padding', type: 'text', initialValue: '0' },
+  {
+    variable: '--afui-tab-close-icon-width',
+    type: 'text',
+    initialValue: '10px',
+  },
+  {
+    variable: '--afui-tab-close-icon-height',
+    type: 'text',
+    initialValue: '10px',
+  },
   {
     variable: '--afui-tab-rectangle-display',
     type: 'text',
