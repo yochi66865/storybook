@@ -1,9 +1,13 @@
-<button
-  mat-button
-  class="tab"
-  [class.active]="isActive"
-  (click)="onClick()"
->
-  <mat-icon class="tab-icon" [svgIcon]="svgIconName"></mat-icon>
+<button mat-button class="tab" [class.active]="isActive" (click)="onClick()">
+  <mat-icon
+    *ngIf="svgIconName"
+    class="tab-icon"
+    [svgIcon]="svgIconName"
+  ></mat-icon>
   <label class="tab-content">{{ label }}</label>
+  <mat-icon
+    *ngIf="withCloseIcon"
+    class="close-icon"
+    [svgIcon]="'close'"
+  ></mat-icon>
 </button>

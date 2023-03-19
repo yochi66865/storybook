@@ -310,7 +310,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@default-afui-tab-border: none;\r\n@default-afui-tab-background-color: var(--gray);\r\n@default-afui-tab-color: var(--black);\r\n@default-afui-tab-active-color: var(--praimery);\r\n@default-afui-tab-flex-direction: column;\r\n@default-afui-tab-justify-content: center;\r\n@default-afui-tab-align-items: center;\r\n\r\n@default-afui-tab-content-font-family: Arial, Helvetica, sans-serif;\r\n@default-afui-tab-content-font-size: 9px;\r\n@default-afui-tab-content-font-weight: 700;\r\n\r\n@default-afui-tab-icon-width: 21px;\r\n@default-afui-tab-icon-height: 21px;\r\n@default-afui-tab-icon-background-color: var(--dark-gray);\r\n@default-afui-tab-icon-active-background-color: var(--dark-praimery);\r\n@default-afui-tab-icon-active-color: var(--white);\r\n@default-afui-tab-icon-border-radius: 4px;\r\n@default-afui-tab-icon-padding: 3.5px;\r\n\r\n@default-afui-tab-rectangle-display: inline;\r\n@default-afui-tab-rectangle-border-left: 7.5px solid var(--white);\r\n@default-afui-tab-rectangle-border-top-width: 9px;\r\n@default-afui-tab-rectangle-border-bottom-width: 8px;\r\n@default-afui-tab-rectangle-floating-right: auto;\r\n@default-afui-tab-rectangle-floating-left: 0;\r\n\r\n.tab {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: relative;\r\n  border: var(--afui-tab-border, @default-afui-tab-border);\r\n  background-color: var(--afui-tab-background-color, @default-afui-tab-background-color);\r\n  color: var(--afui-tab-color, @default-afui-tab-color);\r\n  display: flex;\r\n  flex-direction: var(--afui-tab-flex-direction, @default-afui-tab-flex-direction);\r\n  justify-content: var(--afui-tab-justify-content, @default-afui-tab-justify-content);\r\n  align-items: var(--afui-tab-align-items, @default-afui-tab-align-items);\r\n\r\n  .tab-content {\r\n    font-family: var(--afui-tab-content-font-family, @default-afui-tab-content-font-family);\r\n    font-size: var(--afui-tab-content-font-size, @default-afui-tab-content-font-size);\r\n    font-weight: var(--afui-tab-content-font-weight, @default-afui-tab-content-font-weight);\r\n  }\r\n\r\n  .tab-icon {\r\n    width: var(afui-tab-icon-width, @default-afui-tab-icon-width);\r\n    height: var(afui-tab-icon-height, @default-afui-tab-icon-height);\r\n    border-radius: var(afui-tab-icon-border-radius, @default-afui-tab-icon-border-radius);\r\n    padding: var(afui-tab-icon-padding, @default-afui-tab-icon-padding);\r\n  }\r\n\r\n  &.active {\r\n    color: var(--afui-tab-active-color, @default-afui-tab-active-color);\r\n    .tab-icon {\r\n      background-color: var(--afui-tab-icon-active-background-color, @default-afui-tab-icon-active-background-color);\r\n      color: var(--afui-tab-icon-active-color, @default-afui-tab-icon-active-color);\r\n    }\r\n\r\n    &::after {\r\n      content: \"\";\r\n      display: var(--afui-tab-rectangle-display, @default-afui-tab-rectangle-display);\r\n      position: absolute;\r\n      right: var(--afui-tab-rectangle-floating-right, @default-afui-tab-rectangle-floating-right);\r\n      left: var(--afui-tab-rectangle-floating-left, @default-afui-tab-rectangle-floating-left);\r\n      border-left: var(--afui-tab-rectangle-border-left, @default-afui-tab-rectangle-border-left);\r\n      border-top: var(--afui-tab-rectangle-border-top-width, @default-afui-tab-rectangle-border-top-width)\r\n            solid transparent;\r\n      border-bottom: var(--afui-tab-rectangle-border-bottom-width, @default-afui-tab-rectangle-border-bottom-width) \r\n           solid transparent;\r\n    }\r\n  }\r\n  \r\n  &:not(active) {\r\n    .tab-icon {\r\n      background-color: var(--afui-tab-icon-background-color, @default-afui-tab-icon-background-color);\r\n    }\r\n  }\r\n}\r\n",
+                    "data": "@default-afui-tab-border: none;\r\n@default-afui-tab-border-radius: 0;\r\n@default-afui-tab-background-color: var(--gray);\r\n@default-afui-tab-active-background-color: var(--gray);\r\n@default-afui-tab-color: var(--black);\r\n@default-afui-tab-active-color: var(--praimery);\r\n@default-afui-tab-flex-direction: column;\r\n@default-afui-tab-justify-content: center;\r\n@default-afui-tab-align-items: center;\r\n\r\n@default-afui-tab-content-font-family: Arial, Helvetica, sans-serif;\r\n@default-afui-tab-content-font-size: 9px;\r\n@default-afui-tab-content-font-weight: 700;\r\n\r\n@default-afui-tab-icon-width: 21px;\r\n@default-afui-tab-icon-height: 21px;\r\n@default-afui-tab-icon-background-color: var(--dark-gray);\r\n@default-afui-tab-icon-active-background-color: var(--dark-praimery);\r\n@default-afui-tab-icon-active-color: var(--white);\r\n@default-afui-tab-icon-border-radius: 4px;\r\n@default-afui-tab-icon-padding: 3.5px;\r\n\r\n@default-afui-tab-rectangle-display: inline;\r\n@default-afui-tab-rectangle-border-left: 7.5px solid var(--white);\r\n@default-afui-tab-rectangle-border-top-width: 9px;\r\n@default-afui-tab-rectangle-border-bottom-width: 8px;\r\n@default-afui-tab-rectangle-floating-right: auto;\r\n@default-afui-tab-rectangle-floating-left: 0;\r\n\r\n.tab {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: relative;\r\n  border: var(--afui-tab-border, @default-afui-tab-border);\r\n  border-radius: var(--afui-tab-border-radius, @default-afui-tab-border-radius);\r\n  background-color: var(\r\n    --afui-tab-background-color,\r\n    @default-afui-tab-background-color\r\n  );\r\n  color: var(--afui-tab-color, @default-afui-tab-color);\r\n  display: flex;\r\n  flex-direction: var(\r\n    --afui-tab-flex-direction,\r\n    @default-afui-tab-flex-direction\r\n  );\r\n  justify-content: var(\r\n    --afui-tab-justify-content,\r\n    @default-afui-tab-justify-content\r\n  );\r\n  align-items: var(--afui-tab-align-items, @default-afui-tab-align-items);\r\n\r\n  .tab-content {\r\n    font-family: var(\r\n      --afui-tab-content-font-family,\r\n      @default-afui-tab-content-font-family\r\n    );\r\n    font-size: var(\r\n      --afui-tab-content-font-size,\r\n      @default-afui-tab-content-font-size\r\n    );\r\n    font-weight: var(\r\n      --afui-tab-content-font-weight,\r\n      @default-afui-tab-content-font-weight\r\n    );\r\n  }\r\n\r\n  .tab-icon {\r\n    width: var(afui-tab-icon-width, @default-afui-tab-icon-width);\r\n    height: var(afui-tab-icon-height, @default-afui-tab-icon-height);\r\n    border-radius: var(\r\n      afui-tab-icon-border-radius,\r\n      @default-afui-tab-icon-border-radius\r\n    );\r\n    padding: var(afui-tab-icon-padding, @default-afui-tab-icon-padding);\r\n  }\r\n\r\n  &.active {\r\n    background-color: var(\r\n      --afui-tab-active-background-color,\r\n      @default-afui-tab-active-background-color\r\n    );\r\n    color: var(--afui-tab-active-color, @default-afui-tab-active-color);\r\n    .tab-icon {\r\n      background-color: var(\r\n        --afui-tab-icon-active-background-color,\r\n        @default-afui-tab-icon-active-background-color\r\n      );\r\n      color: var(\r\n        --afui-tab-icon-active-color,\r\n        @default-afui-tab-icon-active-color\r\n      );\r\n    }\r\n\r\n    &::after {\r\n      content: \"\";\r\n      display: var(\r\n        --afui-tab-rectangle-display,\r\n        @default-afui-tab-rectangle-display\r\n      );\r\n      position: absolute;\r\n      right: var(\r\n        --afui-tab-rectangle-floating-right,\r\n        @default-afui-tab-rectangle-floating-right\r\n      );\r\n      left: var(\r\n        --afui-tab-rectangle-floating-left,\r\n        @default-afui-tab-rectangle-floating-left\r\n      );\r\n      border-left: var(\r\n        --afui-tab-rectangle-border-left,\r\n        @default-afui-tab-rectangle-border-left\r\n      );\r\n      border-top: var(\r\n          --afui-tab-rectangle-border-top-width,\r\n          @default-afui-tab-rectangle-border-top-width\r\n        )\r\n        solid transparent;\r\n      border-bottom: var(\r\n          --afui-tab-rectangle-border-bottom-width,\r\n          @default-afui-tab-rectangle-border-bottom-width\r\n        )\r\n        solid transparent;\r\n    }\r\n  }\r\n\r\n  &:not(active) {\r\n    .tab-icon {\r\n      background-color: var(\r\n        --afui-tab-icon-background-color,\r\n        @default-afui-tab-icon-background-color\r\n      );\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./tab.component.less"
                 }
             ],
@@ -894,6 +894,26 @@
                 "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: 'שריונים',\r\n    isActive: true,\r\n  },\r\n})"
             },
             {
+                "name": "alternative",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: false,\r\n  },\r\n})"
+            },
+            {
+                "name": "alternativeActive",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab/tab.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'robot',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: true,\r\n  },\r\n})"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -904,6 +924,16 @@
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
             },
             {
+                "name": "cssVariablesKnobs",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab/css-variables-knob.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  {\r\n    variable: '--afui-tab-border',\r\n    type: 'text',\r\n    initialValue: '1px solid #2f333d',\r\n  },\r\n  {\r\n    variable: '--afui-tab-border-radius',\r\n    type: 'text',\r\n    initialValue: '4px',\r\n  },\r\n  {\r\n    variable: '--afui-tab-background-color',\r\n    type: 'color',\r\n    initialValue: '#000000',\r\n  },\r\n  {\r\n    variable: '--afui-tab-active-background-color',\r\n    type: 'color',\r\n    initialValue: '#2f333d',\r\n  },\r\n  { variable: '--afui-tab-color', type: 'color', initialValue: '#b9c5d8' },\r\n  {\r\n    variable: '--afui-tab-active-color',\r\n    type: 'color',\r\n    initialValue: '#ffffff',\r\n  },\r\n  {\r\n    variable: '--afui-tab-flex-direction',\r\n    type: 'text',\r\n    initialValue: 'row',\r\n  },\r\n  {\r\n    variable: '--afui-tab-justify-content',\r\n    type: 'text',\r\n    initialValue: 'space-evenly',\r\n  },\r\n  { variable: '--afui-tab-align-items', type: 'text', initialValue: 'center' },\r\n\r\n  {\r\n    variable: '--afui-tab-content-font-family',\r\n    type: 'text',\r\n    initialValue: 'Arial, Helvetica, sans-serif',\r\n  },\r\n  {\r\n    variable: '--afui-tab-content-font-size',\r\n    type: 'text',\r\n    initialValue: '12px',\r\n  },\r\n  {\r\n    variable: '--afui-tab-content-font-weight',\r\n    type: 'text',\r\n    initialValue: '400',\r\n  },\r\n\r\n  { variable: '--afui-tab-icon-width', type: 'text', initialValue: '9.75px' },\r\n  { variable: '--afui-tab-icon-height', type: 'text', initialValue: '9.75px' },\r\n  {\r\n    variable: '--afui-tab-icon-background-color',\r\n    type: 'color',\r\n    initialValue: 'transparent',\r\n  },\r\n  {\r\n    variable: '--afui-tab-icon-active-background-color',\r\n    type: 'color',\r\n    initialValue: 'transparent',\r\n  },\r\n  {\r\n    variable: '--afui-tab-icon-active-color',\r\n    type: 'text',\r\n    initialValue: 'var(--white)',\r\n  },\r\n  {\r\n    variable: '--afui-tab-icon-border-radius',\r\n    type: 'text',\r\n    initialValue: '0',\r\n  },\r\n  { variable: '--afui-tab-icon-padding', type: 'text', initialValue: '3.5px' },\r\n\r\n  {\r\n    variable: '--afui-tab-rectangle-display',\r\n    type: 'text',\r\n    initialValue: 'none',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-border-left',\r\n    type: 'text',\r\n    initialValue: '7.5px solid var(--white)',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-border-top-width',\r\n    type: 'text',\r\n    initialValue: '9px',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-border-bottom-width',\r\n    type: 'text',\r\n    initialValue: '8px',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-floating-right',\r\n    type: 'text',\r\n    initialValue: 'auto',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-floating-left',\r\n    type: 'text',\r\n    initialValue: '0',\r\n  },\r\n]"
+            },
+            {
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -912,6 +942,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: 'שריונים',\r\n    isActive: false,\r\n  },\r\n})"
+            },
+            {
+                "name": "defaultStyle",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tab/css-variables-knob.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  `afui-tab {  width: 102px; height:27px; display: flex } `,\r\n]"
             },
             {
                 "name": "defaultStyle",
@@ -1043,16 +1083,6 @@
                 "defaultValue": "(index_tab: number) => `\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n  content${index_tab} content${index_tab} content${index_tab} content${index_tab} content${index_tab} conten\r\n`"
             },
             {
-                "name": "useCssVaiables",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/tab/tab.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: false,\r\n  },\r\n})"
-            },
-            {
                 "name": "useCssVaiablesStyle",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1077,6 +1107,26 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: 'שריונים',\r\n    isActive: true,\r\n  },\r\n})"
+                },
+                {
+                    "name": "alternative",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: false,\r\n  },\r\n})"
+                },
+                {
+                    "name": "alternativeActive",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab/tab.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'robot',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: true,\r\n  },\r\n})"
                 },
                 {
                     "name": "Default",
@@ -1109,16 +1159,6 @@
                     "defaultValue": "`<afui-tab [svgIconName]=\"svgIconName\" [label]=\"label\" \r\n  [isActive]=\"isActive\"></afui-tab>`"
                 },
                 {
-                    "name": "useCssVaiables",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/tab/tab.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: TabComponent,\r\n  template: defaultTemplate,\r\n  styles: useCssVaiablesStyle,\r\n  props: {\r\n    svgIconName: 'reserve',\r\n    label: \"'ח. זרועית ב\",\r\n    isActive: false,\r\n  },\r\n})"
-                },
-                {
                     "name": "useCssVaiablesStyle",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -1148,6 +1188,28 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "literal type"
+                }
+            ],
+            "src/app/tab/css-variables-knob.ts": [
+                {
+                    "name": "cssVariablesKnobs",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab/css-variables-knob.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  {\r\n    variable: '--afui-tab-border',\r\n    type: 'text',\r\n    initialValue: '1px solid #2f333d',\r\n  },\r\n  {\r\n    variable: '--afui-tab-border-radius',\r\n    type: 'text',\r\n    initialValue: '4px',\r\n  },\r\n  {\r\n    variable: '--afui-tab-background-color',\r\n    type: 'color',\r\n    initialValue: '#000000',\r\n  },\r\n  {\r\n    variable: '--afui-tab-active-background-color',\r\n    type: 'color',\r\n    initialValue: '#2f333d',\r\n  },\r\n  { variable: '--afui-tab-color', type: 'color', initialValue: '#b9c5d8' },\r\n  {\r\n    variable: '--afui-tab-active-color',\r\n    type: 'color',\r\n    initialValue: '#ffffff',\r\n  },\r\n  {\r\n    variable: '--afui-tab-flex-direction',\r\n    type: 'text',\r\n    initialValue: 'row',\r\n  },\r\n  {\r\n    variable: '--afui-tab-justify-content',\r\n    type: 'text',\r\n    initialValue: 'space-evenly',\r\n  },\r\n  { variable: '--afui-tab-align-items', type: 'text', initialValue: 'center' },\r\n\r\n  {\r\n    variable: '--afui-tab-content-font-family',\r\n    type: 'text',\r\n    initialValue: 'Arial, Helvetica, sans-serif',\r\n  },\r\n  {\r\n    variable: '--afui-tab-content-font-size',\r\n    type: 'text',\r\n    initialValue: '12px',\r\n  },\r\n  {\r\n    variable: '--afui-tab-content-font-weight',\r\n    type: 'text',\r\n    initialValue: '400',\r\n  },\r\n\r\n  { variable: '--afui-tab-icon-width', type: 'text', initialValue: '9.75px' },\r\n  { variable: '--afui-tab-icon-height', type: 'text', initialValue: '9.75px' },\r\n  {\r\n    variable: '--afui-tab-icon-background-color',\r\n    type: 'color',\r\n    initialValue: 'transparent',\r\n  },\r\n  {\r\n    variable: '--afui-tab-icon-active-background-color',\r\n    type: 'color',\r\n    initialValue: 'transparent',\r\n  },\r\n  {\r\n    variable: '--afui-tab-icon-active-color',\r\n    type: 'text',\r\n    initialValue: 'var(--white)',\r\n  },\r\n  {\r\n    variable: '--afui-tab-icon-border-radius',\r\n    type: 'text',\r\n    initialValue: '0',\r\n  },\r\n  { variable: '--afui-tab-icon-padding', type: 'text', initialValue: '3.5px' },\r\n\r\n  {\r\n    variable: '--afui-tab-rectangle-display',\r\n    type: 'text',\r\n    initialValue: 'none',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-border-left',\r\n    type: 'text',\r\n    initialValue: '7.5px solid var(--white)',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-border-top-width',\r\n    type: 'text',\r\n    initialValue: '9px',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-border-bottom-width',\r\n    type: 'text',\r\n    initialValue: '8px',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-floating-right',\r\n    type: 'text',\r\n    initialValue: 'auto',\r\n  },\r\n  {\r\n    variable: '--afui-tab-rectangle-floating-left',\r\n    type: 'text',\r\n    initialValue: '0',\r\n  },\r\n]"
+                },
+                {
+                    "name": "defaultStyle",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/tab/css-variables-knob.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  `afui-tab {  width: 102px; height:27px; display: flex } `,\r\n]"
                 }
             ],
             "src/app/tabs/tabs.component.stories.ts": [
@@ -1280,7 +1342,7 @@
         ]
     },
     "coverage": {
-        "count": 1,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -1361,11 +1423,51 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/tab/css-variables-knob.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "cssVariablesKnobs",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tab/css-variables-knob.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "defaultStyle",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/tab/tab.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "ActiveTag",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tab/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "alternative",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/tab/tab.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "alternativeActive",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -1396,16 +1498,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "defaultTemplate",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/tab/tab.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "useCssVaiables",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

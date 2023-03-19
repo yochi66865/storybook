@@ -1,14 +1,18 @@
 @default-afui-tab-border: none;
+@default-afui-tab-border-radius: 0;
 @default-afui-tab-background-color: var(--gray);
+@default-afui-tab-active-background-color: var(--gray);
 @default-afui-tab-color: var(--black);
 @default-afui-tab-active-color: var(--praimery);
 @default-afui-tab-flex-direction: column;
 @default-afui-tab-justify-content: center;
 @default-afui-tab-align-items: center;
+@default-afui-tab-gap-between-items: 0;
 
 @default-afui-tab-content-font-family: Arial, Helvetica, sans-serif;
 @default-afui-tab-content-font-size: 9px;
 @default-afui-tab-content-font-weight: 700;
+@default-afui-tab-content-active-font-weight: 700;
 
 @default-afui-tab-icon-width: 21px;
 @default-afui-tab-icon-height: 21px;
@@ -17,6 +21,9 @@
 @default-afui-tab-icon-active-color: var(--white);
 @default-afui-tab-icon-border-radius: 4px;
 @default-afui-tab-icon-padding: 3.5px;
+
+@default-afui-tab-close-icon-width: 10px;
+@default-afui-tab-close-icon-height: 10px;
 
 @default-afui-tab-rectangle-display: inline;
 @default-afui-tab-rectangle-border-left: 7.5px solid var(--white);
@@ -30,50 +37,122 @@
   height: 100%;
   position: relative;
   border: var(--afui-tab-border, @default-afui-tab-border);
-  background-color: var(--afui-tab-background-color, @default-afui-tab-background-color);
+  border-radius: var(--afui-tab-border-radius, @default-afui-tab-border-radius);
+  background-color: var(
+    --afui-tab-background-color,
+    @default-afui-tab-background-color
+  );
   color: var(--afui-tab-color, @default-afui-tab-color);
   display: flex;
-  flex-direction: var(--afui-tab-flex-direction, @default-afui-tab-flex-direction);
-  justify-content: var(--afui-tab-justify-content, @default-afui-tab-justify-content);
+  flex-direction: var(
+    --afui-tab-flex-direction,
+    @default-afui-tab-flex-direction
+  );
+  justify-content: var(
+    --afui-tab-justify-content,
+    @default-afui-tab-justify-content
+  );
   align-items: var(--afui-tab-align-items, @default-afui-tab-align-items);
+  gap: var(--afui-tab-gap-between-items, @default-afui-tab-gap-between-items);
 
   .tab-content {
-    font-family: var(--afui-tab-content-font-family, @default-afui-tab-content-font-family);
-    font-size: var(--afui-tab-content-font-size, @default-afui-tab-content-font-size);
-    font-weight: var(--afui-tab-content-font-weight, @default-afui-tab-content-font-weight);
+    font-family: var(
+      --afui-tab-content-font-family,
+      @default-afui-tab-content-font-family
+    );
+    font-size: var(
+      --afui-tab-content-font-size,
+      @default-afui-tab-content-font-size
+    );
+    font-weight: var(
+      --afui-tab-content-font-weight,
+      @default-afui-tab-content-font-weight
+    );
+  }
+
+  mat-icon {
+    display: flex !important;
   }
 
   .tab-icon {
-    width: var(afui-tab-icon-width, @default-afui-tab-icon-width);
-    height: var(afui-tab-icon-height, @default-afui-tab-icon-height);
-    border-radius: var(afui-tab-icon-border-radius, @default-afui-tab-icon-border-radius);
-    padding: var(afui-tab-icon-padding, @default-afui-tab-icon-padding);
+    width: var(--afui-tab-icon-width, @default-afui-tab-icon-width);
+    height: var(--afui-tab-icon-height, @default-afui-tab-icon-height);
+    border-radius: var(
+      --afui-tab-icon-border-radius,
+      @default-afui-tab-icon-border-radius
+    );
+    padding: var(--afui-tab-icon-padding, @default-afui-tab-icon-padding);
+  }
+
+  .close-icon {
+    width: var(--afui-tab-close-icon-width, @default-afui-tab-close-icon-width);
+    height: var(
+      --afui-tab-close-icon-height,
+      @default-afui-tab-close-icon-height
+    );
   }
 
   &.active {
+    background-color: var(
+      --afui-tab-active-background-color,
+      @default-afui-tab-active-background-color
+    );
     color: var(--afui-tab-active-color, @default-afui-tab-active-color);
+    .tab-content {
+      font-weight: var(
+        --afui-tab-content-active-font-weight,
+        @default-afui-tab-content-active-font-weight
+      );
+    }
     .tab-icon {
-      background-color: var(--afui-tab-icon-active-background-color, @default-afui-tab-icon-active-background-color);
-      color: var(--afui-tab-icon-active-color, @default-afui-tab-icon-active-color);
+      background-color: var(
+        --afui-tab-icon-active-background-color,
+        @default-afui-tab-icon-active-background-color
+      );
+      color: var(
+        --afui-tab-icon-active-color,
+        @default-afui-tab-icon-active-color
+      );
     }
 
     &::after {
       content: "";
-      display: var(--afui-tab-rectangle-display, @default-afui-tab-rectangle-display);
+      display: var(
+        --afui-tab-rectangle-display,
+        @default-afui-tab-rectangle-display
+      );
       position: absolute;
-      right: var(--afui-tab-rectangle-floating-right, @default-afui-tab-rectangle-floating-right);
-      left: var(--afui-tab-rectangle-floating-left, @default-afui-tab-rectangle-floating-left);
-      border-left: var(--afui-tab-rectangle-border-left, @default-afui-tab-rectangle-border-left);
-      border-top: var(--afui-tab-rectangle-border-top-width, @default-afui-tab-rectangle-border-top-width)
-            solid transparent;
-      border-bottom: var(--afui-tab-rectangle-border-bottom-width, @default-afui-tab-rectangle-border-bottom-width) 
-           solid transparent;
+      right: var(
+        --afui-tab-rectangle-floating-right,
+        @default-afui-tab-rectangle-floating-right
+      );
+      left: var(
+        --afui-tab-rectangle-floating-left,
+        @default-afui-tab-rectangle-floating-left
+      );
+      border-left: var(
+        --afui-tab-rectangle-border-left,
+        @default-afui-tab-rectangle-border-left
+      );
+      border-top: var(
+          --afui-tab-rectangle-border-top-width,
+          @default-afui-tab-rectangle-border-top-width
+        )
+        solid transparent;
+      border-bottom: var(
+          --afui-tab-rectangle-border-bottom-width,
+          @default-afui-tab-rectangle-border-bottom-width
+        )
+        solid transparent;
     }
   }
-  
+
   &:not(active) {
     .tab-icon {
-      background-color: var(--afui-tab-icon-background-color, @default-afui-tab-icon-background-color);
+      background-color: var(
+        --afui-tab-icon-background-color,
+        @default-afui-tab-icon-background-color
+      );
     }
   }
 }
