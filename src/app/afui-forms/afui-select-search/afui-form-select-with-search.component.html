@@ -1,0 +1,25 @@
+<mat-icon svgIcon="dropdowndown" (click)="onDropDownClick($event)"></mat-icon>
+<input  placeholder="בחר"
+        [matAutocomplete]="auto" 
+        [formControl]="selectSearchControl"
+        (blur)="blurInput()"
+        #inputAutoComplete>
+<mat-autocomplete   autoActiveFirstOption  
+                    #auto="matAutocomplete" 
+                    (optionSelected)="onSelectOption($event)">
+        <div *ngFor="let option of filteredOptions | async">
+                <mat-option title="{{option.parent.value}}"
+                        [value]="option.parent">
+                        <mat-icon [ngClass]="{'arrow': true, 'up-arrow': option.isOpen}" svgIcon="trianglearrowdown-fill" (click)="openHierarchy($event, option)"></mat-icon>
+                        {{option.parent.value}}
+                </mat-option>
+                <div *ngIf="option.isOpen">
+                        <mat-option title="{{child.value}}"
+                                class="child-option" 
+                                *ngFor="let child of option.children" 
+                                [value]="child">
+                                {{child.value}}
+                        </mat-option>
+                </div>
+        </div>
+</mat-autocomplete>

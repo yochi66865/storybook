@@ -1,0 +1,67 @@
+@default-afui-form-container-title-bar-background-color: #424242;
+@default-afui-form-container-title-bar-text-color: #f7f7f7;
+@default-afui-form-container-title-bar-font-size: 1.5em;
+@default-afui-form-container-content-height: 70vh;
+@default-afui-form-container-content-background-color: #f7f7f7;
+@default-afui-form-container-font-size: 0.5em;
+@default-afui-form-container-font-family: Arial, serif;
+@default-afui-form-container-close-icon-color: #000000;
+
+.afui-form-container {
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+  font-size: var(--afui-form-container-font-size, @default-afui-form-container-font-size);
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.3);
+
+  .afui-form-title-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--afui-form-container-title-bar-background-color, @default-afui-form-container-title-bar-background-color);
+    border-radius: 10px 10px 0 0;
+    height: 4em;
+
+
+    .afui-form-close-icon {
+      cursor: pointer;
+      width: 1.5em;
+      height: 1.5em;
+      padding: 5px;
+      color: var(--afui-form-container-close-icon-color, @default-afui-form-container-close-icon-color);
+    }
+
+    .afui-form-title-bar-text {
+      color: var(--afui-form-container-title-bar-text-color, @default-afui-form-container-title-bar-text-color);
+      font-family: var(--afui-form-container-font-family, @default-afui-form-container-font-family);
+      flex: 1;
+      text-align: center;
+      font-size: var(--afui-form-container-title-bar-font-size, @default-afui-form-container-title-bar-font-size);
+    }
+  }
+
+  .afui-form-titles {
+    padding: 0 5em 1.4em;
+  }
+
+  .afui-form-content {
+    background-color: var(--afui-form-container-content-background-color, @default-afui-form-container-content-background-color);
+    padding: 2em 0;
+    border-radius: 0 0 10px 10px;
+    font-size: 1.5em;
+
+    .afui-form-body {
+      max-height: var(--afui-form-container-content-height, @default-afui-form-container-content-height);
+      overflow-y: auto;
+      padding: 0 5em;
+
+      .form-field {
+        margin-bottom: 1.2em;
+      }
+    }
+
+    .afui-form-footer {
+      padding: 0 5em;
+    }
+  }
+}

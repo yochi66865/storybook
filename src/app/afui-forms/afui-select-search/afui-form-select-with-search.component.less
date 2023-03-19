@@ -1,0 +1,93 @@
+@default-afui-form-select-search-input-background-color: rgb(32, 32, 32);
+@default-afui-form-select-search-input-text-color: rgb(32, 32, 32);
+@default-afui-form-select-search-input-width: 7em;
+@default-afui-form-select-search-input-height: 2em;
+@default-afui-form-select-search-input-padding-right: 0.5em;
+@default-afui-form-select-search-input-border-radius: 1em;
+@default-afui-form-select-search-input-font-size: 1em;
+@default-afui-form-select-search-option-background-color: rgb(32, 32, 32);
+@default-afui-form-select-search-option-text-color: white;
+@default-afui-form-select-search-option-height: 2em;
+@default-afui-form-select-search-option-font-size: 1em;
+@default-afui-form-select-search-option-hover-background-color: #333333;
+@default-afui-form-select-search-option-active-background-color: #131212;
+@default-afui-form-select-search-option-hover-text-color: white;
+@default-afui-form-select-search-option-right-left-padding: 0.4em;
+@default-afui-form-select-search-drop-down-icon-width: 1em;
+@default-afui-form-select-search-drop-down-icon-height: 1em;
+@default-afui-form-select-search-drop-down-icon-color: #757575;
+@default-afui-form-select-search-drop-down-icon-right-left-padding: 0.3em;
+@default-afui-form-select-search-drop-down-icon-top-bottom-padding: 0.2em;
+@default-afui-form-select-search-child-option-padding-right: 1em;
+@default-afui-form-select-search-child-option-arrow-size: 0.7em;
+@default-afui-form-select-search-drop-down-icon-left: 1.6em;
+
+input {
+  background-color: var(--afui-form-select-search-input-background-color, @default-afui-form-select-search-input-background-color);
+  border-radius: var(--afui-form-select-search-input-border-radius, @default-afui-form-select-search-input-border-radius);
+  color: var(--afui-form-select-search-option-text-color, @default-afui-form-select-search-option-text-color);
+  border: none;
+  height: var(--afui-form-select-search-input-height, @default-afui-form-select-search-input-height);
+  padding-right: var(--afui-form-select-search-input-padding-right, @default-afui-form-select-search-input-padding-right);
+  direction: rtl;
+  width: var(--afui-form-select-search-input-width, @default-afui-form-select-search-input-width);
+  font-size: var(--afui-form-select-search-input-font-size, @default-afui-form-select-search-input-font-size);
+}
+
+input:focus {
+  outline: none;
+}
+
+mat-option {
+  text-align: right;
+  height: var(--afui-form-select-search-option-height, @default-afui-form-select-search-option-height);
+  font-size: var(--afui-form-select-search-option-font-size, @default-afui-form-select-search-option-font-size);
+  padding: 0 var(--afui-form-select-search-option-right-left-padding, @default-afui-form-select-search-option-right-left-padding);
+  background-color: var(--afui-form-select-search-option-background-color, @default-afui-form-select-search-option-background-color);
+  color: var(--afui-form-select-search-option-text-color, @default-afui-form-select-search-option-text-color);
+  direction: rtl;
+}
+
+.child-option {
+  padding-right: var(--afui-form-select-search-child-option-padding-right, @default-afui-form-select-search-child-option-padding-right);
+}
+
+.arrow {
+  position: inherit;
+  margin-right: 0 !important;
+  font-size: var(--afui-form-select-search-child-option-arrow-size, @default-afui-form-select-search-child-option-arrow-size);
+}
+
+.up-arrow {
+  transform: rotate(180deg);
+}
+
+.mat-option:hover {
+  background-color: var(--afui-form-select-search-option-hover-background-color, @default-afui-form-select-search-option-hover-background-color) !important;
+  color: var(--afui-form-select-search-option-hover-text-color, @default-afui-form-select-search-option-hover-text-color) !important;
+}
+
+.mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
+  background-color: var(--afui-form-select-search-option-background-color, @default-afui-form-select-search-option-background-color);
+  color: var(--afui-form-select-search-option-text-color, @default-afui-form-select-search-option-text-color) !important;
+}
+
+.mat-option.mat-active {
+    background-color: var(--afui-form-select-search-option-active-background-color, @default-afui-form-select-search-option-active-background-color) !important;
+    color: var(--afui-form-select-search-option-text-color, @default-afui-form-select-search-option-text-color) !important;
+}
+
+.mat-option:focus {
+  background-color: var(--afui-form-select-search-input-background-color, @default-afui-form-select-search-input-background-color) !important;
+  color: var(--afui-form-select-search-option-text-color, @default-afui-form-select-search-option-text-color) !important;
+}
+
+mat-icon {
+  height: var(--afui-form-select-search-drop-down-icon-height, @default-afui-form-select-search-drop-down-icon-height);
+  width: var(--afui-form-select-search-drop-down-icon-width, @default-afui-form-select-search-drop-down-icon-width);
+  position: relative;
+  padding: var(--afui-form-select-search-drop-down-icon-top-bottom-padding, @default-afui-form-select-search-drop-down-icon-top-bottom-padding) var(--afui-form-select-search-drop-down-icon-right-left-padding, @default-afui-form-select-search-drop-down-icon-right-left-padding);
+  color: var(--afui-form-select-search-drop-down-icon-color, @default-afui-form-select-search-drop-down-icon-color);
+  line-height: var(--afui-form-select-search-input-height, @default-afui-form-select-search-input-height);
+  left: var(--afui-form-select-search-drop-down-icon-left, @default-afui-form-select-search-drop-down-icon-left);
+}

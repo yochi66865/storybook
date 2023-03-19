@@ -1,0 +1,17 @@
+<div class="afui-form-container">
+    <div *ngIf="isFormWithTitleBar" class="afui-form-title-bar">
+        <mat-icon class="afui-form-close-icon" svgIcon="close" (click)="close()"></mat-icon>
+        <span class="afui-form-title-bar-text">{{title}}</span>
+    </div>
+    <div class="afui-form-content">
+        <div class="afui-form-titles">
+            <ng-content select="[header]"></ng-content>
+        </div>
+        <div class="afui-form-body">
+            <ng-content select="[body]"></ng-content>
+        </div>
+        <div class="afui-form-footer">
+            <ng-content select="[footer]"></ng-content>
+        </div>
+    </div>
+</div>
