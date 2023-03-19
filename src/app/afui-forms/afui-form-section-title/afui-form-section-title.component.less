@@ -1,0 +1,27 @@
+@default-afui-form-section-title-color: #c1c1c1c1;
+@default-afui-form-section-title-hr-color: @default-afui-form-section-title-color;
+@default-afui-form-section-title-font-size: 1em;
+@default-afui-form-section-title-font-family: Arial, serif;
+
+.form-title {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--afui-form-section-title-font-size, @default-afui-form-section-title-font-size);
+  text-align: right;
+  direction: rtl;
+  align-items: flex-start;
+  font-family: var(--afui-form-section-title-font-family, @default-afui-form-section-title-font-family);
+  margin: 5px 0;
+
+  div {
+    color: var(--afui-form-section-title-color, @default-afui-form-section-title-color);
+    font-weight: 600;
+  }
+
+  hr {
+    width: 100%;
+    border: none;
+    height: 1px;
+    background-color: var(--afui-form-section-title-hr-color, @default-afui-form-section-title-hr-color);
+  }
+}

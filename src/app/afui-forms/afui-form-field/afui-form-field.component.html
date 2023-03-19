@@ -1,0 +1,15 @@
+<div class="form-field">
+    <div class="afui-form-field-label-with-error">
+        <ng-content select="[afui-field-label]"></ng-content>
+        <span *ngIf="_control.required" [ngClass]="{'error':_control.hasError}">*</span>
+
+    </div>
+    <div class="afui-form-field-input-line">
+        <ng-content select="[afui-input-prefix]"></ng-content>
+        <ng-content select="[afui-icon-prefix]"></ng-content>
+        <ng-content select="[afui-input]"></ng-content>
+        <ng-content select="[afui-input-suffix]"></ng-content>
+        <ng-content select="[afui-icon-suffix]"></ng-content>
+    </div>
+    <ng-content select="[afui-error]"></ng-content>
+</div>
