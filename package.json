@@ -26,6 +26,7 @@
     "@storybook/addon-knobs": "^6.4.0",
     "lodash": "^4.17.21",
     "ngx-drag-scroll": "^13.0.2",
+    "ngx-material-timepicker": "^5.5.3",
     "node": "^16.18.1",
     "rxjs": "~6.6.0",
     "zone.js": "~0.11.4"

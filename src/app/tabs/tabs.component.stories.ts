@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { IconModule } from '../shared/icon.module';
+import { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';
 import { DemoMaterialModule } from '../shared/material.module';
 import { TabComponent } from '../tab/tab.component';
 import { TabsMockComponent } from './tabs-mock.component';
@@ -19,7 +19,7 @@ export default {
         BrowserAnimationsModule,
         DemoMaterialModule,
         HttpClientModule,
-        IconModule,
+        AfuiIconModule,
       ],
     }),
   ],

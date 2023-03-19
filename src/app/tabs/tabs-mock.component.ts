@@ -38,10 +38,26 @@ export class TabsMockComponent {
         label: 'הקצאות סדכ',
         template: this.content0,
       },
-      { svgIconName: 'reserve', label: 'שריונים', template: this.content1 },
-      { svgIconName: 'areas', label: 'אזורים ומבנים', template: this.content2 },
-      { svgIconName: 'assignments', label: 'הקצאות', template: this.content3 },
-      { svgIconName: 'remarks', label: 'הערות', template: this.content4 },
+      {
+        svgIconName: 'reserve_instructions',
+        label: 'שריונים',
+        template: this.content1,
+      },
+      {
+        svgIconName: 'areas_instructions',
+        label: 'אזורים ומבנים',
+        template: this.content2,
+      },
+      {
+        svgIconName: 'assignments_instructions',
+        label: 'הקצאות',
+        template: this.content3,
+      },
+      {
+        svgIconName: 'remarks_instructions',
+        label: 'הערות',
+        template: this.content4,
+      },
       {
         svgIconName: 'advanced_instructions',
         label: 'הנחיות מתקדמות',

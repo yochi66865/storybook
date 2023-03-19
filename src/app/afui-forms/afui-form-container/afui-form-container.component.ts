@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEn
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class AfuiFormContainerComponent {
-  @Input() title: string;
+  @Input() title!: string;
   @Input() isFormWithTitleBar: boolean = true;
   @Output() closeEmitter: EventEmitter<void>;
 

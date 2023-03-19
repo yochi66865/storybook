@@ -21,8 +21,8 @@ import { AfUiInputDirective } from '../afui-input/afui-input.directive';
 export class AfUiFormFieldComponent implements AfterContentInit, OnDestroy {
   private _destroyed = new Subject<void>();
 
-  @ContentChild(AfUiInputDirective, { static: true }) _controlStatic: AfUiInputDirective;
-  @ContentChild(AfUiInputDirective) _controlNonStatic: AfUiInputDirective;
+  @ContentChild(AfUiInputDirective, { static: true }) _controlStatic!: AfUiInputDirective;
+  @ContentChild(AfUiInputDirective) _controlNonStatic!: AfUiInputDirective;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {
   }

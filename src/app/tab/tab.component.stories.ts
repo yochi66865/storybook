@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { IconModule } from '../shared/icon.module';
+import { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';
 import { DemoMaterialModule } from '../shared/material.module';
 import { cssVariablesKnobs } from './css-variables-knob';
 import { TabComponent } from './tab.component';
@@ -18,7 +18,7 @@ export default {
         BrowserAnimationsModule,
         DemoMaterialModule,
         HttpClientModule,
-        IconModule,
+        AfuiIconModule,
       ],
     }),
   ],
@@ -34,7 +34,7 @@ export const Default = () => ({
   template: defaultTemplate,
   styles: defaultStyle,
   props: {
-    svgIconName: 'reserve',
+    svgIconName: 'reserve_instructions',
     label: 'שריונים',
     isActive: false,
     withCloseIcon: false,
@@ -46,7 +46,7 @@ export const ActiveTag = () => ({
   template: defaultTemplate,
   styles: defaultStyle,
   props: {
-    svgIconName: 'reserve',
+    svgIconName: 'reserve_instructions',
     label: 'שריונים',
     isActive: true,
     withCloseIcon: false,

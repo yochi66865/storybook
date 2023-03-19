@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { AfuiIconModule } from '../afui-icon/afui-icon.module';
 import { AfuiErrorDirective } from './afui-error/afui-error.directive';
 import { AfUiFieldLabelDirective } from './afui-field-label/afui-field-label.directive';
 import { AfuiFormContainerComponent } from './afui-form-container/afui-form-container.component';
@@ -19,6 +18,8 @@ import { AfuiInputSuffixDirective } from './afui-input-suffix/afui-input-suffix.
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AfuiFormSelectSearchComponent } from './afui-select-search/afui-form-select-with-search.component';
+import { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,10 +39,16 @@ import { AfuiFormSelectSearchComponent } from './afui-select-search/afui-form-se
     AfuiSlideToggleDirective,
     AfuiInputPrefixDirective,
     AfuiInputSuffixDirective,
-    AfuiFormSelectSearchComponent
-
+    AfuiFormSelectSearchComponent,
   ],
-  imports: [CommonModule, AfuiIconModule, MatAutocompleteModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    AfuiIconModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+  ],
   exports: [
     AfUiInputDirective,
     AfUiFormFieldComponent,
@@ -59,7 +66,7 @@ import { AfuiFormSelectSearchComponent } from './afui-select-search/afui-form-se
     AfuiSlideToggleDirective,
     AfuiInputPrefixDirective,
     AfuiInputSuffixDirective,
-    AfuiFormSelectSearchComponent
-  ]
+    AfuiFormSelectSearchComponent,
+  ],
 })
-export class AfUiFormsModule { }
+export class AfUiFormsModule {}

@@ -8,23 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ButtonComponent } from './button/button.component';
-import { IconModule } from './shared/icon.module';
 import { DemoMaterialModule } from './shared/material.module';
 import { TabComponent } from './tab/tab.component';
 import { TabsMockComponent } from './tabs/tabs-mock.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { AfuiIconModule } from './shared/afui-icon/afui-icon.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ButtonComponent,
-    TabsComponent,
-    TabComponent,
-    TabsMockComponent,
-  ],
+  declarations: [AppComponent, TabsComponent, TabComponent, TabsMockComponent],
   imports: [
-    IconModule,
+    AfuiIconModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

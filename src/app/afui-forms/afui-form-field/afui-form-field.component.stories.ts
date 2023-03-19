@@ -2,26 +2,45 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { array, boolean, number, text, withKnobs } from '@storybook/addon-knobs';
+import {
+  array,
+  boolean,
+  number,
+  text,
+  withKnobs,
+} from '@storybook/addon-knobs';
 import { moduleMetadata } from '@storybook/angular';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { AfuiIconModule } from '../../afui-icon/afui-icon.module';
+import { AfuiIconModule } from '../../shared/afui-icon/afui-icon.module';
 import { AfuiErrorDirective } from '../afui-error/afui-error.directive';
 import { AfUiFieldLabelDirective } from '../afui-field-label/afui-field-label.directive';
 import { AfuiIconSuffixDirective } from '../afui-icon-suffix/afui-icon-suffix.directive';
 import { AfUiInputDirective } from '../afui-input/afui-input.directive';
 import { AfUiFormFieldComponent } from './afui-form-field.component';
 
-
 export default {
   title: 'Forms/Form Field',
   decorators: [
     withKnobs,
     moduleMetadata({
-      imports: [MatSelectModule, MatOptionModule, MatDatepickerModule, MatNativeDateModule, NgxMaterialTimepickerModule, AfuiIconModule, TextFieldModule],
-      declarations: [AfUiFormFieldComponent, AfUiInputDirective, AfuiErrorDirective, AfUiFieldLabelDirective, AfuiIconSuffixDirective]
-    })
-  ]
+      imports: [
+        MatSelectModule,
+        MatOptionModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        NgxMaterialTimepickerModule,
+        AfuiIconModule,
+        TextFieldModule,
+      ],
+      declarations: [
+        AfUiFormFieldComponent,
+        AfUiInputDirective,
+        AfuiErrorDirective,
+        AfUiFieldLabelDirective,
+        AfuiIconSuffixDirective,
+      ],
+    }),
+  ],
 };
 
 export const Input = () => ({
@@ -36,8 +55,8 @@ export const Input = () => ({
     value: text('value', ''),
     placeholder: text('placeholder', 'הקלד'),
     displayError: boolean('display error', false),
-    errorText: text('error text', 'שגיאה')
-  }
+    errorText: text('error text', 'שגיאה'),
+  },
 });
 
 export const InputCustomized = () => ({
@@ -53,24 +72,51 @@ export const InputCustomized = () => ({
     value: text('value', ''),
     placeholder: text('placeholder', 'הקלד'),
     displayError: boolean('display error', false),
-    errorText: text('error text', 'שגיאה')
-  }
+    errorText: text('error text', 'שגיאה'),
+  },
 });
 
 InputCustomized.story = {
   parameters: {
     cssVariablesKnobs: [
-      { variable: '--afui-form-field-afui-input-color', type: 'color', initialValue: '#424242' },
-      { variable: '--afui-form-field-afui-input-background-color', type: 'color', initialValue: '#ffffff' },
-      { variable: '--afui-form-field-afui-input-disabled-background-color', type: 'color', initialValue: '#F0F0F0' },
-      { variable: '--afui-form-field-afui-input-placeholder-color', type: 'color', initialValue: '#CCCCCC' },
-      { variable: '--afui-form-field-afui-field-label-color', type: 'color', initialValue: '#8a8a8a' },
-      { variable: '--afui-form-field-font-size', type: 'text', initialValue: '1em' },
-      { variable: '--afui-form-field-font-family', type: 'text', initialValue: 'Arial' }
-    ]
-  }
+      {
+        variable: '--afui-form-field-afui-input-color',
+        type: 'color',
+        initialValue: '#424242',
+      },
+      {
+        variable: '--afui-form-field-afui-input-background-color',
+        type: 'color',
+        initialValue: '#ffffff',
+      },
+      {
+        variable: '--afui-form-field-afui-input-disabled-background-color',
+        type: 'color',
+        initialValue: '#F0F0F0',
+      },
+      {
+        variable: '--afui-form-field-afui-input-placeholder-color',
+        type: 'color',
+        initialValue: '#CCCCCC',
+      },
+      {
+        variable: '--afui-form-field-afui-field-label-color',
+        type: 'color',
+        initialValue: '#8a8a8a',
+      },
+      {
+        variable: '--afui-form-field-font-size',
+        type: 'text',
+        initialValue: '1em',
+      },
+      {
+        variable: '--afui-form-field-font-family',
+        type: 'text',
+        initialValue: 'Arial',
+      },
+    ],
+  },
 };
-
 
 export const TextArea = () => ({
   component: AfUiFormFieldComponent,
@@ -86,8 +132,8 @@ export const TextArea = () => ({
     minRows: number('minimum rows', 3),
     maxRows: number('maximum rows', 5),
     displayError: boolean('display error', false),
-    errorText: text('error text', 'שגיאה')
-  }
+    errorText: text('error text', 'שגיאה'),
+  },
 });
 
 export const TextAreaCustomized = () => ({
@@ -104,22 +150,50 @@ export const TextAreaCustomized = () => ({
     minRows: number('minimum rows', 3),
     maxRows: number('maximum rows', 5),
     displayError: boolean('display error', false),
-    errorText: text('error text', 'שגיאה')
-  }
+    errorText: text('error text', 'שגיאה'),
+  },
 });
 
 TextAreaCustomized.story = {
   parameters: {
     cssVariablesKnobs: [
-      { variable: '--afui-form-field-afui-input-color', type: 'color', initialValue: '#424242' },
-      { variable: '--afui-form-field-afui-input-background-color', type: 'color', initialValue: '#ffffff' },
-      { variable: '--afui-form-field-afui-input-disabled-background-color', type: 'color', initialValue: '#F0F0F0' },
-      { variable: '--afui-form-field-afui-input-placeholder-color', type: 'color', initialValue: '#CCCCCC' },
-      { variable: '--afui-form-field-afui-field-label-color', type: 'color', initialValue: '#8a8a8a' },
-      { variable: '--afui-form-field-font-size', type: 'text', initialValue: '1em' },
-      { variable: '--afui-form-field-font-family', type: 'text', initialValue: 'Arial' }
-    ]
-  }
+      {
+        variable: '--afui-form-field-afui-input-color',
+        type: 'color',
+        initialValue: '#424242',
+      },
+      {
+        variable: '--afui-form-field-afui-input-background-color',
+        type: 'color',
+        initialValue: '#ffffff',
+      },
+      {
+        variable: '--afui-form-field-afui-input-disabled-background-color',
+        type: 'color',
+        initialValue: '#F0F0F0',
+      },
+      {
+        variable: '--afui-form-field-afui-input-placeholder-color',
+        type: 'color',
+        initialValue: '#CCCCCC',
+      },
+      {
+        variable: '--afui-form-field-afui-field-label-color',
+        type: 'color',
+        initialValue: '#8a8a8a',
+      },
+      {
+        variable: '--afui-form-field-font-size',
+        type: 'text',
+        initialValue: '1em',
+      },
+      {
+        variable: '--afui-form-field-font-family',
+        type: 'text',
+        initialValue: 'Arial',
+      },
+    ],
+  },
 };
 
 export const SelectDropdown = () => ({
@@ -136,9 +210,9 @@ export const SelectDropdown = () => ({
     values: array('options', ['שלום', 'עולם']),
     placeholder: text('placeholder', 'בחר'),
     displayError: boolean('display error', false),
-    errorText: text('error text', 'שגיאה')
+    errorText: text('error text', 'שגיאה'),
   },
-  styles: [`mat-select{min-width:100px}`]
+  styles: [`mat-select{min-width:100px}`],
 });
 
 export const SelectDropdownCustomized = () => ({
@@ -155,21 +229,41 @@ export const SelectDropdownCustomized = () => ({
     values: array('options', ['שלום', 'עולם']),
     placeholder: text('placeholder', 'בחר'),
     displayError: boolean('display error', false),
-    errorText: text('error text', 'שגיאה')
+    errorText: text('error text', 'שגיאה'),
   },
-  styles: [`mat-select{min-width:100px}`]
+  styles: [`mat-select{min-width:100px}`],
 });
 
 SelectDropdownCustomized.story = {
   parameters: {
     cssVariablesKnobs: [
-      { variable: '--afui-form-field-afui-input-background-color', type: 'color', initialValue: '#ffffff' },
-      { variable: '--afui-form-field-afui-input-disabled-background-color', type: 'color', initialValue: '#F0F0F0' },
-      { variable: '--afui-form-field-afui-field-label-color', type: 'color', initialValue: '#8a8a8a' },
-      { variable: '--afui-form-field-font-size', type: 'text', initialValue: '1em' },
-      { variable: '--afui-form-field-font-family', type: 'text', initialValue: 'Arial' }
-    ]
-  }
+      {
+        variable: '--afui-form-field-afui-input-background-color',
+        type: 'color',
+        initialValue: '#ffffff',
+      },
+      {
+        variable: '--afui-form-field-afui-input-disabled-background-color',
+        type: 'color',
+        initialValue: '#F0F0F0',
+      },
+      {
+        variable: '--afui-form-field-afui-field-label-color',
+        type: 'color',
+        initialValue: '#8a8a8a',
+      },
+      {
+        variable: '--afui-form-field-font-size',
+        type: 'text',
+        initialValue: '1em',
+      },
+      {
+        variable: '--afui-form-field-font-family',
+        type: 'text',
+        initialValue: 'Arial',
+      },
+    ],
+  },
 };
 
 export const DatePicker = () => ({
@@ -186,8 +280,8 @@ export const DatePicker = () => ({
     placeholder: text('placeholder', 'בחר תאריך'),
     displayError: boolean('display error', false),
     errorText: text('error text', 'שגיאה'),
-    withIcon: boolean('with icon', true)
-  }
+    withIcon: boolean('with icon', true),
+  },
 });
 
 export const DatePickerCustomized = () => ({
@@ -204,22 +298,50 @@ export const DatePickerCustomized = () => ({
     placeholder: text('placeholder', 'בחר תאריך'),
     displayError: boolean('display error', false),
     errorText: text('error text', 'שגיאה'),
-    withIcon: boolean('with icon', true)
-  }
+    withIcon: boolean('with icon', true),
+  },
 });
 
 DatePickerCustomized.story = {
   parameters: {
     cssVariablesKnobs: [
-      { variable: '--afui-form-field-afui-input-color', type: 'color', initialValue: '#424242' },
-      { variable: '--afui-form-field-afui-input-background-color', type: 'color', initialValue: '#ffffff' },
-      { variable: '--afui-form-field-afui-input-disabled-background-color', type: 'color', initialValue: '#F0F0F0' },
-      { variable: '--afui-form-field-afui-input-placeholder-color', type: 'color', initialValue: '#CCCCCC' },
-      { variable: '--afui-form-field-afui-field-label-color', type: 'color', initialValue: '#8a8a8a' },
-      { variable: '--afui-form-field-font-size', type: 'text', initialValue: '1em' },
-      { variable: '--afui-form-field-font-family', type: 'text', initialValue: 'Arial' }
-    ]
-  }
+      {
+        variable: '--afui-form-field-afui-input-color',
+        type: 'color',
+        initialValue: '#424242',
+      },
+      {
+        variable: '--afui-form-field-afui-input-background-color',
+        type: 'color',
+        initialValue: '#ffffff',
+      },
+      {
+        variable: '--afui-form-field-afui-input-disabled-background-color',
+        type: 'color',
+        initialValue: '#F0F0F0',
+      },
+      {
+        variable: '--afui-form-field-afui-input-placeholder-color',
+        type: 'color',
+        initialValue: '#CCCCCC',
+      },
+      {
+        variable: '--afui-form-field-afui-field-label-color',
+        type: 'color',
+        initialValue: '#8a8a8a',
+      },
+      {
+        variable: '--afui-form-field-font-size',
+        type: 'text',
+        initialValue: '1em',
+      },
+      {
+        variable: '--afui-form-field-font-family',
+        type: 'text',
+        initialValue: 'Arial',
+      },
+    ],
+  },
 };
 
 export const HourPicker = () => ({
@@ -237,9 +359,9 @@ export const HourPicker = () => ({
     appendToInput: boolean('popup next to input', true),
     displayError: boolean('display error', false),
     errorText: text('error text', 'שגיאה'),
-    withIcon: boolean('with icon', true)
+    withIcon: boolean('with icon', true),
   },
-  styles: [`:host{font-size:15px}`]
+  styles: [`:host{font-size:15px}`],
 });
 
 export const HourPickerCustomized = () => ({
@@ -257,21 +379,49 @@ export const HourPickerCustomized = () => ({
     appendToInput: boolean('popup next to input', true),
     displayError: boolean('display error', false),
     errorText: text('error text', 'שגיאה'),
-    withIcon: boolean('with icon', true)
+    withIcon: boolean('with icon', true),
   },
-  styles: [`:host{font-size:15px}`]
+  styles: [`:host{font-size:15px}`],
 });
 
 HourPickerCustomized.story = {
   parameters: {
     cssVariablesKnobs: [
-      { variable: '--afui-form-field-afui-input-color', type: 'color', initialValue: '#424242' },
-      { variable: '--afui-form-field-afui-input-background-color', type: 'color', initialValue: '#ffffff' },
-      { variable: '--afui-form-field-afui-input-disabled-background-color', type: 'color', initialValue: '#F0F0F0' },
-      { variable: '--afui-form-field-afui-input-placeholder-color', type: 'color', initialValue: '#CCCCCC' },
-      { variable: '--afui-form-field-afui-field-label-color', type: 'color', initialValue: '#8a8a8a' },
-      { variable: '--afui-form-field-font-size', type: 'text', initialValue: '1em' },
-      { variable: '--afui-form-field-font-family', type: 'text', initialValue: 'Arial' }
-    ]
-  }
+      {
+        variable: '--afui-form-field-afui-input-color',
+        type: 'color',
+        initialValue: '#424242',
+      },
+      {
+        variable: '--afui-form-field-afui-input-background-color',
+        type: 'color',
+        initialValue: '#ffffff',
+      },
+      {
+        variable: '--afui-form-field-afui-input-disabled-background-color',
+        type: 'color',
+        initialValue: '#F0F0F0',
+      },
+      {
+        variable: '--afui-form-field-afui-input-placeholder-color',
+        type: 'color',
+        initialValue: '#CCCCCC',
+      },
+      {
+        variable: '--afui-form-field-afui-field-label-color',
+        type: 'color',
+        initialValue: '#8a8a8a',
+      },
+      {
+        variable: '--afui-form-field-font-size',
+        type: 'text',
+        initialValue: '1em',
+      },
+      {
+        variable: '--afui-form-field-font-family',
+        type: 'text',
+        initialValue: 'Arial',
+      },
+    ],
+  },
 };

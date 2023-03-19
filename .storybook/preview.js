@@ -1,5 +1,10 @@
 import { setCompodocJson } from "@storybook/addon-docs/angular";
 import docJson from "../documentation.json";
+import { themes } from '@storybook/theming';
+import { knob } from '@storybook/addon-knobs';
+import { addons, makeDecorator } from '@storybook/addons';
+import { addDecorator, getStorybook } from '@storybook/angular';
+
 setCompodocJson(docJson);
 
 export const parameters = {
@@ -13,9 +18,9 @@ export const parameters = {
   docs: { inlineStories: true },
 }
 
-import { knob } from '@storybook/addon-knobs';
-import { addons, makeDecorator } from '@storybook/addons';
-import { addDecorator, getStorybook } from '@storybook/angular';
+addons.setConfig({
+  theme: themes.dark,
+});
 
 export function colorCssVariable(
   name,
