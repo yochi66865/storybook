@@ -2,6 +2,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   array,
   boolean,
@@ -31,6 +32,7 @@ export default {
         NgxMaterialTimepickerModule,
         AfuiIconModule,
         TextFieldModule,
+        BrowserAnimationsModule,
       ],
       declarations: [
         AfUiFormFieldComponent,
