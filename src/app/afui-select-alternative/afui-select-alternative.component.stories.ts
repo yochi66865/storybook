@@ -30,7 +30,7 @@ export default {
 } as Meta;
 
 const defaultStyle = [
-  `afui-select-alternative {  width: 187px; height:200px; display: flex } `,
+  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,
 ];
 
 const defaultTemplate = `<afui-select-alternative [headQuarters]="headQuarters" 

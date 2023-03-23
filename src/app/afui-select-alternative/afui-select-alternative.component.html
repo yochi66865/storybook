@@ -1,6 +1,6 @@
 <div class="select-alternative-container">
-  <div class="search-headquarter"></div>
-  <div class="select-alternative">
+  <div class="select-alternative-search"></div>
+  <div class="select-alternative-body">
     <afui-form-field *ngFor="let headQuarter of headQuarters">
       <span afui-field-label>{{ headQuarter }}</span>
       <mat-select afui-input [placeholder]="placeholder">
@@ -11,5 +11,5 @@
       <span *ngIf="displayError" afui-error>{{ errorText }}</span>
     </afui-form-field>
   </div>
-  <div class="footer"></div>
+  <div class="select-alternative-footer"></div>
 </div>

@@ -8,29 +8,59 @@
   display: flex;
   flex-direction: column;
 
-  .search-headquarter {
+  .select-alternative-search {
     flex: 1;
     margin: 0 13.5px;
     border-bottom: 2px solid #e7eaef;
   }
-  .select-alternative {
-    flex: 2.1;
+  .select-alternative-body {
+    flex: 3.2;
     margin: 0 13.5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    & > * {
+      flex: 1;
+    }
   }
-  .footer {
+  .select-alternative-footer {
     flex: 1;
     border-top: 1px solid #e7eaef;
   }
 
   afui-form-field {
-    --afui-form-field-afui-input-color: #424242;
+    --afui-form-field-afui-input-color: #8fa0b1;
     --afui-form-field-afui-input-background-color: #ffffff;
     --afui-form-field-afui-input-focus-border-color: #40a0ff;
     --afui-form-field-afui-input-disabled-background-color: #f0f0f0;
-    --afui-form-field-afui-input-placeholder-color: #cccccc;
+    --afui-form-field-afui-input-placeholder-color: #adadad;
     --afui-form-field-afui-field-label-color: #8a8a8a;
     --afui-form-field-afui-error-color: #ff0000;
-    --afui-form-field-font-size: 1em;
+    --afui-form-field-font-size: 10px;
     --afui-form-field-font-family: Arial, serif;
+
+    & .form-field {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      height: 100%;
+
+      & .afui-form-field-input-line {
+        flex: 2;
+        & .afui-input {
+          border: 1px solid #8fa0b1;
+          padding: 2px 8px;
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      & .afui-form-field-label-with-error {
+        flex: 1;
+        font-weight: 700;
+        align-items: center;
+      }
+    }
   }
 }

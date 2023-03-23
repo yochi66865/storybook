@@ -1565,9 +1565,11 @@
         },
         {
             "name": "AfuiSelectAlternativeComponent",
-            "id": "component-AfuiSelectAlternativeComponent-629c7a012d360939eaff4efa3b4525d5afd012238e1ba4b70e49970fc0908d8d2cf64899030d2f141fa6877e3cc86016cf47f3da583a62b28dcec90baecfc85f",
+            "id": "component-AfuiSelectAlternativeComponent-5d080020d777c19dff400a4898fe8e27ee00a20a753425625bf8a341fc2f8cf10a03c5bf66e2079369abcf121b9595598abe0ed6073af163cb5fe0b89be3fb5b",
             "file": "src/app/afui-select-alternative/afui-select-alternative.component.ts",
-            "encapsulation": [],
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
@@ -1587,7 +1589,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "line": 19,
                     "type": "Entity[]",
                     "decorators": []
                 },
@@ -1596,7 +1598,7 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "line": 18,
                     "type": "Entity[]",
                     "decorators": []
                 },
@@ -1605,7 +1607,7 @@
                     "defaultValue": "new Map()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 20,
                     "type": "Map<string | string>",
                     "decorators": []
                 }
@@ -1616,7 +1618,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 21,
                     "type": "EventEmitter<Map<string, string>>"
                 }
             ],
@@ -1629,7 +1631,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 23
                 }
             ],
             "methodsClass": [
@@ -1639,7 +1641,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 18,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1651,11 +1653,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { Entity } from './models';\r\n\r\n@Component({\r\n  selector: 'afui-select-alternative',\r\n  templateUrl: './afui-select-alternative.component.html',\r\n  styleUrls: ['./afui-select-alternative.component.less'],\r\n})\r\nexport class AfuiSelectAlternativeComponent implements OnInit {\r\n  @Input() headQuarters: Entity[] = [];\r\n  @Input() alternatives: Entity[] = [];\r\n  @Input() selectedAlternatives: Map<string, string> = new Map();\r\n  @Output() selected: EventEmitter<Map<string, string>> = new EventEmitter();\r\n\r\n  placeholder = 'בחירה';\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {}\r\n}\r\n",
+            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  OnInit,\r\n  Output,\r\n  ViewEncapsulation,\r\n} from '@angular/core';\r\nimport { Entity } from './models';\r\n\r\n@Component({\r\n  selector: 'afui-select-alternative',\r\n  templateUrl: './afui-select-alternative.component.html',\r\n  styleUrls: ['./afui-select-alternative.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n})\r\nexport class AfuiSelectAlternativeComponent implements OnInit {\r\n  @Input() headQuarters: Entity[] = [];\r\n  @Input() alternatives: Entity[] = [];\r\n  @Input() selectedAlternatives: Map<string, string> = new Map();\r\n  @Output() selected: EventEmitter<Map<string, string>> = new EventEmitter();\r\n\r\n  placeholder = 'בחירה';\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".select-alternative-container {\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: var(--white);\r\n  border-radius: 10px;\r\n  overflow: hidden;\r\n\r\n  display: flex;\r\n  flex-direction: column;\r\n\r\n  .search-headquarter {\r\n    flex: 1;\r\n    margin: 0 13.5px;\r\n    border-bottom: 2px solid #e7eaef;\r\n  }\r\n  .select-alternative {\r\n    flex: 2.1;\r\n    margin: 0 13.5px;\r\n  }\r\n  .footer {\r\n    flex: 1;\r\n    border-top: 1px solid #e7eaef;\r\n  }\r\n\r\n  afui-form-field {\r\n    --afui-form-field-afui-input-color: #424242;\r\n    --afui-form-field-afui-input-background-color: red;\r\n    --afui-form-field-afui-input-focus-border-color: #40a0ff;\r\n    --afui-form-field-afui-input-disabled-background-color: #f0f0f0;\r\n    --afui-form-field-afui-input-placeholder-color: #cccccc;\r\n    --afui-form-field-afui-field-label-color: #8a8a8a;\r\n    --afui-form-field-afui-error-color: #ff0000;\r\n    --afui-form-field-font-size: 1em;\r\n    --afui-form-field-font-family: Arial, serif;\r\n  }\r\n}\r\n",
+                    "data": ".select-alternative-container {\r\n  height: 100%;\r\n  width: 100%;\r\n  background-color: var(--white);\r\n  border-radius: 10px;\r\n  overflow: hidden;\r\n\r\n  display: flex;\r\n  flex-direction: column;\r\n\r\n  .select-alternative-search {\r\n    flex: 1;\r\n    margin: 0 13.5px;\r\n    border-bottom: 2px solid #e7eaef;\r\n  }\r\n  .select-alternative-body {\r\n    flex: 3.2;\r\n    margin: 0 13.5px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 15px;\r\n  }\r\n  .select-alternative-footer {\r\n    flex: 1;\r\n    border-top: 1px solid #e7eaef;\r\n  }\r\n\r\n  afui-form-field {\r\n    --afui-form-field-afui-input-color: #8fa0b1;\r\n    --afui-form-field-afui-input-background-color: #ffffff;\r\n    --afui-form-field-afui-input-focus-border-color: #40a0ff;\r\n    --afui-form-field-afui-input-disabled-background-color: #f0f0f0;\r\n    --afui-form-field-afui-input-placeholder-color: #adadad;\r\n    --afui-form-field-afui-field-label-color: #8a8a8a;\r\n    --afui-form-field-afui-error-color: #ff0000;\r\n    --afui-form-field-font-size: 10px;\r\n    --afui-form-field-font-family: Arial, serif;\r\n\r\n    & .form-field {\r\n      display: flex;\r\n      flex-direction: row;\r\n      align-items: stretch;\r\n      height: 27px;\r\n\r\n      & .afui-form-field-input-line {\r\n        flex: 2;\r\n        & .afui-input {\r\n          border: 1px solid #8fa0b1;\r\n          padding: 2px 8px;\r\n          display: flex;\r\n          align-items: center;\r\n        }\r\n      }\r\n\r\n      & .afui-form-field-label-with-error {\r\n        flex: 1;\r\n        font-weight: 700;\r\n        align-items: center;\r\n      }\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./afui-select-alternative.component.less"
                 }
             ],
@@ -1666,12 +1668,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 15
+                "line": 23
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"select-alternative-container\">\r\n  <div class=\"search-headquarter\"></div>\r\n  <div class=\"select-alternative\">\r\n    <afui-form-field *ngFor=\"let headQuarter of headQuarters\">\r\n      <span afui-field-label>{{ headQuarter }}</span>\r\n      <mat-select afui-input [placeholder]=\"placeholder\">\r\n        <mat-option *ngFor=\"let alternative of alternatives\" [value]=\"alternative.id\">{{\r\n          alternative.value\r\n        }}</mat-option>\r\n      </mat-select>\r\n      <span *ngIf=\"displayError\" afui-error>{{ errorText }}</span>\r\n    </afui-form-field>\r\n  </div>\r\n  <div class=\"footer\"></div>\r\n</div>\r\n"
+            "templateData": "<div class=\"select-alternative-container\">\r\n  <div class=\"select-alternative-search\"></div>\r\n  <div class=\"select-alternative-body\">\r\n    <afui-form-field *ngFor=\"let headQuarter of headQuarters\">\r\n      <span afui-field-label>{{ headQuarter }}</span>\r\n      <mat-select afui-input [placeholder]=\"placeholder\">\r\n        <mat-option *ngFor=\"let alternative of alternatives\" [value]=\"alternative.id\">{{\r\n          alternative.value\r\n        }}</mat-option>\r\n      </mat-select>\r\n      <span *ngIf=\"displayError\" afui-error>{{ errorText }}</span>\r\n    </afui-form-field>\r\n  </div>\r\n  <div class=\"select-alternative-footer\"></div>\r\n</div>\r\n"
         },
         {
             "name": "AppComponent",
@@ -8425,21 +8427,21 @@
                 "name": "Customized",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
-            },
-            {
-                "name": "Customized",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
+            },
+            {
+                "name": "Customized",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
             },
             {
                 "name": "Customized",
@@ -8455,21 +8457,21 @@
                 "name": "Customized",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-            },
-            {
-                "name": "Customized",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n  },\r\n})"
+            },
+            {
+                "name": "Customized",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
             },
             {
                 "name": "DatePicker",
@@ -8525,21 +8527,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
             },
             {
                 "name": "Default",
@@ -8555,21 +8557,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\" [defaultSelectedId]=\"defaultSelectedId\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n    defaultSelectedId: text('defaultSelectedId', '123'),\r\n  },\r\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
             },
             {
                 "name": "defaultStyle",
@@ -8579,7 +8581,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:200px; display: flex } `,\r\n]"
+                "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
             },
             {
                 "name": "defaultStyle",
@@ -14854,28 +14856,6 @@
                     "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
                 }
             ],
-            "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts": [
-                {
-                    "name": "Customized",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
-                }
-            ],
             "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts": [
                 {
                     "name": "Customized",
@@ -14896,6 +14876,28 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
+                }
+            ],
+            "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts": [
+                {
+                    "name": "Customized",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
                 }
             ],
             "src/app/afui-forms/afui-select/afui-select.directive.stories.ts": [
@@ -14940,28 +14942,6 @@
                     "defaultValue": "`\r\n  <mat-form-field afui-select-form-field>\r\n    <mat-select\r\n      afui-select\r\n      panelClass=\"afui-select-panel\"\r\n      disableOptionCentering\r\n      disableRipple\r\n      [placeholder]=\"placeholder\">\r\n      <mat-option *ngFor=\"let option of options\" [value]=\"option\">{{ option }}</mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n`"
                 }
             ],
-            "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts": [
-                {
-                    "name": "Customized",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-                }
-            ],
             "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts": [
                 {
                     "name": "Customized",
@@ -14982,6 +14962,28 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\" [defaultSelectedId]=\"defaultSelectedId\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n    defaultSelectedId: text('defaultSelectedId', '123'),\r\n  },\r\n})"
+                }
+            ],
+            "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts": [
+                {
+                    "name": "Customized",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
                 }
             ],
             "src/app/afui-forms/afui-form-field/afui-form-field.component.stories.ts": [
@@ -15105,7 +15107,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:200px; display: flex } `,\r\n]"
+                    "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
                 },
                 {
                     "name": "defaultTemplate",
