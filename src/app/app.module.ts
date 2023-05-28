@@ -13,9 +13,12 @@ import { TabComponent } from './tab/tab.component';
 import { TabsMockComponent } from './tabs/tabs-mock.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { AfuiIconModule } from './shared/afui-icon/afui-icon.module';
+import { AfuiStructuresComponent } from './afui-structures/afui-structures.component';
+import { AfuiSeparationOfTimesComponent } from './afui-separation-of-times/afui-separation-of-times.component';
+import { AfuiRoundingTimesComponent } from './afui-rounding-times/afui-rounding-times.component';
 
 @NgModule({
-  declarations: [AppComponent, TabsComponent, TabComponent, TabsMockComponent],
+  declarations: [AppComponent, TabsComponent, TabComponent, TabsMockComponent, AfuiStructuresComponent, AfuiSeparationOfTimesComponent, AfuiRoundingTimesComponent],
   imports: [
     AfuiIconModule,
     BrowserModule,
