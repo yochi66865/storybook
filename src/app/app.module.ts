@@ -16,10 +16,20 @@ import { AfuiIconModule } from './shared/afui-icon/afui-icon.module';
 import { AfuiStructuresComponent } from './afui-structures/afui-structures.component';
 import { AfuiSeparationOfTimesComponent } from './afui-separation-of-times/afui-separation-of-times.component';
 import { AfuiRoundingTimesComponent } from './afui-rounding-times/afui-rounding-times.component';
+import { AfUiFormsModule } from './afui-forms/afui-forms.module';
 
 @NgModule({
-  declarations: [AppComponent, TabsComponent, TabComponent, TabsMockComponent, AfuiStructuresComponent, AfuiSeparationOfTimesComponent, AfuiRoundingTimesComponent],
+  declarations: [
+    AppComponent,
+    TabsComponent,
+    TabComponent,
+    TabsMockComponent,
+    AfuiStructuresComponent,
+    AfuiSeparationOfTimesComponent,
+    AfuiRoundingTimesComponent,
+  ],
   imports: [
+    AfUiFormsModule,
     AfuiIconModule,
     BrowserModule,
     AppRoutingModule,
