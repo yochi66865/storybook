@@ -4,6 +4,7 @@ import { AfuiFormSelectSearchComponent } from './afui-form-select-with-search.co
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AfuiIconModule } from '../../shared/afui-icon/afui-icon.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
   title: 'Forms/Form Select With Search',
@@ -15,6 +16,7 @@ export default {
         FormsModule,
         ReactiveFormsModule,
         AfuiIconModule,
+        BrowserAnimationsModule,
       ],
       declarations: [AfuiFormSelectSearchComponent],
     }),

@@ -1,0 +1,15 @@
+<div class="select-alternative-container">
+  <div class="select-alternative-search"></div>
+  <div class="select-alternative-body">
+    <afui-form-field *ngFor="let headQuarter of headQuarters">
+      <span afui-field-label>{{ headQuarter }}</span>
+      <mat-select afui-input [placeholder]="placeholder">
+        <mat-option *ngFor="let alternative of alternatives" [value]="alternative.id">{{
+          alternative.value
+        }}</mat-option>
+      </mat-select>
+      <span *ngIf="displayError" afui-error>{{ errorText }}</span>
+    </afui-form-field>
+  </div>
+  <div class="select-alternative-footer"></div>
+</div>

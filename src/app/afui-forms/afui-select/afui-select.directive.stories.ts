@@ -1,4 +1,5 @@
 import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { array, text, withKnobs } from '@storybook/addon-knobs';
 import { moduleMetadata } from '@storybook/angular';
 import { AfUiFormsModule } from '../afui-forms.module';
@@ -8,7 +9,7 @@ export default {
   decorators: [
     withKnobs,
     moduleMetadata({
-      imports: [AfUiFormsModule, MatSelectModule],
+      imports: [AfUiFormsModule, MatSelectModule, BrowserAnimationsModule],
     }),
   ],
 };
@@ -77,7 +78,7 @@ export const Parlament = () => ({
       .mat-option.parlament:hover {
         background-color: #40a0ff;
       }
-    `
+    `,
   ],
   template: `
     <mat-form-field afui-select-form-field>
@@ -93,9 +94,9 @@ export const Parlament = () => ({
   `,
   props: {
     placeholder: 'בחר אפשרות',
-    options: ['a', 'b', 'c']
-  }
-})
+    options: ['a', 'b', 'c'],
+  },
+});
 
 export const Customized = () => ({
   template,
@@ -114,11 +115,31 @@ Customized.story = {
   parameters: {
     cssVariablesKnobs: [
       { variable: '--afui-select-padding', type: 'text', initialValue: '8px' },
-      { variable: '--afui-select-border-radius', type: 'text', initialValue: '10px' },
-      { variable: '--afui-select-background-color', type: 'color', initialValue: '#fff' },
-      { variable: '--afui-select-chevron-color', type: 'color', initialValue: 'rgba(0, 0, 0, 0.4)' },
-      { variable: '--afui-select-placeholder-color', type: 'color', initialValue: 'rgba(0, 0, 0, 0.4)' },
-      { variable: '--afui-select-panel-top', type: 'text', initialValue: '30px' },
+      {
+        variable: '--afui-select-border-radius',
+        type: 'text',
+        initialValue: '10px',
+      },
+      {
+        variable: '--afui-select-background-color',
+        type: 'color',
+        initialValue: '#fff',
+      },
+      {
+        variable: '--afui-select-chevron-color',
+        type: 'color',
+        initialValue: 'rgba(0, 0, 0, 0.4)',
+      },
+      {
+        variable: '--afui-select-placeholder-color',
+        type: 'color',
+        initialValue: 'rgba(0, 0, 0, 0.4)',
+      },
+      {
+        variable: '--afui-select-panel-top',
+        type: 'text',
+        initialValue: '30px',
+      },
     ],
   },
 };

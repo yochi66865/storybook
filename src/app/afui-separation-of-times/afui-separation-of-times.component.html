@@ -1,0 +1,87 @@
+<div class="separation-times-container">
+  <div class="separation-times-structures">
+    <label class="separation-times-label">מבנים</label>
+    <div class="separation-times-inputs">
+      <afui-form-field>
+        <span afui-field-label>כמות מטוסים במבנה</span>
+        <mat-select
+          afui-input
+          class="separation-of-times"
+          placeholder="בחירה"
+          panelClass="separation-of-times"
+        >
+          <mat-option
+            *ngFor="let option of numSquadronInStructures"
+            [value]="option"
+            >{{ option }}</mat-option
+          >
+        </mat-select>
+      </afui-form-field>
+      <!-- <input afui-input [value]="value" [placeholder]="placeholder" /> -->
+      <!-- <span *ngIf="displayError" afui-error>{{ errorText }}</span> -->
+    </div>
+  </div>
+  <div class="separation-times-times" *ngIf="cloneSeparationOfTimes">
+    <label class="separation-times-label">זמנים להמלצת שידוך</label>
+    <div class="separation-times-inputs">
+      <afui-form-field>
+        <span afui-field-label>הפרדת זמנים בין מבנים</span>
+        <mat-select
+          afui-input
+          class="separation-of-times-input"
+          placeholder="בחירה"
+          panelClass="separation-of-times"
+          [ngModel]="cloneSeparationOfTimes.typeSeparationOfTimes"
+          name="typeSeparationOfTimes"
+          (selectionChange)="
+            cloneSeparationOfTimes.typeSeparationOfTimes = $event.value
+          "
+        >
+          <mat-option [value]="'מרחבית'">מרחבית</mat-option>
+          <mat-option [value]="'אזורית'">אזורית</mat-option>
+        </mat-select>
+      </afui-form-field>
+      <afui-form-field>
+        <span afui-field-label>חלון הפרדה</span>
+        <mat-select
+          afui-input
+          class="separation-of-times-input"
+          placeholder="זמן"
+          panelClass="separation-of-times"
+          name="separationWindowTime"
+          [ngModel]="cloneSeparationOfTimes.separationWindowTime"
+          (selectionChange)="
+            cloneSeparationOfTimes.separationWindowTime = $event.value
+          "
+        >
+          <mat-option
+            *ngFor="
+              let option of timesSeparationOfTimes | keyvalue: keyDescOrder
+            "
+            [value]="option.key"
+            >{{ option.value }}</mat-option
+          >
+        </mat-select>
+      </afui-form-field>
+      <afui-form-field
+        class="amount-of-buildings"
+        [ngClass]="
+          cloneSeparationOfTimes?.typeSeparationOfTimes === 'אזורית'
+            ? 'show'
+            : 'hidden'
+        "
+      >
+        <span afui-field-label>מבנים בו"ז</span>
+        <input
+          afui-input
+          type="number"
+          min="0"
+          max="25"
+          class="separation-of-times-input"
+          name="amountOfBuildingsAtTheSameTime"
+          [(ngModel)]="cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime"
+        />
+      </afui-form-field>
+    </div>
+  </div>
+</div>
