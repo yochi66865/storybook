@@ -6,7 +6,8 @@
         <span afui-field-label>כמות מטוסים במבנה</span>
         <mat-select
           afui-input
-          class="separation-of-times"
+          class="separation-of-times-input"
+          disableOptionCentering
           placeholder="בחירה"
           panelClass="separation-of-times"
         >
@@ -30,6 +31,7 @@
           afui-input
           class="separation-of-times-input"
           placeholder="בחירה"
+          disableOptionCentering
           panelClass="separation-of-times"
           [ngModel]="cloneSeparationOfTimes.typeSeparationOfTimes"
           name="typeSeparationOfTimes"
@@ -49,6 +51,7 @@
           placeholder="זמן"
           panelClass="separation-of-times"
           name="separationWindowTime"
+          disableOptionCentering
           [ngModel]="cloneSeparationOfTimes.separationWindowTime"
           (selectionChange)="
             cloneSeparationOfTimes.separationWindowTime = $event.value

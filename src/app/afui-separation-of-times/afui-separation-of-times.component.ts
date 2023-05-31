@@ -37,7 +37,11 @@ export class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.separationOfTimes && this.separationOfTimes)
-      this.cloneSeparationOfTimes = this.separationOfTimes;
+      this.cloneSeparationOfTimes = {
+        ...this.separationOfTimes,
+        amountOfBuildingsAtTheSameTime:
+          this.separationOfTimes.amountOfBuildingsAtTheSameTime ?? 0,
+      };
   }
 
   ngOnInit(): void {}

@@ -10,17 +10,16 @@
     --afui-form-field-afui-input-color: #8fa0b1;
     --afui-form-field-afui-input-background-color: #ffffff;
     --afui-form-field-afui-input-border-color: #dae1e8;
-    --afui-form-field-afui-input-focus-border-color: #40a0ff;
+    --afui-form-field-afui-input-focus-border-color: #3b9afa;
     --afui-form-field-afui-input-disabled-background-color: #f0f0f0;
     --afui-form-field-afui-input-placeholder-color: #cccccc;
     --afui-form-field-afui-field-label-color: #8a98b8;
-    --afui-form-field-afui-input-padding: 8px 9px 6px 9px;
+    --afui-form-field-afui-input-padding: 8px 9px 8px 9px;
     --afui-form-field-afui-error-color: #ff0000;
     --afui-form-field-font-size: 9px;
     --afui-form-field-font-family: Arial, serif;
     --afui-form-field-afui-field-label-margin-bottom: 4px;
-
-    &.amount-of-buildings.hidden {
+    --afui-form-field-afui-input-color &.amount-of-buildings.hidden {
       display: none;
     }
     &.amount-of-buildings.show {
@@ -31,6 +30,20 @@
   .afui-input.separation-of-times-input {
     width: 139px !important;
     height: 24px;
+    font-size: 9px;
+    &.mat-select .mat-select-trigger {
+      .mat-select-value {
+        color: #8fa0b1 !important;
+      }
+      .mat-select-arrow-wrapper .mat-select-arrow {
+        border: solid #21242b;
+        border-width: 0 1.5px 1.5px 0;
+        display: inline-block;
+        padding: 2.5px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+    }
   }
 
   .separation-times-structures {
@@ -65,16 +78,25 @@
 }
 
 .mat-select-panel.separation-of-times {
-  margin-top: 26px;
-  margin-left: 5px;
+  position: absolute;
+  left: 8px;
+  top: 20px;
   border-radius: 15px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
   min-width: 139px !important;
-  position: fixed !important;
-  top: 0px; /* Adjust the top position as needed */
-  left: 0px; /* Adjust the left position as needed */
   mat-option {
     text-align: right;
     direction: rtl;
+    font-weight: 400;
+    background-color: transparent !important;
+
+    &.mat-selected {
+      font-weight: 700;
+    }
+
+    &:hover {
+      background-color: #f6f7f9;
+    }
   }
 }
 
