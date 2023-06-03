@@ -5,6 +5,11 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';
 import { DemoMaterialModule } from '../shared/material.module';
 import { AfuiStructuresComponent } from './afui-structures.component';
+import { AfUiFormsModule } from '../afui-forms/afui-forms.module';
+import { FormsModule } from '@angular/forms';
+import { AfuiStructuresInstructions } from '../models/afui-structures.model';
+import { AfuiSeparationOfTimesComponent } from '../afui-separation-of-times/afui-separation-of-times.component';
+import { AfuiRoundingTimesComponent } from '../afui-rounding-times/afui-rounding-times.component';
 
 export default {
   title: 'Example/Structures',
@@ -12,31 +17,54 @@ export default {
   decorators: [
     withKnobs,
     moduleMetadata({
-      declarations: [AfuiStructuresComponent],
+      declarations: [
+        AfuiStructuresComponent,
+        AfuiSeparationOfTimesComponent,
+        AfuiRoundingTimesComponent,
+      ],
       imports: [
+        FormsModule,
         BrowserAnimationsModule,
         DemoMaterialModule,
         HttpClientModule,
         AfuiIconModule,
+        AfUiFormsModule,
       ],
     }),
   ],
 } as Meta;
 
 const defaultStyle = [
-  `afui-structures {  width: 70px; height:68px; display: flex } `,
+  `afui-structures {  
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 649px;
+    height: 259px;
+    background: #FFFFFF;
+    direction: rtl;
+    border: 1px solid red;
+    display:flex; 
+  } `,
 ];
 
-const defaultTemplate = `<afui-structures></afui-structures>`;
+const defaultTemplate = `<afui-structures [structuresInstructions]="structuresInstructions"></afui-structures>`;
 
 export const Default = () => ({
   component: AfuiStructuresComponent,
   template: defaultTemplate,
   styles: defaultStyle,
-  // props: {
-  //   svgIconName: 'reserve_instructions',
-  //   label: 'שריונים',
-  //   isActive: false,
-  //   withCloseIcon: false,
-  // },
+  props: {
+    structuresInstructions: {
+      amountOfAircraftInTheStructure: null,
+      separationOfTimes: {
+        typeSeparationOfTimes: null,
+        separationWindowTime: null,
+      },
+      roundingTimes: {
+        typeSeparationOfTimes: null,
+        timeToRounding: null,
+      },
+    },
+  },
 });

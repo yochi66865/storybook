@@ -7,15 +7,12 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  AfuiSeparationOfTimes,
-  TypeSeparationOfTimes,
-} from '../models/afui-separation-of-times.model';
+import { AfuiSeparationOfTimes } from '../models/afui-separation-of-times.model';
 import { ChangeDetectionStrategy } from '@angular/compiler';
 import { KeyValue } from '@angular/common';
 
 @Component({
-  selector: 'afui-separation-of-times',
+  selector: 'separation-of-times',
   templateUrl: './afui-separation-of-times.component.html',
   styleUrls: ['./afui-separation-of-times.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,7 +21,6 @@ import { KeyValue } from '@angular/common';
 export class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {
   @Input() separationOfTimes!: AfuiSeparationOfTimes;
   cloneSeparationOfTimes!: AfuiSeparationOfTimes;
-  numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];
   timesSeparationOfTimes: Record<number, string> = {
     5: '5 דקות',
     10: '10 דקות',

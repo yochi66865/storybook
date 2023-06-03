@@ -1,25 +1,13 @@
+@import "../afui-structures//afui-structures.component.less";
+
 .separation-times-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  padding: 18px 25px;
+  // padding: 18px 25px;
   font-family: Arial, Helvetica, sans-serif;
 
   afui-form-field {
-    --afui-form-field-afui-input-color: #8fa0b1;
-    --afui-form-field-afui-input-background-color: #ffffff;
-    --afui-form-field-afui-input-border-color: #dae1e8;
-    --afui-form-field-afui-input-focus-border-color: #3b9afa;
-    --afui-form-field-afui-input-disabled-background-color: #f0f0f0;
-    --afui-form-field-afui-input-placeholder-color: #cccccc;
-    --afui-form-field-afui-field-label-color: #8a98b8;
-    --afui-form-field-afui-input-padding: 8px 9px 8px 9px;
-    --afui-form-field-afui-error-color: #ff0000;
-    --afui-form-field-font-size: 9px;
-    --afui-form-field-font-family: Arial, serif;
-    --afui-form-field-afui-field-label-margin-bottom: 4px;
-
     &.amount-of-buildings.hidden {
       display: none;
     }
@@ -28,87 +16,8 @@
     }
   }
 
-  .afui-input.separation-of-times-input {
-    width: 139px !important;
-    height: 24px;
-    font-size: 9px;
-    &.mat-select .mat-select-trigger {
-      .mat-select-value {
-        color: #8fa0b1 !important;
-      }
-      .mat-select-arrow-wrapper .mat-select-arrow {
-        border: solid #21242b;
-        border-width: 0 1.5px 1.5px 0;
-        display: inline-block;
-        padding: 2.5px;
-        transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
-      }
-    }
-  }
-
   .separation-times-structures {
     display: flex;
     flex-direction: column;
   }
-
-  .separation-times-label {
-    color: #8a98b8;
-    font-size: 10px;
-    font-weight: 700;
-    margin-bottom: 9px;
-  }
-
-  .separation-times-times {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .separation-times-inputs {
-    display: flex;
-    justify-content: flex-start;
-    & > * {
-      margin-right: 5px;
-    }
-  }
-
-  .separation-of-times > mat-options {
-    text-align: right;
-    direction: rtl;
-  }
 }
-
-.mat-select-panel.separation-of-times {
-  position: absolute;
-  left: 8px;
-  top: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
-  min-width: 139px !important;
-  mat-option {
-    text-align: right;
-    direction: rtl;
-    font-weight: 400;
-    background-color: transparent !important;
-
-    &.mat-selected {
-      font-weight: 700;
-    }
-
-    &:hover {
-      background-color: #f6f7f9;
-    }
-  }
-}
-
-/*
-  position: absolute;
-  left: 572.42px;
-  top: 995.68px;
-  width: 38px;
-  height: 11px;
-  color: #8a98b8;
-  font-family: Arial;
-  font-size: 10px;
-  font-weight: 700;
-  text-align: right;*/

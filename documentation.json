@@ -1606,7 +1606,7 @@
         },
         {
             "name": "AfuiRoundingTimesComponent",
-            "id": "component-AfuiRoundingTimesComponent-fb5dae5488b9bc308fece964acf8a02e352c4c074efb5badfd171cf3c1b75e7bca4ada62a87a57676a8f62fbe59a7c4e766e747a34024384b85fb3805ce49e56",
+            "id": "component-AfuiRoundingTimesComponent-5be7806dae4de589735d89c9e1ecf2d93c421a5b9ad6d09fa40de7da98386376bd6d7bc48bfad0c66c104f5fd79c0ba47d2b6ee9197fb49b935a8d7bb196145a",
             "file": "src/app/afui-rounding-times/afui-rounding-times.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1644,7 +1644,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'rounding-times',\n  templateUrl: './afui-rounding-times.component.html',\n  styleUrls: ['./afui-rounding-times.component.less'],\n})\nexport class AfuiRoundingTimesComponent implements OnInit {\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'rounding-times',\r\n  templateUrl: './afui-rounding-times.component.html',\r\n  styleUrls: ['./afui-rounding-times.component.less'],\r\n})\r\nexport class AfuiRoundingTimesComponent implements OnInit {\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1664,7 +1664,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p>afui-rounding-times works!</p>\n"
+            "templateData": "<p>afui-rounding-times works!</p>\r\n"
         },
         {
             "name": "AfuiSelectAlternativeComponent",
@@ -1780,7 +1780,7 @@
         },
         {
             "name": "AfuiSeparationOfTimesComponent",
-            "id": "component-AfuiSeparationOfTimesComponent-d9aa444068f79707fec10e17e54e2c48ed5f3a21ee58c859f17ad17e395c9ee0b242c5914fe0036e322e2d93541be9a7284eb78c36158894fbbb343ffe142585",
+            "id": "component-AfuiSeparationOfTimesComponent-442fdb70047d90867c7525abccce18eed6016a4f3f1034c0e17f1cc9d592abc01cfa911873d2928055d4fb084c5bb8ab69b5f37e408667a055855cbedd611658",
             "file": "src/app/afui-separation-of-times/afui-separation-of-times.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -1828,7 +1828,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 45
+                    "line": 49
                 },
                 {
                     "name": "numSquadronInStructures",
@@ -1842,7 +1842,7 @@
                 },
                 {
                     "name": "timesSeparationOfTimes",
-                    "defaultValue": "{\n    5: '5 דקות',\n    10: '10 דקות',\n    15: '15 דקות',\n    20: '20 דקות',\n    25: '25 דקות',\n  }",
+                    "defaultValue": "{\r\n    5: '5 דקות',\r\n    10: '10 דקות',\r\n    15: '15 דקות',\r\n    20: '20 דקות',\r\n    25: '25 דקות',\r\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Record<number | string>",
@@ -1886,7 +1886,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1898,11 +1898,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  OnChanges,\n  OnInit,\n  Output,\n  SimpleChanges,\n  ViewEncapsulation,\n} from '@angular/core';\nimport {\n  AfuiSeparationOfTimes,\n  TypeSeparationOfTimes,\n} from '../models/afui-separation-of-times.model';\nimport { ChangeDetectionStrategy } from '@angular/compiler';\nimport { KeyValue } from '@angular/common';\n\n@Component({\n  selector: 'afui-separation-of-times',\n  templateUrl: './afui-separation-of-times.component.html',\n  styleUrls: ['./afui-separation-of-times.component.less'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  encapsulation: ViewEncapsulation.None,\n})\nexport class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {\n  @Input() separationOfTimes!: AfuiSeparationOfTimes;\n  cloneSeparationOfTimes!: AfuiSeparationOfTimes;\n  numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];\n  timesSeparationOfTimes: Record<number, string> = {\n    5: '5 דקות',\n    10: '10 דקות',\n    15: '15 דקות',\n    20: '20 דקות',\n    25: '25 דקות',\n  };\n\n  constructor() {}\n\n  ngOnChanges(changes: SimpleChanges) {\n    if (changes.separationOfTimes && this.separationOfTimes)\n      this.cloneSeparationOfTimes = this.separationOfTimes;\n  }\n\n  ngOnInit(): void {}\n\n  keyDescOrder = (\n    a: KeyValue<number, string>,\n    b: KeyValue<number, string>\n  ): number => {\n    return +a.key > +b.key ? 1 : +b.key > +a.key ? -1 : 0;\n  };\n}\n",
+            "sourceCode": "import {\r\n  Component,\r\n  Input,\r\n  OnChanges,\r\n  OnInit,\r\n  Output,\r\n  SimpleChanges,\r\n  ViewEncapsulation,\r\n} from '@angular/core';\r\nimport {\r\n  AfuiSeparationOfTimes,\r\n  TypeSeparationOfTimes,\r\n} from '../models/afui-separation-of-times.model';\r\nimport { ChangeDetectionStrategy } from '@angular/compiler';\r\nimport { KeyValue } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'afui-separation-of-times',\r\n  templateUrl: './afui-separation-of-times.component.html',\r\n  styleUrls: ['./afui-separation-of-times.component.less'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n})\r\nexport class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {\r\n  @Input() separationOfTimes!: AfuiSeparationOfTimes;\r\n  cloneSeparationOfTimes!: AfuiSeparationOfTimes;\r\n  numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];\r\n  timesSeparationOfTimes: Record<number, string> = {\r\n    5: '5 דקות',\r\n    10: '10 דקות',\r\n    15: '15 דקות',\r\n    20: '20 דקות',\r\n    25: '25 דקות',\r\n  };\r\n\r\n  constructor() {}\r\n\r\n  ngOnChanges(changes: SimpleChanges) {\r\n    if (changes.separationOfTimes && this.separationOfTimes)\r\n      this.cloneSeparationOfTimes = {\r\n        ...this.separationOfTimes,\r\n        amountOfBuildingsAtTheSameTime:\r\n          this.separationOfTimes.amountOfBuildingsAtTheSameTime ?? 0,\r\n      };\r\n  }\r\n\r\n  ngOnInit(): void {}\r\n\r\n  keyDescOrder = (\r\n    a: KeyValue<number, string>,\r\n    b: KeyValue<number, string>\r\n  ): number => {\r\n    return +a.key > +b.key ? 1 : +b.key > +a.key ? -1 : 0;\r\n  };\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".separation-times-container {\r\n  flex: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-evenly;\r\n  padding: 18px 25px;\r\n  font-family: Arial, Helvetica, sans-serif;\r\n\r\n  afui-form-field {\r\n    --afui-form-field-afui-input-color: #8fa0b1;\r\n    --afui-form-field-afui-input-background-color: #ffffff;\r\n    --afui-form-field-afui-input-border-color: #dae1e8;\r\n    --afui-form-field-afui-input-focus-border-color: #40a0ff;\r\n    --afui-form-field-afui-input-disabled-background-color: #f0f0f0;\r\n    --afui-form-field-afui-input-placeholder-color: #cccccc;\r\n    --afui-form-field-afui-field-label-color: #8a98b8;\r\n    --afui-form-field-afui-input-padding: 8px 9px 6px 9px;\r\n    --afui-form-field-afui-error-color: #ff0000;\r\n    --afui-form-field-font-size: 9px;\r\n    --afui-form-field-font-family: Arial, serif;\r\n    --afui-form-field-afui-field-label-margin-bottom: 4px;\r\n\r\n    &.amount-of-buildings.hidden {\r\n      display: none;\r\n    }\r\n    &.amount-of-buildings.show {\r\n      display: flex;\r\n    }\r\n  }\r\n\r\n  .afui-input.separation-of-times-input {\r\n    width: 139px !important;\r\n    height: 24px;\r\n  }\r\n\r\n  .separation-times-structures {\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .separation-times-label {\r\n    color: #8a98b8;\r\n    font-size: 10px;\r\n    font-weight: 700;\r\n    margin-bottom: 9px;\r\n  }\r\n\r\n  .separation-times-times {\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .separation-times-inputs {\r\n    display: flex;\r\n    justify-content: flex-start;\r\n    & > * {\r\n      margin-right: 5px;\r\n    }\r\n  }\r\n\r\n  .separation-of-times > mat-options {\r\n    text-align: right;\r\n    direction: rtl;\r\n  }\r\n}\r\n\r\n.mat-select-panel.separation-of-times {\r\n  margin-top: 26px;\r\n  margin-left: 5px;\r\n  border-radius: 15px;\r\n  min-width: 139px !important;\r\n  position: fixed !important;\r\n  top: 0px; /* Adjust the top position as needed */\r\n  left: 0px; /* Adjust the left position as needed */\r\n  mat-option {\r\n    text-align: right;\r\n    direction: rtl;\r\n  }\r\n}\r\n\r\n/*\r\n  position: absolute;\r\n  left: 572.42px;\r\n  top: 995.68px;\r\n  width: 38px;\r\n  height: 11px;\r\n  color: #8a98b8;\r\n  font-family: Arial;\r\n  font-size: 10px;\r\n  font-weight: 700;\r\n  text-align: right;*/\r\n",
+                    "data": ".separation-times-container {\r\n  flex: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-evenly;\r\n  padding: 18px 25px;\r\n  font-family: Arial, Helvetica, sans-serif;\r\n\r\n  afui-form-field {\r\n    --afui-form-field-afui-input-color: #8fa0b1;\r\n    --afui-form-field-afui-input-background-color: #ffffff;\r\n    --afui-form-field-afui-input-border-color: #dae1e8;\r\n    --afui-form-field-afui-input-focus-border-color: #3b9afa;\r\n    --afui-form-field-afui-input-disabled-background-color: #f0f0f0;\r\n    --afui-form-field-afui-input-placeholder-color: #cccccc;\r\n    --afui-form-field-afui-field-label-color: #8a98b8;\r\n    --afui-form-field-afui-input-padding: 8px 9px 8px 9px;\r\n    --afui-form-field-afui-error-color: #ff0000;\r\n    --afui-form-field-font-size: 9px;\r\n    --afui-form-field-font-family: Arial, serif;\r\n    --afui-form-field-afui-field-label-margin-bottom: 4px;\r\n\r\n    &.amount-of-buildings.hidden {\r\n      display: none;\r\n    }\r\n    &.amount-of-buildings.show {\r\n      display: flex;\r\n    }\r\n  }\r\n\r\n  .afui-input.separation-of-times-input {\r\n    width: 139px !important;\r\n    height: 24px;\r\n    font-size: 9px;\r\n    &.mat-select .mat-select-trigger {\r\n      .mat-select-value {\r\n        color: #8fa0b1 !important;\r\n      }\r\n      .mat-select-arrow-wrapper .mat-select-arrow {\r\n        border: solid #21242b;\r\n        border-width: 0 1.5px 1.5px 0;\r\n        display: inline-block;\r\n        padding: 2.5px;\r\n        transform: rotate(45deg);\r\n        -webkit-transform: rotate(45deg);\r\n      }\r\n    }\r\n  }\r\n\r\n  .separation-times-structures {\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .separation-times-label {\r\n    color: #8a98b8;\r\n    font-size: 10px;\r\n    font-weight: 700;\r\n    margin-bottom: 9px;\r\n  }\r\n\r\n  .separation-times-times {\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .separation-times-inputs {\r\n    display: flex;\r\n    justify-content: flex-start;\r\n    & > * {\r\n      margin-right: 5px;\r\n    }\r\n  }\r\n\r\n  .separation-of-times > mat-options {\r\n    text-align: right;\r\n    direction: rtl;\r\n  }\r\n}\r\n\r\n.mat-select-panel.separation-of-times {\r\n  position: absolute;\r\n  left: 8px;\r\n  top: 20px;\r\n  border-radius: 15px;\r\n  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);\r\n  min-width: 139px !important;\r\n  mat-option {\r\n    text-align: right;\r\n    direction: rtl;\r\n    font-weight: 400;\r\n    background-color: transparent !important;\r\n\r\n    &.mat-selected {\r\n      font-weight: 700;\r\n    }\r\n\r\n    &:hover {\r\n      background-color: #f6f7f9;\r\n    }\r\n  }\r\n}\r\n\r\n/*\r\n  position: absolute;\r\n  left: 572.42px;\r\n  top: 995.68px;\r\n  width: 38px;\r\n  height: 11px;\r\n  color: #8a98b8;\r\n  font-family: Arial;\r\n  font-size: 10px;\r\n  font-weight: 700;\r\n  text-align: right;*/\r\n",
                     "styleUrl": "./afui-separation-of-times.component.less"
                 }
             ],
@@ -1919,11 +1919,11 @@
                 "OnInit",
                 "OnChanges"
             ],
-            "templateData": "<div class=\"separation-times-container\">\n  <div class=\"separation-times-structures\">\n    <label class=\"separation-times-label\">מבנים</label>\n    <div class=\"separation-times-inputs\">\n      <afui-form-field>\n        <span afui-field-label>כמות מטוסים במבנה</span>\n        <mat-select\n          afui-input\n          class=\"separation-of-times\"\n          disableOptionCentering\n          placeholder=\"בחירה\"\n          panelClass=\"separation-of-times\"\n        >\n          <mat-option\n            *ngFor=\"let option of numSquadronInStructures\"\n            [value]=\"option\"\n            >{{ option }}</mat-option\n          >\n        </mat-select>\n      </afui-form-field>\n      <!-- <input afui-input [value]=\"value\" [placeholder]=\"placeholder\" /> -->\n      <!-- <span *ngIf=\"displayError\" afui-error>{{ errorText }}</span> -->\n    </div>\n  </div>\n  <div class=\"separation-times-times\" *ngIf=\"cloneSeparationOfTimes\">\n    <label class=\"separation-times-label\">זמנים להמלצת שידוך</label>\n    <div class=\"separation-times-inputs\">\n      <afui-form-field>\n        <span afui-field-label>הפרדת זמנים בין מבנים</span>\n        <mat-select\n          afui-input\n          class=\"separation-of-times-input\"\n          placeholder=\"בחירה\"\n          disableOptionCentering\n          panelClass=\"separation-of-times\"\n          [ngModel]=\"cloneSeparationOfTimes.typeSeparationOfTimes\"\n          name=\"typeSeparationOfTimes\"\n          (selectionChange)=\"\n            cloneSeparationOfTimes.typeSeparationOfTimes = $event.value\n          \"\n        >\n          <mat-option [value]=\"'מרחבית'\">מרחבית</mat-option>\n          <mat-option [value]=\"'אזורית'\">אזורית</mat-option>\n        </mat-select>\n      </afui-form-field>\n      <afui-form-field>\n        <span afui-field-label>חלון הפרדה</span>\n        <mat-select\n          afui-input\n          class=\"separation-of-times-input\"\n          placeholder=\"זמן\"\n          panelClass=\"separation-of-times\"\n          name=\"separationWindowTime\"\n          disableOptionCentering\n          [ngModel]=\"cloneSeparationOfTimes.separationWindowTime\"\n          (selectionChange)=\"\n            cloneSeparationOfTimes.separationWindowTime = $event.value\n          \"\n        >\n          <mat-option\n            *ngFor=\"\n              let option of timesSeparationOfTimes | keyvalue: keyDescOrder\n            \"\n            [value]=\"option.key\"\n            >{{ option.value }}</mat-option\n          >\n        </mat-select>\n      </afui-form-field>\n      <afui-form-field\n        class=\"amount-of-buildings\"\n        [ngClass]=\"\n          cloneSeparationOfTimes?.typeSeparationOfTimes === 'אזורית'\n            ? 'show'\n            : 'hidden'\n        \"\n      >\n        <span afui-field-label>מבנים בו\"ז</span>\n        <input\n          afui-input\n          type=\"number\"\n          min=\"0\"\n          max=\"25\"\n          class=\"separation-of-times-input\"\n          name=\"amountOfBuildingsAtTheSameTime\"\n          [(ngModel)]=\"cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime\"\n        />\n      </afui-form-field>\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"separation-times-container\">\r\n  <div class=\"separation-times-structures\">\r\n    <label class=\"separation-times-label\">מבנים</label>\r\n    <div class=\"separation-times-inputs\">\r\n      <afui-form-field>\r\n        <span afui-field-label>כמות מטוסים במבנה</span>\r\n        <mat-select\r\n          afui-input\r\n          class=\"separation-of-times-input\"\r\n          disableOptionCentering\r\n          placeholder=\"בחירה\"\r\n          panelClass=\"separation-of-times\"\r\n        >\r\n          <mat-option\r\n            *ngFor=\"let option of numSquadronInStructures\"\r\n            [value]=\"option\"\r\n            >{{ option }}</mat-option\r\n          >\r\n        </mat-select>\r\n      </afui-form-field>\r\n      <!-- <input afui-input [value]=\"value\" [placeholder]=\"placeholder\" /> -->\r\n      <!-- <span *ngIf=\"displayError\" afui-error>{{ errorText }}</span> -->\r\n    </div>\r\n  </div>\r\n  <div class=\"separation-times-times\" *ngIf=\"cloneSeparationOfTimes\">\r\n    <label class=\"separation-times-label\">זמנים להמלצת שידוך</label>\r\n    <div class=\"separation-times-inputs\">\r\n      <afui-form-field>\r\n        <span afui-field-label>הפרדת זמנים בין מבנים</span>\r\n        <mat-select\r\n          afui-input\r\n          class=\"separation-of-times-input\"\r\n          placeholder=\"בחירה\"\r\n          disableOptionCentering\r\n          panelClass=\"separation-of-times\"\r\n          [ngModel]=\"cloneSeparationOfTimes.typeSeparationOfTimes\"\r\n          name=\"typeSeparationOfTimes\"\r\n          (selectionChange)=\"\r\n            cloneSeparationOfTimes.typeSeparationOfTimes = $event.value\r\n          \"\r\n        >\r\n          <mat-option [value]=\"'מרחבית'\">מרחבית</mat-option>\r\n          <mat-option [value]=\"'אזורית'\">אזורית</mat-option>\r\n        </mat-select>\r\n      </afui-form-field>\r\n      <afui-form-field>\r\n        <span afui-field-label>חלון הפרדה</span>\r\n        <mat-select\r\n          afui-input\r\n          class=\"separation-of-times-input\"\r\n          placeholder=\"זמן\"\r\n          panelClass=\"separation-of-times\"\r\n          name=\"separationWindowTime\"\r\n          disableOptionCentering\r\n          [ngModel]=\"cloneSeparationOfTimes.separationWindowTime\"\r\n          (selectionChange)=\"\r\n            cloneSeparationOfTimes.separationWindowTime = $event.value\r\n          \"\r\n        >\r\n          <mat-option\r\n            *ngFor=\"\r\n              let option of timesSeparationOfTimes | keyvalue: keyDescOrder\r\n            \"\r\n            [value]=\"option.key\"\r\n            >{{ option.value }}</mat-option\r\n          >\r\n        </mat-select>\r\n      </afui-form-field>\r\n      <afui-form-field\r\n        class=\"amount-of-buildings\"\r\n        [ngClass]=\"\r\n          cloneSeparationOfTimes?.typeSeparationOfTimes === 'אזורית'\r\n            ? 'show'\r\n            : 'hidden'\r\n        \"\r\n      >\r\n        <span afui-field-label>מבנים בו\"ז</span>\r\n        <input\r\n          afui-input\r\n          type=\"number\"\r\n          min=\"0\"\r\n          max=\"25\"\r\n          class=\"separation-of-times-input\"\r\n          name=\"amountOfBuildingsAtTheSameTime\"\r\n          [(ngModel)]=\"cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime\"\r\n        />\r\n      </afui-form-field>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "AfuiStructuresComponent",
-            "id": "component-AfuiStructuresComponent-13927d8c47589ef1d1cc051a7e98ced4de9355915347bf7c276502612c799e744294d8e1393be8e3de37136682aa7feb95cfe11291fdc071b9a65c4fd8b14d43",
+            "id": "component-AfuiStructuresComponent-f3be3c26f7786ecd2b7cb02353fdb6bd72934cbdc97f956a689a9f935e7257f732cb2eede070db6a19a831395cf3e36f9cbba2a140b9699ac80d9d8db4b552bb",
             "file": "src/app/afui-structures/afui-structures.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1961,7 +1961,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'afui-structures',\n  templateUrl: './afui-structures.component.html',\n  styleUrls: ['./afui-structures.component.less'],\n})\nexport class AfuiStructuresComponent implements OnInit {\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'afui-structures',\r\n  templateUrl: './afui-structures.component.html',\r\n  styleUrls: ['./afui-structures.component.less'],\r\n})\r\nexport class AfuiStructuresComponent implements OnInit {\r\n  constructor() {}\r\n\r\n  ngOnInit(): void {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1981,7 +1981,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p>afui-structures works!</p>\n"
+            "templateData": "<p>afui-structures works!</p>\r\n"
         },
         {
             "name": "AppComponent",
@@ -8737,11 +8737,11 @@
                 "name": "Customized",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
+                "file": "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
             },
             {
                 "name": "Customized",
@@ -8757,11 +8757,11 @@
                 "name": "Customized",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts",
+                "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
             },
             {
                 "name": "Customized",
@@ -8817,16 +8817,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiSelectAlternativeComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    headQuarters: [`פד\"ן`, `פצ\"ן`, `חיל הים`, `מפקע\"ר`],\r\n    alternatives: [`'ח. זרועית ה`, `'ח. זרועית ד`],\r\n  },\r\n})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-rounding-times/afui-rounding-times.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -8842,6 +8832,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: AfuiSeparationOfTimesComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    separationOfTimes: {\r\n      typeSeparationOfTimes: null,\r\n      separationWindowTime: null,\r\n    },\r\n  },\r\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: AfuiSelectAlternativeComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    headQuarters: [`פד\"ן`, `פצ\"ן`, `חיל הים`, `מפקע\"ר`],\r\n    alternatives: [`'ח. זרועית ה`, `'ח. זרועית ד`],\r\n  },\r\n})"
             },
             {
                 "name": "Default",
@@ -8867,11 +8867,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
+                "file": "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
             },
             {
                 "name": "Default",
@@ -8887,11 +8887,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts",
+                "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
             },
             {
                 "name": "Default",
@@ -8927,16 +8927,6 @@
                 "name": "defaultStyle",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "[]",
-                "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
-            },
-            {
-                "name": "defaultStyle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-rounding-times/afui-rounding-times.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -8952,6 +8942,16 @@
                 "deprecationMessage": "",
                 "type": "[]",
                 "defaultValue": "[\r\n  `afui-separation-of-times {  \r\n    position: absolute;\r\n    left: 100px;\r\n    top: 100px;\r\n    width: 649px;\r\n    height: 259px;\r\n    background: #FFFFFF;\r\n    direction: rtl;\r\n    border: 1px solid red;\r\n    display:flex; \r\n  } `,\r\n]"
+            },
+            {
+                "name": "defaultStyle",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
             },
             {
                 "name": "defaultStyle",
@@ -8987,16 +8987,6 @@
                 "name": "defaultTemplate",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
-            },
-            {
-                "name": "defaultTemplate",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-rounding-times/afui-rounding-times.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -9012,6 +9002,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "`<afui-separation-of-times [separationOfTimes]=separationOfTimes></afui-separation-of-times>`"
+            },
+            {
+                "name": "defaultTemplate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
             },
             {
                 "name": "defaultTemplate",
@@ -9047,21 +9047,21 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\r\n  production: true\r\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/environments/environment.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\r\n  production: false\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  production: true\r\n}"
             },
             {
                 "name": "HourPicker",
@@ -15256,26 +15256,26 @@
                     "defaultValue": "[\r\n  `afui-tab {  width: 102px; height:27px; display: flex } `,\r\n]"
                 }
             ],
-            "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts": [
+            "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts": [
                 {
                     "name": "Customized",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
+                    "file": "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
+                    "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
                 },
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
+                    "file": "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
+                    "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
                 }
             ],
             "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts": [
@@ -15300,26 +15300,26 @@
                     "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
                 }
             ],
-            "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts": [
+            "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts": [
                 {
                     "name": "Customized",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts",
+                    "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
+                    "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
                 },
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-form-container/afui-form-container.component.stories.ts",
+                    "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
+                    "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
                 }
             ],
             "src/app/afui-forms/afui-select/afui-select.directive.stories.ts": [
@@ -15510,38 +15510,6 @@
                     "defaultValue": "() => ({\r\n  component: AfUiFormFieldComponent,\r\n  template: `<afui-form-field>\r\n                <span afui-field-label>{{label}}</span>\r\n                <textarea afui-input cdkTextareaAutosize [cdkAutosizeMinRows]=\"minRows\" [cdkAutosizeMaxRows]=\"maxRows\" [placeholder]=\"placeholder\">{{value}}</textarea>\r\n                <span *ngIf=\"displayError\" afui-error>{{errorText}}</span>\r\n             </afui-form-field>`,\r\n  props: {\r\n    label: text('label', 'כותרת'),\r\n    value: text('value', ''),\r\n    placeholder: text('placeholder', 'הקלד'),\r\n    minRows: number('minimum rows', 3),\r\n    maxRows: number('maximum rows', 5),\r\n    displayError: boolean('display error', false),\r\n    errorText: text('error text', 'שגיאה'),\r\n  },\r\n})"
                 }
             ],
-            "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiSelectAlternativeComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    headQuarters: [`פד\"ן`, `פצ\"ן`, `חיל הים`, `מפקע\"ר`],\r\n    alternatives: [`'ח. זרועית ה`, `'ח. זרועית ד`],\r\n  },\r\n})"
-                },
-                {
-                    "name": "defaultStyle",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[]",
-                    "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
-                },
-                {
-                    "name": "defaultTemplate",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
-                }
-            ],
             "src/app/afui-rounding-times/afui-rounding-times.component.stories.ts": [
                 {
                     "name": "Default",
@@ -15606,6 +15574,38 @@
                     "defaultValue": "`<afui-separation-of-times [separationOfTimes]=separationOfTimes></afui-separation-of-times>`"
                 }
             ],
+            "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfuiSelectAlternativeComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    headQuarters: [`פד\"ן`, `פצ\"ן`, `חיל הים`, `מפקע\"ר`],\r\n    alternatives: [`'ח. זרועית ה`, `'ח. זרועית ד`],\r\n  },\r\n})"
+                },
+                {
+                    "name": "defaultStyle",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
+                },
+                {
+                    "name": "defaultTemplate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
+                }
+            ],
             "src/app/afui-structures/afui-structures.component.stories.ts": [
                 {
                     "name": "Default",
@@ -15660,18 +15660,6 @@
                     "defaultValue": "() => ({\r\n  component: TabsComponent,\r\n  template: defaultTemplate,\r\n})"
                 }
             ],
-            "src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\r\n  production: true\r\n}"
-                }
-            ],
             "src/environments/environment.ts": [
                 {
                     "name": "environment",
@@ -15682,6 +15670,18 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\r\n  production: false\r\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: true\r\n}"
                 }
             ],
             "src/app/shared/afui-icon/afui-icon.stories.ts": [

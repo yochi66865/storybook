@@ -5,6 +5,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';
 import { DemoMaterialModule } from '../shared/material.module';
 import { AfuiRoundingTimesComponent } from './afui-rounding-times.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 export default {
   title: 'Example/Rounding Times',
@@ -18,6 +19,7 @@ export default {
         DemoMaterialModule,
         HttpClientModule,
         AfuiIconModule,
+        MatSlideToggleModule,
       ],
     }),
   ],

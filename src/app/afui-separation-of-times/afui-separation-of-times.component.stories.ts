@@ -28,12 +28,12 @@ export default {
 } as Meta;
 
 const defaultStyle = [
-  `afui-separation-of-times {  
+  `separation-of-times {  
     position: absolute;
     left: 100px;
     top: 100px;
-    width: 649px;
-    height: 259px;
+    width: 640px;
+    height: 90px;
     background: #FFFFFF;
     direction: rtl;
     border: 1px solid red;
@@ -41,7 +41,7 @@ const defaultStyle = [
   } `,
 ];
 
-const defaultTemplate = `<afui-separation-of-times [separationOfTimes]=separationOfTimes></afui-separation-of-times>`;
+const defaultTemplate = `<separation-of-times [separationOfTimes]=separationOfTimes></separation-of-times>`;
 
 export const Default = () => ({
   component: AfuiSeparationOfTimesComponent,
