@@ -41,16 +41,11 @@ const defaultStyle = [
   } `,
 ];
 
-const defaultTemplate = `<separation-of-times [separationOfTimes]=separationOfTimes></separation-of-times>`;
+const defaultTemplate = `<separation-of-times></separation-of-times>`;
 
 export const Default = () => ({
   component: AfuiSeparationOfTimesComponent,
   template: defaultTemplate,
   styles: defaultStyle,
-  props: {
-    separationOfTimes: {
-      typeSeparationOfTimes: null,
-      separationWindowTime: null,
-    },
-  },
+  props: {},
 });

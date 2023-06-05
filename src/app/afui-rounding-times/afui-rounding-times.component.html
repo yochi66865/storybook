@@ -1,1 +1,34 @@
-<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>
+<div class="rounding-times-container">
+  <afui-form-field>
+    <span afui-field-label>סוג</span>
+    <mat-select
+      afui-input
+      class="structures-input"
+      placeholder="בחירה"
+      disableOptionCentering
+      panelClass="structures-options"
+      [ngModel]="cloneAfuiRoundingTimes.typeSeparationOfTimes"
+      name="typeSeparationOfTimes"
+      (selectionChange)="selectTypeSeparationOfTimes($event.value)"
+    >
+      <mat-option [value]="'מרחבית'">מרחבית</mat-option>
+      <mat-option [value]="'אזורית'">אזורית</mat-option>
+    </mat-select>
+  </afui-form-field>
+  <afui-form-field>
+    <span afui-field-label>זמן לעיגול</span>
+    <mat-select
+      afui-input
+      class="structures-input"
+      placeholder="זמן"
+      panelClass="structures-options"
+      name="timeToRounding"
+      disableOptionCentering
+      [ngModel]="cloneAfuiRoundingTimes.timeToRounding"
+      (selectionChange)="cloneAfuiRoundingTimes.timeToRounding = +$event.value"
+    >
+      <mat-option [value]="5">{{ 5 }}</mat-option>
+      <mat-option [value]="10">{{ 10 }}</mat-option>
+    </mat-select>
+  </afui-form-field>
+</div>

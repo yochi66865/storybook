@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { AfuiStructuresInstructions } from '../models/afui-structures.model';
 import { AfuiSeparationOfTimesComponent } from '../afui-separation-of-times/afui-separation-of-times.component';
 import { AfuiRoundingTimesComponent } from '../afui-rounding-times/afui-rounding-times.component';
+import { AfuiSlideToggleDirective } from '../afui-forms/afui-slide-toggle/afui-slide-toggle.directive';
 
 export default {
   title: 'Example/Structures',

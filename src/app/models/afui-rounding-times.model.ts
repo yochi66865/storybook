@@ -1,6 +1,6 @@
-import { AfuiSeparationOfTimes } from './afui-separation-of-times.model';
+import { TypeSeparationOfTimes } from './afui-type-separation-of-times';
 
 export interface AfuiRoundingTimes {
-  typeSeparationOfTimes: AfuiSeparationOfTimes;
+  typeSeparationOfTimes: TypeSeparationOfTimes;
   timeToRounding: 5 | 10;
 }

@@ -10,6 +10,7 @@ import {
 import { AfuiSeparationOfTimes } from '../models/afui-separation-of-times.model';
 import { ChangeDetectionStrategy } from '@angular/compiler';
 import { KeyValue } from '@angular/common';
+import { TypeSeparationOfTimes } from '../models/afui-type-separation-of-times';
 
 @Component({
   selector: 'separation-of-times',
@@ -20,7 +21,11 @@ import { KeyValue } from '@angular/common';
 })
 export class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {
   @Input() separationOfTimes!: AfuiSeparationOfTimes;
-  cloneSeparationOfTimes!: AfuiSeparationOfTimes;
+  cloneSeparationOfTimes: AfuiSeparationOfTimes = {
+    typeSeparationOfTimes: null!,
+    separationWindowTime: null!,
+    amountOfBuildingsAtTheSameTime: null!,
+  };
   timesSeparationOfTimes: Record<number, string> = {
     5: '5 דקות',
     10: '10 דקות',
@@ -32,12 +37,16 @@ export class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.separationOfTimes && this.separationOfTimes)
+    if (changes.separationOfTimes) {
       this.cloneSeparationOfTimes = {
-        ...this.separationOfTimes,
+        typeSeparationOfTimes:
+          this.separationOfTimes?.typeSeparationOfTimes ?? null,
+        separationWindowTime:
+          this.separationOfTimes?.separationWindowTime ?? null,
         amountOfBuildingsAtTheSameTime:
-          this.separationOfTimes.amountOfBuildingsAtTheSameTime ?? 0,
+          this.separationOfTimes?.amountOfBuildingsAtTheSameTime ?? 0,
       };
+    }
   }
 
   ngOnInit(): void {}
@@ -48,4 +57,11 @@ export class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {
   ): number => {
     return +a.key > +b.key ? 1 : +b.key > +a.key ? -1 : 0;
   };
+
+  selectTypeSeparationOfTimes(type: TypeSeparationOfTimes) {
+    this.cloneSeparationOfTimes.typeSeparationOfTimes = type;
+    if (type === 'מרחבית') {
+      this.cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime = null;
+    }
+  }
 }

@@ -18,7 +18,7 @@ export class AfuiStructuresComponent implements OnInit, OnChanges {
   @Input() structuresInstructions!: AfuiStructuresInstructions;
   numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];
   cloneStructuresInstructions!: AfuiStructuresInstructions;
-
+  isCheckedRoundingTimes: boolean = false;
   constructor() {}
 
   ngOnInit(): void {}

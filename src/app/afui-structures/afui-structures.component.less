@@ -15,6 +15,43 @@
   }
 }
 
+.rounding-times-app {
+  display: flex;
+  align-items: center;
+
+  .afui-slide-toggle.rounding-times .mat-slide-toggle-label {
+    display: flex !important;
+    flex-direction: column-reverse;
+    width: 40px;
+    height: 34px;
+
+    .mat-slide-toggle-bar {
+      // height: 24px;
+      .mat-slide-toggle-thumb-container {
+        width: 21.84px;
+        height: 21.84px;
+        background: #ffffff;
+        background-blend-mode: normal;
+      }
+    }
+
+    .mat-slide-toggle-content {
+      color: #8fa0b1;
+      font-family: Arial;
+      font-size: 9px;
+      font-weight: 400;
+      text-align: right;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .structures-toggle {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 afui-form-field {
   --afui-form-field-afui-input-color: #8fa0b1;
   --afui-form-field-afui-input-background-color: #ffffff;
