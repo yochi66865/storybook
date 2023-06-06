@@ -10,6 +10,7 @@
 .structures-inputs-container {
   display: flex;
   justify-content: flex-start;
+
   & > * {
     margin-right: 5px;
   }
@@ -19,30 +20,64 @@
   display: flex;
   align-items: center;
 
-  .afui-slide-toggle.rounding-times .mat-slide-toggle-label {
-    display: flex !important;
-    flex-direction: column-reverse;
-    width: 40px;
-    height: 34px;
+  & > * {
+    margin-right: 5px;
+  }
 
-    .mat-slide-toggle-bar {
-      // height: 24px;
-      .mat-slide-toggle-thumb-container {
-        width: 21.84px;
-        height: 21.84px;
-        background: #ffffff;
-        background-blend-mode: normal;
-      }
+  .info-rounding {
+    align-self: flex-end;
+  }
+  .afui-slide-toggle.rounding-times {
+    height: 100%;
+
+    &.mat-checked .mat-slide-toggle-bar {
+      background-color: #3e7cee !important;
     }
 
-    .mat-slide-toggle-content {
-      color: #8fa0b1;
-      font-family: Arial;
-      font-size: 9px;
-      font-weight: 400;
-      text-align: right;
-      display: flex;
-      align-items: center;
+    &.mat-checked .mat-slide-toggle-thumb {
+      background-color: #ffffff;
+    }
+
+    .mat-slide-toggle-label {
+      display: flex !important;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+
+      .mat-slide-toggle-bar {
+        height: 24px;
+        width: 40px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        background-color: #ebe8e8;
+
+        .mat-slide-toggle-thumb-container {
+          width: 20.84px;
+          height: 20.84px;
+          background: transparent;
+          margin-top: 5px;
+
+          .mat-slide-toggle-thumb {
+            height: 100%;
+          }
+
+          .mat-slide-toggle-ripple {
+            display: none;
+          }
+        }
+      }
+
+      .mat-slide-toggle-content {
+        color: #8a98b8;
+        font-family: Arial;
+        font-size: 9px;
+        font-weight: 400;
+        text-align: right;
+        display: flex;
+        align-items: center;
+        line-height: 1.2;
+        margin-bottom: 3px;
+      }
     }
   }
 
@@ -78,10 +113,12 @@ afui-form-field {
   width: 139px !important;
   height: 24px;
   font-size: 9px;
+
   &.mat-select .mat-select-trigger {
     .mat-select-value {
       color: #8fa0b1 !important;
     }
+
     .mat-select-arrow-wrapper .mat-select-arrow {
       border: solid #21242b;
       border-width: 0 1.5px 1.5px 0;
@@ -105,6 +142,7 @@ afui-form-field {
   border-radius: 15px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
   min-width: 139px !important;
+
   mat-option {
     text-align: right;
     direction: rtl;

@@ -28,16 +28,15 @@
     ></separation-of-times>
   </div>
   <div class="rounding-times-app">
-    <mat-icon [svgIcon]="'info-fill'"></mat-icon>
-    <div class="structures-toggle">
-      <mat-slide-toggle
-        afui-slide-toggle
-        class="rounding-times"
-        [(ngModel)]="isCheckedRoundingTimes"
-        disableRipple
-        >עיגול זמ"מ</mat-slide-toggle
-      >
-    </div>
+    <mat-icon class="info-rounding" [svgIcon]="'info-fill'"></mat-icon>
+    <mat-slide-toggle
+      disableRipple="true"
+      afui-slide-toggle
+      class="rounding-times"
+      [(ngModel)]="isCheckedRoundingTimes"
+      disableRipple
+      >עיגול זמ"מ</mat-slide-toggle
+    >
     <rounding-times *ngIf="isCheckedRoundingTimes"></rounding-times>
   </div>
 </div>
