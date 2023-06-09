@@ -3,17 +3,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 18px 25px;
+  padding: 18px;
   font-family: Arial, Helvetica, sans-serif;
+
+  .indent {
+    margin-right: 32px;
+  }
 }
 
 .structures-inputs-container {
   display: flex;
   justify-content: flex-start;
-
-  & > * {
-    margin-right: 5px;
-  }
 }
 
 .rounding-times-app {
@@ -21,17 +21,22 @@
   align-items: center;
 
   & > * {
-    margin-right: 5px;
+    margin-left: 5px;
   }
 
   .info-rounding {
     align-self: flex-end;
   }
   .afui-slide-toggle.rounding-times {
-    height: 100%;
+    height: 36.6px;
+    width: 40px;
+    padding-top: 0.4px;
 
     &.mat-checked .mat-slide-toggle-bar {
       background-color: #3e7cee !important;
+      .mat-slide-toggle-thumb-container {
+        right: 1px !important;
+      }
     }
 
     &.mat-checked .mat-slide-toggle-thumb {
@@ -42,28 +47,21 @@
       display: flex !important;
       flex-direction: column-reverse;
       justify-content: space-between;
+      align-items: flex-end;
 
       .mat-slide-toggle-bar {
         height: 24px;
-        width: 40px;
         border-radius: 15px;
         display: flex;
         align-items: center;
         background-color: #ebe8e8;
+        margin-right: 0 !important;
+        justify-content: flex-end;
 
         .mat-slide-toggle-thumb-container {
-          width: 20.84px;
-          height: 20.84px;
-          background: transparent;
-          margin-top: 5px;
-
-          .mat-slide-toggle-thumb {
-            height: 100%;
-          }
-
-          .mat-slide-toggle-ripple {
-            display: none;
-          }
+          position: relative;
+          top: 0;
+          right: -2px;
         }
       }
 
@@ -75,8 +73,7 @@
         text-align: right;
         display: flex;
         align-items: center;
-        line-height: 1.2;
-        margin-bottom: 3px;
+        line-height: 1;
       }
     }
   }
@@ -100,6 +97,12 @@ afui-form-field {
   --afui-form-field-font-size: 9px;
   --afui-form-field-font-family: Arial, serif;
   --afui-form-field-afui-field-label-margin-bottom: 4px;
+
+  .afui-form-field-label-with-error {
+    margin-right: 10px;
+  }
+
+  margin-left: 5px;
 }
 
 .structures-label {

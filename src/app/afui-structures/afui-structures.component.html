@@ -1,5 +1,5 @@
 <div class="structures-container">
-  <div class="structures-amount">
+  <div class="structures-amount indent">
     <label class="structures-label">מבנים</label>
     <div class="structures-inputs-container">
       <afui-form-field>
@@ -22,7 +22,7 @@
       <!-- <span *ngIf="displayError" afui-error>{{ errorText }}</span> -->
     </div>
   </div>
-  <div class="separation-of-times-app">
+  <div class="separation-of-times-app indent">
     <separation-of-times
       [separationOfTimes]="cloneStructuresInstructions.separationOfTimes"
     ></separation-of-times>
@@ -33,7 +33,8 @@
       disableRipple="true"
       afui-slide-toggle
       class="rounding-times"
-      [(ngModel)]="isCheckedRoundingTimes"
+      [ngModel]="isCheckedRoundingTimes"
+      (change)="toggleRound($event.checked)"
       disableRipple
       >עיגול זמ"מ</mat-slide-toggle
     >

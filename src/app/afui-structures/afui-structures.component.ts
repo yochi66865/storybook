@@ -27,4 +27,9 @@ export class AfuiStructuresComponent implements OnInit, OnChanges {
     if (changes.structuresInstructions && this.structuresInstructions)
       this.cloneStructuresInstructions = this.structuresInstructions;
   }
+
+  toggleRound(toggle: boolean) {
+    this.isCheckedRoundingTimes = toggle;
+    this.structuresInstructions.separationOfTimes = null;
+  }
 }
