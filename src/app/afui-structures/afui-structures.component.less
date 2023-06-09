@@ -16,6 +16,26 @@
   justify-content: flex-start;
 }
 
+separation-of-times.disabled {
+  pointer-events: none;
+  .mat-select-value {
+    color: #e7eaef !important;
+
+    .mat-select-placeholder {
+      color: #e7eaef !important;
+    }
+  }
+
+  afui-form-field {
+    --afui-form-field-afui-field-label-color: #b9c5d8 !important;
+    --afui-form-field-afui-input-border-color: #e7eaef !important;
+  }
+
+  .mat-select-arrow-wrapper .mat-select-arrow {
+    border-color: #e7eaef !important;
+  }
+}
+
 .rounding-times-app {
   display: flex;
   align-items: center;
@@ -24,11 +44,19 @@
     margin-left: 5px;
   }
 
-  .info-rounding {
-    align-self: flex-end;
+  mat-icon.info {
+    color: #a1a3a7;
+    width: 10px;
+    height: 10px;
+    margin: 0 2px 0 0;
+    &.rounding {
+      margin: 14px 0 0 0;
+      width: 16px;
+      height: 16px;
+    }
   }
   .afui-slide-toggle.rounding-times {
-    height: 36.6px;
+    height: 37px;
     width: 40px;
     padding-top: 0.4px;
 
@@ -90,7 +118,7 @@ afui-form-field {
   --afui-form-field-afui-input-border-color: #dae1e8;
   --afui-form-field-afui-input-focus-border-color: #3b9afa;
   --afui-form-field-afui-input-disabled-background-color: #f0f0f0;
-  --afui-form-field-afui-input-placeholder-color: #cccccc;
+  --afui-form-field-afui-input-placeholder-color: #8fa0b1;
   --afui-form-field-afui-field-label-color: #8a98b8;
   --afui-form-field-afui-input-padding: 8px 9px 8px 9px;
   --afui-form-field-afui-error-color: #ff0000;
@@ -100,6 +128,10 @@ afui-form-field {
 
   .afui-form-field-label-with-error {
     margin-right: 10px;
+
+    .afui-field-label {
+      display: flex;
+    }
   }
 
   margin-left: 5px;
@@ -119,7 +151,11 @@ afui-form-field {
 
   &.mat-select .mat-select-trigger {
     .mat-select-value {
-      color: #8fa0b1 !important;
+      color: #8fa0b1;
+
+      .mat-select-placeholder {
+        color: #8fa0b1;
+      }
     }
 
     .mat-select-arrow-wrapper .mat-select-arrow {
@@ -143,7 +179,7 @@ afui-form-field {
   left: 8px;
   top: 20px;
   border-radius: 15px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 0px 4px #21242b;
   min-width: 139px !important;
 
   mat-option {

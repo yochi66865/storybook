@@ -24,11 +24,15 @@
   </div>
   <div class="separation-of-times-app indent">
     <separation-of-times
+      [class.disabled]="isCheckedRoundingTimes"
       [separationOfTimes]="cloneStructuresInstructions.separationOfTimes"
     ></separation-of-times>
   </div>
   <div class="rounding-times-app">
-    <mat-icon class="info-rounding" [svgIcon]="'info-fill'"></mat-icon>
+    <mat-icon
+      class="info rounding"
+      [svgIcon]="'info-fill'"
+    ></mat-icon>
     <mat-slide-toggle
       disableRipple="true"
       afui-slide-toggle

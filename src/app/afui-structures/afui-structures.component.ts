@@ -30,6 +30,10 @@ export class AfuiStructuresComponent implements OnInit, OnChanges {
 
   toggleRound(toggle: boolean) {
     this.isCheckedRoundingTimes = toggle;
-    this.structuresInstructions.separationOfTimes = null;
+    if (toggle) {
+      this.structuresInstructions.separationOfTimes = null;
+    } else {
+      this.cloneStructuresInstructions.roundingTimes = null;
+    }
   }
 }
