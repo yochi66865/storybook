@@ -11,7 +11,7 @@
       panelClass="structures-options"
       [ngModel]="cloneAfuiRoundingTimes.typeSeparationOfTimes"
       name="typeSeparationOfTimes"
-      (selectionChange)="selectTypeSeparationOfTimes($event.value)"
+      (selectionChange)="selectTypeRoundingTimes($event.value)"
     >
       <mat-option [value]="'מרחבית'">מרחבית</mat-option>
       <mat-option [value]="'אזורית'">אזורית</mat-option>
@@ -28,8 +28,8 @@
       panelClass="structures-options"
       name="timeToRounding"
       disableOptionCentering
-      [ngModel]="cloneAfuiRoundingTimes.timeToRounding"
-      (selectionChange)="cloneAfuiRoundingTimes.timeToRounding = +$event.value"
+      [ngModel]="cloneAfuiRoundingTimes.timeToRounding?.toString()"
+      (selectionChange)="changeTimeToRounding(+$event.value)"
     >
       <mat-option [value]="5">{{ 5 }}</mat-option>
       <mat-option [value]="10">{{ 10 }}</mat-option>

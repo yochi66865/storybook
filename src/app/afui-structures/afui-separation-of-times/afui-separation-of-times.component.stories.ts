@@ -2,10 +2,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';
-import { DemoMaterialModule } from '../shared/material.module';
+import { AfuiIconModule } from '../../shared/afui-icon/afui-icon.module';
+import { DemoMaterialModule } from '../../shared/material.module';
 import { AfuiSeparationOfTimesComponent } from './afui-separation-of-times.component';
-import { AfUiFormsModule } from '../afui-forms/afui-forms.module';
+import { AfUiFormsModule } from '../../afui-forms/afui-forms.module';
 import { FormsModule } from '@angular/forms';
 
 export default {

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnChanges,
@@ -7,10 +8,10 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { AfuiSeparationOfTimes } from '../models/afui-separation-of-times.model';
-import { ChangeDetectionStrategy } from '@angular/compiler';
+import { AfuiSeparationOfTimes } from '../../models/afui-separation-of-times.model';
 import { KeyValue } from '@angular/common';
-import { TypeSeparationOfTimes } from '../models/afui-type-separation-of-times';
+import { TypeSeparationOfTimes } from '../../models/afui-type-separation-of-times';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'separation-of-times',
@@ -52,15 +53,15 @@ export class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   keyDescOrder = (
-    a: KeyValue<number, string>,
-    b: KeyValue<number, string>
+    a: KeyValue<string, string>,
+    b: KeyValue<string, string>
   ): number => {
     return +a.key > +b.key ? 1 : +b.key > +a.key ? -1 : 0;
   };
 
-  selectTypeSeparationOfTimes(type: TypeSeparationOfTimes) {
-    this.cloneSeparationOfTimes.typeSeparationOfTimes = type;
-    if (type === 'מרחבית') {
+  selectTypeSeparationOfTimes({ value }: MatSelectChange) {
+    this.cloneSeparationOfTimes.typeSeparationOfTimes = value;
+    if (value === 'מרחבית') {
       this.cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime = null;
     }
   }

@@ -7,6 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { AfuiStructuresInstructions } from '../models/afui-structures.model';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'afui-structures',
@@ -28,12 +29,14 @@ export class AfuiStructuresComponent implements OnInit, OnChanges {
       this.cloneStructuresInstructions = this.structuresInstructions;
   }
 
-  toggleRound(toggle: boolean) {
-    this.isCheckedRoundingTimes = toggle;
-    if (toggle) {
-      this.structuresInstructions.separationOfTimes = null;
-    } else {
-      this.cloneStructuresInstructions.roundingTimes = null;
-    }
+  toggleRound({ checked }: MatSlideToggleChange) {
+    console.log();
+
+    this.isCheckedRoundingTimes = checked;
+    // if (checked) {
+    //   this.structuresInstructions.separationOfTimes = null;
+    // } else {
+    //   this.cloneStructuresInstructions.roundingTimes = null;
+    // }
   }
 }

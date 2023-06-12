@@ -6,7 +6,8 @@ import {
   SimpleChanges,
   ViewEncapsulation,
 } from '@angular/core';
-import { AfuiRoundingTimes } from '../models/afui-rounding-times.model';
+import { AfuiRoundingTimes } from '../../models/afui-rounding-times.model';
+import { TypeSeparationOfTimes } from '../../models/afui-type-separation-of-times';
 
 @Component({
   selector: 'rounding-times',
@@ -34,4 +35,10 @@ export class AfuiRoundingTimesComponent implements OnInit, OnChanges {
       };
     }
   }
+
+  changeTimeToRounding(timeToRounding: number) {
+    this.cloneAfuiRoundingTimes.timeToRounding = timeToRounding as 5 | 10;
+  }
+
+  selectTypeRoundingTimes(type: TypeSeparationOfTimes) {}
 }

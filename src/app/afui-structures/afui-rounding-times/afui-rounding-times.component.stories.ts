@@ -2,8 +2,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';
-import { DemoMaterialModule } from '../shared/material.module';
+import { AfuiIconModule } from '../../shared/afui-icon/afui-icon.module';
+import { DemoMaterialModule } from '../../shared/material.module';
 import { AfuiRoundingTimesComponent } from './afui-rounding-times.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 

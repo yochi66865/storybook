@@ -3,8 +3,8 @@ import { AfuiSeparationOfTimes } from './afui-separation-of-times.model';
 
 export interface AfuiStructuresInstructions {
   amountOfAircraftInTheStructure: TypeAmountOfAircraftInTheStructure;
-  separationOfTimes: AfuiSeparationOfTimes | null;
-  roundingTimes: AfuiRoundingTimes | null;
+  separationOfTimes: AfuiSeparationOfTimes;
+  roundingTimes: AfuiRoundingTimes;
 }
 
 export type TypeAmountOfAircraftInTheStructure = 2 | 4 | null;
