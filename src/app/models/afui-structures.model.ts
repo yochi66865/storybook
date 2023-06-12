@@ -7,4 +7,4 @@ export interface AfuiStructuresInstructions {
   roundingTimes: AfuiRoundingTimes;
 }
 
-export type TypeAmountOfAircraftInTheStructure = 2 | 4 | null;
+export type TypeAmountOfAircraftInTheStructure = 2 | 4;

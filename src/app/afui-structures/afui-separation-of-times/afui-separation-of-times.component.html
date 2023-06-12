@@ -27,9 +27,7 @@
         name="separationWindowTime"
         disableOptionCentering
         [ngModel]="cloneSeparationOfTimes.separationWindowTime"
-        (selectionChange)="
-          cloneSeparationOfTimes.separationWindowTime = $event.value
-        "
+        (selectionChange)="updateSeparationWindowTime($event)"
       >
         <mat-option
           *ngFor="let option of timesSeparationOfTimes | keyvalue: keyDescOrder"
@@ -55,6 +53,8 @@
         class="structures-input"
         name="amountOfBuildingsAtTheSameTime"
         [(ngModel)]="cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime"
+        [min]="0"
+        [max]="20"
       />
     </afui-form-field>
   </div>

@@ -25,7 +25,7 @@
   <div class="separation-of-times-app indent">
     <separation-of-times
       [class.disabled]="isCheckedRoundingTimes"
-      [separationOfTimes]="cloneStructuresInstructions.separationOfTimes"
+      [(ngModel)]="cloneStructuresInstructions.separationOfTimes"
     ></separation-of-times>
   </div>
   <div class="rounding-times-app">
@@ -39,6 +39,10 @@
       disableRipple
       >עיגול זמ"מ</mat-slide-toggle
     >
-    <rounding-times *ngIf="isCheckedRoundingTimes"></rounding-times>
+    <rounding-times
+      *ngIf="isCheckedRoundingTimes"
+      [(ngModel)]="cloneStructuresInstructions.roundingTimes"
+      name="roundingTimes"
+    ></rounding-times>
   </div>
 </div>

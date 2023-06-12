@@ -7,11 +7,13 @@ import {
   Output,
   SimpleChanges,
   ViewEncapsulation,
+  forwardRef,
 } from '@angular/core';
 import { AfuiSeparationOfTimes } from '../../models/afui-separation-of-times.model';
 import { KeyValue } from '@angular/common';
-import { TypeSeparationOfTimes } from '../../models/afui-type-separation-of-times';
 import { MatSelectChange } from '@angular/material/select';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueService } from '../../shared/control-value-service/control-value.service';
 
 @Component({
   selector: 'separation-of-times',
@@ -19,8 +21,18 @@ import { MatSelectChange } from '@angular/material/select';
   styleUrls: ['./afui-separation-of-times.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => AfuiSeparationOfTimesComponent),
+      multi: true,
+    },
+  ],
 })
-export class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {
+export class AfuiSeparationOfTimesComponent
+  extends ControlValueService
+  implements OnInit, OnChanges
+{
   @Input() separationOfTimes!: AfuiSeparationOfTimes;
   cloneSeparationOfTimes: AfuiSeparationOfTimes = {
     typeSeparationOfTimes: null!,
@@ -34,8 +46,6 @@ export class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {
     20: '20 דקות',
     25: '25 דקות',
   };
-
-  constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.separationOfTimes) {
@@ -64,5 +74,11 @@ export class AfuiSeparationOfTimesComponent implements OnInit, OnChanges {
     if (value === 'מרחבית') {
       this.cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime = null;
     }
+    this.writeValue(this.cloneSeparationOfTimes);
+  }
+
+  updateSeparationWindowTime({ value }: MatSelectChange) {
+    this.cloneSeparationOfTimes.separationWindowTime = value;
+    this.writeValue(this.cloneSeparationOfTimes);
   }
 }
