@@ -25,6 +25,7 @@
   <div class="separation-of-times-app indent">
     <separation-of-times
       [class.disabled]="isCheckedRoundingTimes"
+      [separationOfTimes]="cloneStructuresInstructions.separationOfTimes"
       [(ngModel)]="cloneStructuresInstructions.separationOfTimes"
     ></separation-of-times>
   </div>
@@ -41,6 +42,7 @@
     >
     <rounding-times
       *ngIf="isCheckedRoundingTimes"
+      [afuiRoundingTimes]="cloneStructuresInstructions.roundingTimes"
       [(ngModel)]="cloneStructuresInstructions.roundingTimes"
       name="roundingTimes"
     ></rounding-times>

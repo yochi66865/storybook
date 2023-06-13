@@ -14,6 +14,11 @@ import { MatSelectModule } from '@angular/material/select';
     AfuiSeparationOfTimesComponent,
     AfuiRoundingTimesComponent,
   ],
+  exports: [
+    AfuiStructuresComponent,
+    AfuiSeparationOfTimesComponent,
+    AfuiRoundingTimesComponent,
+  ],
   imports: [
     BrowserAnimationsModule,
     FormsModule,

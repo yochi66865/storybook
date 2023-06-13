@@ -81,4 +81,9 @@ export class AfuiSeparationOfTimesComponent
     this.cloneSeparationOfTimes.separationWindowTime = value;
     this.writeValue(this.cloneSeparationOfTimes);
   }
+
+  updateAmountOfBuildingsAtTheSameTime(value: number) {
+    this.cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime = value;
+    this.writeValue(this.cloneSeparationOfTimes);
+  }
 }

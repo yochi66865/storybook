@@ -35,6 +35,11 @@ separation-of-times.disabled {
   .mat-select-arrow-wrapper .mat-select-arrow {
     border-color: #e7eaef !important;
   }
+
+  .afui-input[type="number"]:not([step="any"])::-webkit-inner-spin-button,
+  .afui-input[type="number"]:not([step="any"])::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
 }
 
 .rounding-times-app {
@@ -149,6 +154,12 @@ afui-form-field {
   width: 139px !important;
   height: 24px;
   font-size: 9px;
+
+  &[type="number"]:not([step="any"])::-webkit-inner-spin-button,
+  &[type="number"]:not([step="any"])::-webkit-outer-spin-button {
+    opacity: 1;
+    height: 24px;
+  }
 
   &.mat-select .mat-select-trigger {
     .mat-select-value {

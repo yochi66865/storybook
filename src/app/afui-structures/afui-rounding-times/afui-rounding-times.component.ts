@@ -6,12 +6,12 @@ import {
   SimpleChanges,
   ViewEncapsulation,
   forwardRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AfuiRoundingTimes } from '../../models/afui-rounding-times.model';
 import { TypeSeparationOfTimes } from '../../models/afui-type-separation-of-times';
 import { ControlValueService } from '../../shared/control-value-service/control-value.service';
-import { ChangeDetectionStrategy } from '@angular/compiler';
 import { MatSelectChange } from '@angular/material/select';
 
 @Component({

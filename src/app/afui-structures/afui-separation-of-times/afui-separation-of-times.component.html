@@ -48,11 +48,10 @@
       <input
         afui-input
         type="number"
-        min="0"
-        max="25"
         class="structures-input"
         name="amountOfBuildingsAtTheSameTime"
-        [(ngModel)]="cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime"
+        [ngModel]="cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime"
+        (ngModelChange)="updateAmountOfBuildingsAtTheSameTime($event)"
         [min]="0"
         [max]="20"
       />
