@@ -15,6 +15,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { AfuiIconModule } from './shared/afui-icon/afui-icon.module';
 import { AfUiFormsModule } from './afui-forms/afui-forms.module';
 import { AfuiStructuresModule } from './afui-structures/afui-structures.module';
+import { AfUiTooltipModule } from './afui-tooltip';
 
 @NgModule({
   declarations: [AppComponent, TabsComponent, TabComponent, TabsMockComponent],
@@ -30,6 +31,7 @@ import { AfuiStructuresModule } from './afui-structures/afui-structures.module';
     HttpClientModule,
     DragScrollModule,
     AfuiStructuresModule,
+    AfUiTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
