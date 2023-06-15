@@ -1,16 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { withKnobs } from '@storybook/addon-knobs';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';
-import { DemoMaterialModule } from '../shared/material.module';
+import { Meta, moduleMetadata } from '@storybook/angular';
 import { AfuiStructuresComponent } from './afui-structures.component';
-import { AfUiFormsModule } from '../afui-forms/afui-forms.module';
-import { FormsModule } from '@angular/forms';
-import { AfuiStructuresInstructions } from '../models/afui-structures.model';
-import { AfuiSeparationOfTimesComponent } from './afui-separation-of-times/afui-separation-of-times.component';
-import { AfuiRoundingTimesComponent } from './afui-rounding-times/afui-rounding-times.component';
-import { AfuiSlideToggleDirective } from '../afui-forms/afui-slide-toggle/afui-slide-toggle.directive';
+import { AfuiStructuresModule } from './afui-structures.module';
 
 export default {
   title: 'Example/Structures',
@@ -18,19 +9,7 @@ export default {
   decorators: [
     withKnobs,
     moduleMetadata({
-      declarations: [
-        AfuiStructuresComponent,
-        AfuiSeparationOfTimesComponent,
-        AfuiRoundingTimesComponent,
-      ],
-      imports: [
-        FormsModule,
-        BrowserAnimationsModule,
-        DemoMaterialModule,
-        HttpClientModule,
-        AfuiIconModule,
-        AfUiFormsModule,
-      ],
+      imports: [AfuiStructuresModule],
     }),
   ],
 } as Meta;

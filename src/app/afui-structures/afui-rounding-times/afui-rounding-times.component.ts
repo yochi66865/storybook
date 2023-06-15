@@ -13,6 +13,7 @@ import { AfuiRoundingTimes } from '../../models/afui-rounding-times.model';
 import { TypeSeparationOfTimes } from '../../models/afui-type-separation-of-times';
 import { ControlValueService } from '../../shared/control-value-service/control-value.service';
 import { MatSelectChange } from '@angular/material/select';
+import { isNil } from 'lodash';
 
 @Component({
   selector: 'rounding-times',
@@ -37,6 +38,16 @@ export class AfuiRoundingTimesComponent
     timeToRounding: null!,
     typeSeparationOfTimes: null!,
   };
+  messageTimeToRounding: Record<number, string> = {
+    0: 'XX:00, XX:10, XX:20, XX:30...',
+    5: 'XX:05, XX:15, XX:25, XX:35...',
+  };
+  messageTypeSeparationOfTimes: Record<TypeSeparationOfTimes, string> = {
+    אזורית:
+      'עיגול זמ"מ במוד אזורי, ייתכנו זמ"מים זהים עבור המלצות מאזורים אחרים',
+    מרחבית: 'הפרדה של 10 דקות בין זמ"מ לזמ"מ',
+  };
+  isNil = isNil;
 
   ngOnInit(): void {}
 

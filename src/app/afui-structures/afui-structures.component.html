@@ -26,15 +26,27 @@
     <separation-of-times
       [class.disabled]="isCheckedRoundingTimes"
       [separationOfTimes]="cloneStructuresInstructions.separationOfTimes"
+      name="separationOfTimes"
       [(ngModel)]="cloneStructuresInstructions.separationOfTimes"
     ></separation-of-times>
   </div>
   <div class="rounding-times-app">
-    <mat-icon class="info rounding" [svgIcon]="'info-fill'"></mat-icon>
+    <mat-icon
+      class="info rounding"
+      [class.disabled]="!isCheckedRoundingTimes"
+      [svgIcon]="'info-fill'"
+      [afuiTooltip]="messageRoundingTimes"
+      [afuiTooltipActive]="isCheckedRoundingTimes"
+      [afuiTooltipShowArrow]="false"
+      [afuiTooltipPosition]="'top-right'"
+      [afuiTooltipOffset]="0"
+      [afuiTooltipPanelClass]="'structures-tooltip'"
+    ></mat-icon>
     <mat-slide-toggle
       disableRipple="true"
       afui-slide-toggle
       class="rounding-times"
+      name="isCheckedRoundingTimes"
       [ngModel]="isCheckedRoundingTimes"
       (change)="toggleRound($any($event))"
       disableRipple

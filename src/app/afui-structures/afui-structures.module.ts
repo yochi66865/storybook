@@ -7,6 +7,8 @@ import { AfuiStructuresComponent } from './afui-structures.component';
 import { AfuiSeparationOfTimesComponent } from './afui-separation-of-times/afui-separation-of-times.component';
 import { AfuiRoundingTimesComponent } from './afui-rounding-times/afui-rounding-times.component';
 import { MatSelectModule } from '@angular/material/select';
+import { AfUiTooltipModule } from '../afui-tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
     AfUiFormsModule,
     AfuiIconModule,
     MatSelectModule,
+    MatSlideToggleModule,
+    AfUiTooltipModule,
   ],
-  providers: [],
 })
 export class AfuiStructuresModule {}

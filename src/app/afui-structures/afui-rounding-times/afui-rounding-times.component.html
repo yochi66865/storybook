@@ -1,8 +1,23 @@
 <div class="rounding-times-container">
   <afui-form-field>
     <span afui-field-label
-      >סוג<mat-icon class="info" [svgIcon]="'info-fill'"></mat-icon
-    ></span>
+      >סוג<mat-icon
+        class="info"
+        [svgIcon]="'info-fill'"
+        [afuiTooltip]="
+          messageTypeSeparationOfTimes[
+            cloneAfuiRoundingTimes.typeSeparationOfTimes
+          ]
+        "
+        [afuiTooltipActive]="
+          !isNil(cloneAfuiRoundingTimes.typeSeparationOfTimes)
+        "
+        [afuiTooltipShowArrow]="false"
+        [afuiTooltipPosition]="'top-right'"
+        [afuiTooltipOffset]="0"
+        [afuiTooltipPanelClass]="'structures-tooltip'"
+      ></mat-icon>
+    </span>
     <mat-select
       afui-input
       class="structures-input"
@@ -19,8 +34,20 @@
   </afui-form-field>
   <afui-form-field>
     <span afui-field-label
-      >זמן לעיגול <mat-icon class="info" [svgIcon]="'info-fill'"></mat-icon
-    ></span>
+      >זמן לעיגול
+      <mat-icon
+        class="info"
+        [svgIcon]="'info-fill'"
+        [afuiTooltip]="
+          messageTimeToRounding[cloneAfuiRoundingTimes.timeToRounding]
+        "
+        [afuiTooltipActive]="!isNil(cloneAfuiRoundingTimes.timeToRounding)"
+        [afuiTooltipShowArrow]="false"
+        [afuiTooltipPosition]="'top-right'"
+        [afuiTooltipOffset]="0"
+        [afuiTooltipPanelClass]="'structures-tooltip'"
+      ></mat-icon>
+    </span>
     <mat-select
       afui-input
       class="structures-input"
@@ -31,8 +58,8 @@
       [ngModel]="cloneAfuiRoundingTimes.timeToRounding"
       (selectionChange)="changeTimeToRounding(+$event.value)"
     >
+      <mat-option [value]="0">{{ 0 }}</mat-option>
       <mat-option [value]="5">{{ 5 }}</mat-option>
-      <mat-option [value]="10">{{ 10 }}</mat-option>
     </mat-select>
   </afui-form-field>
 </div>

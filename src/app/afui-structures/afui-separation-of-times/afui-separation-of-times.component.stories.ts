@@ -1,12 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { withKnobs } from '@storybook/addon-knobs';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { AfuiIconModule } from '../../shared/afui-icon/afui-icon.module';
-import { DemoMaterialModule } from '../../shared/material.module';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { AfuiStructuresModule } from '../afui-structures.module';
 import { AfuiSeparationOfTimesComponent } from './afui-separation-of-times.component';
-import { AfUiFormsModule } from '../../afui-forms/afui-forms.module';
-import { FormsModule } from '@angular/forms';
 
 export default {
   title: 'Example/Separation Of Times',
@@ -14,15 +9,7 @@ export default {
   decorators: [
     withKnobs,
     moduleMetadata({
-      declarations: [AfuiSeparationOfTimesComponent],
-      imports: [
-        FormsModule,
-        BrowserAnimationsModule,
-        DemoMaterialModule,
-        HttpClientModule,
-        AfuiIconModule,
-        AfUiFormsModule,
-      ],
+      imports: [AfuiStructuresModule],
     }),
   ],
 } as Meta;

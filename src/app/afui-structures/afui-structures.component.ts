@@ -24,7 +24,8 @@ export class AfuiStructuresComponent
   numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];
   cloneStructuresInstructions!: AfuiStructuresInstructions;
   isCheckedRoundingTimes: boolean = false;
-  external: string = 'wdwf';
+  messageRoundingTimes: string =
+    'לא ניתן להגדיר הפרדת זמנים במצב של עיגול זמ"מ';
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {

@@ -55,10 +55,10 @@ class AfUiTooltipExample implements OnInit {
   @Input() showDelay: number = 0;
   @Input() hideDelay: number = 0;
   @Input() trigger: TooltipTrigger = 'hover';
-  @Input() header: string;
+  @Input() header!: string;
 
-  @ViewChild('tooltip', { static: true }) tooltipElement: AfUiTooltipDirective;
-  @ViewChild('tmpl', { static: true }) tmpl: TemplateRef<any>;
+  @ViewChild('tooltip', { static: true }) tooltipElement!: AfUiTooltipDirective;
+  @ViewChild('tmpl', { static: true }) tmpl!: TemplateRef<any>;
 
   tooltipContent: string | TemplateRef<any> = 'This is tooltip!';
   startVisible: boolean = true;
@@ -82,7 +82,7 @@ class AfUiTooltipExample implements OnInit {
   }
 }
 
-const getProps = (contentType, header?) => {
+const getProps = (contentType: any, header?: any) => {
   return {
     header: header,
     contentType: contentType,

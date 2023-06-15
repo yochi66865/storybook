@@ -1,11 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { withKnobs } from '@storybook/addon-knobs';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { AfuiIconModule } from '../../shared/afui-icon/afui-icon.module';
-import { DemoMaterialModule } from '../../shared/material.module';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { AfuiStructuresModule } from '../afui-structures.module';
 import { AfuiRoundingTimesComponent } from './afui-rounding-times.component';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 export default {
   title: 'Example/Rounding Times',
@@ -13,14 +9,7 @@ export default {
   decorators: [
     withKnobs,
     moduleMetadata({
-      declarations: [AfuiRoundingTimesComponent],
-      imports: [
-        BrowserAnimationsModule,
-        DemoMaterialModule,
-        HttpClientModule,
-        AfuiIconModule,
-        MatSlideToggleModule,
-      ],
+      imports: [AfuiStructuresModule],
     }),
   ],
 } as Meta;
