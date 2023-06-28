@@ -1,0 +1,60 @@
+<div class="structures-container">
+  <div class="structures-amount indent">
+    <label class="structures-label">מבנים</label>
+    <div class="structures-inputs-container">
+      <afui-form-field>
+        <span afui-field-label>כמות מטוסים במבנה</span>
+        <mat-select
+          afui-input
+          class="structures-input"
+          disableOptionCentering
+          placeholder="בחירה"
+          panelClass="structures-options"
+        >
+          <mat-option
+            *ngFor="let option of numSquadronInStructures"
+            [value]="option"
+            >{{ option }}</mat-option
+          >
+        </mat-select>
+      </afui-form-field>
+    </div>
+  </div>
+  <div class="separation-of-times-app indent">
+    <separation-of-times
+      [class.disabled]="isCheckedRoundingTimes"
+      [separationOfTimes]="cloneStructuresInstructions.separationOfTimes"
+      name="separationOfTimes"
+      [(ngModel)]="cloneStructuresInstructions.separationOfTimes"
+    ></separation-of-times>
+  </div>
+  <div class="rounding-times-app">
+    <mat-icon
+      class="info rounding"
+      [class.disabled]="!isCheckedRoundingTimes"
+      [svgIcon]="'info-fill'"
+      [afuiTooltip]="messageRoundingTimes"
+      [afuiTooltipActive]="isCheckedRoundingTimes"
+      [afuiTooltipShowArrow]="false"
+      [afuiTooltipPosition]="'top-right'"
+      [afuiTooltipOffset]="0"
+      [afuiTooltipPanelClass]="'structures-tooltip'"
+    ></mat-icon>
+    <mat-slide-toggle
+      disableRipple="true"
+      afui-slide-toggle
+      class="rounding-times"
+      name="isCheckedRoundingTimes"
+      [ngModel]="isCheckedRoundingTimes"
+      (change)="toggleRound($any($event))"
+      disableRipple
+      >עיגול זמ"מ</mat-slide-toggle
+    >
+    <rounding-times
+      *ngIf="isCheckedRoundingTimes"
+      [afuiRoundingTimes]="cloneStructuresInstructions.roundingTimes"
+      [(ngModel)]="cloneStructuresInstructions.roundingTimes"
+      name="roundingTimes"
+    ></rounding-times>
+  </div>
+</div>
