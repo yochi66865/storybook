@@ -166,6 +166,7 @@ afui-form-field {
   }
 
   &.mat-select .mat-select-trigger {
+    align-items: stretch;
     .mat-select-value {
       color: #8fa0b1;
 
@@ -174,13 +175,16 @@ afui-form-field {
       }
     }
 
-    .mat-select-arrow-wrapper .mat-select-arrow {
-      border: solid #21242b;
-      border-width: 0 1.5px 1.5px 0;
-      display: inline-block;
-      padding: 2.5px;
-      transform: rotate(45deg);
-      -webkit-transform: rotate(45deg);
+    .mat-select-arrow-wrapper {
+      align-items: flex-start;
+      .mat-select-arrow {
+        border: solid #21242b;
+        border-width: 0 1.5px 1.5px 0;
+        display: inline-block;
+        padding: 2.5px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
     }
   }
 }

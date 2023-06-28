@@ -3,6 +3,7 @@
     <span afui-field-label
       >סוג<mat-icon
         class="info"
+        [class.disabled]="isNil(cloneAfuiRoundingTimes.typeSeparationOfTimes)"
         [svgIcon]="'info-fill'"
         [afuiTooltip]="
           messageTypeSeparationOfTimes[
@@ -38,6 +39,7 @@
       <mat-icon
         class="info"
         [svgIcon]="'info-fill'"
+        [class.disabled]="isNil(cloneAfuiRoundingTimes.timeToRounding)"
         [afuiTooltip]="
           messageTimeToRounding[cloneAfuiRoundingTimes.timeToRounding]
         "

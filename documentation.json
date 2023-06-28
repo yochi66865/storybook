@@ -1254,6 +1254,568 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "AfUiTooltipDirective",
+            "id": "directive-AfUiTooltipDirective-cc91f28e54f544b2bbbbe6f92fbc383caab4bb4a163428c3d74abc9e3229c8219411db8a5e4add51ed32ce594e2101029e62c0cd1db18d9f0037758054b46997",
+            "file": "src/app/afui-tooltip/afui-tooltip.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {\r\n  Directive,\r\n  Input,\r\n  TemplateRef,\r\n  ElementRef,\r\n  OnInit,\r\n  HostListener,\r\n  ComponentRef,\r\n  OnDestroy,\r\n} from '@angular/core';\r\nimport {\r\n  FlexibleConnectedPositionStrategy,\r\n  Overlay,\r\n  OverlayPositionBuilder,\r\n  OverlayRef,\r\n  PositionStrategy,\r\n} from '@angular/cdk/overlay';\r\nimport { ComponentPortal } from '@angular/cdk/portal';\r\nimport { AfUiTooltipComponent, ArrowPosition } from './afui-tooltip.component';\r\n\r\ntype XPosition = 'center' | 'start' | 'end';\r\ntype YPosition = 'center' | 'top' | 'bottom';\r\n\r\nexport type TooltipPosition =\r\n  | 'top'\r\n  | 'top-left'\r\n  | 'top-right'\r\n  | 'bottom'\r\n  | 'bottom-left'\r\n  | 'bottom-right'\r\n  | 'left'\r\n  | 'right'\r\n  | 'auto';\r\nexport type TooltipTrigger = 'hover' | 'click' | 'manual';\r\n\r\n// TODO calculate position automatically\r\n// TODO fix scrolling bug (tooltip stays on the same position)\r\n\r\n@Directive({\r\n  selector: '[afuiTooltip]',\r\n  exportAs: 'afuiTooltip',\r\n})\r\nexport class AfUiTooltipDirective implements OnInit, OnDestroy {\r\n  @Input('afuiTooltipActive') tooltipActive: boolean = true;\r\n  @Input('afuiTooltip') content!: string | TemplateRef<any>;\r\n  @Input('afuiTooltipContext') context!: Record<string, unknown>;\r\n  @Input('afuiTooltipOffset') tooltipOffset: number = 10;\r\n  @Input('afuiTooltipStartVisible') startVisible: boolean = false;\r\n  @Input('afuiTooltipHideDelay') hideDelay: number = 0;\r\n  @Input('afuiTooltipShowDelay') showDelay: number = 0;\r\n  @Input('afuiTooltipShowArrow') showArrow: boolean = true;\r\n  @Input('afuiTooltipTrigger') tooltipTrigger: TooltipTrigger = 'hover';\r\n  @Input('afuiTooltipPanelClass') panelClass!: string;\r\n  @Input('afuiTooltipHeader') header!: string;\r\n  @Input('afuiTooltipAllowHideOnMouseOver') allowHideOnMouseOver: boolean =\r\n    false;\r\n\r\n  @Input('afuiTooltipPosition') set positionInput(position: TooltipPosition) {\r\n    this.position = position;\r\n    if (this.overlayRef) {\r\n      // Overlay exists, create a new one\r\n      this.createOverlay();\r\n    }\r\n  }\r\n\r\n  private tooltipRef!: ComponentRef<AfUiTooltipComponent>;\r\n  private position!: TooltipPosition;\r\n  private overlayRef!: OverlayRef;\r\n  private arrowPosition!: ArrowPosition;\r\n  private tooltipDirectiveMouseOver!: boolean;\r\n  private tooltipComponentMouseOver!: boolean;\r\n  private tooltipShowTimeout: any;\r\n  private tooltipHideTimeout: any;\r\n  private tooltipVisible: boolean = false;\r\n\r\n  get isTooltipVisible(): boolean {\r\n    return this.tooltipVisible;\r\n  }\r\n\r\n  constructor(\r\n    private overlay: Overlay,\r\n    private elementRef: ElementRef,\r\n    private overlayPositionBuilder: OverlayPositionBuilder\r\n  ) {}\r\n\r\n  calculateTooltipPosition(tooltipPosition: TooltipPosition) {\r\n    let originX: XPosition = 'center',\r\n      originY: YPosition = 'center',\r\n      overlayX: XPosition = 'center',\r\n      overlayY: YPosition = 'center',\r\n      offsetY = 0,\r\n      offsetX = 0,\r\n      arrowPosition: ArrowPosition = 'top';\r\n\r\n    switch (tooltipPosition) {\r\n      case 'top':\r\n        originY = 'top';\r\n        overlayY = 'bottom';\r\n        offsetY = this.tooltipOffset * -1;\r\n        arrowPosition = 'bottom';\r\n        break;\r\n      case 'top-left':\r\n        originY = 'top';\r\n        originX = 'start';\r\n        overlayX = 'start';\r\n        overlayY = 'bottom';\r\n        offsetY = this.tooltipOffset * -1;\r\n        arrowPosition = 'bottom';\r\n        break;\r\n      case 'top-right':\r\n        originY = 'top';\r\n        originX = 'end';\r\n        overlayX = 'end';\r\n        overlayY = 'bottom';\r\n        offsetY = this.tooltipOffset * -1;\r\n        arrowPosition = 'bottom';\r\n        break;\r\n      case 'bottom':\r\n        originY = 'bottom';\r\n        overlayY = 'top';\r\n        offsetY = this.tooltipOffset;\r\n        arrowPosition = 'top';\r\n        break;\r\n      case 'bottom-left':\r\n        originY = 'bottom';\r\n        originX = 'start';\r\n        overlayX = 'start';\r\n        overlayY = 'top';\r\n        offsetY = this.tooltipOffset;\r\n        arrowPosition = 'top';\r\n        break;\r\n      case 'bottom-right':\r\n        originY = 'bottom';\r\n        originX = 'end';\r\n        overlayX = 'end';\r\n        overlayY = 'top';\r\n        offsetY = this.tooltipOffset;\r\n        arrowPosition = 'top';\r\n        break;\r\n      case 'left':\r\n        originX = 'start';\r\n        overlayX = 'end';\r\n        offsetX = this.tooltipOffset * -1;\r\n        arrowPosition = 'right';\r\n        break;\r\n      case 'right':\r\n        originX = 'end';\r\n        overlayX = 'start';\r\n        offsetX = this.tooltipOffset;\r\n        arrowPosition = 'left';\r\n        break;\r\n    }\r\n\r\n    return {\r\n      originX,\r\n      originY,\r\n      overlayX,\r\n      overlayY,\r\n      offsetX,\r\n      offsetY,\r\n      arrowPosition,\r\n    };\r\n  }\r\n\r\n  createOverlay() {\r\n    this.hideTooltip();\r\n    if (this.overlayRef) {\r\n      this.overlayRef.dispose();\r\n    }\r\n\r\n    let positionStrategy: FlexibleConnectedPositionStrategy;\r\n\r\n    if (this.position === 'auto') {\r\n      positionStrategy = this.overlayPositionBuilder\r\n        .flexibleConnectedTo(this.elementRef)\r\n        .withLockedPosition(false)\r\n        .withPositions([\r\n          {\r\n            originX: 'center',\r\n            originY: 'top',\r\n            overlayX: 'center',\r\n            overlayY: 'bottom',\r\n            offsetY: -this.tooltipOffset,\r\n          },\r\n          {\r\n            originX: 'center',\r\n            originY: 'bottom',\r\n            overlayX: 'center',\r\n            overlayY: 'top',\r\n            offsetY: this.tooltipOffset,\r\n          },\r\n        ]);\r\n\r\n      positionStrategy.positionChanges.subscribe((position) => {\r\n        switch (position.connectionPair.overlayY) {\r\n          case 'top':\r\n            this.arrowPosition = 'top';\r\n            break;\r\n          case 'bottom':\r\n            this.arrowPosition = 'bottom';\r\n            break;\r\n        }\r\n        this.tooltipRef.instance.arrowPosition = this.arrowPosition;\r\n        this.tooltipRef.changeDetectorRef.detectChanges();\r\n      });\r\n    } else {\r\n      const ttPos = this.calculateTooltipPosition(this.position);\r\n      positionStrategy = this.overlay\r\n        .position()\r\n        .flexibleConnectedTo(this.elementRef)\r\n        .withLockedPosition(false)\r\n        .withPositions([\r\n          {\r\n            originX: ttPos.originX,\r\n            originY: ttPos.originY,\r\n            overlayX: ttPos.overlayX,\r\n            overlayY: ttPos.overlayY,\r\n            offsetY: ttPos.offsetY,\r\n            offsetX: ttPos.offsetX,\r\n          },\r\n        ]);\r\n      this.arrowPosition = ttPos.arrowPosition;\r\n    }\r\n\r\n    this.overlayRef = this.overlay.create({\r\n      positionStrategy,\r\n      scrollStrategy: this.overlay.scrollStrategies.reposition(),\r\n      panelClass: this.panelClass,\r\n    });\r\n  }\r\n\r\n  ngOnInit() {\r\n    this.createOverlay();\r\n\r\n    if (this.startVisible) {\r\n      this.showTooltip();\r\n    }\r\n  }\r\n\r\n  clearVisibilityTimeouts() {\r\n    clearTimeout(this.tooltipShowTimeout);\r\n    clearTimeout(this.tooltipHideTimeout);\r\n  }\r\n\r\n  @HostListener('window:click', ['$event'])\r\n  wClick(event: MouseEvent) {\r\n    // determine wether click was inside tooltip, so tooltip won't be closed\r\n    if (this.tooltipRef?.location?.nativeElement.contains(event.target)) {\r\n      return;\r\n    }\r\n\r\n    if (\r\n      !this.tooltipComponentMouseOver &&\r\n      this.tooltipVisible &&\r\n      this.tooltipTrigger === 'click'\r\n    ) {\r\n      this.hideTooltip();\r\n    }\r\n  }\r\n\r\n  @HostListener('click') mClick() {\r\n    if (!this.tooltipActive || this.tooltipTrigger !== 'click') {\r\n      return;\r\n    }\r\n\r\n    if (this.tooltipVisible) {\r\n      this.hideTooltip();\r\n    } else {\r\n      this.tooltipShowTimeout = setTimeout(() => {\r\n        this.showTooltip();\r\n      }, this.showDelay);\r\n    }\r\n  }\r\n\r\n  @HostListener('mouseenter') mEnter() {\r\n    this.tooltipDirectiveMouseOver = true;\r\n\r\n    if (!this.tooltipActive || this.tooltipTrigger !== 'hover') {\r\n      return;\r\n    }\r\n\r\n    this.clearVisibilityTimeouts();\r\n\r\n    this.tooltipShowTimeout = setTimeout(() => {\r\n      if (!this.tooltipDirectiveMouseOver) {\r\n        return;\r\n      }\r\n\r\n      this.showTooltip();\r\n    }, this.showDelay);\r\n  }\r\n\r\n  public showTooltip() {\r\n    if (this.overlayRef && !this.overlayRef.hasAttached()) {\r\n      this.tooltipRef = this.overlayRef.attach(\r\n        new ComponentPortal(AfUiTooltipComponent)\r\n      );\r\n      if (this.tooltipTrigger === 'hover') {\r\n        this.tooltipRef.location.nativeElement.addEventListener(\r\n          'mouseleave',\r\n          () => this.hideTooltip()\r\n        );\r\n      }\r\n      this.tooltipRef.instance.content = this.content;\r\n      this.tooltipRef.instance.context = this.context;\r\n      this.tooltipRef.instance.header = this.header;\r\n      this.tooltipRef.instance.arrowPosition = this.showArrow\r\n        ? this.arrowPosition\r\n        : null;\r\n\r\n      if (this.tooltipTrigger !== 'hover') {\r\n        this.overlayRef.updatePosition();\r\n        this.tooltipRef.changeDetectorRef.detectChanges();\r\n      }\r\n\r\n      this.tooltipVisible = true;\r\n    }\r\n  }\r\n\r\n  @HostListener('mouseleave') mLeave() {\r\n    this.tooltipDirectiveMouseOver = false;\r\n    if (this.tooltipTrigger !== 'hover') {\r\n      return;\r\n    }\r\n\r\n    setTimeout(() => {\r\n      this.hideTooltip();\r\n    }, this.hideDelay + 100);\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    this.hideTooltip();\r\n    this.overlayRef.dispose();\r\n  }\r\n\r\n  public hideTooltip() {\r\n    if (\r\n      this.tooltipRef &&\r\n      this.tooltipRef.instance.mouseIsOverTheTooltip &&\r\n      !this.allowHideOnMouseOver\r\n    )\r\n      return;\r\n\r\n    if (this.tooltipTrigger !== 'hover') {\r\n      if (this.overlayRef) {\r\n        this.overlayRef.detach();\r\n      }\r\n      this.tooltipVisible = false;\r\n      return;\r\n    }\r\n\r\n    this.clearVisibilityTimeouts();\r\n\r\n    if (this.tooltipComponentMouseOver || this.tooltipDirectiveMouseOver) {\r\n      return;\r\n    }\r\n\r\n    this.tooltipHideTimeout = setTimeout(() => {\r\n      if (this.overlayRef) {\r\n        this.overlayRef.detach();\r\n      }\r\n      this.tooltipVisible = false;\r\n    }, this.hideDelay);\r\n  }\r\n}\r\n",
+            "selector": "[afuiTooltip]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "afuiTooltip",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "string | TemplateRef<any>",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipActive",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 44,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipAllowHideOnMouseOver",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 55,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipContext",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 46,
+                    "type": "Record<string | >",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipHeader",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 54,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipHideDelay",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 49,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipOffset",
+                    "defaultValue": "10",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipPanelClass",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 53,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipPosition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 58,
+                    "type": "TooltipPosition",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipShowArrow",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 51,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipShowDelay",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipStartVisible",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 48,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "afuiTooltipTrigger",
+                    "defaultValue": "'hover'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 52,
+                    "type": "TooltipTrigger",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "click",
+                    "args": [],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 261
+                },
+                {
+                    "name": "mouseenter",
+                    "args": [],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 275
+                },
+                {
+                    "name": "mouseleave",
+                    "args": [],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 320
+                },
+                {
+                    "name": "window:click",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 246
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "arrowPosition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ArrowPosition",
+                    "optional": false,
+                    "description": "",
+                    "line": 69,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "overlayRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "OverlayRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 68,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "position",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TooltipPosition",
+                    "optional": false,
+                    "description": "",
+                    "line": 67,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "tooltipComponentMouseOver",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 71,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "tooltipDirectiveMouseOver",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 70,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "tooltipHideTimeout",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 73,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "tooltipRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ComponentRef<AfUiTooltipComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 66,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "tooltipShowTimeout",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 72,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "tooltipVisible",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 74,
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "calculateTooltipPosition",
+                    "args": [
+                        {
+                            "name": "tooltipPosition",
+                            "type": "TooltipPosition",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "{ originX: XPosition; originY: YPosition; overlayX: XPosition; overlayY: YPosition; offsetX: number; offsetY: number; arrowPosition: ArrowPosition; }",
+                    "typeParameters": [],
+                    "line": 86,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "tooltipPosition",
+                            "type": "TooltipPosition",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "clearVisibilityTimeouts",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 240,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "createOverlay",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 165,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "hideTooltip",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 336,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "mClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 261,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'click'"
+                        }
+                    ]
+                },
+                {
+                    "name": "mEnter",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 275,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'mouseenter'"
+                        }
+                    ]
+                },
+                {
+                    "name": "mLeave",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 320,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'mouseleave'"
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 331,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 232,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "showTooltip",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 293,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "wClick",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 246,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'window:click', ['$event']"
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "overlay",
+                        "type": "Overlay",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "overlayPositionBuilder",
+                        "type": "OverlayPositionBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 78,
+                "jsdoctags": [
+                    {
+                        "name": "overlay",
+                        "type": "Overlay",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "overlayPositionBuilder",
+                        "type": "OverlayPositionBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "positionInput": {
+                    "name": "positionInput",
+                    "setSignature": {
+                        "name": "positionInput",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "position",
+                                "type": "TooltipPosition",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 58,
+                        "jsdoctags": [
+                            {
+                                "name": "position",
+                                "type": "TooltipPosition",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "isTooltipVisible": {
+                    "name": "isTooltipVisible",
+                    "getSignature": {
+                        "name": "isTooltipVisible",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 76
+                    }
+                }
+            }
         }
     ],
     "components": [
@@ -1849,7 +2411,7 @@
         },
         {
             "name": "AfuiRoundingTimesComponent",
-            "id": "component-AfuiRoundingTimesComponent-746b5d38b0fc80457cb8fe4401a81e4f77c20d02a859861992ce8c84dcadce91cf201dbe42326558ccb11327bfd725d0dafea72ea98d3391694ed6733c9ef713",
+            "id": "component-AfuiRoundingTimesComponent-53d26b7d7546cc7365ed3c0b673c61ddc227cb3a4f97ecb2a3e7e6366830cfd83062406f1edd2f3ad42baf04f3c4ad44b93cb18166b48ecf579f8f5d2a48cc09",
             "file": "src/app/afui-structures/afui-rounding-times/afui-rounding-times.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -1878,7 +2440,7 @@
                     "name": "afuiRoundingTimes",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 36,
                     "type": "AfuiRoundingTimes",
                     "decorators": []
                 }
@@ -1893,7 +2455,37 @@
                     "type": "AfuiRoundingTimes",
                     "optional": false,
                     "description": "",
-                    "line": 36
+                    "line": 37
+                },
+                {
+                    "name": "isNil",
+                    "defaultValue": "isNil",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 50
+                },
+                {
+                    "name": "messageTimeToRounding",
+                    "defaultValue": "{\r\n    0: 'XX:00, XX:10, XX:20, XX:30...',\r\n    5: 'XX:05, XX:15, XX:25, XX:35...',\r\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Record<number | string>",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                },
+                {
+                    "name": "messageTypeSeparationOfTimes",
+                    "defaultValue": "{\r\n    אזורית:\r\n      'עיגול זמ\"מ במוד אזורי, ייתכנו זמ\"מים זהים עבור המלצות מאזורים אחרים',\r\n    מרחבית: 'הפרדה של 10 דקות בין זמ\"מ לזמ\"מ',\r\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Record<TypeSeparationOfTimes | string>",
+                    "optional": false,
+                    "description": "",
+                    "line": 45
                 },
                 {
                     "name": "onChange",
@@ -1949,7 +2541,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1977,7 +2569,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1998,7 +2590,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2014,7 +2606,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2129,7 +2721,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  Component,\r\n  Input,\r\n  OnInit,\r\n  OnChanges,\r\n  SimpleChanges,\r\n  ViewEncapsulation,\r\n  forwardRef,\r\n  ChangeDetectionStrategy,\r\n} from '@angular/core';\r\nimport { NG_VALUE_ACCESSOR } from '@angular/forms';\r\nimport { AfuiRoundingTimes } from '../../models/afui-rounding-times.model';\r\nimport { TypeSeparationOfTimes } from '../../models/afui-type-separation-of-times';\r\nimport { ControlValueService } from '../../shared/control-value-service/control-value.service';\r\nimport { MatSelectChange } from '@angular/material/select';\r\n\r\n@Component({\r\n  selector: 'rounding-times',\r\n  templateUrl: './afui-rounding-times.component.html',\r\n  styleUrls: ['./afui-rounding-times.component.less'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => AfuiRoundingTimesComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n  encapsulation: ViewEncapsulation.None,\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class AfuiRoundingTimesComponent\r\n  extends ControlValueService\r\n  implements OnInit, OnChanges\r\n{\r\n  @Input() afuiRoundingTimes!: AfuiRoundingTimes;\r\n  cloneAfuiRoundingTimes: AfuiRoundingTimes = {\r\n    timeToRounding: null!,\r\n    typeSeparationOfTimes: null!,\r\n  };\r\n\r\n  ngOnInit(): void {}\r\n\r\n  ngOnChanges(changes: SimpleChanges) {\r\n    if (changes.afuiRoundingTimes) {\r\n      this.cloneAfuiRoundingTimes = {\r\n        timeToRounding: this.afuiRoundingTimes.timeToRounding ?? null,\r\n        typeSeparationOfTimes:\r\n          this.afuiRoundingTimes.typeSeparationOfTimes ?? null,\r\n      };\r\n    }\r\n  }\r\n\r\n  changeTimeToRounding(timeToRounding: number) {\r\n    this.cloneAfuiRoundingTimes.timeToRounding = timeToRounding as 5 | 10;\r\n    this.writeValue(this.cloneAfuiRoundingTimes);\r\n  }\r\n\r\n  selectTypeRoundingTimes({ value }: MatSelectChange) {\r\n    this.cloneAfuiRoundingTimes.typeSeparationOfTimes =\r\n      value as TypeSeparationOfTimes;\r\n    this.writeValue(this.cloneAfuiRoundingTimes);\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  Component,\r\n  Input,\r\n  OnInit,\r\n  OnChanges,\r\n  SimpleChanges,\r\n  ViewEncapsulation,\r\n  forwardRef,\r\n  ChangeDetectionStrategy,\r\n} from '@angular/core';\r\nimport { NG_VALUE_ACCESSOR } from '@angular/forms';\r\nimport { AfuiRoundingTimes } from '../../models/afui-rounding-times.model';\r\nimport { TypeSeparationOfTimes } from '../../models/afui-type-separation-of-times';\r\nimport { ControlValueService } from '../../shared/control-value-service/control-value.service';\r\nimport { MatSelectChange } from '@angular/material/select';\r\nimport { isNil } from 'lodash';\r\n\r\n@Component({\r\n  selector: 'rounding-times',\r\n  templateUrl: './afui-rounding-times.component.html',\r\n  styleUrls: ['./afui-rounding-times.component.less'],\r\n  providers: [\r\n    {\r\n      provide: NG_VALUE_ACCESSOR,\r\n      useExisting: forwardRef(() => AfuiRoundingTimesComponent),\r\n      multi: true,\r\n    },\r\n  ],\r\n  encapsulation: ViewEncapsulation.None,\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class AfuiRoundingTimesComponent\r\n  extends ControlValueService\r\n  implements OnInit, OnChanges\r\n{\r\n  @Input() afuiRoundingTimes!: AfuiRoundingTimes;\r\n  cloneAfuiRoundingTimes: AfuiRoundingTimes = {\r\n    timeToRounding: null!,\r\n    typeSeparationOfTimes: null!,\r\n  };\r\n  messageTimeToRounding: Record<number, string> = {\r\n    0: 'XX:00, XX:10, XX:20, XX:30...',\r\n    5: 'XX:05, XX:15, XX:25, XX:35...',\r\n  };\r\n  messageTypeSeparationOfTimes: Record<TypeSeparationOfTimes, string> = {\r\n    אזורית:\r\n      'עיגול זמ\"מ במוד אזורי, ייתכנו זמ\"מים זהים עבור המלצות מאזורים אחרים',\r\n    מרחבית: 'הפרדה של 10 דקות בין זמ\"מ לזמ\"מ',\r\n  };\r\n  isNil = isNil;\r\n\r\n  ngOnInit(): void {}\r\n\r\n  ngOnChanges(changes: SimpleChanges) {\r\n    if (changes.afuiRoundingTimes) {\r\n      this.cloneAfuiRoundingTimes = {\r\n        timeToRounding: this.afuiRoundingTimes.timeToRounding ?? null,\r\n        typeSeparationOfTimes:\r\n          this.afuiRoundingTimes.typeSeparationOfTimes ?? null,\r\n      };\r\n    }\r\n  }\r\n\r\n  changeTimeToRounding(timeToRounding: number) {\r\n    this.cloneAfuiRoundingTimes.timeToRounding = timeToRounding as 5 | 10;\r\n    this.writeValue(this.cloneAfuiRoundingTimes);\r\n  }\r\n\r\n  selectTypeRoundingTimes({ value }: MatSelectChange) {\r\n    this.cloneAfuiRoundingTimes.typeSeparationOfTimes =\r\n      value as TypeSeparationOfTimes;\r\n    this.writeValue(this.cloneAfuiRoundingTimes);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2143,7 +2735,7 @@
                 "OnInit",
                 "OnChanges"
             ],
-            "templateData": "<div class=\"rounding-times-container\">\r\n  <afui-form-field>\r\n    <span afui-field-label\r\n      >סוג<mat-icon class=\"info\" [svgIcon]=\"'info-fill'\"></mat-icon\r\n    ></span>\r\n    <mat-select\r\n      afui-input\r\n      class=\"structures-input\"\r\n      placeholder=\"בחירה\"\r\n      disableOptionCentering\r\n      panelClass=\"structures-options\"\r\n      [ngModel]=\"cloneAfuiRoundingTimes.typeSeparationOfTimes\"\r\n      name=\"typeSeparationOfTimes\"\r\n      (selectionChange)=\"selectTypeRoundingTimes($event)\"\r\n    >\r\n      <mat-option [value]=\"'מרחבית'\">מרחבית</mat-option>\r\n      <mat-option [value]=\"'אזורית'\">אזורית</mat-option>\r\n    </mat-select>\r\n  </afui-form-field>\r\n  <afui-form-field>\r\n    <span afui-field-label\r\n      >זמן לעיגול <mat-icon class=\"info\" [svgIcon]=\"'info-fill'\"></mat-icon\r\n    ></span>\r\n    <mat-select\r\n      afui-input\r\n      class=\"structures-input\"\r\n      placeholder=\"זמן\"\r\n      panelClass=\"structures-options\"\r\n      name=\"timeToRounding\"\r\n      disableOptionCentering\r\n      [ngModel]=\"cloneAfuiRoundingTimes.timeToRounding\"\r\n      (selectionChange)=\"changeTimeToRounding(+$event.value)\"\r\n    >\r\n      <mat-option [value]=\"5\">{{ 5 }}</mat-option>\r\n      <mat-option [value]=\"10\">{{ 10 }}</mat-option>\r\n    </mat-select>\r\n  </afui-form-field>\r\n</div>\r\n"
+            "templateData": "<div class=\"rounding-times-container\">\r\n  <afui-form-field>\r\n    <span afui-field-label\r\n      >סוג<mat-icon\r\n        class=\"info\"\r\n        [class.disabled]=\"!isNil(cloneAfuiRoundingTimes.typeSeparationOfTimes)\"\r\n        [svgIcon]=\"'info-fill'\"\r\n        [afuiTooltip]=\"\r\n          messageTypeSeparationOfTimes[\r\n            cloneAfuiRoundingTimes.typeSeparationOfTimes\r\n          ]\r\n        \"\r\n        [afuiTooltipActive]=\"\r\n          !isNil(cloneAfuiRoundingTimes.typeSeparationOfTimes)\r\n        \"\r\n        [afuiTooltipShowArrow]=\"false\"\r\n        [afuiTooltipPosition]=\"'top-right'\"\r\n        [afuiTooltipOffset]=\"0\"\r\n        [afuiTooltipPanelClass]=\"'structures-tooltip'\"\r\n      ></mat-icon>\r\n    </span>\r\n    <mat-select\r\n      afui-input\r\n      class=\"structures-input\"\r\n      placeholder=\"בחירה\"\r\n      disableOptionCentering\r\n      panelClass=\"structures-options\"\r\n      [ngModel]=\"cloneAfuiRoundingTimes.typeSeparationOfTimes\"\r\n      name=\"typeSeparationOfTimes\"\r\n      (selectionChange)=\"selectTypeRoundingTimes($event)\"\r\n    >\r\n      <mat-option [value]=\"'מרחבית'\">מרחבית</mat-option>\r\n      <mat-option [value]=\"'אזורית'\">אזורית</mat-option>\r\n    </mat-select>\r\n  </afui-form-field>\r\n  <afui-form-field>\r\n    <span afui-field-label\r\n      >זמן לעיגול\r\n      <mat-icon\r\n        class=\"info\"\r\n        [svgIcon]=\"'info-fill'\"\r\n        [afuiTooltip]=\"\r\n          messageTimeToRounding[cloneAfuiRoundingTimes.timeToRounding]\r\n        \"\r\n        [afuiTooltipActive]=\"!isNil(cloneAfuiRoundingTimes.timeToRounding)\"\r\n        [afuiTooltipShowArrow]=\"false\"\r\n        [afuiTooltipPosition]=\"'top-right'\"\r\n        [afuiTooltipOffset]=\"0\"\r\n        [afuiTooltipPanelClass]=\"'structures-tooltip'\"\r\n      ></mat-icon>\r\n    </span>\r\n    <mat-select\r\n      afui-input\r\n      class=\"structures-input\"\r\n      placeholder=\"זמן\"\r\n      panelClass=\"structures-options\"\r\n      name=\"timeToRounding\"\r\n      disableOptionCentering\r\n      [ngModel]=\"cloneAfuiRoundingTimes.timeToRounding\"\r\n      (selectionChange)=\"changeTimeToRounding(+$event.value)\"\r\n    >\r\n      <mat-option [value]=\"0\">{{ 0 }}</mat-option>\r\n      <mat-option [value]=\"5\">{{ 5 }}</mat-option>\r\n    </mat-select>\r\n  </afui-form-field>\r\n</div>\r\n"
         },
         {
             "name": "AfuiSelectAlternativeComponent",
@@ -2603,7 +3195,7 @@
         },
         {
             "name": "AfuiStructuresComponent",
-            "id": "component-AfuiStructuresComponent-93d08e1286d69c190439f6f44265f6cb63a9296154cb8088dcdca783f480ed587ec9812d091f47f80ffb5701c16305b52f2b0013c001f2b237ac84ead7859161",
+            "id": "component-AfuiStructuresComponent-954a7d4b98d9805f228c40a23442d211d9705cafcf5c518ff9b90c8266c0e8c34ac03c8143c52b6bd22ac813fd01e0c1316d193699a3ded98aad19e881aeb010",
             "file": "src/app/afui-structures/afui-structures.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -2643,16 +3235,6 @@
                     "line": 25
                 },
                 {
-                    "name": "external",
-                    "defaultValue": "'wdwf'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 27
-                },
-                {
                     "name": "isCheckedRoundingTimes",
                     "defaultValue": "false",
                     "deprecated": false,
@@ -2661,6 +3243,16 @@
                     "optional": false,
                     "description": "",
                     "line": 26
+                },
+                {
+                    "name": "messageRoundingTimes",
+                    "defaultValue": "'לא ניתן להגדיר הפרדת זמנים במצב של עיגול זמ\"מ'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
                 },
                 {
                     "name": "numSquadronInStructures",
@@ -2726,7 +3318,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 30,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2747,7 +3339,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 28,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2763,7 +3355,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 45,
+                    "line": 46,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2878,11 +3470,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  Component,\r\n  OnInit,\r\n  ViewEncapsulation,\r\n  Input,\r\n  OnChanges,\r\n  SimpleChanges,\r\n} from '@angular/core';\r\nimport { AfuiStructuresInstructions } from '../models/afui-structures.model';\r\nimport { MatSlideToggleChange } from '@angular/material/slide-toggle';\r\nimport { ControlValueService } from '../shared/control-value-service/control-value.service';\r\n\r\n@Component({\r\n  selector: 'afui-structures',\r\n  templateUrl: './afui-structures.component.html',\r\n  styleUrls: ['./afui-structures.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n})\r\nexport class AfuiStructuresComponent\r\n  extends ControlValueService\r\n  implements OnInit, OnChanges\r\n{\r\n  @Input() structuresInstructions!: AfuiStructuresInstructions;\r\n  numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];\r\n  cloneStructuresInstructions!: AfuiStructuresInstructions;\r\n  isCheckedRoundingTimes: boolean = false;\r\n  external: string = 'wdwf';\r\n  ngOnInit(): void {}\r\n\r\n  ngOnChanges(changes: SimpleChanges) {\r\n    this.cloneStructuresInstructions = {\r\n      separationOfTimes: this.structuresInstructions?.separationOfTimes ?? {\r\n        separationWindowTime: null,\r\n        typeSeparationOfTimes: null,\r\n      },\r\n      roundingTimes: this.structuresInstructions?.roundingTimes ?? {\r\n        timeToRounding: null,\r\n        typeSeparationOfTimes: null,\r\n      },\r\n      amountOfAircraftInTheStructure:\r\n        this.structuresInstructions?.amountOfAircraftInTheStructure ?? null,\r\n    };\r\n  }\r\n\r\n  toggleRound({ checked }: MatSlideToggleChange) {\r\n    this.isCheckedRoundingTimes = checked;\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  Component,\r\n  OnInit,\r\n  ViewEncapsulation,\r\n  Input,\r\n  OnChanges,\r\n  SimpleChanges,\r\n} from '@angular/core';\r\nimport { AfuiStructuresInstructions } from '../models/afui-structures.model';\r\nimport { MatSlideToggleChange } from '@angular/material/slide-toggle';\r\nimport { ControlValueService } from '../shared/control-value-service/control-value.service';\r\n\r\n@Component({\r\n  selector: 'afui-structures',\r\n  templateUrl: './afui-structures.component.html',\r\n  styleUrls: ['./afui-structures.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n})\r\nexport class AfuiStructuresComponent\r\n  extends ControlValueService\r\n  implements OnInit, OnChanges\r\n{\r\n  @Input() structuresInstructions!: AfuiStructuresInstructions;\r\n  numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];\r\n  cloneStructuresInstructions!: AfuiStructuresInstructions;\r\n  isCheckedRoundingTimes: boolean = false;\r\n  messageRoundingTimes: string =\r\n    'לא ניתן להגדיר הפרדת זמנים במצב של עיגול זמ\"מ';\r\n  ngOnInit(): void {}\r\n\r\n  ngOnChanges(changes: SimpleChanges) {\r\n    this.cloneStructuresInstructions = {\r\n      separationOfTimes: this.structuresInstructions?.separationOfTimes ?? {\r\n        separationWindowTime: null,\r\n        typeSeparationOfTimes: null,\r\n      },\r\n      roundingTimes: this.structuresInstructions?.roundingTimes ?? {\r\n        timeToRounding: null,\r\n        typeSeparationOfTimes: null,\r\n      },\r\n      amountOfAircraftInTheStructure:\r\n        this.structuresInstructions?.amountOfAircraftInTheStructure ?? null,\r\n    };\r\n  }\r\n\r\n  toggleRound({ checked }: MatSlideToggleChange) {\r\n    this.isCheckedRoundingTimes = checked;\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".structures-container {\r\n  flex: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-evenly;\r\n  padding: 18px;\r\n  font-family: Arial, Helvetica, sans-serif;\r\n\r\n  .indent {\r\n    margin-right: 32px;\r\n  }\r\n}\r\n\r\n.structures-inputs-container {\r\n  display: flex;\r\n  justify-content: flex-start;\r\n}\r\n\r\nseparation-of-times.disabled {\r\n  pointer-events: none;\r\n  .mat-select-value {\r\n    color: #e7eaef !important;\r\n\r\n    .mat-select-placeholder {\r\n      color: #e7eaef !important;\r\n    }\r\n  }\r\n\r\n  afui-form-field {\r\n    --afui-form-field-afui-field-label-color: #b9c5d8 !important;\r\n    --afui-form-field-afui-input-border-color: #e7eaef !important;\r\n    --afui-form-field-afui-input-color: #e7eaef;\r\n  }\r\n\r\n  .mat-select-arrow-wrapper .mat-select-arrow {\r\n    border-color: #e7eaef !important;\r\n  }\r\n\r\n  .afui-input[type=\"number\"]:not([step=\"any\"])::-webkit-inner-spin-button,\r\n  .afui-input[type=\"number\"]:not([step=\"any\"])::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n  }\r\n}\r\n\r\n.rounding-times-app {\r\n  display: flex;\r\n  align-items: center;\r\n\r\n  & > * {\r\n    margin-left: 5px;\r\n  }\r\n\r\n  mat-icon.info {\r\n    color: #a1a3a7;\r\n    width: 10px;\r\n    height: 10px;\r\n    margin: 0 2px 0 0;\r\n    &.rounding {\r\n      margin: 14px 0 0 0;\r\n      width: 16px;\r\n      height: 16px;\r\n    }\r\n  }\r\n  .afui-slide-toggle.rounding-times {\r\n    height: 37px;\r\n    width: 40px;\r\n    padding-top: 0.4px;\r\n\r\n    &.mat-checked .mat-slide-toggle-bar {\r\n      background-color: #3e7cee !important;\r\n      .mat-slide-toggle-thumb-container {\r\n        right: 1px !important;\r\n      }\r\n    }\r\n\r\n    &.mat-checked .mat-slide-toggle-thumb {\r\n      background-color: #ffffff;\r\n    }\r\n\r\n    .mat-slide-toggle-label {\r\n      display: flex !important;\r\n      flex-direction: column-reverse;\r\n      justify-content: space-between;\r\n      align-items: flex-end;\r\n\r\n      .mat-slide-toggle-bar {\r\n        height: 24px;\r\n        border-radius: 15px;\r\n        display: flex;\r\n        align-items: center;\r\n        background-color: #ebe8e8;\r\n        margin-right: 0 !important;\r\n        justify-content: flex-end;\r\n\r\n        .mat-slide-toggle-thumb-container {\r\n          position: relative;\r\n          top: 0;\r\n          right: -2px;\r\n        }\r\n      }\r\n\r\n      .mat-slide-toggle-content {\r\n        color: #8a98b8;\r\n        font-family: Arial;\r\n        font-size: 9px;\r\n        font-weight: 400;\r\n        text-align: right;\r\n        display: flex;\r\n        align-items: center;\r\n        line-height: 1;\r\n      }\r\n    }\r\n  }\r\n\r\n  .structures-toggle {\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n}\r\n\r\nafui-form-field {\r\n  --afui-form-field-afui-input-color: #8fa0b1;\r\n  --afui-form-field-afui-input-background-color: #ffffff;\r\n  --afui-form-field-afui-input-border-color: #dae1e8;\r\n  --afui-form-field-afui-input-focus-border-color: #3b9afa;\r\n  --afui-form-field-afui-input-disabled-background-color: #f0f0f0;\r\n  --afui-form-field-afui-input-placeholder-color: #8fa0b1;\r\n  --afui-form-field-afui-field-label-color: #8a98b8;\r\n  --afui-form-field-afui-input-padding: 8px 9px 8px 9px;\r\n  --afui-form-field-afui-error-color: #ff0000;\r\n  --afui-form-field-font-size: 9px;\r\n  --afui-form-field-font-family: Arial, serif;\r\n  --afui-form-field-afui-field-label-margin-bottom: 4px;\r\n\r\n  .afui-form-field-label-with-error {\r\n    margin-right: 10px;\r\n\r\n    .afui-field-label {\r\n      display: flex;\r\n    }\r\n  }\r\n\r\n  margin-left: 5px;\r\n}\r\n\r\n.structures-label {\r\n  color: #8a98b8;\r\n  font-size: 10px;\r\n  font-weight: 700;\r\n  margin-bottom: 9px;\r\n}\r\n\r\n.afui-input.structures-input {\r\n  width: 139px !important;\r\n  height: 24px;\r\n  font-size: 9px;\r\n\r\n  &[type=\"number\"]:not([step=\"any\"])::-webkit-inner-spin-button,\r\n  &[type=\"number\"]:not([step=\"any\"])::-webkit-outer-spin-button {\r\n    opacity: 1;\r\n    height: 24px;\r\n  }\r\n\r\n  &.mat-select .mat-select-trigger {\r\n    .mat-select-value {\r\n      color: #8fa0b1;\r\n\r\n      .mat-select-placeholder {\r\n        color: #8fa0b1;\r\n      }\r\n    }\r\n\r\n    .mat-select-arrow-wrapper .mat-select-arrow {\r\n      border: solid #21242b;\r\n      border-width: 0 1.5px 1.5px 0;\r\n      display: inline-block;\r\n      padding: 2.5px;\r\n      transform: rotate(45deg);\r\n      -webkit-transform: rotate(45deg);\r\n    }\r\n  }\r\n}\r\n\r\n.structures-options > mat-options {\r\n  text-align: right;\r\n  direction: rtl;\r\n}\r\n\r\n.mat-select-panel.structures-options {\r\n  position: absolute;\r\n  left: 8px;\r\n  top: 20px;\r\n  border-radius: 15px;\r\n  box-shadow: 0px 0px 4px #21242b;\r\n  min-width: 139px !important;\r\n\r\n  mat-option {\r\n    text-align: right;\r\n    direction: rtl;\r\n    font-weight: 400;\r\n    background-color: transparent !important;\r\n\r\n    &.mat-selected {\r\n      font-weight: 700;\r\n    }\r\n\r\n    &:hover {\r\n      background-color: #f6f7f9;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": ".structures-container {\r\n  flex: 1;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: space-evenly;\r\n  padding: 18px;\r\n  font-family: Arial, Helvetica, sans-serif;\r\n\r\n  .indent {\r\n    margin-right: 20px;\r\n  }\r\n}\r\n\r\n.structures-inputs-container {\r\n  display: flex;\r\n  justify-content: flex-start;\r\n}\r\n\r\nseparation-of-times.disabled {\r\n  pointer-events: none;\r\n  .mat-select-value {\r\n    color: #e7eaef !important;\r\n\r\n    .mat-select-placeholder {\r\n      color: #e7eaef !important;\r\n    }\r\n  }\r\n\r\n  afui-form-field {\r\n    --afui-form-field-afui-field-label-color: #b9c5d8 !important;\r\n    --afui-form-field-afui-input-border-color: #e7eaef !important;\r\n    --afui-form-field-afui-input-color: #e7eaef;\r\n  }\r\n\r\n  .mat-select-arrow-wrapper .mat-select-arrow {\r\n    border-color: #e7eaef !important;\r\n  }\r\n\r\n  .afui-input[type=\"number\"]:not([step=\"any\"])::-webkit-inner-spin-button,\r\n  .afui-input[type=\"number\"]:not([step=\"any\"])::-webkit-outer-spin-button {\r\n    -webkit-appearance: none;\r\n  }\r\n}\r\n\r\n.rounding-times-app {\r\n  display: flex;\r\n  align-items: center;\r\n\r\n  & > * {\r\n    margin-left: 5px;\r\n  }\r\n\r\n  mat-icon.info {\r\n    color: #a1a3a7;\r\n    width: 10px;\r\n    height: 10px;\r\n    margin: 0 2px 0 0;\r\n\r\n    &.disabled {\r\n      color: #ebe8e8;\r\n    }\r\n    &.rounding {\r\n      margin: 14px 0 0 0;\r\n      width: 16px;\r\n      height: 16px;\r\n    }\r\n  }\r\n  .afui-slide-toggle.rounding-times {\r\n    height: 37px;\r\n    width: 40px;\r\n    padding-top: 0.4px;\r\n\r\n    &.mat-checked .mat-slide-toggle-bar {\r\n      background-color: #3e7cee !important;\r\n      .mat-slide-toggle-thumb-container {\r\n        right: 1px !important;\r\n      }\r\n    }\r\n\r\n    &.mat-checked .mat-slide-toggle-thumb {\r\n      background-color: #ffffff;\r\n    }\r\n\r\n    .mat-slide-toggle-label {\r\n      display: flex !important;\r\n      flex-direction: column-reverse;\r\n      justify-content: space-between;\r\n      align-items: flex-end;\r\n\r\n      .mat-slide-toggle-bar {\r\n        height: 24px;\r\n        border-radius: 15px;\r\n        display: flex;\r\n        align-items: center;\r\n        background-color: #ebe8e8;\r\n        margin-right: 0 !important;\r\n        justify-content: flex-end;\r\n\r\n        .mat-slide-toggle-thumb-container {\r\n          position: relative;\r\n          top: 0;\r\n          right: -2px;\r\n        }\r\n      }\r\n\r\n      .mat-slide-toggle-content {\r\n        color: #8a98b8;\r\n        font-family: Arial;\r\n        font-size: 9px;\r\n        font-weight: 400;\r\n        text-align: right;\r\n        display: flex;\r\n        align-items: center;\r\n        line-height: 1;\r\n      }\r\n    }\r\n  }\r\n\r\n  .structures-toggle {\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n}\r\n\r\nafui-form-field {\r\n  --afui-form-field-afui-input-color: #8fa0b1;\r\n  --afui-form-field-afui-input-background-color: #ffffff;\r\n  --afui-form-field-afui-input-border-color: #dae1e8;\r\n  --afui-form-field-afui-input-focus-border-color: #3b9afa;\r\n  --afui-form-field-afui-input-disabled-background-color: #f0f0f0;\r\n  --afui-form-field-afui-input-placeholder-color: #8fa0b1;\r\n  --afui-form-field-afui-field-label-color: #8a98b8;\r\n  --afui-form-field-afui-input-padding: 8px 9px 8px 9px;\r\n  --afui-form-field-afui-error-color: #ff0000;\r\n  --afui-form-field-font-size: 9px;\r\n  --afui-form-field-font-family: Arial, serif;\r\n  --afui-form-field-afui-field-label-margin-bottom: 4px;\r\n\r\n  .afui-form-field-label-with-error {\r\n    margin-right: 10px;\r\n\r\n    .afui-field-label {\r\n      display: flex;\r\n    }\r\n  }\r\n\r\n  margin-left: 5px;\r\n}\r\n\r\n.structures-label {\r\n  color: #8a98b8;\r\n  font-size: 10px;\r\n  font-weight: 700;\r\n  margin-bottom: 9px;\r\n}\r\n\r\n.afui-input.structures-input {\r\n  width: 139px !important;\r\n  height: 24px;\r\n  font-size: 9px;\r\n\r\n  &[type=\"number\"]:not([step=\"any\"])::-webkit-inner-spin-button,\r\n  &[type=\"number\"]:not([step=\"any\"])::-webkit-outer-spin-button {\r\n    opacity: 1;\r\n    height: 24px;\r\n  }\r\n\r\n  &.mat-select .mat-select-trigger {\r\n    align-items: stretch;\r\n    .mat-select-value {\r\n      color: #8fa0b1;\r\n\r\n      .mat-select-placeholder {\r\n        color: #8fa0b1;\r\n      }\r\n    }\r\n\r\n    .mat-select-arrow-wrapper {\r\n      align-items: flex-start;\r\n      .mat-select-arrow {\r\n        border: solid #21242b;\r\n        border-width: 0 1.5px 1.5px 0;\r\n        display: inline-block;\r\n        padding: 2.5px;\r\n        transform: rotate(45deg);\r\n        -webkit-transform: rotate(45deg);\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n.structures-options > mat-options {\r\n  text-align: right;\r\n  direction: rtl;\r\n}\r\n\r\n.mat-select-panel.structures-options {\r\n  position: absolute;\r\n  left: 8px;\r\n  top: 20px;\r\n  border-radius: 15px;\r\n  box-shadow: 0px 0px 4px #21242b;\r\n  min-width: 139px !important;\r\n\r\n  mat-option {\r\n    text-align: right;\r\n    direction: rtl;\r\n    font-weight: 400;\r\n    background-color: transparent !important;\r\n\r\n    &.mat-selected {\r\n      font-weight: 700;\r\n    }\r\n\r\n    &:hover {\r\n      background-color: #f6f7f9;\r\n    }\r\n  }\r\n}\r\n\r\n.structures-tooltip {\r\n  afui-tooltip {\r\n    --afui-tooltip-background: #fff;\r\n    --afui-tooltip-min-width: 30px;\r\n    --afui-tooltip-min-height: 30px;\r\n    --afui-tooltip-arrow-color: #fff;\r\n    --afui-tooltip-padding: 0 10px;\r\n    --afui-tooltip-font-size: 12px;\r\n    --afui-tooltip-border-radius: 10px;\r\n    --afui-tooltip-border: 1px solid #dae1e8;\r\n    --afui-tooltip-text-align: center;\r\n    --afui-tooltip-max-width: 190px;\r\n    font-family: Arial;\r\n    color: #728699;\r\n\r\n    .afui-tooltip-container {\r\n      justify-content: center;\r\n    }\r\n  }\r\n  // width: 163px;\r\n  // height: 41px;\r\n  // color: #728699;\r\n  // font-family: Arial;\r\n  // font-size: 12px;\r\n  // font-weight: 400;\r\n  // text-align: center;\r\n\r\n  // width: 184px;\r\n  // height: 30px;\r\n  // background: #ffffff;\r\n  // background-blend-mode: normal;\r\n  // box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);\r\n}\r\n",
                     "styleUrl": "./afui-structures.component.less"
                 }
             ],
@@ -2892,7 +3484,347 @@
                 "OnInit",
                 "OnChanges"
             ],
-            "templateData": "<div class=\"structures-container\">\r\n  <div class=\"structures-amount indent\">\r\n    <label class=\"structures-label\">מבנים</label>\r\n    <div class=\"structures-inputs-container\">\r\n      <afui-form-field>\r\n        <span afui-field-label>כמות מטוסים במבנה</span>\r\n        <mat-select\r\n          afui-input\r\n          class=\"structures-input\"\r\n          disableOptionCentering\r\n          placeholder=\"בחירה\"\r\n          panelClass=\"structures-options\"\r\n        >\r\n          <mat-option\r\n            *ngFor=\"let option of numSquadronInStructures\"\r\n            [value]=\"option\"\r\n            >{{ option }}</mat-option\r\n          >\r\n        </mat-select>\r\n      </afui-form-field>\r\n      <!-- <input afui-input [value]=\"value\" [placeholder]=\"placeholder\" /> -->\r\n      <!-- <span *ngIf=\"displayError\" afui-error>{{ errorText }}</span> -->\r\n    </div>\r\n  </div>\r\n  <div class=\"separation-of-times-app indent\">\r\n    <separation-of-times\r\n      [class.disabled]=\"isCheckedRoundingTimes\"\r\n      [separationOfTimes]=\"cloneStructuresInstructions.separationOfTimes\"\r\n      [(ngModel)]=\"cloneStructuresInstructions.separationOfTimes\"\r\n    ></separation-of-times>\r\n  </div>\r\n  <div class=\"rounding-times-app\">\r\n    <mat-icon class=\"info rounding\" [svgIcon]=\"'info-fill'\"></mat-icon>\r\n    <mat-slide-toggle\r\n      disableRipple=\"true\"\r\n      afui-slide-toggle\r\n      class=\"rounding-times\"\r\n      [ngModel]=\"isCheckedRoundingTimes\"\r\n      (change)=\"toggleRound($any($event))\"\r\n      disableRipple\r\n      >עיגול זמ\"מ</mat-slide-toggle\r\n    >\r\n    <rounding-times\r\n      *ngIf=\"isCheckedRoundingTimes\"\r\n      [afuiRoundingTimes]=\"cloneStructuresInstructions.roundingTimes\"\r\n      [(ngModel)]=\"cloneStructuresInstructions.roundingTimes\"\r\n      name=\"roundingTimes\"\r\n    ></rounding-times>\r\n  </div>\r\n</div>\r\n"
+            "templateData": "<div class=\"structures-container\">\r\n  <div class=\"structures-amount indent\">\r\n    <label class=\"structures-label\">מבנים</label>\r\n    <div class=\"structures-inputs-container\">\r\n      <afui-form-field>\r\n        <span afui-field-label>כמות מטוסים במבנה</span>\r\n        <mat-select\r\n          afui-input\r\n          class=\"structures-input\"\r\n          disableOptionCentering\r\n          placeholder=\"בחירה\"\r\n          panelClass=\"structures-options\"\r\n        >\r\n          <mat-option\r\n            *ngFor=\"let option of numSquadronInStructures\"\r\n            [value]=\"option\"\r\n            >{{ option }}</mat-option\r\n          >\r\n        </mat-select>\r\n      </afui-form-field>\r\n    </div>\r\n  </div>\r\n  <div class=\"separation-of-times-app indent\">\r\n    <separation-of-times\r\n      [class.disabled]=\"isCheckedRoundingTimes\"\r\n      [separationOfTimes]=\"cloneStructuresInstructions.separationOfTimes\"\r\n      name=\"separationOfTimes\"\r\n      [(ngModel)]=\"cloneStructuresInstructions.separationOfTimes\"\r\n    ></separation-of-times>\r\n  </div>\r\n  <div class=\"rounding-times-app\">\r\n    <mat-icon\r\n      class=\"info rounding\"\r\n      [class.disabled]=\"!isCheckedRoundingTimes\"\r\n      [svgIcon]=\"'info-fill'\"\r\n      [afuiTooltip]=\"messageRoundingTimes\"\r\n      [afuiTooltipActive]=\"isCheckedRoundingTimes\"\r\n      [afuiTooltipShowArrow]=\"false\"\r\n      [afuiTooltipPosition]=\"'top-right'\"\r\n      [afuiTooltipOffset]=\"0\"\r\n      [afuiTooltipPanelClass]=\"'structures-tooltip'\"\r\n    ></mat-icon>\r\n    <mat-slide-toggle\r\n      disableRipple=\"true\"\r\n      afui-slide-toggle\r\n      class=\"rounding-times\"\r\n      name=\"isCheckedRoundingTimes\"\r\n      [ngModel]=\"isCheckedRoundingTimes\"\r\n      (change)=\"toggleRound($any($event))\"\r\n      disableRipple\r\n      >עיגול זמ\"מ</mat-slide-toggle\r\n    >\r\n    <rounding-times\r\n      *ngIf=\"isCheckedRoundingTimes\"\r\n      [afuiRoundingTimes]=\"cloneStructuresInstructions.roundingTimes\"\r\n      [(ngModel)]=\"cloneStructuresInstructions.roundingTimes\"\r\n      name=\"roundingTimes\"\r\n    ></rounding-times>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "AfUiTooltipComponent",
+            "id": "component-AfUiTooltipComponent-d8b2783b147bdcf694b5cff9a4ecbd08ed5d6395dad76a5ac3324c5617ffbfdbbf80baf5d4c31234e1d35814e00479902035a5559a40197333f89c0587579604",
+            "file": "src/app/afui-tooltip/afui-tooltip.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "afui-tooltip",
+            "styleUrls": [
+                "./afui-tooltip.component.less"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./afui-tooltip.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "arrowPosition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "ArrowPosition | null",
+                    "decorators": []
+                },
+                {
+                    "name": "content",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "string | TemplateRef<any>",
+                    "decorators": []
+                },
+                {
+                    "name": "context",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "Record<string | >",
+                    "decorators": []
+                },
+                {
+                    "name": "header",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "isMouseOver",
+                    "defaultValue": "new BehaviorSubject<boolean>(false)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "BehaviorSubject<boolean>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_isTemplate",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "mouseIsOverTheTooltip",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "mouseEnter",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'mouseenter'"
+                        }
+                    ]
+                },
+                {
+                    "name": "mouseLeave",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'mouseleave'"
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "mouseenter",
+                    "args": [],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36
+                },
+                {
+                    "name": "mouseleave",
+                    "args": [],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\r\n  Component,\r\n  Input,\r\n  TemplateRef,\r\n  OnInit,\r\n  HostListener,\r\n  Output,\r\n} from '@angular/core';\r\nimport { BehaviorSubject } from 'rxjs';\r\n\r\nexport type ArrowPosition = 'top' | 'bottom' | 'left' | 'right';\r\n\r\n@Component({\r\n  selector: 'afui-tooltip',\r\n  host: {\r\n    '[class.with-header]': 'header',\r\n  },\r\n  templateUrl: './afui-tooltip.component.html',\r\n  styleUrls: ['./afui-tooltip.component.less'],\r\n})\r\nexport class AfUiTooltipComponent implements OnInit {\r\n  @Input() content!: string | TemplateRef<any>;\r\n  @Input() context: Record<string, unknown> = {};\r\n  @Input() arrowPosition!: ArrowPosition | null;\r\n  @Input() header!: string;\r\n  @Output() isMouseOver: BehaviorSubject<boolean> =\r\n    new BehaviorSubject<boolean>(false);\r\n  mouseIsOverTheTooltip: boolean = false;\r\n\r\n  _isTemplate: boolean = false;\r\n\r\n  ngOnInit() {\r\n    this._isTemplate = typeof this.content !== 'string';\r\n  }\r\n\r\n  @HostListener('mouseenter') mouseEnter() {\r\n    this.isMouseOver.next(true);\r\n    this.mouseIsOverTheTooltip = true;\r\n  }\r\n\r\n  @HostListener('mouseleave') mouseLeave() {\r\n    this.isMouseOver.next(false);\r\n    this.mouseIsOverTheTooltip = false;\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@default-tooltip-background: #fff;\r\n@default-tooltip-min-width: 30px;\r\n@default-tooltip-min-height: 30px;\r\n@default-tooltip-arrow-color: #fff;\r\n@default-tooltip-padding: 5px;\r\n@default-tooltip-font-size: 10px;\r\n@default-tooltip-border-radius: 10px;\r\n@default-tooltip-border: 10px;\r\n@default-tooltip-border: none;\r\n@default-tooltip-text-align: initial;\r\n@default-tooltip-max-width: auto;\r\n@default-tooltip-flex-direction: column;\r\n\r\n.afui-tooltip-container {\r\n  display: flex;\r\n  background-color: var(--afui-tooltip-background, @default-tooltip-background);\r\n  border-radius: var(--afui-tooltip-border-radius, @default-tooltip-border-radius);\r\n  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);\r\n  position: relative;\r\n  text-align: var(--afui-tooltip-text-align, @default-tooltip-text-align);\r\n  padding: var(--afui-tooltip-padding, @default-tooltip-padding);\r\n  min-width: var(--afui-tooltip-min-width, @default-tooltip-min-width);\r\n  max-width: var(--afui-tooltip-max-width, @default-tooltip-max-width);\r\n  min-height: var(--afui-tooltip-min-height, @default-tooltip-min-height);\r\n  font-size: var(--afui-tooltip-font-size, @default-tooltip-font-size);\r\n  border: var(--afui-tooltip-border, @default-tooltip-border);\r\n  flex-direction: var(--afui-tooltip-flex-direction, @default-tooltip-flex-direction);\r\n}\r\n\r\n:host.with-header {\r\n  --afui-tooltip-padding: 0;\r\n}\r\n\r\n.container {\r\n  width: 100%;\r\n}\r\n\r\n.top {\r\n  top: 0;\r\n  left: 50%;\r\n  transform: translate(-50%, -100%);\r\n  border-left: 7px solid transparent;\r\n  border-right: 7px solid transparent;\r\n  border-bottom: 8px solid var(--afui-tooltip-arrow-color, @default-tooltip-arrow-color);\r\n  position: absolute;\r\n  filter: drop-shadow(1px -1px 1px rgba(0, 0, 0, 0.5));\r\n}\r\n\r\n.right {\r\n  top: 50%;\r\n  right: 0;\r\n  transform: translate(100%, -50%);\r\n  border-top: 7px solid transparent;\r\n  border-bottom: 7px solid transparent;\r\n  border-left: 8px solid var(--afui-tooltip-arrow-color, @default-tooltip-arrow-color);\r\n  position: absolute;\r\n  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));\r\n}\r\n\r\n.bottom {\r\n  bottom: 0;\r\n  left: 50%;\r\n  transform: translate(-50%, 100%);\r\n  border-left: 7px solid transparent;\r\n  border-right: 7px solid transparent;\r\n  border-top: 8px solid var(--afui-tooltip-arrow-color, @default-tooltip-arrow-color);\r\n  position: absolute;\r\n  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));\r\n}\r\n\r\n.left {\r\n  top: 50%;\r\n  left: 0;\r\n  transform: translate(-100%, -50%);\r\n  border-top: 7px solid transparent;\r\n  border-bottom: 7px solid transparent;\r\n  border-right: 8px solid var(--afui-tooltip-arrow-color, @default-tooltip-arrow-color);\r\n  position: absolute;\r\n  filter: drop-shadow(-1px 1px 1px rgba(0, 0, 0, 0.5));\r\n}\r\n\r\n.header {\r\n  border-top-left-radius: 10px;\r\n  border-top-right-radius: 10px;\r\n  text-align: center;\r\n  font-weight: bold;\r\n  padding: 2px 10px 2px 10px;\r\n}\r\n\r\n.content{\r\n padding: 5px;\r\n}",
+                    "styleUrl": "./afui-tooltip.component.less"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"afui-tooltip-container\">\r\n  <div *ngIf=\"header\" class=\"header\">{{ header }}</div>\r\n  <div [class]=\"arrowPosition\" *ngIf=\"arrowPosition\"></div>\r\n  <ng-container *ngIf=\"_isTemplate; else noTemplate\">\r\n    <div class=\"content\">\r\n      <ng-container *ngTemplateOutlet=\"content; context: context\"></ng-container>\r\n    </div>\r\n  </ng-container>\r\n  <ng-template #noTemplate>{{ content }}</ng-template>\r\n</div>\r\n"
+        },
+        {
+            "name": "AfUiTooltipExample",
+            "id": "component-AfUiTooltipExample-35d7be09b8d069b47b498462bfad787d61a4fc673825e13e628f9f01c3adefcfa2ff02fa1bf57b87a713189627c204e686eeb4719837755e13a543a1b7ebac7c",
+            "file": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "AfUiTooltipExample",
+            "styleUrls": [],
+            "styles": [
+                "\n    .tooltip-element { color: #fff; border: 1px solid #ccc; padding: 10px 50px; cursor: default; border-radius: 6px; text-align: center; }\n    .header { font-weight: bold; text-shadow: rgba(0, 0, 0, .7) 1px 2px 2px; }\n    .custom { cursor: pointer; color: red; transition: all .4s ease; }\n    .custom:hover { color: blue; }\n    table { width: 100%; background-color: #d4d4d4; border-radius: 5px; margin-top: 5px; }\n    .toggle-buttons { display: flex; justify-content: space-between; align-items: center; width: 190px; padding: 10px; }\n    .button { cursor: pointer; padding: 5px 10px; background-color: #4779d4; color: #ffffff; font-size: 12px; border-radius: 4px; transition: background-color .2s ease-in-out; }\n    .button:hover { background-color: #73a0f1; }\n  "
+            ],
+            "template": "<div class=\"tooltip-element\"\n  [afuiTooltip]=\"tooltipContent\"\n  [afuiTooltipShowArrow]=\"showArrow\"\n  [afuiTooltipStartVisible]=\"startVisible\"\n  [afuiTooltipHideDelay]=\"hideDelay\"\n  [afuiTooltipShowDelay]=\"showDelay\"\n  [afuiTooltipPosition]=\"position\"\n  [afuiTooltipTrigger]=\"trigger\"\n  [afuiTooltipHeader]=\"header\"\n  class=\"with-header\"\n  #tooltip=\"afuiTooltip\">Text</div>\n<div class=\"toggle-buttons\" *ngIf=\"trigger === 'manual'\">\n  <div class=\"button\" (click)=\"show()\">Show tooltip</div>\n  <div class=\"button\" (click)=\"hide()\">Hide tooltip</div>\n</div>\n<ng-template #tmpl>\n  <div class=\"header\">Tooltip with <span class=\"color\">template</span></div>\n  <div><button type=\"button\">Button</button>, <span class=\"custom\">custom</span> behaviors</div>\n  <div><table><tr><th>Or</th><th>Maybe</th></tr><tr><td>even</td><td>a</td></tr><tr><td>whole</td><td>table</td></tr></table></div>\n</ng-template>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "contentType",
+                    "defaultValue": "'simple'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 54,
+                    "type": "\"simple\" | \"template\"",
+                    "decorators": []
+                },
+                {
+                    "name": "header",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 58,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "hideDelay",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 56,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "position",
+                    "defaultValue": "'bottom'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 53,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "showDelay",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 55,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "trigger",
+                    "defaultValue": "'hover'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 57,
+                    "type": "TooltipTrigger",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "startVisible",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 64
+                },
+                {
+                    "name": "tmpl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 61,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'tmpl', {static: true}"
+                        }
+                    ]
+                },
+                {
+                    "name": "tooltipContent",
+                    "defaultValue": "'This is tooltip!'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 63
+                },
+                {
+                    "name": "tooltipElement",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AfUiTooltipDirective",
+                    "optional": false,
+                    "description": "",
+                    "line": 60,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'tooltip', {static: true}"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "hide",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 66,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "show",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 76,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { withKnobs, select, number, boolean, button } from '@storybook/addon-knobs';\r\nimport { moduleMetadata } from '@storybook/angular';\r\nimport { AfUiTooltipModule } from './afui-tooltip.module';\r\nimport { Component, ViewChild, TemplateRef, Input, OnInit } from '@angular/core';\r\nimport { AfUiTooltipDirective, TooltipTrigger } from './afui-tooltip.directive';\r\n\r\nexport default {\r\n  title: 'Tooltip',\r\n  decorators: [\r\n    withKnobs,\r\n    moduleMetadata({\r\n      imports: [AfUiTooltipModule]\r\n    })\r\n  ],\r\n};\r\n\r\n@Component({\r\n  selector: 'AfUiTooltipExample',\r\n  styles: [`\r\n    .tooltip-element { color: #fff; border: 1px solid #ccc; padding: 10px 50px; cursor: default; border-radius: 6px; text-align: center; }\r\n    .header { font-weight: bold; text-shadow: rgba(0, 0, 0, .7) 1px 2px 2px; }\r\n    .custom { cursor: pointer; color: red; transition: all .4s ease; }\r\n    .custom:hover { color: blue; }\r\n    table { width: 100%; background-color: #d4d4d4; border-radius: 5px; margin-top: 5px; }\r\n    .toggle-buttons { display: flex; justify-content: space-between; align-items: center; width: 190px; padding: 10px; }\r\n    .button { cursor: pointer; padding: 5px 10px; background-color: #4779d4; color: #ffffff; font-size: 12px; border-radius: 4px; transition: background-color .2s ease-in-out; }\r\n    .button:hover { background-color: #73a0f1; }\r\n  `],\r\n  template: `\r\n    <div class=\"tooltip-element\"\r\n      [afuiTooltip]=\"tooltipContent\"\r\n      [afuiTooltipShowArrow]=\"showArrow\"\r\n      [afuiTooltipStartVisible]=\"startVisible\"\r\n      [afuiTooltipHideDelay]=\"hideDelay\"\r\n      [afuiTooltipShowDelay]=\"showDelay\"\r\n      [afuiTooltipPosition]=\"position\"\r\n      [afuiTooltipTrigger]=\"trigger\"\r\n      [afuiTooltipHeader]=\"header\"\r\n      class=\"with-header\"\r\n      #tooltip=\"afuiTooltip\">Text</div>\r\n    <div class=\"toggle-buttons\" *ngIf=\"trigger === 'manual'\">\r\n      <div class=\"button\" (click)=\"show()\">Show tooltip</div>\r\n      <div class=\"button\" (click)=\"hide()\">Hide tooltip</div>\r\n    </div>\r\n    <ng-template #tmpl>\r\n      <div class=\"header\">Tooltip with <span class=\"color\">template</span></div>\r\n      <div><button type=\"button\">Button</button>, <span class=\"custom\">custom</span> behaviors</div>\r\n      <div><table><tr><th>Or</th><th>Maybe</th></tr><tr><td>even</td><td>a</td></tr><tr><td>whole</td><td>table</td></tr></table></div>\r\n    </ng-template>\r\n  `\r\n})\r\nclass AfUiTooltipExample implements OnInit {\r\n  @Input() position: string = 'bottom';\r\n  @Input() contentType: 'simple' | 'template' = 'simple';\r\n  @Input() showDelay: number = 0;\r\n  @Input() hideDelay: number = 0;\r\n  @Input() trigger: TooltipTrigger = 'hover';\r\n  @Input() header!: string;\r\n\r\n  @ViewChild('tooltip', { static: true }) tooltipElement!: AfUiTooltipDirective;\r\n  @ViewChild('tmpl', { static: true }) tmpl!: TemplateRef<any>;\r\n\r\n  tooltipContent: string | TemplateRef<any> = 'This is tooltip!';\r\n  startVisible: boolean = true;\r\n\r\n  ngOnInit() {\r\n    if (this.showDelay || this.hideDelay) {\r\n      this.startVisible = false;\r\n    }\r\n\r\n    if (this.contentType === 'template') {\r\n      this.tooltipContent = this.tmpl;\r\n    }\r\n  }\r\n\r\n  show() {\r\n    this.tooltipElement.showTooltip();\r\n  }\r\n\r\n  hide() {\r\n    this.tooltipElement.hideTooltip();\r\n  }\r\n}\r\n\r\nconst getProps = (contentType: any, header?: any) => {\r\n  return {\r\n    header: header,\r\n    contentType: contentType,\r\n    position: select('Tooltip position', ['top', 'top-left', 'top-right', 'bottom', 'bottom-left', 'bottom-right', 'left', 'right', 'auto'], 'left'),\r\n    showDelay: number('Show delay', 0),\r\n    hideDelay: number('Hide delay', 0),\r\n    showArrow: boolean('Show arrow', true),\r\n    trigger: select('Trigger', ['hover', 'click', 'manual'], 'hover')\r\n  };\r\n};\r\n\r\nexport const Default = () => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('simple')\r\n});\r\n\r\nexport const WithTemplate = () => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('template')\r\n});\r\n\r\nexport const WithHeader = () => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('simple',\"text text\")\r\n});",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n    .tooltip-element { color: #fff; border: 1px solid #ccc; padding: 10px 50px; cursor: default; border-radius: 6px; text-align: center; }\n    .header { font-weight: bold; text-shadow: rgba(0, 0, 0, .7) 1px 2px 2px; }\n    .custom { cursor: pointer; color: red; transition: all .4s ease; }\n    .custom:hover { color: blue; }\n    table { width: 100%; background-color: #d4d4d4; border-radius: 5px; margin-top: 5px; }\n    .toggle-buttons { display: flex; justify-content: space-between; align-items: center; width: 190px; padding: 10px; }\n    .button { cursor: pointer; padding: 5px 10px; background-color: #4779d4; color: #ffffff; font-size: 12px; border-radius: 4px; transition: background-color .2s ease-in-out; }\n    .button:hover { background-color: #73a0f1; }\n  \n",
+            "implements": [
+                "OnInit"
+            ]
         },
         {
             "name": "AppComponent",
@@ -3616,13 +4548,13 @@
         },
         {
             "name": "AfuiStructuresModule",
-            "id": "module-AfuiStructuresModule-4273d4b3ff8fa1f3212bec9d79758381d167ae268a46c97e27694681b20e87cfcd08890eaa997fefbebc90a9b1834fccc4bc2d4f4c9d4867c02af31788046619",
+            "id": "module-AfuiStructuresModule-479f48ea51aefcb32511fa162c873a2a3ef5725796066e064ce95ac9840a4dabfa182d2ccdb4303889cd3c1e362daa94935971e23f37b3eb89cd728564f68085",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/afui-structures/afui-structures.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { AfUiFormsModule } from '../afui-forms/afui-forms.module';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport { AfuiStructuresComponent } from './afui-structures.component';\r\nimport { AfuiSeparationOfTimesComponent } from './afui-separation-of-times/afui-separation-of-times.component';\r\nimport { AfuiRoundingTimesComponent } from './afui-rounding-times/afui-rounding-times.component';\r\nimport { MatSelectModule } from '@angular/material/select';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AfuiStructuresComponent,\r\n    AfuiSeparationOfTimesComponent,\r\n    AfuiRoundingTimesComponent,\r\n  ],\r\n  exports: [\r\n    AfuiStructuresComponent,\r\n    AfuiSeparationOfTimesComponent,\r\n    AfuiRoundingTimesComponent,\r\n  ],\r\n  imports: [\r\n    BrowserAnimationsModule,\r\n    FormsModule,\r\n    AfUiFormsModule,\r\n    AfuiIconModule,\r\n    MatSelectModule,\r\n  ],\r\n  providers: [],\r\n})\r\nexport class AfuiStructuresModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { AfUiFormsModule } from '../afui-forms/afui-forms.module';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { AfuiIconModule } from '../shared/afui-icon/afui-icon.module';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport { AfuiStructuresComponent } from './afui-structures.component';\r\nimport { AfuiSeparationOfTimesComponent } from './afui-separation-of-times/afui-separation-of-times.component';\r\nimport { AfuiRoundingTimesComponent } from './afui-rounding-times/afui-rounding-times.component';\r\nimport { MatSelectModule } from '@angular/material/select';\r\nimport { AfUiTooltipModule } from '../afui-tooltip';\r\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AfuiStructuresComponent,\r\n    AfuiSeparationOfTimesComponent,\r\n    AfuiRoundingTimesComponent,\r\n  ],\r\n  exports: [\r\n    AfuiStructuresComponent,\r\n    AfuiSeparationOfTimesComponent,\r\n    AfuiRoundingTimesComponent,\r\n  ],\r\n  imports: [\r\n    BrowserAnimationsModule,\r\n    FormsModule,\r\n    AfUiFormsModule,\r\n    AfuiIconModule,\r\n    MatSelectModule,\r\n    MatSlideToggleModule,\r\n    AfUiTooltipModule,\r\n    CommonModule,\r\n  ],\r\n})\r\nexport class AfuiStructuresModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -3647,6 +4579,9 @@
                     "elements": [
                         {
                             "name": "AfUiFormsModule"
+                        },
+                        {
+                            "name": "AfUiTooltipModule"
                         },
                         {
                             "name": "AfuiIconModule"
@@ -3678,14 +4613,64 @@
             ]
         },
         {
+            "name": "AfUiTooltipModule",
+            "id": "module-AfUiTooltipModule-11ac84f4e7c8dc766c724914b3d08bf11f1677a1520c2db7e24dff237801996d16451b84cf59cc7dcd52bfea0ce4d69be562fe70d7646991dc46ea0e9e34432b",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/afui-tooltip/afui-tooltip.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { AfUiTooltipComponent } from './afui-tooltip.component';\r\nimport { AfUiTooltipDirective, TooltipPosition } from './afui-tooltip.directive';\r\nimport { OverlayModule } from '@angular/cdk/overlay';\r\n\r\n@NgModule({\r\n  imports: [CommonModule, OverlayModule],\r\n  declarations: [AfUiTooltipDirective, AfUiTooltipComponent],\r\n  exports: [AfUiTooltipDirective, AfUiTooltipComponent],\r\n  entryComponents: [AfUiTooltipComponent]\r\n})\r\nexport class AfUiTooltipModule { }\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AfUiTooltipComponent"
+                        },
+                        {
+                            "name": "AfUiTooltipDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "AfUiTooltipComponent"
+                        },
+                        {
+                            "name": "AfUiTooltipDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "AppModule",
-            "id": "module-AppModule-e934a53707325d838214c6a8b80787d23740be831fc9e3776e2e39072c79a70983f3d3d732c404dd633790801e4594e1aeee0492a70353045cca49eb919e1363",
+            "id": "module-AppModule-ea09f4edd17eb9a5cb0736d76d356ff16c1c23e7b50e46398eaa07e5dbc2783f7840fa4f32ff9a905f7c224b57180c30377c008cf9f5ed304a291654a46774fd",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { DragScrollModule } from 'ngx-drag-scroll';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { DemoMaterialModule } from './shared/material.module';\r\nimport { TabComponent } from './tab/tab.component';\r\nimport { TabsMockComponent } from './tabs/tabs-mock.component';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\nimport { AfuiIconModule } from './shared/afui-icon/afui-icon.module';\r\nimport { AfUiFormsModule } from './afui-forms/afui-forms.module';\r\nimport { AfuiStructuresModule } from './afui-structures/afui-structures.module';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent, TabsComponent, TabComponent, TabsMockComponent],\r\n  imports: [\r\n    AfUiFormsModule,\r\n    AfuiIconModule,\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    DemoMaterialModule,\r\n    HttpClientModule,\r\n    DragScrollModule,\r\n    AfuiStructuresModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
+            "sourceCode": "import { DragDropModule } from '@angular/cdk/drag-drop';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\n\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport { DragScrollModule } from 'ngx-drag-scroll';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { DemoMaterialModule } from './shared/material.module';\r\nimport { TabComponent } from './tab/tab.component';\r\nimport { TabsMockComponent } from './tabs/tabs-mock.component';\r\nimport { TabsComponent } from './tabs/tabs.component';\r\nimport { AfuiIconModule } from './shared/afui-icon/afui-icon.module';\r\nimport { AfUiFormsModule } from './afui-forms/afui-forms.module';\r\nimport { AfuiStructuresModule } from './afui-structures/afui-structures.module';\r\nimport { AfUiTooltipModule } from './afui-tooltip';\r\n\r\n@NgModule({\r\n  declarations: [AppComponent, TabsComponent, TabComponent, TabsMockComponent],\r\n  imports: [\r\n    AfUiFormsModule,\r\n    AfuiIconModule,\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    BrowserAnimationsModule,\r\n    DragDropModule,\r\n    DemoMaterialModule,\r\n    HttpClientModule,\r\n    DragScrollModule,\r\n    AfuiStructuresModule,\r\n    AfUiTooltipModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -3713,6 +4698,9 @@
                     "elements": [
                         {
                             "name": "AfUiFormsModule"
+                        },
+                        {
+                            "name": "AfUiTooltipModule"
                         },
                         {
                             "name": "AfuiIconModule"
@@ -9735,11 +10723,11 @@
                 "name": "Customized",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
+                "file": "src/app/afui-forms/afui-select/afui-select.directive.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  template,\r\n  props: {\r\n    options: array(\r\n      'Options',\r\n      Array(5)\r\n        .fill('')\r\n        .map((_, i) => `אופציה ${i + 1}`)\r\n    ),\r\n    placeholder: text('Placeholder', 'בחר אפשרות'),\r\n  },\r\n})"
             },
             {
                 "name": "Customized",
@@ -9755,11 +10743,11 @@
                 "name": "Customized",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-select/afui-select.directive.stories.ts",
+                "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  template,\r\n  props: {\r\n    options: array(\r\n      'Options',\r\n      Array(5)\r\n        .fill('')\r\n        .map((_, i) => `אופציה ${i + 1}`)\r\n    ),\r\n    placeholder: text('Placeholder', 'בחר אפשרות'),\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n  },\r\n})"
             },
             {
                 "name": "DatePicker",
@@ -9785,6 +10773,16 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: AfuiStructuresComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    structuresInstructions: {\r\n      amountOfAircraftInTheStructure: null,\r\n      separationOfTimes: {\r\n        typeSeparationOfTimes: null,\r\n        separationWindowTime: null,\r\n      },\r\n      roundingTimes: {\r\n        typeSeparationOfTimes: null,\r\n        timeToRounding: null,\r\n      },\r\n    },\r\n  },\r\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -9795,11 +10793,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                "file": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiStructuresComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    structuresInstructions: {\r\n      amountOfAircraftInTheStructure: null,\r\n      separationOfTimes: {\r\n        typeSeparationOfTimes: null,\r\n        separationWindowTime: null,\r\n      },\r\n      roundingTimes: {\r\n        typeSeparationOfTimes: null,\r\n        timeToRounding: null,\r\n      },\r\n    },\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('simple')\r\n})"
             },
             {
                 "name": "Default",
@@ -9845,11 +10843,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
+                "file": "src/app/afui-forms/afui-select/afui-select.directive.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\" [defaultSelectedId]=\"defaultSelectedId\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n    defaultSelectedId: text('defaultSelectedId', '123'),\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  template,\r\n  props: {\r\n    options: array(\r\n      'Options',\r\n      Array(5)\r\n        .fill('')\r\n        .map((_, i) => `אופציה ${i + 1}`)\r\n    ),\r\n    placeholder: text('Placeholder', 'בחר אפשרות'),\r\n  },\r\n})"
             },
             {
                 "name": "Default",
@@ -9865,11 +10863,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-select/afui-select.directive.stories.ts",
+                "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  template,\r\n  props: {\r\n    options: array(\r\n      'Options',\r\n      Array(5)\r\n        .fill('')\r\n        .map((_, i) => `אופציה ${i + 1}`)\r\n    ),\r\n    placeholder: text('Placeholder', 'בחר אפשרות'),\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\" [defaultSelectedId]=\"defaultSelectedId\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n    defaultSelectedId: text('defaultSelectedId', '123'),\r\n  },\r\n})"
             },
             {
                 "name": "Default",
@@ -9895,21 +10893,21 @@
                 "name": "defaultStyle",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "[]",
-                "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
-            },
-            {
-                "name": "defaultStyle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-structures/afui-structures.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
                 "defaultValue": "[\r\n  `afui-structures {  \r\n    position: absolute;\r\n    left: 100px;\r\n    top: 100px;\r\n    width: 649px;\r\n    height: 259px;\r\n    background: #FFFFFF;\r\n    direction: rtl;\r\n    border: 1px solid red;\r\n    display:flex; \r\n  } `,\r\n]"
+            },
+            {
+                "name": "defaultStyle",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
             },
             {
                 "name": "defaultStyle",
@@ -9955,16 +10953,6 @@
                 "name": "defaultTemplate",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
-            },
-            {
-                "name": "defaultTemplate",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-structures/afui-structures.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -9975,11 +10963,11 @@
                 "name": "defaultTemplate",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/tabs/tabs.component.stories.ts",
+                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "`<app-tabs-mock></app-tabs-mock>`"
+                "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
             },
             {
                 "name": "defaultTemplate",
@@ -9990,6 +10978,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "`<afui-tab [svgIconName]=\"svgIconName\" [label]=\"label\" \r\n[withCloseIcon]=\"withCloseIcon\" [isActive]=\"isActive\"></afui-tab>`"
+            },
+            {
+                "name": "defaultTemplate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/tabs/tabs.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`<app-tabs-mock></app-tabs-mock>`"
             },
             {
                 "name": "defaultTemplate",
@@ -10030,6 +11028,16 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\r\n  production: false\r\n}"
+            },
+            {
+                "name": "getProps",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(contentType: any, header?: any) => {\r\n  return {\r\n    header: header,\r\n    contentType: contentType,\r\n    position: select('Tooltip position', ['top', 'top-left', 'top-right', 'bottom', 'bottom-left', 'bottom-right', 'left', 'right', 'auto'], 'left'),\r\n    showDelay: number('Show delay', 0),\r\n    hideDelay: number('Hide delay', 0),\r\n    showArrow: boolean('Show arrow', true),\r\n    trigger: select('Trigger', ['hover', 'click', 'manual'], 'hover')\r\n  };\r\n}"
             },
             {
                 "name": "HourPicker",
@@ -10219,10 +11227,63 @@
                 "deprecationMessage": "",
                 "type": "[]",
                 "defaultValue": "[\r\n  `afui-tab {  width: 111px; height:27px; display: flex } `,\r\n]"
+            },
+            {
+                "name": "WithHeader",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('simple',\"text text\")\r\n})"
+            },
+            {
+                "name": "WithTemplate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('template')\r\n})"
             }
         ],
         "functions": [],
         "typealiases": [
+            {
+                "name": "ArrowPosition",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+                "file": "src/app/afui-tooltip/afui-tooltip.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
+            {
+                "name": "TooltipPosition",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"top\" | \"top-left\" | \"top-right\" | \"bottom\" | \"bottom-left\" | \"bottom-right\" | \"left\" | \"right\" | \"auto\"",
+                "file": "src/app/afui-tooltip/afui-tooltip.directive.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
+            {
+                "name": "TooltipTrigger",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"hover\" | \"click\" | \"manual\"",
+                "file": "src/app/afui-tooltip/afui-tooltip.directive.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
             {
                 "name": "TypeAmountOfAircraftInTheStructure",
                 "ctype": "miscellaneous",
@@ -10240,6 +11301,28 @@
                 "subtype": "typealias",
                 "rawtype": "\"אזורית\" | \"מרחבית\"",
                 "file": "src/app/models/afui-type-separation-of-times.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
+            {
+                "name": "XPosition",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"center\" | \"start\" | \"end\"",
+                "file": "src/app/afui-tooltip/afui-tooltip.directive.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
+            {
+                "name": "YPosition",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"center\" | \"top\" | \"bottom\"",
+                "file": "src/app/afui-tooltip/afui-tooltip.directive.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -16301,50 +17384,6 @@
                     "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
                 }
             ],
-            "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts": [
-                {
-                    "name": "Customized",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n  },\r\n})"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\" [defaultSelectedId]=\"defaultSelectedId\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n    defaultSelectedId: text('defaultSelectedId', '123'),\r\n  },\r\n})"
-                }
-            ],
-            "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts": [
-                {
-                    "name": "Customized",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-                }
-            ],
             "src/app/afui-forms/afui-select/afui-select.directive.stories.ts": [
                 {
                     "name": "Customized",
@@ -16385,6 +17424,50 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "`\r\n  <mat-form-field afui-select-form-field>\r\n    <mat-select\r\n      afui-select\r\n      panelClass=\"afui-select-panel\"\r\n      disableOptionCentering\r\n      disableRipple\r\n      [placeholder]=\"placeholder\">\r\n      <mat-option *ngFor=\"let option of options\" [value]=\"option\">{{ option }}</mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n`"
+                }
+            ],
+            "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts": [
+                {
+                    "name": "Customized",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
+                }
+            ],
+            "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts": [
+                {
+                    "name": "Customized",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n  },\r\n})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\" [defaultSelectedId]=\"defaultSelectedId\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n    defaultSelectedId: text('defaultSelectedId', '123'),\r\n  },\r\n})"
                 }
             ],
             "src/app/afui-forms/afui-form-field/afui-form-field.component.stories.ts": [
@@ -16489,6 +17572,38 @@
                     "defaultValue": "() => ({\r\n  component: AfUiFormFieldComponent,\r\n  template: `<afui-form-field>\r\n                <span afui-field-label>{{label}}</span>\r\n                <textarea afui-input cdkTextareaAutosize [cdkAutosizeMinRows]=\"minRows\" [cdkAutosizeMaxRows]=\"maxRows\" [placeholder]=\"placeholder\">{{value}}</textarea>\r\n                <span *ngIf=\"displayError\" afui-error>{{errorText}}</span>\r\n             </afui-form-field>`,\r\n  props: {\r\n    label: text('label', 'כותרת'),\r\n    value: text('value', ''),\r\n    placeholder: text('placeholder', 'הקלד'),\r\n    minRows: number('minimum rows', 3),\r\n    maxRows: number('maximum rows', 5),\r\n    displayError: boolean('display error', false),\r\n    errorText: text('error text', 'שגיאה'),\r\n  },\r\n})"
                 }
             ],
+            "src/app/afui-structures/afui-structures.component.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfuiStructuresComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    structuresInstructions: {\r\n      amountOfAircraftInTheStructure: null,\r\n      separationOfTimes: {\r\n        typeSeparationOfTimes: null,\r\n        separationWindowTime: null,\r\n      },\r\n      roundingTimes: {\r\n        typeSeparationOfTimes: null,\r\n        timeToRounding: null,\r\n      },\r\n    },\r\n  },\r\n})"
+                },
+                {
+                    "name": "defaultStyle",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  `afui-structures {  \r\n    position: absolute;\r\n    left: 100px;\r\n    top: 100px;\r\n    width: 649px;\r\n    height: 259px;\r\n    background: #FFFFFF;\r\n    direction: rtl;\r\n    border: 1px solid red;\r\n    display:flex; \r\n  } `,\r\n]"
+                },
+                {
+                    "name": "defaultTemplate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`<afui-structures [structuresInstructions]=\"structuresInstructions\"></afui-structures>`"
+                }
+            ],
             "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts": [
                 {
                     "name": "Default",
@@ -16521,36 +17636,46 @@
                     "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
                 }
             ],
-            "src/app/afui-structures/afui-structures.component.stories.ts": [
+            "src/app/afui-tooltip/afui-tooltip.component.stories.ts": [
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                    "file": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiStructuresComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    structuresInstructions: {\r\n      amountOfAircraftInTheStructure: null,\r\n      separationOfTimes: {\r\n        typeSeparationOfTimes: null,\r\n        separationWindowTime: null,\r\n      },\r\n      roundingTimes: {\r\n        typeSeparationOfTimes: null,\r\n        timeToRounding: null,\r\n      },\r\n    },\r\n  },\r\n})"
+                    "defaultValue": "() => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('simple')\r\n})"
                 },
                 {
-                    "name": "defaultStyle",
+                    "name": "getProps",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[]",
-                    "defaultValue": "[\r\n  `afui-structures {  \r\n    position: absolute;\r\n    left: 100px;\r\n    top: 100px;\r\n    width: 649px;\r\n    height: 259px;\r\n    background: #FFFFFF;\r\n    direction: rtl;\r\n    border: 1px solid red;\r\n    display:flex; \r\n  } `,\r\n]"
-                },
-                {
-                    "name": "defaultTemplate",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                    "file": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "`<afui-structures [structuresInstructions]=\"structuresInstructions\"></afui-structures>`"
+                    "defaultValue": "(contentType: any, header?: any) => {\r\n  return {\r\n    header: header,\r\n    contentType: contentType,\r\n    position: select('Tooltip position', ['top', 'top-left', 'top-right', 'bottom', 'bottom-left', 'bottom-right', 'left', 'right', 'auto'], 'left'),\r\n    showDelay: number('Show delay', 0),\r\n    hideDelay: number('Hide delay', 0),\r\n    showArrow: boolean('Show arrow', true),\r\n    trigger: select('Trigger', ['hover', 'click', 'manual'], 'hover')\r\n  };\r\n}"
+                },
+                {
+                    "name": "WithHeader",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('simple',\"text text\")\r\n})"
+                },
+                {
+                    "name": "WithTemplate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('template')\r\n})"
                 }
             ],
             "src/app/afui-structures/afui-rounding-times/afui-rounding-times.component.stories.ts": [
@@ -16691,6 +17816,65 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
+            "src/app/afui-tooltip/afui-tooltip.component.ts": [
+                {
+                    "name": "ArrowPosition",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+                    "file": "src/app/afui-tooltip/afui-tooltip.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                }
+            ],
+            "src/app/afui-tooltip/afui-tooltip.directive.ts": [
+                {
+                    "name": "TooltipPosition",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"top\" | \"top-left\" | \"top-right\" | \"bottom\" | \"bottom-left\" | \"bottom-right\" | \"left\" | \"right\" | \"auto\"",
+                    "file": "src/app/afui-tooltip/afui-tooltip.directive.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                },
+                {
+                    "name": "TooltipTrigger",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"hover\" | \"click\" | \"manual\"",
+                    "file": "src/app/afui-tooltip/afui-tooltip.directive.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                },
+                {
+                    "name": "XPosition",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"center\" | \"start\" | \"end\"",
+                    "file": "src/app/afui-tooltip/afui-tooltip.directive.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                },
+                {
+                    "name": "YPosition",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"center\" | \"top\" | \"bottom\"",
+                    "file": "src/app/afui-tooltip/afui-tooltip.directive.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                }
+            ],
             "src/app/models/afui-structures.model.ts": [
                 {
                     "name": "TypeAmountOfAircraftInTheStructure",
@@ -17232,7 +18416,7 @@
                 "linktype": "component",
                 "name": "AfuiRoundingTimesComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/13",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
@@ -17311,6 +18495,73 @@
                 "name": "AfuiStructuresComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/15",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AfUiTooltipExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getProps",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithHeader",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/afui-tooltip/afui-tooltip.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithTemplate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/afui-tooltip/afui-tooltip.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AfUiTooltipComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/afui-tooltip/afui-tooltip.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "AfUiTooltipDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/39",
                 "status": "low"
             },
             {

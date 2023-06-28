@@ -9,6 +9,7 @@ import { AfuiRoundingTimesComponent } from './afui-rounding-times/afui-rounding-
 import { MatSelectModule } from '@angular/material/select';
 import { AfUiTooltipModule } from '../afui-tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSelectModule,
     MatSlideToggleModule,
     AfUiTooltipModule,
+    CommonModule,
   ],
 })
 export class AfuiStructuresModule {}
