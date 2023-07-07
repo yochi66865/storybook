@@ -20,7 +20,9 @@
     "paths": {
       "@models/*": ["src/app/models/*"],
       "@shared/*": ["src/app/shared/*"]
-    }
+    },
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
