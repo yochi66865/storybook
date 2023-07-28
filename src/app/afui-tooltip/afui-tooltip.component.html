@@ -3,7 +3,9 @@
   <div [class]="arrowPosition" *ngIf="arrowPosition"></div>
   <ng-container *ngIf="_isTemplate; else noTemplate">
     <div class="content">
-      <ng-container *ngTemplateOutlet="content; context: context"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="content; context: context"
+      ></ng-container>
     </div>
   </ng-container>
   <ng-template #noTemplate>{{ content }}</ng-template>

@@ -3,7 +3,6 @@ import {
   Input,
   OnInit,
   OnChanges,
-  SimpleChanges,
   ViewEncapsulation,
   forwardRef,
   ChangeDetectionStrategy,
@@ -13,7 +12,6 @@ import { AfuiRoundingTimes } from '@models/afui-rounding-times.model';
 import { TypeSeparationOfTimes } from '@models/afui-type-separation-of-times';
 import { ControlValueService } from '@shared/control-value-service/control-value.service';
 import { MatSelectChange } from '@angular/material/select';
-import { isNil } from 'lodash';
 
 @Component({
   selector: 'rounding-times',
@@ -47,18 +45,11 @@ export class AfuiRoundingTimesComponent
       'עיגול זמ"מ במוד אזורי, ייתכנו זמ"מים זהים עבור המלצות מאזורים אחרים',
     מרחבית: 'הפרדה של 10 דקות בין זמ"מ לזמ"מ',
   };
-  isNil = isNil;
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.afuiRoundingTimes) {
-      this.cloneAfuiRoundingTimes = {
-        timeToRounding: this.afuiRoundingTimes.timeToRounding ?? null,
-        typeSeparationOfTimes:
-          this.afuiRoundingTimes.typeSeparationOfTimes ?? null,
-      };
-    }
+  ngOnChanges() {
+    this.cloneAfuiRoundingTimes = this.cloneDeepRoundingTimesInput();
   }
 
   changeTimeToRounding(timeToRounding: number) {
@@ -70,5 +61,16 @@ export class AfuiRoundingTimesComponent
     this.cloneAfuiRoundingTimes.typeSeparationOfTimes =
       value as TypeSeparationOfTimes;
     this.writeValue(this.cloneAfuiRoundingTimes);
+  }
+
+  cloneDeepRoundingTimesInput() {
+    return {
+      typeSeparationOfTimes:
+        this.afuiRoundingTimes?.typeSeparationOfTimes ??
+        this.cloneAfuiRoundingTimes.typeSeparationOfTimes,
+      timeToRounding:
+        this.afuiRoundingTimes?.timeToRounding ??
+        this.cloneAfuiRoundingTimes.timeToRounding,
+    };
   }
 }

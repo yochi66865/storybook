@@ -14,6 +14,7 @@ import { KeyValue } from '@angular/common';
 import { MatSelectChange } from '@angular/material/select';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ControlValueService } from '@shared/control-value-service/control-value.service';
+import { initialSeparationOfTimes } from '../util';
 
 @Component({
   selector: 'separation-of-times',
@@ -35,9 +36,7 @@ export class AfuiSeparationOfTimesComponent
 {
   @Input() separationOfTimes!: AfuiSeparationOfTimes;
   cloneSeparationOfTimes: AfuiSeparationOfTimes = {
-    typeSeparationOfTimes: null!,
-    separationWindowTime: null!,
-    amountOfBuildingsAtTheSameTime: null!,
+    ...initialSeparationOfTimes,
   };
   timesSeparationOfTimes: Record<number, string> = {
     5: '5 דקות',
@@ -48,16 +47,7 @@ export class AfuiSeparationOfTimesComponent
   };
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.separationOfTimes) {
-      this.cloneSeparationOfTimes = {
-        typeSeparationOfTimes:
-          this.separationOfTimes?.typeSeparationOfTimes ?? null,
-        separationWindowTime:
-          this.separationOfTimes?.separationWindowTime ?? null,
-        amountOfBuildingsAtTheSameTime:
-          this.separationOfTimes?.amountOfBuildingsAtTheSameTime ?? 0,
-      };
-    }
+    this.cloneSeparationOfTimes = this.cloneDeepSeparationOfTimesInput();
   }
 
   ngOnInit(): void {}
@@ -85,5 +75,19 @@ export class AfuiSeparationOfTimesComponent
   updateAmountOfBuildingsAtTheSameTime(value: number) {
     this.cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime = value;
     this.writeValue(this.cloneSeparationOfTimes);
+  }
+
+  cloneDeepSeparationOfTimesInput() {
+    return {
+      typeSeparationOfTimes:
+        this.separationOfTimes?.typeSeparationOfTimes ??
+        this.cloneSeparationOfTimes.typeSeparationOfTimes,
+        separationWindowTime:
+        this.separationOfTimes?.separationWindowTime ??
+        this.cloneSeparationOfTimes.separationWindowTime,
+        amountOfBuildingsAtTheSameTime:
+        this.separationOfTimes?.amountOfBuildingsAtTheSameTime ??
+        this.cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime,
+    };
   }
 }

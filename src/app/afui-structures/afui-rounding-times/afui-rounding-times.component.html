@@ -3,16 +3,14 @@
     <span afui-field-label
       >סוג<mat-icon
         class="info"
-        [class.disabled]="isNil(cloneAfuiRoundingTimes.typeSeparationOfTimes)"
+        [class.disabled]="!cloneAfuiRoundingTimes.typeSeparationOfTimes"
         [svgIcon]="'info-fill'"
         [afuiTooltip]="
           messageTypeSeparationOfTimes[
-            cloneAfuiRoundingTimes.typeSeparationOfTimes
+            cloneAfuiRoundingTimes.typeSeparationOfTimes!
           ]
         "
-        [afuiTooltipActive]="
-          !isNil(cloneAfuiRoundingTimes.typeSeparationOfTimes)
-        "
+        [afuiTooltipActive]="!!cloneAfuiRoundingTimes.typeSeparationOfTimes"
         [afuiTooltipShowArrow]="false"
         [afuiTooltipPosition]="'top-right'"
         [afuiTooltipOffset]="0"
@@ -39,11 +37,11 @@
       <mat-icon
         class="info"
         [svgIcon]="'info-fill'"
-        [class.disabled]="isNil(cloneAfuiRoundingTimes.timeToRounding)"
+        [class.disabled]="cloneAfuiRoundingTimes.timeToRounding === null"
         [afuiTooltip]="
-          messageTimeToRounding[cloneAfuiRoundingTimes.timeToRounding]
+          messageTimeToRounding[cloneAfuiRoundingTimes.timeToRounding!]
         "
-        [afuiTooltipActive]="!isNil(cloneAfuiRoundingTimes.timeToRounding)"
+        [afuiTooltipActive]="cloneAfuiRoundingTimes.timeToRounding !== null"
         [afuiTooltipShowArrow]="false"
         [afuiTooltipPosition]="'top-right'"
         [afuiTooltipOffset]="0"

@@ -9,6 +9,7 @@ import {
 import { AfuiStructuresInstructions } from '@models/afui-structures.model';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ControlValueService } from '@shared/control-value-service/control-value.service';
+import { initialStructuresInstructions } from './util';
 
 @Component({
   selector: 'afui-structures',
@@ -22,28 +23,34 @@ export class AfuiStructuresComponent
 {
   @Input() structuresInstructions!: AfuiStructuresInstructions;
   numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];
-  cloneStructuresInstructions!: AfuiStructuresInstructions;
+  cloneStructuresInstructions: AfuiStructuresInstructions = {
+    ...initialStructuresInstructions,
+  };
   isCheckedRoundingTimes: boolean = false;
   messageRoundingTimes: string =
     'לא ניתן להגדיר הפרדת זמנים במצב של עיגול זמ"מ';
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges) {
-    this.cloneStructuresInstructions = {
-      separationOfTimes: this.structuresInstructions?.separationOfTimes ?? {
-        separationWindowTime: null,
-        typeSeparationOfTimes: null,
-      },
-      roundingTimes: this.structuresInstructions?.roundingTimes ?? {
-        timeToRounding: null,
-        typeSeparationOfTimes: null,
-      },
-      amountOfAircraftInTheStructure:
-        this.structuresInstructions?.amountOfAircraftInTheStructure ?? null,
-    };
+    this.cloneStructuresInstructions =
+      this.cloneDeepStructuresInstructionsInput();
   }
 
   toggleRound({ checked }: MatSlideToggleChange) {
     this.isCheckedRoundingTimes = checked;
+  }
+
+  cloneDeepStructuresInstructionsInput() {
+    return {
+      separationOfTimes:
+        this.structuresInstructions?.separationOfTimes ??
+        this.cloneStructuresInstructions.separationOfTimes,
+      roundingTimes:
+        this.structuresInstructions?.roundingTimes ??
+        this.cloneStructuresInstructions.roundingTimes,
+      amountOfAircraftInTheStructure:
+        this.structuresInstructions?.amountOfAircraftInTheStructure ??
+        this.cloneStructuresInstructions.amountOfAircraftInTheStructure,
+    };
   }
 }
