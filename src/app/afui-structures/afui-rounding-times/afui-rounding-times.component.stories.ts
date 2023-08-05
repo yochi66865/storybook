@@ -2,6 +2,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { Meta, moduleMetadata } from '@storybook/angular';
 import { AfuiStructuresModule } from '../afui-structures.module';
 import { AfuiRoundingTimesComponent } from './afui-rounding-times.component';
+import { FormGroup } from '@angular/forms';
 
 export default {
   title: 'Example/Rounding Times',
@@ -18,16 +19,13 @@ const defaultStyle = [
   `rounding-times {  width: 70px; height:68px; display: flex } `,
 ];
 
-const defaultTemplate = `<rounding-times></rounding-times>`;
+const defaultTemplate = `<form [formGroup]="form"><rounding-times></rounding-times></form>`;
 
 export const Default = () => ({
   component: AfuiRoundingTimesComponent,
   template: defaultTemplate,
   styles: defaultStyle,
-  // props: {
-  //   svgIconName: 'reserve_instructions',
-  //   label: 'שריונים',
-  //   isActive: false,
-  //   withCloseIcon: false,
-  // },
+  props: {
+    form: new FormGroup({}),
+  },
 });

@@ -29,28 +29,14 @@ const defaultStyle = [
   } `,
 ];
 
-const defaultTemplate = `<form #ff class="container mt-3" (ngSubmit)="onSubmit(ff)" [formGroup]="form">
-<afui-structures [structuresInstructions]="structuresInstructions"></afui-structures></form>`;
+const defaultTemplate = `<form [formGroup]="form">
+<afui-structures></afui-structures></form>`;
 
 export const Default = () => ({
   component: AfuiStructuresComponent,
   template: defaultTemplate,
   styles: defaultStyle,
   props: {
-    structuresInstructions: {
-      amountOfAircraftInTheStructure: null,
-      separationOfTimes: {
-        typeSeparationOfTimes: null,
-        separationWindowTime: null,
-      },
-      roundingTimes: {
-        typeSeparationOfTimes: null,
-        timeToRounding: null,
-      },
-    },
-    onSubmit: (form: any) => {
-      console.log('form', form);
-    },
     form: new FormGroup({}),
   },
 });

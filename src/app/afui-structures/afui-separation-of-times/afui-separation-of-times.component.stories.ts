@@ -2,6 +2,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { Meta, moduleMetadata } from '@storybook/angular';
 import { AfuiStructuresModule } from '../afui-structures.module';
 import { AfuiSeparationOfTimesComponent } from './afui-separation-of-times.component';
+import { FormGroup } from '@angular/forms';
 
 export default {
   title: 'Example/Separation Of Times',
@@ -28,11 +29,14 @@ const defaultStyle = [
   } `,
 ];
 
-const defaultTemplate = `<separation-of-times></separation-of-times>`;
+const defaultTemplate = `<form [formGroup]="form"><separation-of-times>
+</separation-of-times></form>`;
 
 export const Default = () => ({
   component: AfuiSeparationOfTimesComponent,
   template: defaultTemplate,
   styles: defaultStyle,
-  props: {},
+  props: {
+    form: new FormGroup({}),
+  },
 });
