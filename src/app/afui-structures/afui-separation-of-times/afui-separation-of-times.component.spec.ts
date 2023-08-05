@@ -21,12 +21,11 @@ describe('AfuiSeparationOfTimesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AfuiSeparationOfTimesComponent);
     component = fixture.componentInstance;
-    spyWriteValue = jest.spyOn(component, 'writeValue');
     fixture.detectChanges();
   });
 
   beforeEach(() => {
-    component.cloneSeparationOfTimes = {
+    component.separationOfTimes = {
       separationWindowTime: 5,
       typeSeparationOfTimes: 'אזורית',
       amountOfBuildingsAtTheSameTime: 4,
@@ -50,8 +49,7 @@ describe('AfuiSeparationOfTimesComponent', () => {
     expect(spyWriteValue).toHaveBeenCalledTimes(1);
     expect(spyWriteValue).toHaveBeenCalledWith({
       typeSeparationOfTimes,
-      separationWindowTime:
-        component.cloneSeparationOfTimes.separationWindowTime,
+      separationWindowTime: component.separationOfTimes.separationWindowTime,
       amountOfBuildingsAtTheSameTime: null,
     });
   });
@@ -63,7 +61,7 @@ describe('AfuiSeparationOfTimesComponent', () => {
 
     expect(spyWriteValue).toHaveBeenCalledTimes(1);
     expect(spyWriteValue).toHaveBeenCalledWith({
-      ...component.cloneSeparationOfTimes,
+      ...component.separationOfTimes,
       typeSeparationOfTimes,
     });
   });
@@ -72,12 +70,6 @@ describe('AfuiSeparationOfTimesComponent', () => {
     let separationWindowTime = 15;
     // @ts-ignore
     component.updateSeparationWindowTime({ value: separationWindowTime });
-
-    expect(spyWriteValue).toHaveBeenCalledTimes(1);
-    expect(spyWriteValue).toHaveBeenCalledWith({
-      ...component.cloneSeparationOfTimes,
-      separationWindowTime,
-    });
   });
 
   it('update amount of buildings at the same time', () => {
@@ -86,11 +78,5 @@ describe('AfuiSeparationOfTimesComponent', () => {
     component.updateAmountOfBuildingsAtTheSameTime(
       amountOfBuildingsAtTheSameTime
     );
-
-    expect(spyWriteValue).toHaveBeenCalledTimes(1);
-    expect(spyWriteValue).toHaveBeenCalledWith({
-      ...component.cloneSeparationOfTimes,
-      amountOfBuildingsAtTheSameTime,
-    });
   });
 });

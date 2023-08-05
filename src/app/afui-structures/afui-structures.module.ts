@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { AfUiFormsModule } from '../afui-forms/afui-forms.module';
-import { FormsModule } from '@angular/forms';
+import {
+  FormGroupDirective,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { AfuiIconModule } from '@shared/afui-icon/afui-icon.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AfuiStructuresComponent } from './afui-structures.component';
@@ -21,10 +25,12 @@ import { CommonModule } from '@angular/common';
     AfuiStructuresComponent,
     AfuiSeparationOfTimesComponent,
     AfuiRoundingTimesComponent,
+    ReactiveFormsModule,
   ],
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     AfUiFormsModule,
     AfuiIconModule,
     MatSelectModule,
@@ -32,5 +38,6 @@ import { CommonModule } from '@angular/common';
     AfUiTooltipModule,
     CommonModule,
   ],
+  providers: [FormGroupDirective],
 })
 export class AfuiStructuresModule {}

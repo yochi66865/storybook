@@ -1,16 +1,14 @@
-<div class="rounding-times-container">
+<div class="rounding-times-container" formGroupName="roundingTimes">
   <afui-form-field>
     <span afui-field-label
       >סוג<mat-icon
         class="info"
-        [class.disabled]="!cloneAfuiRoundingTimes.typeSeparationOfTimes"
+        [class.disabled]="!typeSeparationOfTimesInput.value"
         [svgIcon]="'info-fill'"
         [afuiTooltip]="
-          messageTypeSeparationOfTimes[
-            cloneAfuiRoundingTimes.typeSeparationOfTimes!
-          ]
+          messageTypeSeparationOfTimes[typeSeparationOfTimesInput.value!]
         "
-        [afuiTooltipActive]="!!cloneAfuiRoundingTimes.typeSeparationOfTimes"
+        [afuiTooltipActive]="!!typeSeparationOfTimesInput.value"
         [afuiTooltipShowArrow]="false"
         [afuiTooltipPosition]="'top-right'"
         [afuiTooltipOffset]="0"
@@ -23,9 +21,7 @@
       placeholder="בחירה"
       disableOptionCentering
       panelClass="structures-options"
-      [ngModel]="cloneAfuiRoundingTimes.typeSeparationOfTimes"
-      name="typeSeparationOfTimes"
-      (selectionChange)="selectTypeRoundingTimes($event)"
+      formControlName="typeSeparationOfTimes"
     >
       <mat-option [value]="'מרחבית'">מרחבית</mat-option>
       <mat-option [value]="'אזורית'">אזורית</mat-option>
@@ -37,11 +33,9 @@
       <mat-icon
         class="info"
         [svgIcon]="'info-fill'"
-        [class.disabled]="cloneAfuiRoundingTimes.timeToRounding === null"
-        [afuiTooltip]="
-          messageTimeToRounding[cloneAfuiRoundingTimes.timeToRounding!]
-        "
-        [afuiTooltipActive]="cloneAfuiRoundingTimes.timeToRounding !== null"
+        [class.disabled]="timeToRoundingInput.value === null"
+        [afuiTooltip]="messageTimeToRounding[timeToRoundingInput.value!]"
+        [afuiTooltipActive]="timeToRoundingInput.value !== null"
         [afuiTooltipShowArrow]="false"
         [afuiTooltipPosition]="'top-right'"
         [afuiTooltipOffset]="0"
@@ -53,10 +47,8 @@
       class="structures-input"
       placeholder="זמן"
       panelClass="structures-options"
-      name="timeToRounding"
       disableOptionCentering
-      [ngModel]="cloneAfuiRoundingTimes.timeToRounding"
-      (selectionChange)="changeTimeToRounding(+$event.value)"
+      formControlName="timeToRounding"
     >
       <mat-option [value]="0">{{ 0 }}</mat-option>
       <mat-option [value]="5">{{ 5 }}</mat-option>

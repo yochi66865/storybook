@@ -1,4 +1,4 @@
-<div class="structures-container">
+<div class="structures-container" formGroupName="structures">
   <div class="structures-amount indent">
     <label class="structures-label">מבנים</label>
     <div class="structures-inputs-container">
@@ -10,6 +10,7 @@
           disableOptionCentering
           placeholder="בחירה"
           panelClass="structures-options"
+          formControlName="amountOfAircraftInTheStructure"
         >
           <mat-option
             *ngFor="let option of numSquadronInStructures"
@@ -23,9 +24,7 @@
   <div class="separation-of-times-app indent">
     <separation-of-times
       [class.disabled]="isCheckedRoundingTimes"
-      [separationOfTimes]="cloneStructuresInstructions.separationOfTimes"
-      name="separationOfTimes"
-      [(ngModel)]="cloneStructuresInstructions.separationOfTimes"
+      [separationOfTimes]="structuresInstructions.separationOfTimes"
     ></separation-of-times>
   </div>
   <div class="rounding-times-app">
@@ -45,16 +44,23 @@
       afui-slide-toggle
       class="rounding-times"
       name="isCheckedRoundingTimes"
-      [ngModel]="isCheckedRoundingTimes"
       (change)="toggleRound($any($event))"
       disableRipple
       >עיגול זמ"מ</mat-slide-toggle
     >
     <rounding-times
       *ngIf="isCheckedRoundingTimes"
-      [afuiRoundingTimes]="cloneStructuresInstructions.roundingTimes"
-      [(ngModel)]="cloneStructuresInstructions.roundingTimes"
+      [afuiRoundingTimes]="structuresInstructions.roundingTimes"
       name="roundingTimes"
     ></rounding-times>
   </div>
+</div>
+<div>
+  <b>parentForm Status:</b>
+  {{ parentForm.status }}
+  {{ parentForm.touched ? "touched" : "untouched" }}
+  {{ parentForm.dirty ? "dirty" : "pristine" }}
+  <br />
+  <b>Customer: </b>
+  {{ parentForm?.value | json }}
 </div>

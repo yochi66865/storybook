@@ -1,4 +1,4 @@
-<div class="separation-times-container">
+<div class="separation-times-container" formGroupName="separationOfTimes">
   <label class="structures-label">זמנים להמלצת שידוך</label>
   <div class="structures-inputs-container">
     <afui-form-field>
@@ -9,8 +9,7 @@
         placeholder="בחירה"
         disableOptionCentering
         panelClass="structures-options"
-        [ngModel]="cloneSeparationOfTimes.typeSeparationOfTimes"
-        name="typeSeparationOfTimes"
+        formControlName="typeSeparationOfTimes"
         (selectionChange)="selectTypeSeparationOfTimes($event)"
       >
         <mat-option [value]="'מרחבית'">מרחבית</mat-option>
@@ -24,10 +23,8 @@
         class="structures-input"
         placeholder="זמן"
         panelClass="structures-options"
-        name="separationWindowTime"
         disableOptionCentering
-        [ngModel]="cloneSeparationOfTimes.separationWindowTime"
-        (selectionChange)="updateSeparationWindowTime($event)"
+        formControlName="separationWindowTime"
       >
         <mat-option
           *ngFor="let option of timesSeparationOfTimes | keyvalue: keyDescOrder"
@@ -38,20 +35,14 @@
     </afui-form-field>
     <afui-form-field
       class="amount-of-buildings"
-      [ngClass]="
-        cloneSeparationOfTimes?.typeSeparationOfTimes === 'אזורית'
-          ? 'show'
-          : 'hidden'
-      "
+      [ngClass]="showAmountOfBuildingsAtTheSameTime ? 'show' : 'hidden'"
     >
       <span afui-field-label>מבנים בו"ז</span>
       <input
         afui-input
         type="number"
         class="structures-input"
-        name="amountOfBuildingsAtTheSameTime"
-        [ngModel]="cloneSeparationOfTimes.amountOfBuildingsAtTheSameTime"
-        (ngModelChange)="updateAmountOfBuildingsAtTheSameTime($event)"
+        formControlName="amountOfBuildingsAtTheSameTime"
         [min]="0"
         [max]="20"
       />

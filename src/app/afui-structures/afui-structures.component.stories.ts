@@ -2,6 +2,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { Meta, moduleMetadata } from '@storybook/angular';
 import { AfuiStructuresComponent } from './afui-structures.component';
 import { AfuiStructuresModule } from './afui-structures.module';
+import { FormGroup } from '@angular/forms';
 
 export default {
   title: 'Example/Structures',
@@ -28,7 +29,8 @@ const defaultStyle = [
   } `,
 ];
 
-const defaultTemplate = `<afui-structures [structuresInstructions]="structuresInstructions"></afui-structures>`;
+const defaultTemplate = `<form #ff class="container mt-3" (ngSubmit)="onSubmit(ff)" [formGroup]="form">
+<afui-structures [structuresInstructions]="structuresInstructions"></afui-structures></form>`;
 
 export const Default = () => ({
   component: AfuiStructuresComponent,
@@ -46,5 +48,9 @@ export const Default = () => ({
         timeToRounding: null,
       },
     },
+    onSubmit: (form: any) => {
+      console.log('form', form);
+    },
+    form: new FormGroup({}),
   },
 });
