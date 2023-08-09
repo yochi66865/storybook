@@ -1,18 +1,16 @@
 @import "../afui-structures.component.less";
 
+.hiddenInStructures {
+  display: none;
+}
+.showInStructures {
+  display: flex;
+}
+
 .separation-times-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-
-  afui-form-field {
-    &.amount-of-buildings.hidden {
-      display: none;
-    }
-    &.amount-of-buildings.show {
-      display: flex;
-    }
-  }
 
   .separation-times-structures {
     display: flex;

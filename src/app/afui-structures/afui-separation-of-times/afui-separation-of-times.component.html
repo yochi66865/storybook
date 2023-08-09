@@ -1,51 +1,55 @@
-<div class="separation-times-container" formGroupName="separationOfTimes">
-  <label class="structures-label">זמנים להמלצת שידוך</label>
-  <div class="structures-inputs-container">
-    <afui-form-field>
-      <span afui-field-label>הפרדת זמנים בין מבנים</span>
-      <mat-select
-        afui-input
-        class="structures-input"
-        placeholder="בחירה"
-        disableOptionCentering
-        panelClass="structures-options"
-        formControlName="typeSeparationOfTimes"
-        (selectionChange)="selectTypeSeparationOfTimes($event)"
-      >
-        <mat-option [value]="'מרחבית'">מרחבית</mat-option>
-        <mat-option [value]="'אזורית'">אזורית</mat-option>
-      </mat-select>
-    </afui-form-field>
-    <afui-form-field>
-      <span afui-field-label>חלון הפרדה</span>
-      <mat-select
-        afui-input
-        class="structures-input"
-        placeholder="זמן"
-        panelClass="structures-options"
-        disableOptionCentering
-        formControlName="separationWindowTime"
-      >
-        <mat-option
-          *ngFor="let option of timesSeparationOfTimes | keyvalue: keyDescOrder"
-          [value]="option.key"
-          >{{ option.value }}</mat-option
+<ng-container [formGroup]="parentForm">
+  <div class="separation-times-container" formGroupName="separationOfTimes">
+    <label class="structures-label">זמנים להמלצת שידוך</label>
+    <div class="structures-inputs-container">
+      <afui-form-field>
+        <span afui-field-label>הפרדת זמנים בין מבנים</span>
+        <mat-select
+          afui-input
+          class="structures-input"
+          placeholder="בחירה"
+          disableOptionCentering
+          panelClass="structures-options"
+          formControlName="typeSeparationOfTimes"
+          (selectionChange)="selectTypeSeparationOfTimes($event)"
         >
-      </mat-select>
-    </afui-form-field>
-    <afui-form-field
-      class="amount-of-buildings"
-      [ngClass]="showAmountOfBuildingsAtTheSameTime ? 'show' : 'hidden'"
-    >
-      <span afui-field-label>מבנים בו"ז</span>
-      <input
-        afui-input
-        type="number"
-        class="structures-input"
-        formControlName="amountOfBuildingsAtTheSameTime"
-        [min]="0"
-        [max]="20"
-      />
-    </afui-form-field>
+          <mat-option [value]="'מרחבית'">מרחבית</mat-option>
+          <mat-option [value]="'אזורית'">אזורית</mat-option>
+        </mat-select>
+      </afui-form-field>
+      <afui-form-field>
+        <span afui-field-label>חלון הפרדה</span>
+        <mat-select
+          afui-input
+          class="structures-input"
+          placeholder="זמן"
+          panelClass="structures-options"
+          disableOptionCentering
+          formControlName="separationWindowTime"
+        >
+          <mat-option
+            *ngFor="
+              let option of timesSeparationOfTimes | keyvalue: keyDescOrder
+            "
+            [value]="option.key"
+            >{{ option.value }}</mat-option
+          >
+        </mat-select>
+      </afui-form-field>
+      <afui-form-field
+        class="amount-of-buildings"
+        [ngClass]="showAmountOfBuildingsAtTheSameTime ? 'showInStructures' : 'hiddenInStructures'"
+      >
+        <span afui-field-label>מבנים בו"ז</span>
+        <input
+          afui-input
+          type="number"
+          class="structures-input"
+          formControlName="amountOfBuildingsAtTheSameTime"
+          [min]="0"
+          [max]="20"
+        />
+      </afui-form-field>
+    </div>
   </div>
-</div>
+</ng-container>

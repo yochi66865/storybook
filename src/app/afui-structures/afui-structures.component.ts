@@ -1,21 +1,17 @@
 import {
   Component,
+  Input,
   OnInit,
   ViewEncapsulation,
-  Input,
-  OnChanges,
-  SimpleChanges,
+  inject
 } from '@angular/core';
-import { AfuiStructuresInstructions } from '@models/afui-structures.model';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ControlValueService } from '@shared/control-value-service/control-value.service';
 import {
   ControlContainer,
   FormBuilder,
-  FormGroup,
-  FormGroupDirective,
-  Validators,
+  FormGroup
 } from '@angular/forms';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { AfuiStructuresInstructions } from '@models/afui-structures.model';
 import { initialStructuresInstructions } from './util';
 
 @Component({
@@ -24,7 +20,10 @@ import { initialStructuresInstructions } from './util';
   styleUrls: ['./afui-structures.component.less'],
   encapsulation: ViewEncapsulation.None,
   viewProviders: [
-    { provide: ControlContainer, useExisting: FormGroupDirective },
+    {
+      provide: ControlContainer,
+      useFactory: () => inject(ControlContainer, 4),
+    },
   ],
 })
 export class AfuiStructuresComponent implements OnInit {
@@ -38,7 +37,7 @@ export class AfuiStructuresComponent implements OnInit {
     'לא ניתן להגדיר הפרדת זמנים במצב של עיגול זמ"מ';
 
   constructor(
-    private parent: FormGroupDirective,
+    private parent: ControlContainer,
     private formBuilder: FormBuilder
   ) {}
 
@@ -51,9 +50,7 @@ export class AfuiStructuresComponent implements OnInit {
   }
 
   buildFormGroup() {
-    this.parentForm = this.parent.form;
-    console.log('tttttttttttt', this.parent);
-
+    this.parentForm = this.parent.control as FormGroup;
     this.parentForm.addControl(
       'structures',
       this.formBuilder.group({
@@ -62,5 +59,9 @@ export class AfuiStructuresComponent implements OnInit {
         ),
       })
     );
+  }
+
+  onSubmit() {
+    console.log('parentForm', this.parent.value);
   }
 }

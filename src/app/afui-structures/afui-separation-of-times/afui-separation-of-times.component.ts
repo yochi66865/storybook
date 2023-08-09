@@ -4,14 +4,14 @@ import {
   Component,
   Input,
   OnInit,
-  ViewEncapsulation
+  ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import {
   AbstractControl,
   ControlContainer,
   FormBuilder,
   FormGroup,
-  FormGroupDirective,
 } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { AfuiSeparationOfTimes } from '@models/afui-separation-of-times.model';
@@ -24,13 +24,17 @@ import { initialSeparationOfTimes } from '../util';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   viewProviders: [
-    { provide: ControlContainer, useExisting: FormGroupDirective },
+    {
+      provide: ControlContainer,
+      useFactory: () => inject(ControlContainer, 4),
+    },
   ],
 })
 export class AfuiSeparationOfTimesComponent implements OnInit {
   @Input() separationOfTimes: AfuiSeparationOfTimes = {
     ...initialSeparationOfTimes,
   };
+
   parentForm!: FormGroup;
   amountOfBuildingsAtTheSameTimeInput!: AbstractControl;
   timesSeparationOfTimes: Record<number, string> = {
@@ -43,7 +47,7 @@ export class AfuiSeparationOfTimesComponent implements OnInit {
   showAmountOfBuildingsAtTheSameTime: boolean = false;
 
   constructor(
-    private parent: FormGroupDirective,
+    private parent: ControlContainer,
     private formBuilder: FormBuilder
   ) {}
 
@@ -70,8 +74,8 @@ export class AfuiSeparationOfTimesComponent implements OnInit {
   buildFormGroup() {
     this.amountOfBuildingsAtTheSameTimeInput = this.formBuilder.control(
       this.separationOfTimes.amountOfBuildingsAtTheSameTime
-    ),
-    this.parentForm = this.parent.form;
+    );
+    this.parentForm = this.parent.control as FormGroup;
     this.parentForm.addControl(
       'separationOfTimes',
       this.formBuilder.group({
@@ -81,7 +85,8 @@ export class AfuiSeparationOfTimesComponent implements OnInit {
         separationWindowTime: this.formBuilder.control(
           this.separationOfTimes.separationWindowTime
         ),
-        amountOfBuildingsAtTheSameTime: this.amountOfBuildingsAtTheSameTimeInput
+        amountOfBuildingsAtTheSameTime:
+          this.amountOfBuildingsAtTheSameTimeInput,
       })
     );
   }

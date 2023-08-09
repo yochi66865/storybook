@@ -3025,7 +3025,7 @@
         },
         {
             "name": "AfuiSeparationOfTimesComponent",
-            "id": "component-AfuiSeparationOfTimesComponent-2c11b5bc8470c6db26ff4e70426a1ff1fd190f19816cc3123a5d285cd3f1776cbc6aa3bd97c13d13e696b49df6f2b8fb290ffb6b62be502c22e097f6a802ad33",
+            "id": "component-AfuiSeparationOfTimesComponent-e1321ee728e7c11a9535efe133f8cd619425465e7bfd583c93dd4786d969f8b80d59f908a5f76b891396c07fd56a8e52ac927794d3201276c3fac21de5c9c5e9",
             "file": "src/app/afui-structures/afui-separation-of-times/afui-separation-of-times.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [
@@ -3072,6 +3072,18 @@
                     "line": 35
                 },
                 {
+                    "name": "controlContainer",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ControlContainer",
+                    "optional": false,
+                    "description": "",
+                    "line": 48,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
                     "name": "keyDescOrder",
                     "defaultValue": "() => {...}",
                     "deprecated": false,
@@ -3079,7 +3091,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 54
+                    "line": 57
                 },
                 {
                     "name": "parentForm",
@@ -3118,7 +3130,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 70,
+                    "line": 73,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3128,7 +3140,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3144,7 +3156,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 61,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -3166,7 +3178,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { KeyValue } from '@angular/common';\r\nimport {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  Input,\r\n  OnInit,\r\n  ViewEncapsulation\r\n} from '@angular/core';\r\nimport {\r\n  AbstractControl,\r\n  ControlContainer,\r\n  FormBuilder,\r\n  FormGroup,\r\n  FormGroupDirective,\r\n} from '@angular/forms';\r\nimport { MatSelectChange } from '@angular/material/select';\r\nimport { AfuiSeparationOfTimes } from '@models/afui-separation-of-times.model';\r\nimport { initialSeparationOfTimes } from '../util';\r\n\r\n@Component({\r\n  selector: 'separation-of-times',\r\n  templateUrl: './afui-separation-of-times.component.html',\r\n  styleUrls: ['./afui-separation-of-times.component.less'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  viewProviders: [\r\n    { provide: ControlContainer, useExisting: FormGroupDirective },\r\n  ],\r\n})\r\nexport class AfuiSeparationOfTimesComponent implements OnInit {\r\n  @Input() separationOfTimes: AfuiSeparationOfTimes = {\r\n    ...initialSeparationOfTimes,\r\n  };\r\n  parentForm!: FormGroup;\r\n  amountOfBuildingsAtTheSameTimeInput!: AbstractControl;\r\n  timesSeparationOfTimes: Record<number, string> = {\r\n    5: '5 דקות',\r\n    10: '10 דקות',\r\n    15: '15 דקות',\r\n    20: '20 דקות',\r\n    25: '25 דקות',\r\n  };\r\n  showAmountOfBuildingsAtTheSameTime: boolean = false;\r\n\r\n  constructor(\r\n    private parent: FormGroupDirective,\r\n    private formBuilder: FormBuilder\r\n  ) {}\r\n\r\n  ngOnInit(): void {\r\n    this.buildFormGroup();\r\n  }\r\n\r\n  keyDescOrder = (\r\n    a: KeyValue<string, string>,\r\n    b: KeyValue<string, string>\r\n  ): number => {\r\n    return +a.key > +b.key ? 1 : +b.key > +a.key ? -1 : 0;\r\n  };\r\n\r\n  selectTypeSeparationOfTimes({ value }: MatSelectChange) {\r\n    if (value === 'מרחבית') {\r\n      this.amountOfBuildingsAtTheSameTimeInput.setValue(null);\r\n      this.showAmountOfBuildingsAtTheSameTime = false;\r\n    } else {\r\n      this.showAmountOfBuildingsAtTheSameTime = true;\r\n    }\r\n  }\r\n\r\n  buildFormGroup() {\r\n    this.amountOfBuildingsAtTheSameTimeInput = this.formBuilder.control(\r\n      this.separationOfTimes.amountOfBuildingsAtTheSameTime\r\n    ),\r\n    this.parentForm = this.parent.form;\r\n    this.parentForm.addControl(\r\n      'separationOfTimes',\r\n      this.formBuilder.group({\r\n        typeSeparationOfTimes: this.formBuilder.control(\r\n          this.separationOfTimes.typeSeparationOfTimes\r\n        ),\r\n        separationWindowTime: this.formBuilder.control(\r\n          this.separationOfTimes.separationWindowTime\r\n        ),\r\n        amountOfBuildingsAtTheSameTime: this.amountOfBuildingsAtTheSameTimeInput\r\n      })\r\n    );\r\n  }\r\n}\r\n",
+            "sourceCode": "import { KeyValue } from '@angular/common';\r\nimport {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  Input,\r\n  OnInit,\r\n  ViewEncapsulation,\r\n} from '@angular/core';\r\nimport {\r\n  AbstractControl,\r\n  ControlContainer,\r\n  FormBuilder,\r\n  FormGroup,\r\n  FormGroupDirective,\r\n} from '@angular/forms';\r\nimport { MatSelectChange } from '@angular/material/select';\r\nimport { AfuiSeparationOfTimes } from '@models/afui-separation-of-times.model';\r\nimport { initialSeparationOfTimes } from '../util';\r\n\r\n@Component({\r\n  selector: 'separation-of-times',\r\n  templateUrl: './afui-separation-of-times.component.html',\r\n  styleUrls: ['./afui-separation-of-times.component.less'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n  encapsulation: ViewEncapsulation.None,\r\n  viewProviders: [\r\n    { provide: ControlContainer, useExisting: FormGroupDirective },\r\n  ],\r\n})\r\nexport class AfuiSeparationOfTimesComponent implements OnInit {\r\n  @Input() separationOfTimes: AfuiSeparationOfTimes = {\r\n    ...initialSeparationOfTimes,\r\n  };\r\n  parentForm!: FormGroup;\r\n  amountOfBuildingsAtTheSameTimeInput!: AbstractControl;\r\n  timesSeparationOfTimes: Record<number, string> = {\r\n    5: '5 דקות',\r\n    10: '10 דקות',\r\n    15: '15 דקות',\r\n    20: '20 דקות',\r\n    25: '25 דקות',\r\n  };\r\n  showAmountOfBuildingsAtTheSameTime: boolean = false;\r\n\r\n  constructor(\r\n    private parent: FormGroupDirective,\r\n    private formBuilder: FormBuilder,\r\n    public controlContainer: ControlContainer\r\n  ) {}\r\n\r\n  ngOnInit(): void {\r\n    console.log('ccc', this.controlContainer);\r\n\r\n    this.buildFormGroup();\r\n  }\r\n\r\n  keyDescOrder = (\r\n    a: KeyValue<string, string>,\r\n    b: KeyValue<string, string>\r\n  ): number => {\r\n    return +a.key > +b.key ? 1 : +b.key > +a.key ? -1 : 0;\r\n  };\r\n\r\n  selectTypeSeparationOfTimes({ value }: MatSelectChange) {\r\n    if (value === 'מרחבית') {\r\n      this.amountOfBuildingsAtTheSameTimeInput.setValue(null);\r\n      this.showAmountOfBuildingsAtTheSameTime = false;\r\n    } else {\r\n      this.showAmountOfBuildingsAtTheSameTime = true;\r\n    }\r\n  }\r\n\r\n  buildFormGroup() {\r\n    this.amountOfBuildingsAtTheSameTimeInput = this.formBuilder.control(\r\n      this.separationOfTimes.amountOfBuildingsAtTheSameTime\r\n    );\r\n    this.parentForm = this.parent.form;\r\n    console.log('ff', this.parentForm);\r\n\r\n    this.parentForm.addControl(\r\n      'separationOfTimes',\r\n      this.formBuilder.group({\r\n        typeSeparationOfTimes: this.formBuilder.control(\r\n          this.separationOfTimes.typeSeparationOfTimes\r\n        ),\r\n        separationWindowTime: this.formBuilder.control(\r\n          this.separationOfTimes.separationWindowTime\r\n        ),\r\n        amountOfBuildingsAtTheSameTime:\r\n          this.amountOfBuildingsAtTheSameTimeInput,\r\n      })\r\n    );\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3192,6 +3204,12 @@
                         "type": "FormBuilder",
                         "deprecated": false,
                         "deprecationMessage": ""
+                    },
+                    {
+                        "name": "controlContainer",
+                        "type": "ControlContainer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
                     }
                 ],
                 "line": 43,
@@ -3208,6 +3226,15 @@
                     {
                         "name": "formBuilder",
                         "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "controlContainer",
+                        "type": "ControlContainer",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -3570,7 +3597,7 @@
         },
         {
             "name": "AfuiStructuresComponent",
-            "id": "component-AfuiStructuresComponent-6d2a6eb4f539668a70112ca794e824186ac34d3e2ba99a403de773eace2a22115fee81946da32ff299bd1b572352dd3766b41cefc95128e8c2c78639dd2a79e0",
+            "id": "component-AfuiStructuresComponent-6377727c6e04dd99f9564db7cc7eed0e2f13be9de42e64d8e979001c2f88abb87bd9028d8813649404d88b9b7540aebb1c6312891324189145b5a29be9f6e16f",
             "file": "src/app/afui-structures/afui-structures.component.ts",
             "encapsulation": [
                 "ViewEncapsulation.None"
@@ -3701,7 +3728,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  Component,\r\n  OnInit,\r\n  ViewEncapsulation,\r\n  Input,\r\n  OnChanges,\r\n  SimpleChanges,\r\n} from '@angular/core';\r\nimport { AfuiStructuresInstructions } from '@models/afui-structures.model';\r\nimport { MatSlideToggleChange } from '@angular/material/slide-toggle';\r\nimport { ControlValueService } from '@shared/control-value-service/control-value.service';\r\nimport {\r\n  ControlContainer,\r\n  FormBuilder,\r\n  FormGroup,\r\n  FormGroupDirective,\r\n  Validators,\r\n} from '@angular/forms';\r\nimport { initialStructuresInstructions } from './util';\r\n\r\n@Component({\r\n  selector: 'afui-structures',\r\n  templateUrl: './afui-structures.component.html',\r\n  styleUrls: ['./afui-structures.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n  viewProviders: [\r\n    { provide: ControlContainer, useExisting: FormGroupDirective },\r\n  ],\r\n})\r\nexport class AfuiStructuresComponent implements OnInit {\r\n  @Input() structuresInstructions: AfuiStructuresInstructions = {\r\n    ...initialStructuresInstructions,\r\n  };\r\n  parentForm!: FormGroup;\r\n  numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];\r\n  isCheckedRoundingTimes: boolean = false;\r\n  messageRoundingTimes: string =\r\n    'לא ניתן להגדיר הפרדת זמנים במצב של עיגול זמ\"מ';\r\n\r\n  constructor(\r\n    private parent: FormGroupDirective,\r\n    private formBuilder: FormBuilder\r\n  ) {}\r\n\r\n  ngOnInit(): void {\r\n    this.buildFormGroup();\r\n  }\r\n\r\n  toggleRound({ checked }: MatSlideToggleChange) {\r\n    this.isCheckedRoundingTimes = checked;\r\n  }\r\n\r\n  buildFormGroup() {\r\n    this.parentForm = this.parent.form;\r\n    console.log('tttttttttttt', this.parent);\r\n\r\n    this.parentForm.addControl(\r\n      'structures',\r\n      this.formBuilder.group({\r\n        amountOfAircraftInTheStructure: this.formBuilder.control(\r\n          this.structuresInstructions.amountOfAircraftInTheStructure\r\n        ),\r\n      })\r\n    );\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  Component,\r\n  OnInit,\r\n  ViewEncapsulation,\r\n  Input,\r\n  OnChanges,\r\n  SimpleChanges,\r\n} from '@angular/core';\r\nimport { AfuiStructuresInstructions } from '@models/afui-structures.model';\r\nimport { MatSlideToggleChange } from '@angular/material/slide-toggle';\r\nimport { ControlValueService } from '@shared/control-value-service/control-value.service';\r\nimport {\r\n  ControlContainer,\r\n  FormBuilder,\r\n  FormGroup,\r\n  FormGroupDirective,\r\n  Validators,\r\n} from '@angular/forms';\r\nimport { initialStructuresInstructions } from './util';\r\n\r\n@Component({\r\n  selector: 'afui-structures',\r\n  templateUrl: './afui-structures.component.html',\r\n  styleUrls: ['./afui-structures.component.less'],\r\n  encapsulation: ViewEncapsulation.None,\r\n  viewProviders: [\r\n    { provide: ControlContainer, useExisting: FormGroupDirective },\r\n  ],\r\n})\r\nexport class AfuiStructuresComponent implements OnInit {\r\n  @Input() structuresInstructions: AfuiStructuresInstructions = {\r\n    ...initialStructuresInstructions,\r\n  };\r\n  parentForm!: FormGroup;\r\n  numSquadronInStructures: string[] = ['2', '4', 'לבחירת האלגוריתם'];\r\n  isCheckedRoundingTimes: boolean = false;\r\n  messageRoundingTimes: string =\r\n    'לא ניתן להגדיר הפרדת זמנים במצב של עיגול זמ\"מ';\r\n\r\n  constructor(\r\n    private parent: FormGroupDirective,\r\n    private formBuilder: FormBuilder\r\n  ) {}\r\n\r\n  ngOnInit(): void {\r\n    this.buildFormGroup();\r\n  }\r\n\r\n  toggleRound({ checked }: MatSlideToggleChange) {\r\n    this.isCheckedRoundingTimes = checked;\r\n  }\r\n\r\n  buildFormGroup() {\r\n    this.parentForm = this.parent.form;\r\n    this.parentForm.addControl(\r\n      'structures',\r\n      this.formBuilder.group({\r\n        amountOfAircraftInTheStructure: this.formBuilder.control(\r\n          this.structuresInstructions.amountOfAircraftInTheStructure\r\n        ),\r\n      })\r\n    );\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3754,7 +3781,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"structures-container\" formGroupName=\"structures\">\r\n  <div class=\"structures-amount indent\">\r\n    <label class=\"structures-label\">מבנים</label>\r\n    <div class=\"structures-inputs-container\">\r\n      <afui-form-field>\r\n        <span afui-field-label>כמות מטוסים במבנה</span>\r\n        <mat-select\r\n          afui-input\r\n          class=\"structures-input\"\r\n          disableOptionCentering\r\n          placeholder=\"בחירה\"\r\n          panelClass=\"structures-options\"\r\n          formControlName=\"amountOfAircraftInTheStructure\"\r\n        >\r\n          <mat-option\r\n            *ngFor=\"let option of numSquadronInStructures\"\r\n            [value]=\"option\"\r\n            >{{ option }}</mat-option\r\n          >\r\n        </mat-select>\r\n      </afui-form-field>\r\n    </div>\r\n  </div>\r\n  <div class=\"separation-of-times-app indent\">\r\n    <separation-of-times\r\n      [class.disabled]=\"isCheckedRoundingTimes\"\r\n      [separationOfTimes]=\"structuresInstructions.separationOfTimes\"\r\n    ></separation-of-times>\r\n  </div>\r\n  <div class=\"rounding-times-app\">\r\n    <mat-icon\r\n      class=\"info rounding\"\r\n      [class.disabled]=\"!isCheckedRoundingTimes\"\r\n      [svgIcon]=\"'info-fill'\"\r\n      [afuiTooltip]=\"messageRoundingTimes\"\r\n      [afuiTooltipActive]=\"isCheckedRoundingTimes\"\r\n      [afuiTooltipShowArrow]=\"false\"\r\n      [afuiTooltipPosition]=\"'top-right'\"\r\n      [afuiTooltipOffset]=\"0\"\r\n      [afuiTooltipPanelClass]=\"'structures-tooltip'\"\r\n    ></mat-icon>\r\n    <mat-slide-toggle\r\n      disableRipple=\"true\"\r\n      afui-slide-toggle\r\n      class=\"rounding-times\"\r\n      name=\"isCheckedRoundingTimes\"\r\n      (change)=\"toggleRound($any($event))\"\r\n      disableRipple\r\n      >עיגול זמ\"מ</mat-slide-toggle\r\n    >\r\n    <rounding-times\r\n      *ngIf=\"isCheckedRoundingTimes\"\r\n      [afuiRoundingTimes]=\"structuresInstructions.roundingTimes\"\r\n      name=\"roundingTimes\"\r\n    ></rounding-times>\r\n  </div>\r\n</div>\r\n<div>\r\n  <b>parentForm Status:</b>\r\n  {{ parentForm.status }}\r\n  {{ parentForm.touched ? \"touched\" : \"untouched\" }}\r\n  {{ parentForm.dirty ? \"dirty\" : \"pristine\" }}\r\n  <br />\r\n  <b>Customer: </b>\r\n  {{ parentForm?.value | json }}\r\n</div>\r\n"
+            "templateData": "<div class=\"structures-container\" #structuresForm formGroupName=\"structures\">\r\n  <div class=\"structures-amount indent\">\r\n    <label class=\"structures-label\">מבנים</label>\r\n    <div class=\"structures-inputs-container\">\r\n      <afui-form-field>\r\n        <span afui-field-label>כמות מטוסים במבנה</span>\r\n        <mat-select\r\n          afui-input\r\n          class=\"structures-input\"\r\n          disableOptionCentering\r\n          placeholder=\"בחירה\"\r\n          panelClass=\"structures-options\"\r\n          formControlName=\"amountOfAircraftInTheStructure\"\r\n        >\r\n          <mat-option\r\n            *ngFor=\"let option of numSquadronInStructures\"\r\n            [value]=\"option\"\r\n            >{{ option }}</mat-option\r\n          >\r\n        </mat-select>\r\n      </afui-form-field>\r\n    </div>\r\n  </div>\r\n  <div class=\"separation-of-times-app indent\">\r\n    <separation-of-times\r\n      [class.disabled]=\"isCheckedRoundingTimes\"\r\n      [separationOfTimes]=\"structuresInstructions.separationOfTimes\"\r\n    ></separation-of-times>\r\n  </div>\r\n  <div class=\"rounding-times-app\">\r\n    <mat-icon\r\n      class=\"info rounding\"\r\n      [class.disabled]=\"!isCheckedRoundingTimes\"\r\n      [svgIcon]=\"'info-fill'\"\r\n      [afuiTooltip]=\"messageRoundingTimes\"\r\n      [afuiTooltipActive]=\"isCheckedRoundingTimes\"\r\n      [afuiTooltipShowArrow]=\"false\"\r\n      [afuiTooltipPosition]=\"'top-right'\"\r\n      [afuiTooltipOffset]=\"0\"\r\n      [afuiTooltipPanelClass]=\"'structures-tooltip'\"\r\n    ></mat-icon>\r\n    <mat-slide-toggle\r\n      disableRipple=\"true\"\r\n      afui-slide-toggle\r\n      class=\"rounding-times\"\r\n      name=\"isCheckedRoundingTimes\"\r\n      (change)=\"toggleRound($any($event))\"\r\n      disableRipple\r\n      >עיגול זמ\"מ</mat-slide-toggle\r\n    >\r\n    <rounding-times\r\n      *ngIf=\"isCheckedRoundingTimes\"\r\n      [afuiRoundingTimes]=\"structuresInstructions.roundingTimes\"\r\n      name=\"roundingTimes\"\r\n    ></rounding-times>\r\n  </div>\r\n</div>\r\n<div>\r\n  <b>parentForm Status:</b>\r\n  {{ parentForm.status }}\r\n  {{ parentForm.touched ? \"touched\" : \"untouched\" }}\r\n  {{ parentForm.dirty ? \"dirty\" : \"pristine\" }}\r\n  <br />\r\n  <b>Customer: </b>\r\n  {{ parentForm?.value | json }}\r\n</div>\r\n"
         },
         {
             "name": "AfuiStructuresComponent",
@@ -11335,21 +11362,21 @@
                 "name": "Customized",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
-            },
-            {
-                "name": "Customized",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
+            },
+            {
+                "name": "Customized",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
             },
             {
                 "name": "Customized",
@@ -11365,21 +11392,21 @@
                 "name": "Customized",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-            },
-            {
-                "name": "Customized",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n  },\r\n})"
+            },
+            {
+                "name": "Customized",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
             },
             {
                 "name": "DatePicker",
@@ -11405,11 +11432,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                "file": "src/app/afui-structures/afui-structures.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiSelectAlternativeComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    headQuarters: [`פד\"ן`, `פצ\"ן`, `חיל הים`, `מפקע\"ר`],\r\n    alternatives: [`'ח. זרועית ה`, `'ח. זרועית ד`],\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfuiStructuresComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    form: new FormGroup({}),\r\n  },\r\n})"
             },
             {
                 "name": "Default",
@@ -11425,11 +11452,11 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiStructuresComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    structuresInstructions: {\r\n      amountOfAircraftInTheStructure: null,\r\n      separationOfTimes: {\r\n        typeSeparationOfTimes: null,\r\n        separationWindowTime: null,\r\n      },\r\n      roundingTimes: {\r\n        typeSeparationOfTimes: null,\r\n        timeToRounding: null,\r\n      },\r\n    },\r\n    onSubmit: (form: any) => {\r\n      console.log('form', form);\r\n    },\r\n    form: new FormGroup({}),\r\n  },\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfuiSelectAlternativeComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    headQuarters: [`פד\"ן`, `פצ\"ן`, `חיל הים`, `מפקע\"ר`],\r\n    alternatives: [`'ח. זרועית ה`, `'ח. זרועית ד`],\r\n  },\r\n})"
             },
             {
                 "name": "Default",
@@ -11455,21 +11482,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
             },
             {
                 "name": "Default",
@@ -11485,16 +11512,6 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -11505,11 +11522,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/afui-structures/afui-rounding-times/afui-rounding-times.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiRoundingTimesComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  // props: {\r\n  //   svgIconName: 'reserve_instructions',\r\n  //   label: 'שריונים',\r\n  //   isActive: false,\r\n  //   withCloseIcon: false,\r\n  // },\r\n})"
+                "defaultValue": "() => ({\r\n  component: AfuiRoundingTimesComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    form: new FormGroup({}),\r\n  },\r\n})"
             },
             {
                 "name": "Default",
@@ -11519,17 +11546,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\r\n  component: AfuiSeparationOfTimesComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {},\r\n})"
-            },
-            {
-                "name": "defaultStyle",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "[]",
-                "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
+                "defaultValue": "() => ({\r\n  component: AfuiSeparationOfTimesComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    form: new FormGroup({}),\r\n  },\r\n})"
             },
             {
                 "name": "defaultStyle",
@@ -11540,6 +11557,16 @@
                 "deprecationMessage": "",
                 "type": "[]",
                 "defaultValue": "[\r\n  `afui-structures {  \r\n    position: absolute;\r\n    left: 100px;\r\n    top: 100px;\r\n    width: 649px;\r\n    height: 259px;\r\n    background: #FFFFFF;\r\n    direction: rtl;\r\n    border: 1px solid red;\r\n    display:flex; \r\n  } `,\r\n]"
+            },
+            {
+                "name": "defaultStyle",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
             },
             {
                 "name": "defaultStyle",
@@ -11585,21 +11612,21 @@
                 "name": "defaultTemplate",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                "file": "src/app/afui-structures/afui-structures.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
+                "defaultValue": "`<form [formGroup]=\"form\">\r\n<afui-structures></afui-structures></form>`"
             },
             {
                 "name": "defaultTemplate",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "`<form #ff class=\"container mt-3\" (ngSubmit)=\"onSubmit(ff)\" [formGroup]=\"form\">\r\n<afui-structures [structuresInstructions]=\"structuresInstructions\"></afui-structures></form>`"
+                "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
             },
             {
                 "name": "defaultTemplate",
@@ -11629,7 +11656,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "`<rounding-times></rounding-times>`"
+                "defaultValue": "`<form [formGroup]=\"form\"><rounding-times></rounding-times></form>`"
             },
             {
                 "name": "defaultTemplate",
@@ -11639,7 +11666,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "`<separation-of-times></separation-of-times>`"
+                "defaultValue": "`<form [formGroup]=\"form\"><separation-of-times>\r\n</separation-of-times></form>`"
             },
             {
                 "name": "environment",
@@ -18014,28 +18041,6 @@
                     "defaultValue": "() => ({\r\n  component: AfuiFormContainerComponent,\r\n  template: `<afui-form-container [title]=\"title\"><div body>{{body}}</div></afui-form-container>`,\r\n  props: {\r\n    title: text('title', 'Headline'),\r\n    body: text('body', 'hello world'),\r\n  },\r\n  styles: [`div {max-width:500px; max-height:400px;}`],\r\n})"
                 }
             ],
-            "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts": [
-                {
-                    "name": "Customized",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
-                }
-            ],
             "src/app/afui-forms/afui-form-title/afui-form-title.component.stories.ts": [
                 {
                     "name": "Customized",
@@ -18056,6 +18061,28 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "() => ({\r\n  component: AfuiFormTitleComponent,\r\n  template: `<afui-form-title>{{title}}</afui-form-title>`,\r\n  props: {\r\n    title: text('title', 'כותרת')\r\n  }\r\n})"
+                }
+            ],
+            "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts": [
+                {
+                    "name": "Customized",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-form-section-title/afui-form-section-title.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  component: AfuiFormSectionTitleComponent,\r\n  template: `<div [style.width]=\"width+'px'\"><afui-form-section-title>{{title}}</afui-form-section-title></div>`,\r\n  props: {\r\n    title: text('title', 'כותרת'),\r\n    width: number('width', 180, { range: true, min: 60, max: 300, step: 10 })\r\n  }\r\n})"
                 }
             ],
             "src/app/afui-forms/afui-select/afui-select.directive.stories.ts": [
@@ -18100,28 +18127,6 @@
                     "defaultValue": "`\r\n  <mat-form-field afui-select-form-field>\r\n    <mat-select\r\n      afui-select\r\n      panelClass=\"afui-select-panel\"\r\n      disableOptionCentering\r\n      disableRipple\r\n      [placeholder]=\"placeholder\">\r\n      <mat-option *ngFor=\"let option of options\" [value]=\"option\">{{ option }}</mat-option>\r\n    </mat-select>\r\n  </mat-form-field>\r\n`"
                 }
             ],
-            "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts": [
-                {
-                    "name": "Customized",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
-                }
-            ],
             "src/app/afui-forms/afui-select-search/afui-form-select-with-search.component.stories.ts": [
                 {
                     "name": "Customized",
@@ -18142,6 +18147,28 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "() => ({\r\n  component: AfuiFormSelectSearchComponent,\r\n  template: `<afui-form-select-with-search [options]=\"options\" [defaultSelectedId]=\"defaultSelectedId\"></afui-form-select-with-search>`,\r\n  props: {\r\n    options: [\r\n      {\r\n        parent: { id: '123', value: 'ברג84' },\r\n        children: [\r\n          { id: 'blue1', value: 'כחול' },\r\n          { id: 'red1', value: 'אדום' },\r\n          { id: 'green1', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '124', value: 'ברג82' },\r\n        children: [\r\n          { id: 'yellow1', value: 'צהוב' },\r\n          { id: 'red2', value: 'אדום' },\r\n          { id: 'green2', value: 'ירוק' },\r\n        ],\r\n      },\r\n      {\r\n        parent: { id: '125', value: 'ברג חד' },\r\n        children: [\r\n          { id: 'purpule1', value: 'סגול' },\r\n          { id: 'white1', value: 'לבן' },\r\n          { id: 'black1', value: 'שחור' },\r\n        ],\r\n      },\r\n    ],\r\n    defaultSelectedId: text('defaultSelectedId', '123'),\r\n  },\r\n})"
+                }
+            ],
+            "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts": [
+                {
+                    "name": "Customized",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/afui-forms/afui-slide-toggle/afui-slide-toggle.directive.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\r\n  template: `<mat-slide-toggle afui-slide-toggle disableRipple></mat-slide-toggle>`,\r\n})"
                 }
             ],
             "src/app/afui-forms/afui-form-field/afui-form-field.component.stories.ts": [
@@ -18246,36 +18273,36 @@
                     "defaultValue": "() => ({\r\n  component: AfUiFormFieldComponent,\r\n  template: `<afui-form-field>\r\n                <span afui-field-label>{{label}}</span>\r\n                <textarea afui-input cdkTextareaAutosize [cdkAutosizeMinRows]=\"minRows\" [cdkAutosizeMaxRows]=\"maxRows\" [placeholder]=\"placeholder\">{{value}}</textarea>\r\n                <span *ngIf=\"displayError\" afui-error>{{errorText}}</span>\r\n             </afui-form-field>`,\r\n  props: {\r\n    label: text('label', 'כותרת'),\r\n    value: text('value', ''),\r\n    placeholder: text('placeholder', 'הקלד'),\r\n    minRows: number('minimum rows', 3),\r\n    maxRows: number('maximum rows', 5),\r\n    displayError: boolean('display error', false),\r\n    errorText: text('error text', 'שגיאה'),\r\n  },\r\n})"
                 }
             ],
-            "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts": [
+            "src/app/afui-structures/afui-structures.component.stories.ts": [
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiSelectAlternativeComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    headQuarters: [`פד\"ן`, `פצ\"ן`, `חיל הים`, `מפקע\"ר`],\r\n    alternatives: [`'ח. זרועית ה`, `'ח. זרועית ד`],\r\n  },\r\n})"
+                    "defaultValue": "() => ({\r\n  component: AfuiStructuresComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    form: new FormGroup({}),\r\n  },\r\n})"
                 },
                 {
                     "name": "defaultStyle",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
+                    "defaultValue": "[\r\n  `afui-structures {  \r\n    position: absolute;\r\n    left: 100px;\r\n    top: 100px;\r\n    width: 649px;\r\n    height: 259px;\r\n    background: #FFFFFF;\r\n    direction: rtl;\r\n    border: 1px solid red;\r\n    display:flex; \r\n  } `,\r\n]"
                 },
                 {
                     "name": "defaultTemplate",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
+                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
+                    "defaultValue": "`<form [formGroup]=\"form\">\r\n<afui-structures></afui-structures></form>`"
                 }
             ],
             "src/app/afui-tooltip/afui-tooltip.component.stories.ts": [
@@ -18320,36 +18347,36 @@
                     "defaultValue": "() => ({\r\n  component: AfUiTooltipExample,\r\n  props: getProps('template')\r\n})"
                 }
             ],
-            "src/app/afui-structures/afui-structures.component.stories.ts": [
+            "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts": [
                 {
                     "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiStructuresComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    structuresInstructions: {\r\n      amountOfAircraftInTheStructure: null,\r\n      separationOfTimes: {\r\n        typeSeparationOfTimes: null,\r\n        separationWindowTime: null,\r\n      },\r\n      roundingTimes: {\r\n        typeSeparationOfTimes: null,\r\n        timeToRounding: null,\r\n      },\r\n    },\r\n    onSubmit: (form: any) => {\r\n      console.log('form', form);\r\n    },\r\n    form: new FormGroup({}),\r\n  },\r\n})"
+                    "defaultValue": "() => ({\r\n  component: AfuiSelectAlternativeComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    headQuarters: [`פד\"ן`, `פצ\"ן`, `חיל הים`, `מפקע\"ר`],\r\n    alternatives: [`'ח. זרועית ה`, `'ח. זרועית ד`],\r\n  },\r\n})"
                 },
                 {
                     "name": "defaultStyle",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\r\n  `afui-structures {  \r\n    position: absolute;\r\n    left: 100px;\r\n    top: 100px;\r\n    width: 649px;\r\n    height: 259px;\r\n    background: #FFFFFF;\r\n    direction: rtl;\r\n    border: 1px solid red;\r\n    display:flex; \r\n  } `,\r\n]"
+                    "defaultValue": "[\r\n  `afui-select-alternative {  width: 187px; height:245px; display: flex } `,\r\n]"
                 },
                 {
                     "name": "defaultTemplate",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/app/afui-structures/afui-structures.component.stories.ts",
+                    "file": "src/app/afui-select-alternative/afui-select-alternative.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "`<form #ff class=\"container mt-3\" (ngSubmit)=\"onSubmit(ff)\" [formGroup]=\"form\">\r\n<afui-structures [structuresInstructions]=\"structuresInstructions\"></afui-structures></form>`"
+                    "defaultValue": "`<afui-select-alternative [headQuarters]=\"headQuarters\" \r\n[alternatives]=\"alternatives\">\r\n</afui-select-alternative>`"
                 }
             ],
             "src/app/afui-structures/afui-rounding-times/afui-rounding-times.component.stories.ts": [
@@ -18361,7 +18388,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiRoundingTimesComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  // props: {\r\n  //   svgIconName: 'reserve_instructions',\r\n  //   label: 'שריונים',\r\n  //   isActive: false,\r\n  //   withCloseIcon: false,\r\n  // },\r\n})"
+                    "defaultValue": "() => ({\r\n  component: AfuiRoundingTimesComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    form: new FormGroup({}),\r\n  },\r\n})"
                 },
                 {
                     "name": "defaultStyle",
@@ -18381,7 +18408,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "`<rounding-times></rounding-times>`"
+                    "defaultValue": "`<form [formGroup]=\"form\"><rounding-times></rounding-times></form>`"
                 }
             ],
             "src/app/afui-structures/afui-separation-of-times/afui-separation-of-times.component.stories.ts": [
@@ -18393,7 +18420,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\r\n  component: AfuiSeparationOfTimesComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {},\r\n})"
+                    "defaultValue": "() => ({\r\n  component: AfuiSeparationOfTimesComponent,\r\n  template: defaultTemplate,\r\n  styles: defaultStyle,\r\n  props: {\r\n    form: new FormGroup({}),\r\n  },\r\n})"
                 },
                 {
                     "name": "defaultStyle",
@@ -18413,7 +18440,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "`<separation-of-times></separation-of-times>`"
+                    "defaultValue": "`<form [formGroup]=\"form\"><separation-of-times>\r\n</separation-of-times></form>`"
                 }
             ],
             "src/app/tabs/tabs.component.stories.ts": [
@@ -19171,7 +19198,7 @@
                 "linktype": "component",
                 "name": "AfuiSeparationOfTimesComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/11",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {

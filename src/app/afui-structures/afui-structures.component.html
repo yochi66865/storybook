@@ -1,4 +1,4 @@
-<div class="structures-container" formGroupName="structures">
+<div class="structures-container" #structuresForm formGroupName="structures">
   <div class="structures-amount indent">
     <label class="structures-label">מבנים</label>
     <div class="structures-inputs-container">
@@ -49,18 +49,12 @@
       >עיגול זמ"מ</mat-slide-toggle
     >
     <rounding-times
-      *ngIf="isCheckedRoundingTimes"
+      [ngClass]="
+        isCheckedRoundingTimes ? 'showInStructures' : 'hiddenInStructures'
+      "
       [afuiRoundingTimes]="structuresInstructions.roundingTimes"
       name="roundingTimes"
     ></rounding-times>
   </div>
-</div>
-<div>
-  <b>parentForm Status:</b>
-  {{ parentForm.status }}
-  {{ parentForm.touched ? "touched" : "untouched" }}
-  {{ parentForm.dirty ? "dirty" : "pristine" }}
-  <br />
-  <b>Customer: </b>
-  {{ parentForm?.value | json }}
+  <button (click)="onSubmit()">save</button>
 </div>

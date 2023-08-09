@@ -6,6 +6,7 @@ import {
   ViewEncapsulation,
   forwardRef,
   ChangeDetectionStrategy,
+  inject,
 } from '@angular/core';
 import {
   AbstractControl,
@@ -28,7 +29,10 @@ import { initialRoundingTimes } from '../util';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [
-    { provide: ControlContainer, useExisting: FormGroupDirective },
+    {
+      provide: ControlContainer,
+      useFactory: () => inject(ControlContainer, 4),
+    },
   ],
 })
 export class AfuiRoundingTimesComponent implements OnInit {
@@ -47,7 +51,7 @@ export class AfuiRoundingTimesComponent implements OnInit {
   };
 
   constructor(
-    private parent: FormGroupDirective,
+    private parent: ControlContainer,
     private formBuilder: FormBuilder
   ) {}
 
@@ -56,7 +60,7 @@ export class AfuiRoundingTimesComponent implements OnInit {
   }
 
   buildFormGroup() {
-    this.parentForm = this.parent.form;
+    this.parentForm = this.parent.control as FormGroup;
     this.timeToRoundingInput = this.formBuilder.control(
       this.afuiRoundingTimes.timeToRounding
     );
